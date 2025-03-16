@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
+from .decorators import role_required
 
 # Register View
 def register(request):
@@ -39,3 +41,10 @@ def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out.")
     return redirect("login")
+
+# Admin Dashboard View
+@login_required
+@role_required('admin')
+def admin_dashboard(request):
+    return render(request, "bookings/admin_dashboard.html")
+
