@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
 from .decorators import role_required, customer_required
+from .models import Table
 
 # Register View
 def register(request):
@@ -58,4 +59,9 @@ def make_booking(request):
 @customer_required
 def my_bookings(request):
     return render(request, "bookings/my_bookings.html")
+
+# Floor Plan View
+def floor_plan(request):
+    tables = Table.objects.all()  # Fetch all tables from the database
+    return render(request, "bookings/floor_plan.html", {"tables": tables})
 
