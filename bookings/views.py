@@ -70,9 +70,9 @@ def make_booking(request):
     return render(request, "bookings/make_booking.html", {"form": form, "table": table})
 
 @login_required
-@customer_required
 def my_bookings(request):
-    return render(request, "bookings/my_bookings.html")
+    bookings = Booking.objects.filter(user=request.user).order_by("date", "time")
+    return render(request, "bookings/my_bookings.html", {"bookings": bookings})
 
 # Floor Plan View
 def floor_plan(request):
