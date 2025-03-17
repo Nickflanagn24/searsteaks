@@ -7,7 +7,7 @@
     {% for table in tables %}
         <div class="table {% if not table.is_available %}unavailable{% endif %}" 
              data-table="{{ table.id }}"
-             onclick="selectTable({{ table.id }})">
+             onclick="selectTable('{{ table.id }}')">
             Table {{ table.table_number }}
         </div>
     {% endfor %}
