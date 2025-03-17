@@ -1,5 +1,4 @@
 from django.http import HttpResponseForbidden
-from django.shortcuts import redirect
 
 def admin_required(view_func):
     """Decorator to restrict access to admin users only."""
