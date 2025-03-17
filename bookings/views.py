@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm
-from .decorators import role_required
+from .decorators import role_required, customer_required
 
 # Register View
 def register(request):
@@ -47,4 +47,15 @@ def user_logout(request):
 @role_required('admin')
 def admin_dashboard(request):
     return render(request, "bookings/admin_dashboard.html")
+
+# Booking Views
+@login_required
+@customer_required
+def make_booking(request):
+    return render(request, "bookings/make_booking.html")
+
+@login_required
+@customer_required
+def my_bookings(request):
+    return render(request, "bookings/my_bookings.html")
 
