@@ -1,0 +1,63 @@
+{% extends "bookings/base.html" %}
+{% block content %}
+<h2>Select a Table</h2>
+<p>Click on an available table to proceed with your reservation.</p>
+
+<div id="floor-plan">
+    {% for table in tables %}
+        <div class="table {% if not table.is_available %}unavailable{% endif %}" 
+             data-table="{{ table.id }}"
+             onclick="selectTable({{ table.id }})">
+            Table {{ table.table_number }}
+        </div>
+    {% endfor %}
+</div>
+
+<p id="selected-table-text">Selected Table: None</p>
+<button id="continue-btn" onclick="proceedToBooking()" disabled>Continue</button>
+
+<script>
+    let selectedTable = null;
+
+    function selectTable(tableId) {
+        if (document.querySelector(`div[data-table='${tableId}']`).classList.contains('unavailable')) {
+            alert("This table is already booked.");
+            return;
+        }
+
+        selectedTable = tableId;
+        document.getElementById("selected-table-text").innerText = `Selected Table: ${tableId}`;
+        document.getElementById("continue-btn").disabled = false;
+    }
+
+    function proceedToBooking() {
+        if (selectedTable) {
+            window.location.href = `/make-booking/?table_id=${selectedTable}`;
+        }
+    }
+</script>
+
+<style>
+    #floor-plan {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .table {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    .table.unavailable {
+        background-color: red;
+        cursor: not-allowed;
+    }
+</style>
+{% endblock %}
