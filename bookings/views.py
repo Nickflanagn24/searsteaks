@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserCreationForm
-from .decorators import role_required, customer_required
-from .models import Table
+from .forms import CustomUserCreationForm, BookingForm
+from .decorators import admin_required, customer_required
+from .models import Table, Booking
 
 # Register View
 def register(request):
@@ -45,7 +45,7 @@ def user_logout(request):
 
 # Admin Dashboard View
 @login_required
-@role_required('admin')
+@admin_required
 def admin_dashboard(request):
     return render(request, "bookings/admin_dashboard.html")
 
@@ -53,7 +53,21 @@ def admin_dashboard(request):
 @login_required
 @customer_required
 def make_booking(request):
-    return render(request, "bookings/make_booking.html")
+    table_id = request.GET.get("table_id")  # Get table from URL
+    table = get_object_or_404(Table, id=table_id) if table_id else None
+
+    if request.method == "POST":
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.user = request.user
+            booking.save()
+            messages.success(request, "Booking successful!")
+            return redirect("my_bookings")  # Redirect to booking list page
+    else:
+        form = BookingForm(initial={"table": table})
+
+    return render(request, "bookings/make_booking.html", {"form": form, "table": table})
 
 @login_required
 @customer_required
