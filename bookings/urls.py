@@ -16,3 +16,9 @@ urlpatterns = [
 urlpatterns += [
     path("admin/cancel-booking/<int:booking_id>/", views.cancel_booking, name="cancel_booking"),
 ]
+
+# Additional routes for menu and contact
+urlpatterns += [
+    path("menu/", views.menu, name="menu"),
+    path("contact/", views.contact, name="contact"),
+]
