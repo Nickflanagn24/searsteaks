@@ -79,3 +79,6 @@ def floor_plan(request):
     tables = Table.objects.all()  # Fetch all tables from the database
     return render(request, "bookings/floor_plan.html", {"tables": tables})
 
+def home(request):
+    return render(request, "bookings/home.html")
+
