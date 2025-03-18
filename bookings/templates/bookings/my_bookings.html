@@ -5,13 +5,15 @@
 {% if bookings %}
     <ul>
     {% for booking in bookings %}
-        <li>Table {{ booking.table.table_number }} - {{ booking.date }} at {{ booking.time }} (Guests: {{ booking.guests }})</li>
+        <li>
+            Table {{ booking.table.table_number }} - {{ booking.date }} at {{ booking.time }} - Guests: {{ booking.guests }}
+        </li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>You have no bookings yet.</p>
+    <p>You have no bookings.</p>
 {% endif %}
 
-<a href="{% url 'floor_plan' %}">Book a Table</a>
+<a href="{% url 'floor_plan' %}">Back to Floor Plan</a>
 
 {% endblock %}
