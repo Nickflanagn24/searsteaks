@@ -83,3 +83,11 @@ def my_bookings(request):
 def home(request):
     return render(request, "bookings/home.html")
 
+@login_required
+@admin_required
+def cancel_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    booking.delete()
+    messages.success(request, "Booking successfully canceled.")
+    return redirect("manage_bookings")
+

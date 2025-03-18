@@ -11,3 +11,8 @@ urlpatterns = [
     path("my-bookings/", views.my_bookings, name="my_bookings"),
     path("floor-plan/", views.floor_plan, name="floor_plan"),
 ]
+
+# URL pattern for the cancellation route
+urlpatterns += [
+    path("admin/cancel-booking/<int:booking_id>/", views.cancel_booking, name="cancel_booking"),
+]
