@@ -70,14 +70,15 @@ def make_booking(request):
     return render(request, "bookings/make_booking.html", {"form": form, "table": table})
 
 @login_required
-def my_bookings(request):
-    bookings = Booking.objects.filter(user=request.user).order_by("date", "time")
-    return render(request, "bookings/my_bookings.html", {"bookings": bookings})
-
-# Floor Plan View
+@customer_required
 def floor_plan(request):
     tables = Table.objects.all()  # Fetch all tables from the database
     return render(request, "bookings/floor_plan.html", {"tables": tables})
+
+@login_required
+def my_bookings(request):
+    bookings = Booking.objects.filter(user=request.user).order_by("date", "time")
+    return render(request, "bookings/my_bookings.html", {"bookings": bookings})
 
 def home(request):
     return render(request, "bookings/home.html")
