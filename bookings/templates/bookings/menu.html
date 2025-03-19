@@ -1,0 +1,27 @@
+{% extends "bookings/base.html" %}
+{% block content %}
+<h1>Our Menu</h1>
+
+<h2>Appetizers</h2>
+<ul>
+    <li>Garlic Bread - $5</li>
+    <li>Bruschetta - $7</li>
+    <li>Caesar Salad - $8</li>
+</ul>
+
+<h2>Main Courses</h2>
+<ul>
+    <li>Grilled Salmon - $18</li>
+    <li>Steak with Mashed Potatoes - $22</li>
+    <li>Vegetable Stir Fry - $15</li>
+</ul>
+
+<h2>Desserts</h2>
+<ul>
+    <li>Chocolate Lava Cake - $9</li>
+    <li>Cheesecake - $8</li>
+    <li>Fruit Salad - $7</li>
+</ul>
+
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}
