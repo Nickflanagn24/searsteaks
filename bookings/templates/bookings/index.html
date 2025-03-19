@@ -1,0 +1,14 @@
+{% extends "bookings/base.html" %}
+{% block content %}
+<h1>Welcome to Our Restaurant</h1>
+<p>Enjoy a fine dining experience with us. Book a table and explore our delicious menu.</p>
+
+<h2>Our Services</h2>
+<ul>
+    <li><a href="{% url 'floor_plan' %}">Book a Table</a></li>
+    <li><a href="{% url 'menu' %}">View Our Menu</a></li>
+    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+</ul>
+
+<img src="https://source.unsplash.com/800x400/?restaurant,food" alt="Restaurant Image">
+{% endblock %}
