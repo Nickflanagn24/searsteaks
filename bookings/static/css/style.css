@@ -88,6 +88,18 @@ nav a:hover {
     border-radius: 8px;
 }
 
+/* Contact Info */
+.contact-info {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Map Container */
+.map-container {
+    margin: 20px 0;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     .menu-section ul {
