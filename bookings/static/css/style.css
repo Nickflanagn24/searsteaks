@@ -90,19 +90,17 @@ nav a:hover {
     }
 }
 
-/* Menu Section */
-.menu-section {
-    margin: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+/* Menu Section and Contact Info */
+.menu-section, .contact-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
-
-/* Contact Info */
-.contact-info {
-    background-color: #f1f1f1;
-    padding: 15px;
-    border-radius: 8px;
+.menu-section:hover, .contact-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Map Container */
