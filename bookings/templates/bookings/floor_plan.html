@@ -1,69 +1,126 @@
 {% extends "bookings/base.html" %}
 {% block content %}
-<h2>Select a Table</h2>
-<p>Click on an available table to proceed with your reservation.</p>
+<h1>Floor Plan</h1>
+<p>Select a table to make a booking.</p>
 
 {% if not user.is_authenticated %}
-    <p><em>Log in to reserve a table. You can view availability below!</em></p>
+  <p><em>Login to reserve a table. Guests may view availability only.</em></p>
 {% endif %}
 
-<div id="floor-plan">
-    {% for table in tables %}
-        <div class="table {% if not table.is_available %}unavailable{% endif %}" 
-             data-table="{{ table.id }}"
-             onclick="selectTable('{{ table.id }}')">
-            Table {{ table.table_number }}
-        </div>
-    {% endfor %}
+<!-- Legend -->
+<div class="legend">
+  <div><span class="legend-dot available"></span> Available</div>
+  <div><span class="legend-dot booked"></span> Booked</div>
 </div>
 
-<p id="selected-table-text">Selected Table: None</p>
-<button id="continue-btn" onclick="proceedToBooking()" disabled>Continue</button>
+<!-- Floor Plan -->
+<div id="floor-plan">
+  {% for table in tables %}
+    <div
+      class="table-wrap"
+      onclick="selectTable('{{ table.id }}')"
+      title="Table {{ table.table_number }} | {{ table.capacity }} seats | {% if table.is_available %}Available{% else %}Booked{% endif %}"
+    >
+      <!-- Chairs -->
+      <div class="chair top"></div>
+      <div class="chair right"></div>
+      <div class="chair bottom"></div>
+      <div class="chair left"></div>
+
+      <!-- Table -->
+      <div class="table-icon {% if not table.is_available %}unavailable{% endif %}" data-table="{{ table.id }}">
+        <span class="table-number">{{ table.table_number }}</span>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
 <script>
-    const userIsAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
+  const userIsAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
 
-    function selectTable(tableId) {
-        const tableElement = document.querySelector(`div[data-table='${tableId}']`);
-
-        if (tableElement.classList.contains('unavailable')) {
-            alert("Sorry, this table is already booked.");
-            return;
-        }
-
-        if (userIsAuthenticated === 'false') {
-            // Redirect to login page
-            alert("You need to log in or register to book a table.");
-            window.location.href = "{% url 'login' %}?next={% url 'floor_plan' %}";
-            return;
-        }
-
-        // If authenticated, redirect to booking page
-        window.location.href = `/make-booking/?table_id=${tableId}`;
+  function selectTable(tableId) {
+    const tableElement = document.querySelector(`[data-table='${tableId}']`);
+    if (tableElement.classList.contains('unavailable')) {
+      alert("This table is already booked.");
+      return;
     }
+
+    if (userIsAuthenticated === 'false') {
+      alert("Please login or register to book a table.");
+      window.location.href = "{% url 'login' %}?next={% url 'floor_plan' %}";
+      return;
+    }
+
+    window.location.href = `/make-booking/?table_id=${tableId}`;
+  }
 </script>
 
 <style>
-    #floor-plan {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .table {
-        width: 100px;
-        height: 100px;
-        background-color: green;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-    .table.unavailable {
-        background-color: red;
-        cursor: not-allowed;
-    }
+  #floor-plan {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .table-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  }
+  .chair {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+  }
+  .chair.top {
+    top: -10px;
+    left: 40px;
+  }
+  .chair.right {
+    top: 40px;
+    right: -10px;
+  }
+  .chair.bottom {
+    bottom: -10px;
+    left: 40px;
+  }
+  .chair.left {
+    top: 40px;
+    left: -10px;
+  }
+  .table-icon {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .table-icon.unavailable {
+    background-color: red;
+    cursor: not-allowed;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  .legend-dot.available {
+    background-color: green;
+  }
+  .legend-dot.booked {
+    background-color: red;
+  }
 </style>
 {% endblock %}
