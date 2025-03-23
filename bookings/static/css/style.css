@@ -1,10 +1,14 @@
 /* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'OGG-Roman', sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
     text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
 }
 
 /* Navigation */
@@ -372,6 +376,48 @@ nav a:hover {
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
+}
+
+/* Hover Effects on Images */
+section img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+section img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Typography and Layout */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
+  section {
+    padding: 40px 15px;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+  .hero {
+    height: 70vh;
+  }
+  .hero-text h1 {
+    font-size: 1.7rem;
+  }
+  .hero-text p {
+    font-size: 0.95rem;
+  }
 }
 
 /* Responsive Design */
