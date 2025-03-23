@@ -153,6 +153,7 @@ nav a:hover {
     cursor: pointer;
     transition: transform 0.2s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
 }
 .table-icon.unavailable {
     background-color: red;
@@ -160,6 +161,26 @@ nav a:hover {
 }
 .table-icon:hover {
     transform: scale(1.05);
+}
+
+/* Tooltip */
+.table-icon:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.table-icon:hover::after {
+    opacity: 1;
 }
 
 /* Table Number */
