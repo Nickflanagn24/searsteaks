@@ -3,6 +3,10 @@
 <h2>Select a Table</h2>
 <p>Click on an available table to proceed with your reservation.</p>
 
+{% if not user.is_authenticated %}
+    <p><em>Log in to reserve a table. You can view availability below!</em></p>
+{% endif %}
+
 <div id="floor-plan">
     {% for table in tables %}
         <div class="table {% if not table.is_available %}unavailable{% endif %}" 
@@ -17,23 +21,25 @@
 <button id="continue-btn" onclick="proceedToBooking()" disabled>Continue</button>
 
 <script>
-    let selectedTable = null;
+    const userIsAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
 
     function selectTable(tableId) {
-        if (document.querySelector(`div[data-table='${tableId}']`).classList.contains('unavailable')) {
-            alert("This table is already booked.");
+        const tableElement = document.querySelector(`div[data-table='${tableId}']`);
+
+        if (tableElement.classList.contains('unavailable')) {
+            alert("Sorry, this table is already booked.");
             return;
         }
 
-        selectedTable = tableId;
-        document.getElementById("selected-table-text").innerText = `Selected Table: ${tableId}`;
-        document.getElementById("continue-btn").disabled = false;
-    }
-
-    function proceedToBooking() {
-        if (selectedTable) {
-            window.location.href = `/make-booking/?table_id=${selectedTable}`;
+        if (userIsAuthenticated === 'false') {
+            // Redirect to login page
+            alert("You need to log in or register to book a table.");
+            window.location.href = "{% url 'login' %}?next={% url 'floor_plan' %}";
+            return;
         }
+
+        // If authenticated, redirect to booking page
+        window.location.href = `/make-booking/?table_id=${tableId}`;
     }
 </script>
 
