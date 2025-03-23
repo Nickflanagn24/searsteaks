@@ -41,7 +41,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out.")
-    return redirect("login")
+    return redirect("home")  # Redirect to home page after logging out
 
 # Admin Dashboard View
 @login_required
@@ -69,11 +69,11 @@ def make_booking(request):
 
     return render(request, "bookings/make_booking.html", {"form": form, "table": table})
 
-@customer_required
 def floor_plan(request):
     tables = Table.objects.all()  # Fetch all tables from the database
     return render(request, "bookings/floor_plan.html", {"tables": tables})
 
+@login_required
 def my_bookings(request):
     bookings = Booking.objects.filter(user=request.user).order_by("date", "time")
     return render(request, "bookings/my_bookings.html", {"bookings": bookings})
