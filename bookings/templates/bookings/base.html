@@ -13,7 +13,11 @@
             <div class="nav-logo">
                 <a href="{% url 'home' %}">Restaurant</a>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <div class="hamburger" onclick="toggleMenu(this)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'menu' %}">Menu</a></li>
@@ -37,9 +41,9 @@
     {% block content %}{% endblock %}
 
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById("navLinks");
-            nav.classList.toggle("active");
+        function toggleMenu(element) {
+            element.classList.toggle("active");
+            document.getElementById("navLinks").classList.toggle("active");
         }
     </script>
 </body>
