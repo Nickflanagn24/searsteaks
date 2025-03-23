@@ -121,6 +121,116 @@ nav a:hover {
     padding: 20px;
 }
 
+/* Floor Plan Layout */
+#floor-plan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    margin: 30px auto;
+    max-width: 1000px;
+}
+
+/* Table Wrapper */
+.table-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+/* Circular Table */
+.table-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    margin: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.table-icon.unavailable {
+    background-color: red;
+    cursor: not-allowed;
+}
+.table-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Table Number */
+.table-number {
+    font-size: 1.2rem;
+}
+
+/* Chairs */
+.chair {
+    width: 20px;
+    height: 10px;
+    background-color: #ccc;
+    position: absolute;
+    border-radius: 3px;
+}
+.chair.top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.chair.bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.chair.left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.chair.right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    gap: 20px;
+    margin: 10px auto;
+    justify-content: center;
+    font-weight: 500;
+}
+.legend-dot {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.legend-dot.available {
+    background-color: green;
+}
+.legend-dot.booked {
+    background-color: red;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .table-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 0.9rem;
+    }
+    .chair {
+        width: 14px;
+        height: 7px;
+    }
+}
+
 /* Floor Plan */
 #floor-plan {
     display: flex;
