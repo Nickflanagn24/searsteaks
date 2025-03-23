@@ -28,7 +28,7 @@
       <div class="chair left"></div>
 
       <!-- Table -->
-      <div class="table-icon {% if not table.is_available %}unavailable{% endif %}" data-table="{{ table.id }}">
+      <div class="table-icon {% if not table.is_available %}unavailable{% endif %}" data-table="{{ table.id }}" data-tooltip="Table {{ table.table_number }} | {{ table.capacity }} seats">
         <span class="table-number">{{ table.table_number }}</span>
       </div>
     </div>
