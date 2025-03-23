@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant Booking</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Restaurant Booking{% endblock %}</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=OGG-Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
     <nav>
@@ -37,9 +40,12 @@
             </ul>
         </div>
     </nav>
-
-    {% block content %}{% endblock %}
-
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <!-- Footer content -->
+    </footer>
     <script>
         function toggleMenu(element) {
             element.classList.toggle("active");

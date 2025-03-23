@@ -1,17 +1,45 @@
 {% extends "bookings/base.html" %}
 {% block content %}
-<div class="hero">
-    <img src="/static/images/hero.jpg" class="hero-image" alt="Restaurant Hero Image">
-    <div class="hero-text">
-        <h1>Welcome to Our Restaurant</h1>
-        <p>Enjoy a fine dining experience. Book a table today!</p>
-        <a href="{% url 'floor_plan' %}" class="btn">Book a Table</a>
-    </div>
-</div>
 
-<h2>Our Services</h2>
-<ul>
-    <li><a href="{% url 'menu' %}">View Our Menu</a></li>
-    <li><a href="{% url 'contact' %}">Contact Us</a></li>
-</ul>
+<header class="hero">
+  <div class="hero-text">
+    <h1>Welcome to Our BBQ Steakhouse</h1>
+    <p>Authentic BBQ flavors, grilled to perfection.</p>
+    <a href="{% url 'floor_plan' %}" class="btn">Reserve Your Table</a>
+  </div>
+</header>
+
+<section class="about">
+  <h2>Our Story</h2>
+  <p>We're passionate about slow-smoked meats, handcrafted sauces, and bold flavors. Our steakhouse blends rustic charm with modern flair, creating a welcoming space for food lovers and families alike.</p>
+  <img src="/static/images/restaurant-inside.jpg" alt="Inside the BBQ restaurant" loading="lazy">
+</section>
+
+<section class="specialties">
+  <h2>Our BBQ Specialties</h2>
+  <p>From tender brisket to saucy ribs and flame-grilled burgers, our menu is a tribute to traditional BBQ done right.</p>
+  <img src="/static/images/bbq-specialties.jpg" alt="BBQ Dishes" loading="lazy">
+</section>
+
+<section class="menu-preview">
+  <h2>Explore Our Menu</h2>
+  <p>Check out some of our most popular dishes and see why our guests keep coming back.</p>
+  <a href="{% url 'menu' %}" class="btn">View Full Menu</a>
+</section>
+
+<section class="cta">
+  <div class="cta-content">
+    <h2>Ready to Experience Authentic BBQ?</h2>
+    <a href="{% url 'floor_plan' %}" class="btn">Book Your Table Now</a>
+  </div>
+</section>
+
+<section class="contact-preview">
+  <h2>Contact Us</h2>
+  <p>123 Steakhouse Lane, Grilltown, BBQ Country</p>
+  <p>Email: <a href="mailto:contact@yourbbqsteakhouse.com">contact@yourbbqsteakhouse.com</a></p>
+  <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
+  <a href="{% url 'contact' %}" class="btn">Get in Touch</a>
+</section>
+
 {% endblock %}

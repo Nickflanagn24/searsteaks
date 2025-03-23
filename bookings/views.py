@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, BookingForm
 from .decorators import admin_required, customer_required
 from .models import Table, Booking
+from django.contrib.auth.views import LoginView
+
+class CustomLoginView(LoginView):
+    template_name = 'bookings/login.html'
 
 # Register View
 def register(request):
