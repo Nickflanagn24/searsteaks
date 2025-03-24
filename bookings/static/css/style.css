@@ -458,3 +458,63 @@ section img:hover {
         padding: 8px;
     }
 }
+
+/* Footer Styling */
+.site-footer {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 40px 20px 20px;
+  font-size: 0.9rem;
+}
+.footer-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+.footer-section {
+  flex: 1 1 250px;
+}
+.footer-section h4 {
+  color: var(--accent-color);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+.footer-section ul li a {
+  color: var(--background-color);
+  text-decoration: none;
+}
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #775843;
+  margin-top: 30px;
+  padding-top: 10px;
+  font-size: 0.85rem;
+}
+
+/* Social Icons Styling */
+.social-icons {
+  margin-top: 10px;
+}
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #EFE6DD;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #F4C542;
+}

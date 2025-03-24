@@ -63,7 +63,7 @@ Features that are not a priority for the initial release but could be implemente
 
 To map out the user journey, I created a flowchart that visualizes how users interact with the system.
 
-📥 [User Journey Diagram] (Include the final link once uploaded)
+![User Journey Diagram](bookings/static/images/readme-images/full_restaurant_user_journey.png)
 
 #### User Flow Overview
 
@@ -106,7 +106,11 @@ To create an intuitive User Experience (UX), wireframes were designed to ensure:
 - An efficient dashboard for admins to manage reservations.
 - Accessibility considerations for all screen sizes.
 
-📥 [Wireframes Link] (Include final link once uploaded)
+📥 [Wireframes Links] (Include final link once uploaded)
+home page wireframe 
+booking wireframe 
+menu wireframe
+contact wire
 
 ### Database Schema
 
@@ -117,8 +121,6 @@ To ensure data is well-structured and easily retrievable, the following database
 | User       | id (PK), username, email, password, phone_number, role (customer/admin) |
 | Table      | id (PK), table_number, capacity, is_available |
 | Booking    | id (PK), user_id (FK), table_id (FK), date, time, guests |
-
-📥 [Database ERD Diagram] (Include final link once uploaded)
 
 ### Surface: Branding & UI Design
 
@@ -138,18 +140,5 @@ A modern, restaurant-friendly color palette was chosen using Coolors.co, ensurin
 
 This planning phase ensures that the restaurant booking web application aligns with Agile methodology, MVC structure, and the project assessment criteria.
 
-#### ✅ Next Steps: Begin development by setting up Django, database models, and authentication.
 
-### How to Use This README
 
-- Keep it updated as the project progresses.
-- Modify it if the project scope changes.
-- Include links to wireframes, ERDs, and user journeys.
-
-### 📌 What's Next?
-
-Would you like to:
-- Refine this README further before moving on?
-- Start development by setting up Django & Git repository?
-
-Let me know how you'd like to proceed! 🚀
