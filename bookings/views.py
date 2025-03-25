@@ -83,7 +83,7 @@ def my_bookings(request):
     return render(request, "bookings/my_bookings.html", {"bookings": bookings})
 
 def home(request):
-    return render(request, "bookings/index.html")
+    return render(request, "bookings/home.html")
 
 def menu(request):
     return render(request, "bookings/menu.html")
