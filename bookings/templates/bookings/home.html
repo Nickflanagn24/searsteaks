@@ -1,5 +1,46 @@
 {% extends "bookings/base.html" %}
 {% block content %}
-<h2>Welcome to the Restaurant Booking System</h2>
-<p>This is the home page.</p>
+
+<header class="hero">
+  <div class="hero-text">
+    <h1>Welcome to Grill & Flame</h1>
+    <p>Authentic BBQ flavors, grilled to perfection and served with pride.</p>
+    <a href="{% url 'floor_plan' %}" class="btn">Reserve Your Table</a>
+  </div>
+</header>
+
+<section class="about">
+  <h2>Our Story</h2>
+  <p>At Grill & Flame, we slow-smoke every rack of ribs and char every steak with craftsmanship passed down for generations. We’re proud to be your neighborhood BBQ destination — family-owned, locally sourced, and all about bold flavor.</p>
+  <img src="/static/images/restaurant-inside.jpg" alt="Inside Grill & Flame" loading="lazy">
+</section>
+
+<section class="specialties">
+  <h2>BBQ Specialties</h2>
+  <p>From juicy brisket to saucy ribs and flame-seared burgers, our menu is loaded with BBQ classics made right over open fire and smoke.</p>
+  <img src="/static/images/bbq-dishes.jpg" alt="Assorted BBQ dishes" loading="lazy">
+</section>
+
+<section class="menu-preview">
+  <h2>Explore Our Menu</h2>
+  <p>Check out our signature dishes and smoky selections. There’s something for every BBQ lover — plus house-made sauces and craft sides.</p>
+  <a href="{% url 'menu' %}" class="btn">View Full Menu</a>
+</section>
+
+<section class="cta">
+  <div class="cta-content">
+    <h2>Ready to Dig In?</h2>
+    <p>Come visit or book a table in advance. Weekends fill fast!</p>
+    <a href="{% url 'floor_plan' %}" class="btn">Book Your Table</a>
+  </div>
+</section>
+
+<section class="contact-preview">
+  <h2>Need to Reach Us?</h2>
+  <p>📍 123 Steakhouse Lane, Grilltown, BBQ Country</p>
+  <p>📞 (123) 456-7890</p>
+  <p>✉️ <a href="mailto:contact@grillandflame.com">contact@grillandflame.com</a></p>
+  <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+</section>
+
 {% endblock %}
