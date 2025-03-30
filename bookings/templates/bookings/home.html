@@ -10,37 +10,72 @@
 </header>
 
 <section class="about">
-  <h2>Our Story</h2>
-  <p>At Grill & Flame, we slow-smoke every rack of ribs and char every steak with craftsmanship passed down for generations. We’re proud to be your neighborhood BBQ destination — family-owned, locally sourced, and all about bold flavor.</p>
-  <img src="/static/images/restaurant-inside.jpg" alt="Inside Grill & Flame" loading="lazy">
-</section>
-
-<section class="specialties">
-  <h2>BBQ Specialties</h2>
-  <p>From juicy brisket to saucy ribs and flame-seared burgers, our menu is loaded with BBQ classics made right over open fire and smoke.</p>
-  <img src="/static/images/bbq-dishes.jpg" alt="Assorted BBQ dishes" loading="lazy">
-</section>
-
-<section class="menu-preview">
-  <h2>Explore Our Menu</h2>
-  <p>Check out our signature dishes and smoky selections. There’s something for every BBQ lover — plus house-made sauces and craft sides.</p>
-  <a href="{% url 'menu' %}" class="btn">View Full Menu</a>
-</section>
-
-<section class="cta">
-  <div class="cta-content">
-    <h2>Ready to Dig In?</h2>
-    <p>Come visit or book a table in advance. Weekends fill fast!</p>
-    <a href="{% url 'floor_plan' %}" class="btn">Book Your Table</a>
+  <div class="about-content">
+    <h2>Why Choose Grill & Flame?</h2>
+    <p>At Grill & Flame, we bring the art of BBQ to life. Our chefs use time-honored techniques to deliver bold, smoky flavors that keep our guests coming back for more. Whether you're here for a family dinner or a special celebration, we promise an unforgettable dining experience.</p>
+  </div>
+  <div class="about-image">
+    <img src="/static/images/bbq-grill.jpg" alt="BBQ Grill" loading="lazy">
   </div>
 </section>
 
-<section class="contact-preview">
-  <h2>Need to Reach Us?</h2>
-  <p>📍 123 Steakhouse Lane, Grilltown, BBQ Country</p>
-  <p>📞 (123) 456-7890</p>
-  <p>✉️ <a href="mailto:contact@grillandflame.com">contact@grillandflame.com</a></p>
-  <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+<section class="menu-intro">
+  <div class="menu-intro-column">
+    <img src="/static/images/column-image1.jpg" alt="Delicious BBQ" loading="lazy">
+  </div>
+  <div class="menu-intro-column menu-intro-text">
+    <p>Explore a variety of BBQ dishes crafted with passion and precision. From tender brisket to flame-grilled burgers, our menu has something for everyone. Dive into the flavors of Grill & Flame!</p>
+  </div>
+  <div class="menu-intro-column">
+    <img src="/static/images/column-image2.jpg" alt="BBQ Feast" loading="lazy">
+  </div>
 </section>
 
+<section class="home-welcome">
+  <div class="two-thirds-content">
+    <h3>Welcome</h3>
+    <h2>To Our Table</h2>
+    <p>We anticipate the cooler weather game of venison and quail, root vegetables and greens; the first springtime shad roe and the blue-green, live and kickin soft shell crabs arriving a few weeks later, followed by summer’s
+      shell beans, tomatoes and okra. Regional, heritage ingredients and gracious service have been celebrated here since our opening in 1982. We hope to welcome you at table and add a little bit of beauty to your day.</p>
+  </div>
+  <div class="one-third-image">
+    <img src="/static/images/bbq-experience.jpg" alt="BBQ Experience" loading="lazy">
+  </div>
+</section>
+
+<section class="full-width-image">
+  <img src="/static/images/hero.jpg" alt="Full Width Image" loading="lazy">
+</section>
+
+<section class="home-desserts">
+  <div class="grid-left">
+    <h2>Desserts and Drinks</h2>
+    <button class="btn">Explore Menu</button>
+  </div>
+  <div class="grid-right">
+    <img src="/static/images/special1.jpg" alt="Special Dish 1" loading="lazy">
+    <img src="/static/images/special2.jpg" alt="Special Dish 2" loading="lazy">
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-item">
+    <img src="/static/images/gallery1.jpg" alt="Gallery Image 1" loading="lazy">
+  </div>
+  <div class="gallery-item">
+    <img src="/static/images/gallery2.jpg" alt="Gallery Image 2" loading="lazy">
+  </div>
+  <div class="gallery-item">
+    <img src="/static/images/gallery3.jpg" alt="Gallery Image 3" loading="lazy">
+  </div>
+  <div class="gallery-item">
+    <img src="/static/images/gallery4.jpg" alt="Gallery Image 4" loading="lazy">
+  </div>
+  <div class="gallery-item">
+    <img src="/static/images/gallery5.jpg" alt="Gallery Image 5" loading="lazy">
+  </div>
+  <div class="gallery-item">
+    <img src="/static/images/gallery6.jpg" alt="Gallery Image 6" loading="lazy">
+  </div>
+</section>
 {% endblock %}
