@@ -7,6 +7,7 @@ from .forms import CustomUserCreationForm, BookingForm
 from .decorators import admin_required, customer_required
 from .models import Table, Booking
 from django.contrib.auth.views import LoginView
+from datetime import date
 
 class CustomLoginView(LoginView):
     template_name = 'bookings/login.html'
@@ -57,25 +58,39 @@ def admin_dashboard(request):
 @login_required
 @customer_required
 def make_booking(request):
-    table_id = request.GET.get("table_id")  # Get table from URL
-    table = get_object_or_404(Table, id=table_id) if table_id else None
+    table_id = request.GET.get('table_id')  # Get the table ID from the query parameters
+    selected_date = request.GET.get('date')  # Get the selected date from the query parameters
+    selected_time = request.GET.get('time')  # Get the selected time slot from the query parameters
+
+    # Fetch the table object
+    table = get_object_or_404(Table, id=table_id)
 
     if request.method == "POST":
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            booking = form.save(commit=False)
-            booking.user = request.user
-            booking.save()
-            messages.success(request, "Booking successful!")
-            return redirect("my_bookings")  # Redirect to booking list page
-    else:
-        form = BookingForm(initial={"table": table})
+        guests = request.POST.get('guests')  # Get the number of guests from the form
+        Booking.objects.create(
+            user=request.user,
+            table=table,
+            date=selected_date,
+            time=selected_time,
+            guests=guests  # Use the value provided by the user
+        )
+        return redirect("my_bookings")  # Redirect to the user's bookings page
 
-    return render(request, "bookings/make_booking.html", {"form": form, "table": table})
+    # Render the booking details page
+    return render(request, "bookings/make_booking.html", {
+        "table": table,
+        "selected_date": selected_date,
+        "selected_time": selected_time,
+    })
 
 def floor_plan(request):
-    tables = Table.objects.all()  # Fetch all tables from the database
-    return render(request, "bookings/floor_plan.html", {"tables": tables})
+    tables = Table.objects.all()
+    today = date.today().strftime("%Y-%m-%d")  # Format as "YYYY-MM-DD"
+    for table in tables:
+        # Example logic to determine availability
+        bookings = Booking.objects.filter(table=table, date=today)
+        table.is_available = not bookings.exists()  # Table is available if no bookings exist for today
+    return render(request, 'bookings/floor_plan.html', {'tables': tables, 'today': today})
 
 @login_required
 def my_bookings(request):
