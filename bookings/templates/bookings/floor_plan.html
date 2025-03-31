@@ -13,6 +13,18 @@
   <div><span class="legend-dot booked"></span> Booked</div>
 </div>
 
+<!-- Date and Time Selector -->
+<div class="date-time-selector">
+  <label for="booking-date">Select Date:</label>
+  <input type="date" id="booking-date" name="booking-date" min="{{ today }}" required onchange="filterTablesByDate()">
+
+  <div class="time-slots">
+    <label>Select Time Slot:</label>
+    <button type="button" class="time-slot-button" onclick="selectTimeSlot('7:30 PM')">7:30 PM</button>
+    <button type="button" class="time-slot-button" onclick="selectTimeSlot('9:30 PM')">9:30 PM</button>
+  </div>
+</div>
+
 <!-- Floor Plan -->
 <div id="floor-plan">
   {% for table in tables %}
@@ -37,6 +49,35 @@
 
 <script>
   const userIsAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
+  let selectedDate = null;
+  let selectedTimeSlot = null;
+
+  function filterTablesByDate() {
+    selectedDate = document.getElementById('booking-date').value;
+
+    if (!selectedDate) {
+      alert("Please select a date.");
+      return;
+    }
+
+    console.log("Selected Date:", selectedDate); // Debugging: Log the selected date
+
+    // Show all tables for now (you can add filtering logic here if needed)
+    const tableElements = document.querySelectorAll('.table-wrap');
+    tableElements.forEach(table => {
+      table.style.display = 'block'; // Show all tables
+    });
+  }
+
+  function selectTimeSlot(timeSlot) {
+    selectedTimeSlot = timeSlot;
+    console.log("Selected Time Slot:", selectedTimeSlot); // Debugging: Log the selected time slot
+
+    // Highlight the selected time slot button
+    const timeSlotButtons = document.querySelectorAll('.time-slot-button');
+    timeSlotButtons.forEach(button => button.classList.remove('selected'));
+    event.target.classList.add('selected');
+  }
 
   function selectTable(tableId) {
     const tableElement = document.querySelector(`[data-table='${tableId}']`);
@@ -45,13 +86,18 @@
       return;
     }
 
-    if (userIsAuthenticated === 'false') {
-      alert("Please login or register to book a table.");
-      window.location.href = "{% url 'login' %}?next={% url 'floor_plan' %}";
+    if (!selectedDate) {
+      alert("Please select a date before booking a table.");
       return;
     }
 
-    window.location.href = `/make-booking/?table_id=${tableId}`;
+    if (!selectedTimeSlot) {
+      alert("Please select a time slot before booking a table.");
+      return;
+    }
+
+    // Redirect to the booking page with the selected table, date, and time slot
+    window.location.href = `/make-booking/?table_id=${tableId}&date=${selectedDate}&time=${selectedTimeSlot}`;
   }
 </script>
 

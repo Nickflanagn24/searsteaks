@@ -1,10 +1,8 @@
 from django.urls import path, include
 from . import views
-from django.contrib import admin
 from .views import CustomLoginView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('register/', views.register, name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),

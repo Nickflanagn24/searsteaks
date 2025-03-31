@@ -8,7 +8,7 @@
 <form method="post">
   {% csrf_token %}
   <p><label for="guests">Number of Guests:</label></p>
-  <input type="number" id="guests" name="guests" min="1" required>
+  <input type="number" id="guests" name="guests" min="1" max="{{ table.capacity }}" required>
   <button type="submit" class="btn">Confirm Booking</button>
 </form>
 

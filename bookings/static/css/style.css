@@ -910,3 +910,36 @@ section.menu-intro {
   object-fit: cover; /* Ensure images cover their containers without distortion */
   display: block; /* Remove inline spacing */
 }
+
+/* Date Time Selector */
+.date-time-selector {
+  margin-bottom: 20px;
+}
+
+.date-time-selector label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.time-slots {
+  margin-top: 10px;
+}
+
+.time-slot-button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.time-slot-button:hover {
+  background-color: #0056b3;
+}
+
+.time-slot-button.selected {
+  background-color: #28a745; /* Green for selected */
+  color: white;
+}
