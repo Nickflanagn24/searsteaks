@@ -1,15 +1,15 @@
 {% extends "bookings/base.html" %}
 {% block content %}
-<h2>Make a Booking</h2>
-
-{% if table %}
-<p>Booking for Table {{ table.table_number }} (Capacity: {{ table.capacity }})</p>
-{% endif %}
+<h2>Booking Details</h2>
+<p><strong>Table:</strong> {{ table.table_number }}</p>
+<p><strong>Date:</strong> {{ selected_date }}</p>
+<p><strong>Time Slot:</strong> {{ selected_time }}</p>
 
 <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Confirm Booking</button>
+  {% csrf_token %}
+  <p><label for="guests">Number of Guests:</label></p>
+  <input type="number" id="guests" name="guests" min="1" required>
+  <button type="submit" class="btn">Confirm Booking</button>
 </form>
 
 <a href="{% url 'floor_plan' %}">Back to Floor Plan</a>
