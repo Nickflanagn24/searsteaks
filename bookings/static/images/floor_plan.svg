@@ -1,0 +1,25 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Restaurant outline -->
+    <rect x="50" y="50" width="700" height="500" fill="#f5f5f5" stroke="#333" stroke-width="2" />
+    
+    <!-- Entrance -->
+    <rect x="375" y="50" width="50" height="20" fill="#d3d3d3" stroke="#333" stroke-width="2" />
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="14">Entrance</text>
+    
+    <!-- Kitchen area -->
+    <rect x="500" y="350" width="200" height="150" fill="#e6e6e6" stroke="#333" stroke-width="2" />
+    <text x="600" y="425" text-anchor="middle" font-family="Arial" font-size="16">Kitchen</text>
+    
+    <!-- Bar area -->
+    <rect x="100" y="400" width="150" height="100" fill="#e6e6e6" stroke="#333" stroke-width="2" />
+    <text x="175" y="450" text-anchor="middle" font-family="Arial" font-size="16">Bar</text>
+    
+    <!-- Tables will be added dynamically via JavaScript -->
+    
+    <!-- Legend -->
+    <rect x="650" y="100" width="20" height="20" fill="#8bc34a" stroke="#333" stroke-width="1" />
+    <text x="680" y="115" font-family="Arial" font-size="12">Available</text>
+    
+    <rect x="650" y="130" width="20" height="20" fill="#f44336" stroke="#333" stroke-width="1" />
+    <text x="680" y="145" font-family="Arial" font-size="12">Booked</text>
+</svg>

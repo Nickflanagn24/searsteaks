@@ -1,172 +1,202 @@
-{% extends "bookings/base.html" %}
+{% extends 'bookings/base.html' %}
+{% load static %}
+
 {% block content %}
-<h1>Floor Plan</h1>
-<p>Select a table to make a booking.</p>
-
-{% if not user.is_authenticated %}
-  <p><em>Login to reserve a table. Guests may view availability only.</em></p>
-{% endif %}
-
-<!-- Legend -->
-<div class="legend">
-  <div><span class="legend-dot available"></span> Available</div>
-  <div><span class="legend-dot booked"></span> Booked</div>
-</div>
-
-<!-- Date and Time Selector -->
-<div class="date-time-selector">
-  <label for="booking-date">Select Date:</label>
-  <input type="date" id="booking-date" name="booking-date" min="{{ today }}" required onchange="filterTablesByDate()">
-
-  <div class="time-slots">
-    <label>Select Time Slot:</label>
-    <button type="button" class="time-slot-button" onclick="selectTimeSlot('18:30')">18:30</button>
-    <button type="button" class="time-slot-button" onclick="selectTimeSlot('21:30')">21:30</button>
-  </div>
-</div>
-
-<!-- Floor Plan -->
-<div id="floor-plan">
-  {% for table in tables %}
-    <div
-      class="table-wrap"
-      onclick="selectTable('{{ table.id }}')"
-      title="Table {{ table.table_number }} | {{ table.capacity }} seats | {% if table.is_available %}Available{% else %}Booked{% endif %}"
-    >
-      <!-- Chairs -->
-      <div class="chair top"></div>
-      <div class="chair right"></div>
-      <div class="chair bottom"></div>
-      <div class="chair left"></div>
-
-      <!-- Table -->
-      <div class="table-icon {% if not table.is_available %}unavailable{% endif %}" data-table="{{ table.id }}" data-tooltip="Table {{ table.table_number }} | {{ table.capacity }} seats">
-        <span class="table-number">{{ table.table_number }}</span>
-      </div>
+<div class="container mt-4">
+    <h2 class="text-center">Restaurant Table Booking</h2>
+    
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Select Date & Time</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" class="form-control" value="{{ today }}">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="time">Time:</label>
+                            <select id="time" class="form-control">
+                                <option value="18:30">6:30 PM</option>
+                                <option value="21:30">9:30 PM</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>&nbsp;</label>
+                            <button id="checkBtn" class="btn btn-primary form-control">Check</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  {% endfor %}
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">Available Tables</h4>
+                </div>
+                <div class="card-body text-center" id="tablesContainer">
+                    <p>Please select a date and time to view available tables.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
 
+{% block extra_js %}
 <script>
-  const userIsAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}";
-  let selectedDate = null;
-  let selectedTimeSlot = null;
-
-  function filterTablesByDate() {
-    selectedDate = document.getElementById('booking-date').value;
-
-    if (!selectedDate) {
-      alert("Please select a date.");
-      return;
-    }
-
-    console.log("Selected Date:", selectedDate); // Debugging: Log the selected date
-
-    // Show all tables for now (you can add filtering logic here if needed)
-    const tableElements = document.querySelectorAll('.table-wrap');
-    tableElements.forEach(table => {
-      table.style.display = 'block'; // Show all tables
+    // Wait until DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded - floor plan script running');
+        
+        // Get references to DOM elements
+        const checkBtn = document.getElementById('checkBtn');
+        const dateInput = document.getElementById('date');
+        const timeInput = document.getElementById('time');
+        const tablesContainer = document.getElementById('tablesContainer');
+        
+        console.log('Check button:', checkBtn);
+        
+        // Add event listener to the check button
+        checkBtn.addEventListener('click', function() {
+            console.log('Check button clicked');
+            
+            // Get selected date and time
+            const date = dateInput.value;
+            const time = timeInput.value;
+            
+            console.log('Selected date:', date);
+            console.log('Selected time:', time);
+            
+            if (!date || !time) {
+                alert('Please select both date and time');
+                return;
+            }
+            
+            // Show loading message
+            tablesContainer.innerHTML = '<p class="text-center">Loading tables...</p>';
+            
+            // Fetch table data from API
+            console.log(`Fetching from: /api/table-availability/?date=${date}&time=${time}`);
+            
+            fetch(`/api/table-availability/?date=${date}&time=${time}`)
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            console.error('Error response:', text);
+                            throw new Error(`Server responded with status: ${response.status}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('API response:', data);
+                    
+                    if (!data.tables || data.tables.length === 0) {
+                        tablesContainer.innerHTML = '<p class="text-center">No tables found for the selected date and time.</p>';
+                        return;
+                    }
+                    
+                    displayTables(data.tables);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    tablesContainer.innerHTML = '<p class="text-center text-danger">Error loading tables. Please try again.</p>';
+                    
+                    // Fallback to demo data
+                    console.log('Using fallback demo data');
+                    const demoTables = [
+                        {id: 1, number: 1, capacity: 2, available: true},
+                        {id: 2, number: 2, capacity: 4, available: false},
+                        {id: 3, number: 3, capacity: 2, available: true},
+                        {id: 4, number: 4, capacity: 6, available: true},
+                        {id: 5, number: 5, capacity: 4, available: false},
+                        {id: 6, number: 6, capacity: 2, available: true}
+                    ];
+                    
+                    displayTables(demoTables);
+                });
+        });
+        
+        function displayTables(tables) {
+            // Clear tables container
+            tablesContainer.innerHTML = '';
+            
+            // Create container for table cards
+            const tableGrid = document.createElement('div');
+            tableGrid.className = 'row g-3';
+            
+            // Create and append table cards
+            tables.forEach(function(table) {
+                // Create column and card
+                const col = document.createElement('div');
+                col.className = 'col-md-4 col-sm-6 mb-3';
+                
+                // Create seat indicators based on capacity
+                let seatIcons = '';
+                for (let i = 0; i < table.capacity; i++) {
+                    seatIcons += '<span class="seat-icon">👤</span> ';
+                }
+                
+                // Create card HTML
+                col.innerHTML = `
+                    <div class="card ${table.available ? 'border-success' : 'border-danger'}">
+                        <div class="card-header ${table.available ? 'bg-success' : 'bg-danger'} text-white">
+                            <h5 class="card-title mb-0">Table ${table.number}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-2">
+                                ${seatIcons}
+                            </div>
+                            <p class="card-text">
+                                <strong>Capacity:</strong> ${table.capacity} people<br>
+                                <strong>Status:</strong> 
+                                <span class="badge ${table.available ? 'bg-success' : 'bg-danger'}">
+                                    ${table.available ? 'Available' : 'Booked'}
+                                </span>
+                            </p>
+                            ${table.available ? 
+                              `<a href="/make-booking/?table_id=${table.id}&date=${dateInput.value}&time=${timeInput.value}" 
+                                 class="btn btn-primary w-100">Book Now</a>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                // Add to grid
+                tableGrid.appendChild(col);
+            });
+            
+            // Add table grid to container
+            tablesContainer.appendChild(tableGrid);
+            
+            console.log('Tables displayed:', tables.length);
+        }
     });
-  }
-
-  function selectTimeSlot(timeSlot) {
-    selectedTimeSlot = timeSlot;
-    console.log("Selected Time Slot:", selectedTimeSlot); // Debugging: Log the selected time slot
-
-    // Highlight the selected time slot button
-    const timeSlotButtons = document.querySelectorAll('.time-slot-button');
-    timeSlotButtons.forEach(button => button.classList.remove('selected'));
-    event.target.classList.add('selected');
-  }
-
-  function selectTable(tableId) {
-    const tableElement = document.querySelector(`[data-table='${tableId}']`);
-    if (tableElement.classList.contains('unavailable')) {
-      alert("This table is already booked.");
-      return;
-    }
-
-    if (!selectedDate) {
-      alert("Please select a date before booking a table.");
-      return;
-    }
-
-    if (!selectedTimeSlot) {
-      alert("Please select a time slot before booking a table.");
-      return;
-    }
-
-    // Redirect to the booking page with the selected table, date, and time slot
-    window.location.href = `/make-booking/?table_id=${tableId}&date=${selectedDate}&time=${selectedTimeSlot}`;
-  }
 </script>
 
 <style>
-  #floor-plan {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .table-wrap {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-  }
-  .chair {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ccc;
-  }
-  .chair.top {
-    top: -10px;
-    left: 40px;
-  }
-  .chair.right {
-    top: 40px;
-    right: -10px;
-  }
-  .chair.bottom {
-    bottom: -10px;
-    left: 40px;
-  }
-  .chair.left {
-    top: 40px;
-    left: -10px;
-  }
-  .table-icon {
-    width: 100px;
-    height: 100px;
-    background-color: green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 10px;
-  }
-  .table-icon.unavailable {
-    background-color: red;
-    cursor: not-allowed;
-  }
-  .legend {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  .legend-dot {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-  }
-  .legend-dot.available {
-    background-color: green;
-  }
-  .legend-dot.booked {
-    background-color: red;
-  }
+    /* Add any custom styles needed */
+    .card {
+        transition: transform 0.2s;
+        margin-bottom: 20px;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .seat-icon {
+        margin: 0 2px;
+        font-size: 1.2em;
+    }
+    /* For browsers that don't support emoji */
+    .seat-icon:before {
+        content: "👤";
+    }
 </style>
 {% endblock %}

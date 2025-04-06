@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 # Custom User Model for Authentication
 class CustomUser(AbstractUser):
@@ -25,9 +26,15 @@ class Booking(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
     date = models.DateField()
-    time = models.CharField(max_length=10)  # e.g., "7:30 PM" or "9:30 PM"
+    time = models.CharField(max_length=10)  # e.g., "18:30" or "21:30"
     guests = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-
+    
+    def clean(self):
+        # Validate time slot
+        valid_times = ['18:30', '21:30']
+        if self.time not in valid_times:
+            raise ValidationError({'time': 'Invalid time slot selected.'})
+    
     def __str__(self):
         return f"Booking for {self.user} on {self.date} at {self.time}"
