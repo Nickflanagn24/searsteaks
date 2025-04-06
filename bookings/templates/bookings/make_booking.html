@@ -1,27 +1,424 @@
 {% extends "bookings/base.html" %}
+
 {% block content %}
-<h2>Booking Details</h2>
-<p><strong>Table:</strong> {{ table.table_number }}</p>
-<p><strong>Date:</strong> {{ selected_date }}</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="booking-card">
+                <!-- Header with background image -->
+                <div class="booking-header text-center">
+                    <div class="overlay"></div>
+                    <div class="header-content">
+                        <h2 class="text-white mb-0">Complete Your Reservation</h2>
+                        <p class="text-white-50 mt-2">SearSteaks Restaurant</p>
+                    </div>
+                </div>
+                
+                <!-- Booking information cards -->
+                <div class="booking-info-container">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="info-card text-center">
+                                <div class="icon-container">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h5>Table</h5>
+                                <p class="highlight">{{ table.table_number }}</p>
+                                <small>Capacity: {{ table.capacity }} people</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-card text-center">
+                                <div class="icon-container">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <h5>Date</h5>
+                                <p class="highlight">{{ selected_date|date:"F j, Y" }}</p>
+                                <small>{% now "l" %}</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-card text-center">
+                                <div class="icon-container">
+                                    <i class="far fa-clock"></i>
+                                </div>
+                                <h5>Time</h5>
+                                <p class="highlight">
+                                    {% if selected_time == '18:30' %}
+                                        6:30 PM
+                                    {% elif selected_time == '21:30' %}
+                                        9:30 PM
+                                    {% else %}
+                                        {{ selected_time }}
+                                    {% endif %}
+                                </p>
+                                <small>Dinner Service</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Booking form -->
+                <div class="booking-form-container">
+                    <form method="post" action="" id="bookingForm">
+                        {% csrf_token %}
+                        
+                        <div class="form-group mb-4">
+                            <label for="guests" class="form-label">
+                                <i class="fas fa-users me-2"></i>Number of Guests
+                            </label>
+                            <div class="guest-selector">
+                                <button type="button" id="decreaseGuests" class="btn-guest">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" name="guests" id="guests" class="form-control text-center" 
+                                      min="1" max="{{ table.capacity }}" value="2" readonly>
+                                <button type="button" id="increaseGuests" class="btn-guest">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="text-center mt-2">
+                                <small class="text-muted">Please select the number of guests (maximum {{ table.capacity }})</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">reservation policy</a>
+                            </label>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'floor_plan' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Floor Plan
+                            </a>
+                            <button type="submit" id="confirmBtn" class="btn btn-primary">
+                                <i class="fas fa-check me-2"></i>Confirm Reservation
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Booking policy -->
+            <div class="booking-policy mt-4">
+                <h5><i class="fas fa-info-circle me-2"></i>Reservation Policy</h5>
+                <ul>
+                    <li>Please arrive 15 minutes before your scheduled reservation time</li>
+                    <li>Reservations are held for 20 minutes after scheduled time</li>
+                    <li>Cancellations should be made at least 4 hours in advance</li>
+                    <li>For parties of 6 or more, please contact us directly</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Example of how it might display the time -->
-<p><strong>Time:</strong> 
-    {% if selected_time == '18:30' %}
-        6:30 PM
-    {% elif selected_time == '21:30' %}
-        9:30 PM
-    {% else %}
-        {{ selected_time }}
-    {% endif %}
-</p>
+<!-- Terms and Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Reservation Policy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Arrival Time</h6>
+                <p>Please arrive 15 minutes before your scheduled reservation time. Reservations are held for 20 minutes after the scheduled time, after which they may be released to other guests.</p>
+                
+                <h6>Cancellation Policy</h6>
+                <p>Cancellations should be made at least 4 hours in advance. This allows us to accommodate other guests who wish to dine with us.</p>
+                
+                <h6>Large Parties</h6>
+                <p>For parties of 6 or more, please contact us directly at (555) 123-4567 to arrange your reservation.</p>
+                
+                <h6>Special Requests</h6>
+                <p>While we will do our best to accommodate special requests, they cannot be guaranteed.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-<form method="post">
-  {% csrf_token %}
-  <p><label for="guests">Number of Guests:</label></p>
-  <input type="number" id="guests" name="guests" min="1" max="{{ table.capacity }}" required>
-  <button type="submit" class="btn">Confirm Booking</button>
-</form>
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Guest counter functionality
+        const decreaseBtn = document.getElementById('decreaseGuests');
+        const increaseBtn = document.getElementById('increaseGuests');
+        const guestsInput = document.getElementById('guests');
+        const maxCapacity = parseInt(document.getElementById('guests').getAttribute('data-max-capacity'), 10);
+        
+        // Decrease button
+        decreaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(guestsInput.value);
+            if (currentValue > 1) {
+                guestsInput.value = currentValue - 1;
+            }
+            updateGuestCounter();
+        });
+        
+        // Increase button
+        increaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(guestsInput.value);
+            if (currentValue < maxCapacity) {
+                guestsInput.value = currentValue + 1;
+            } else {
+                // Show a toast or alert about max capacity
+                showToast(`Maximum capacity for this table is ${maxCapacity} guests.`);
+            }
+            updateGuestCounter();
+        });
+        
+        // Update the visual state of buttons based on the current value
+        function updateGuestCounter() {
+            const currentValue = parseInt(guestsInput.value);
+            
+            decreaseBtn.disabled = currentValue <= 1;
+            increaseBtn.disabled = currentValue >= maxCapacity;
+            
+            // Optional: Add visual feedback for disabled state
+            if (currentValue <= 1) {
+                decreaseBtn.classList.add('disabled');
+            } else {
+                decreaseBtn.classList.remove('disabled');
+            }
+            
+            if (currentValue >= maxCapacity) {
+                increaseBtn.classList.add('disabled');
+            } else {
+                increaseBtn.classList.remove('disabled');
+            }
+        }
+        
+        // Initialize button states
+        updateGuestCounter();
+        
+        // Form validation
+        const bookingForm = document.getElementById('bookingForm');
+        const agreeTerms = document.getElementById('agreeTerms');
+        const confirmBtn = document.getElementById('confirmBtn');
+        
+        bookingForm.addEventListener('submit', function(event) {
+            if (!agreeTerms.checked) {
+                event.preventDefault();
+                showToast('Please agree to the reservation policy.');
+            }
+        });
+        
+        // Simple toast notification function
+        function showToast(message) {
+            // Check if a toast container exists, if not create one
+            let toastContainer = document.querySelector('.toast-container');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+                document.body.appendChild(toastContainer);
+            }
+            
+            // Create toast element
+            const toastId = 'toast-' + Date.now();
+            const toastHTML = `
+                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto">SearSteaks</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            // Add toast to container
+            toastContainer.innerHTML += toastHTML;
+            
+            // Initialize and show toast
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+            
+            // Remove toast after it's hidden
+            toastElement.addEventListener('hidden.bs.toast', function() {
+                toastElement.remove();
+            });
+        }
+    });
+</script>
 
-<a href="{% url 'floor_plan' %}">Back to Floor Plan</a>
-
+<style>
+    /* Custom Booking Form Styles */
+    .booking-card {
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .booking-header {
+        background-image: url('https://images.unsplash.com/photo-1514516345957-556ca7c90a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 180px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .booking-header .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 2;
+        padding: 2rem;
+    }
+    
+    .booking-info-container {
+        padding: 2rem;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .info-card {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 1.5rem 1rem;
+        height: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+        transition: transform 0.2s;
+    }
+    
+    .info-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .icon-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: #f8f9fa;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+    
+    .icon-container i {
+        font-size: 1.5rem;
+        color: #8B0000;  /* Dark red color for steak theme */
+    }
+    
+    .info-card h5 {
+        margin-bottom: 0.5rem;
+        color: #495057;
+    }
+    
+    .info-card .highlight {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #8B0000;
+        margin-bottom: 0.25rem;
+    }
+    
+    .booking-form-container {
+        padding: 2rem;
+    }
+    
+    .guest-selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .btn-guest {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #e9ecef;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    
+    .btn-guest:hover {
+        background-color: #dee2e6;
+    }
+    
+    .btn-guest.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    #guests {
+        width: 80px;
+        margin: 0 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .booking-policy {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .booking-policy h5 {
+        color: #8B0000;
+        margin-bottom: 1rem;
+    }
+    
+    .booking-policy ul {
+        padding-left: 1.5rem;
+    }
+    
+    .booking-policy ul li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .btn-primary {
+        background-color: #8B0000;
+        border-color: #8B0000;
+    }
+    
+    .btn-primary:hover {
+        background-color: #6d0000;
+        border-color: #6d0000;
+    }
+    
+    .btn-outline-secondary {
+        color: #495057;
+        border-color: #ced4da;
+    }
+    
+    .toast-container {
+        z-index: 1100;
+    }
+    
+    /* Form validation styles */
+    .form-check-input:checked {
+        background-color: #8B0000;
+        border-color: #8B0000;
+    }
+</style>
 {% endblock %}
