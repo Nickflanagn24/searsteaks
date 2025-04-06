@@ -151,7 +151,7 @@
         const decreaseBtn = document.getElementById('decreaseGuests');
         const increaseBtn = document.getElementById('increaseGuests');
         const guestsInput = document.getElementById('guests');
-        const maxCapacity = parseInt(document.getElementById('guests').getAttribute('data-max-capacity'), 10);
+        const maxCapacity = parseInt("{{ table.capacity }}", 10);
         
         // Decrease button
         decreaseBtn.addEventListener('click', function() {
