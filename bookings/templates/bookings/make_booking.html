@@ -3,7 +3,17 @@
 <h2>Booking Details</h2>
 <p><strong>Table:</strong> {{ table.table_number }}</p>
 <p><strong>Date:</strong> {{ selected_date }}</p>
-<p><strong>Time Slot:</strong> {{ selected_time }}</p>
+
+<!-- Example of how it might display the time -->
+<p><strong>Time:</strong> 
+    {% if selected_time == '18:30' %}
+        6:30 PM
+    {% elif selected_time == '21:30' %}
+        9:30 PM
+    {% else %}
+        {{ selected_time }}
+    {% endif %}
+</p>
 
 <form method="post">
   {% csrf_token %}
