@@ -100,17 +100,24 @@ def make_booking(request):
     })
 
 def floor_plan(request):
-    tables = Table.objects.all()
-    today = date.today().strftime("%Y-%m-%d")  # Format as "YYYY-MM-DD"
+    """View for table reservation floor plan."""
+    # Get today's date formatted as YYYY-MM-DD
+    today_str = date.today().strftime("%Y-%m-%d")
     
-    for table in tables:
-        # Determine availability for each table
-        bookings = Booking.objects.filter(table=table, date=today)
-        table.is_available = not bookings.exists()  # Table is available if no bookings exist for today
+    # Convert QuerySet to list of dictionaries
+    tables_list = []
+    for table in Table.objects.all():
+        tables_list.append({
+            'id': table.id,
+            'table_number': table.table_number,
+            'capacity': table.capacity,
+            'is_available': table.is_available
+        })
     
-    return render(request, 'bookings/floor_plan.html', {
-        'tables': tables,
-        'today': today
+    # Render the template with today's date and tables as a list
+    return render(request, "bookings/floor_plan.html", {
+        'today': today_str,
+        'tables_list': tables_list  # Use a different variable name
     })
 
 @login_required
