@@ -115,8 +115,48 @@ def floor_plan(request):
 
 @login_required
 def my_bookings(request):
-    bookings = Booking.objects.filter(user=request.user).order_by("date", "time")
-    return render(request, "bookings/my_bookings.html", {"bookings": bookings})
+    # Get all bookings for the current user
+    all_bookings = Booking.objects.filter(user=request.user).order_by("date", "time")
+    today = date.today()
+    
+    # Print debugging info to console
+    print(f"Found {len(all_bookings)} total bookings")
+    
+    # Separate bookings into upcoming and past
+    upcoming_bookings = []
+    past_bookings = []
+    
+    for booking in all_bookings:
+        # Print each booking for debugging
+        print(f"Booking: {booking.id}, Date: {booking.date}, Today: {today}")
+        
+        # Compare booking date with today's date
+        if booking.date >= today:
+            upcoming_bookings.append(booking)
+            print(f"Added to upcoming: {booking.id}")
+        else:
+            past_bookings.append(booking)
+            print(f"Added to past: {booking.id}")
+    
+    # Print final counts
+    print(f"Upcoming: {len(upcoming_bookings)}, Past: {len(past_bookings)}")
+    
+    return render(request, "bookings/my_bookings.html", {
+        "upcoming_bookings": upcoming_bookings,
+        "past_bookings": past_bookings,
+        "today": today,
+    })
+
+@login_required
+def delete_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+    
+    if request.method == "POST":
+        # Delete the booking
+        booking.delete()
+        messages.success(request, "Booking has been deleted from your history.")
+        
+    return redirect("my_bookings")
 
 def home(request):
     return render(request, "bookings/home.html")
