@@ -1,81 +1,180 @@
-{% extends "bookings/base.html" %}
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block title %}Sear Steaks - Premium Steakhouse{% endblock %}
+
 {% block content %}
-
-<header class="hero">
-  <div class="hero-text">
-    <h1>Welcome to Grill & Flame</h1>
-    <p>Authentic BBQ flavors, grilled to perfection and served with pride.</p>
-    <a href="{% url 'floor_plan' %}" class="btn">Reserve Your Table</a>
+<!-- Hero Section -->
+<div class="tw-relative tw-h-screen">
+  <!-- Hero Background Image -->
+  <div class="tw-absolute tw-inset-0 tw-z-0">
+    <!-- Stock image: You can use https://unsplash.com/photos/grilled-steak-on-black-plate-yMSecCHsIBc -->
+    <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=80&w=1740" alt="Perfectly seared steak" class="tw-w-full tw-h-full tw-object-cover">
+    <div class="tw-absolute tw-inset-0 tw-bg-black tw-bg-opacity-50"></div>
   </div>
-</header>
-
-<section class="about">
-  <div class="about-content">
-    <h2>Why Choose Grill & Flame?</h2>
-    <p>At Grill & Flame, we bring the art of BBQ to life. Our chefs use time-honored techniques to deliver bold, smoky flavors that keep our guests coming back for more. Whether you're here for a family dinner or a special celebration, we promise an unforgettable dining experience.</p>
+  
+  <!-- Hero Content -->
+  <div class="tw-relative tw-z-10 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center tw-text-white tw-px-4">
+    <h1 class="tw-text-4xl md:tw-text-6xl tw-font-bold tw-mb-4">Sear Steaks</h1>
+    <p class="tw-text-xl md:tw-text-2xl tw-mb-8 tw-max-w-2xl">Premium cuts, expertly prepared and perfectly seared</p>
+    <div class="tw-flex tw-flex-col sm:tw-flex-row tw-space-y-4 sm:tw-space-y-0 sm:tw-space-x-4">
+      <a href="{% url 'menu' %}" class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300">
+        View Menu
+      </a>
+      <a href="{% url 'floor_plan' %}" class="tw-bg-white hover:tw-bg-gray-100 tw-text-gray-900 tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300">
+        Reserve Table
+      </a>
+    </div>
   </div>
-  <div class="about-image">
-    <img src="/static/images/bbq-grill.jpg" alt="BBQ Grill" loading="lazy">
+</div>
+
+<!-- Welcome Section -->
+<section class="tw-py-16 tw-bg-white">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-flex tw-flex-col md:tw-flex-row tw-items-center">
+      <div class="md:tw-w-1/2 tw-mb-8 md:tw-mb-0 md:tw-pr-8">
+        <!-- Stock image: https://unsplash.com/photos/lighted-chandelier-above-dining-tables-CAhjZmVk5H4 -->
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1674" alt="Sear Steaks interior" class="tw-rounded-lg tw-shadow-xl tw-w-full tw-h-auto">
+      </div>
+      <div class="md:tw-w-1/2 md:tw-pl-8">
+        <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-6">Welcome to Sear Steaks</h2>
+        <p class="tw-text-gray-700 tw-text-lg tw-mb-6">
+          At Sear Steaks, we believe in the perfect union of exceptional meat, expert preparation, and warm hospitality. Our restaurant offers an intimate dining experience where every steak is cooked to perfection.
+        </p>
+        <a href="{% url 'contact' %}" class="tw-inline-block tw-border-b-2 tw-border-red-700 tw-text-red-700 tw-font-medium hover:tw-text-red-800 tw-transition tw-duration-300">
+          Learn More About Us →
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="menu-intro">
-  <div class="menu-intro-column">
-    <img src="/static/images/column-image1.jpg" alt="Delicious BBQ" loading="lazy">
-  </div>
-  <div class="menu-intro-column menu-intro-text">
-    <p>Explore a variety of BBQ dishes crafted with passion and precision. From tender brisket to flame-grilled burgers, our menu has something for everyone. Dive into the flavors of Grill & Flame!</p>
-  </div>
-  <div class="menu-intro-column">
-    <img src="/static/images/column-image2.jpg" alt="BBQ Feast" loading="lazy">
+<!-- Featured Menu Items -->
+<section class="tw-py-16 tw-bg-gray-50">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-text-center tw-mb-12">
+      <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-4">Our Signature Steaks</h2>
+      <p class="tw-text-gray-600 tw-text-lg tw-max-w-3xl tw-mx-auto">
+        Discover our most beloved cuts, each prepared with our signature searing technique.
+      </p>
+    </div>
+    
+    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8">
+      <!-- Steak Item 1 -->
+      <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+        <!-- Stock image: https://unsplash.com/photos/meat-on-black-frying-pan-kcA-c3f_3FE -->
+        <img src="https://images.unsplash.com/photo-1558030137-a56c1b004fa3?auto=format&fit=crop&q=80&w=1631" alt="Ribeye Steak" class="tw-w-full tw-h-64 tw-object-cover">
+        <div class="tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">Prime Ribeye</h3>
+          <p class="tw-text-gray-600 tw-mb-4">
+            Well-marbled for peak flavor, our ribeye is grilled to perfection.
+          </p>
+          <div class="tw-flex tw-justify-between tw-items-center">
+            <span class="tw-text-red-700 tw-font-bold">$39</span>
+            <a href="{% url 'menu' %}" class="tw-text-sm tw-text-gray-700 hover:tw-text-red-700">View Details →</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Steak Item 2 -->
+      <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+        <!-- Stock image: https://unsplash.com/photos/grilled-beef-steak-with-roasted-potatoes-vIm26fn_QKg -->
+        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=1740" alt="Filet Mignon" class="tw-w-full tw-h-64 tw-object-cover">
+        <div class="tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">Filet Mignon</h3>
+          <p class="tw-text-gray-600 tw-mb-4">
+            The most tender cut of beef with a buttery texture.
+          </p>
+          <div class="tw-flex tw-justify-between tw-items-center">
+            <span class="tw-text-red-700 tw-font-bold">$45</span>
+            <a href="{% url 'menu' %}" class="tw-text-sm tw-text-gray-700 hover:tw-text-red-700">View Details →</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Steak Item 3 -->
+      <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+        <!-- Stock image: https://unsplash.com/photos/person-slicing-beef-steak-on-wooden-table-znKAb7ghWNg -->
+        <img src="https://images.unsplash.com/photo-1611171711912-e3f6b536f532?auto=format&fit=crop&q=80&w=1744" alt="New York Strip" class="tw-w-full tw-h-64 tw-object-cover">
+        <div class="tw-p-6">
+          <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">New York Strip</h3>
+          <p class="tw-text-gray-600 tw-mb-4">
+            A classic steak with a firmer texture and rich flavor profile.
+          </p>
+          <div class="tw-flex tw-justify-between tw-items-center">
+            <span class="tw-text-red-700 tw-font-bold">$42</span>
+            <a href="{% url 'menu' %}" class="tw-text-sm tw-text-gray-700 hover:tw-text-red-700">View Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tw-text-center tw-mt-10">
+      <a href="{% url 'menu' %}" class="tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300">
+        View Full Menu
+      </a>
+    </div>
   </div>
 </section>
 
-<section class="home-welcome">
-  <div class="two-thirds-content">
-    <h3>Welcome</h3>
-    <h2>To Our Table</h2>
-    <p>We anticipate the cooler weather game of venison and quail, root vegetables and greens; the first springtime shad roe and the blue-green, live and kickin soft shell crabs arriving a few weeks later, followed by summer’s
-      shell beans, tomatoes and okra. Regional, heritage ingredients and gracious service have been celebrated here since our opening in 1982. We hope to welcome you at table and add a little bit of beauty to your day.</p>
-  </div>
-  <div class="one-third-image">
-    <img src="/static/images/bbq-experience.jpg" alt="BBQ Experience" loading="lazy">
-  </div>
-</section>
-
-<section class="full-width-image">
-  <img src="/static/images/hero.jpg" alt="Full Width Image" loading="lazy">
-</section>
-
-<section class="home-desserts">
-  <div class="grid-left">
-    <h2>Desserts and Drinks</h2>
-    <button class="btn">Explore Menu</button>
-  </div>
-  <div class="grid-right">
-    <img src="/static/images/special1.jpg" alt="Special Dish 1" loading="lazy">
-    <img src="/static/images/special2.jpg" alt="Special Dish 2" loading="lazy">
+<!-- Reservation CTA -->
+<section class="tw-py-16 tw-bg-gray-900 tw-text-white">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-text-center tw-max-w-3xl tw-mx-auto">
+      <h2 class="tw-text-3xl tw-font-bold tw-mb-6">Reserve Your Table</h2>
+      <p class="tw-text-lg tw-text-gray-300 tw-mb-8">
+        Secure your preferred dining time and table location for a memorable steakhouse experience.
+      </p>
+      <a href="{% url 'floor_plan' %}" class="tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300">
+        Make Reservation
+      </a>
+    </div>
   </div>
 </section>
 
-<section class="gallery">
-  <div class="gallery-item">
-    <img src="/static/images/gallery1.jpg" alt="Gallery Image 1" loading="lazy">
-  </div>
-  <div class="gallery-item">
-    <img src="/static/images/gallery2.jpg" alt="Gallery Image 2" loading="lazy">
-  </div>
-  <div class="gallery-item">
-    <img src="/static/images/gallery3.jpg" alt="Gallery Image 3" loading="lazy">
-  </div>
-  <div class="gallery-item">
-    <img src="/static/images/gallery4.jpg" alt="Gallery Image 4" loading="lazy">
-  </div>
-  <div class="gallery-item">
-    <img src="/static/images/gallery5.jpg" alt="Gallery Image 5" loading="lazy">
-  </div>
-  <div class="gallery-item">
-    <img src="/static/images/gallery6.jpg" alt="Gallery Image 6" loading="lazy">
+<!-- Hours & Location -->
+<section class="tw-py-16 tw-bg-white">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-flex tw-flex-col lg:tw-flex-row">
+      <!-- Hours -->
+      <div class="lg:tw-w-1/2 tw-mb-10 lg:tw-mb-0 lg:tw-pr-10">
+        <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-6">Hours & Location</h2>
+        <div class="tw-mb-8">
+          <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-3">Opening Hours</h3>
+          <ul class="tw-space-y-2 tw-text-gray-700">
+            <li class="tw-flex tw-justify-between">
+              <span>Monday - Thursday</span>
+              <span class="tw-font-medium">5:00 PM - 10:00 PM</span>
+            </li>
+            <li class="tw-flex tw-justify-between">
+              <span>Friday - Saturday</span>
+              <span class="tw-font-medium">4:00 PM - 11:00 PM</span>
+            </li>
+            <li class="tw-flex tw-justify-between">
+              <span>Sunday</span>
+              <span class="tw-font-medium">4:00 PM - 9:00 PM</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-3">Location</h3>
+          <address class="tw-not-italic tw-text-gray-700 tw-mb-4">
+            123 Steakhouse Avenue<br>
+            Boston, MA 02108
+          </address>
+          <p class="tw-text-gray-700">
+            <span class="tw-font-medium">Phone:</span> (555) 123-4567
+          </p>
+        </div>
+      </div>
+      
+      <!-- Map -->
+      <div class="lg:tw-w-1/2 tw-h-80 tw-bg-gray-200 tw-rounded-lg tw-overflow-hidden">
+        <!-- You can use an actual Google Maps embed here or this placeholder image -->
+        <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69c8bf?auto=format&fit=crop&q=80&w=1631" alt="Restaurant location map" class="tw-w-full tw-h-full tw-object-cover">
+      </div>
+    </div>
   </div>
 </section>
 {% endblock %}
