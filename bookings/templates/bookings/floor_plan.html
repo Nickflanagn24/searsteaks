@@ -1,78 +1,78 @@
 {% extends "bookings/base.html" %}
 
 {% block content %}
-<div class="bg-amber-50 min-h-screen pb-16">
+<div class="tw-bg-amber-50 tw-min-h-screen tw-pb-16">
     <!-- Hero Banner -->
-    <div class="relative bg-red-900 h-56 z-0">
-        <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg')"></div>
-        <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
-            <h1 class="text-4xl font-bold text-white mb-2">Restaurant Floor Plan</h1>
-            <div class="flex items-center w-64 my-3">
-                <div class="h-0.5 flex-1 bg-amber-400"></div>
-                <i class="fas fa-utensils mx-4 text-amber-400 text-xl"></i>
-                <div class="h-0.5 flex-1 bg-amber-400"></div>
+    <div class="tw-relative tw-bg-red-900 tw-h-56 tw-z-0">
+        <div class="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center tw-opacity-20" style="background-image: url('https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg')"></div>
+        <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+            <h1 class="tw-text-4xl tw-font-bold tw-text-white tw-mb-2">Restaurant Floor Plan</h1>
+            <div class="tw-flex tw-items-center tw-w-64 tw-my-3">
+                <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+                <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
+                <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
             </div>
-            <p class="text-lg text-white">Select a table to make your reservation</p>
+            <p class="tw-text-lg tw-text-white">Select a table to make your reservation</p>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-6 pt-10">
-        <div class="max-w-4xl mx-auto">
+    <div class="tw-container tw-mx-auto tw-px-6 tw-pt-10">
+        <div class="tw-max-w-4xl tw-mx-auto">
             <!-- Booking Selection Card -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden relative z-10 mt-4">
+            <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-relative tw-z-10 tw-mt-4">
                 <!-- Date & Time Selection -->
-                <div class="p-6 bg-gray-50 border-b">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">Select Date & Time</h2>
+                <div class="tw-p-6 tw-bg-gray-50 tw-border-b">
+                    <h2 class="tw-text-xl tw-font-bold tw-text-gray-800 tw-mb-4">Select Date & Time</h2>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4">
                         <div>
-                            <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                            <label for="date" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Date</label>
                             <input type="date" id="date" name="date" min="{{ today }}" value="{{ today }}" 
-                                   class="w-full p-2 border border-gray-300 rounded">
+                                   class="tw-w-full tw-p-2 tw-border tw-border-gray-300 tw-rounded">
                         </div>
                         <div>
-                            <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
-                            <select id="time" name="time" class="w-full p-2 border border-gray-300 rounded">
+                            <label for="time" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Time</label>
+                            <select id="time" name="time" class="tw-w-full tw-p-2 tw-border tw-border-gray-300 tw-rounded">
                                 <option value="18:30">6:30 PM</option>
                                 <option value="21:30">9:30 PM</option>
                             </select>
                         </div>
                     </div>
                     
-                    <button id="checkBtn" type="button" class="mt-4 px-4 py-2 bg-red-800 text-white rounded-md hover:bg-red-900">
-                        <i class="fas fa-search mr-2"></i>
+                    <button id="checkBtn" type="button" class="tw-mt-4 tw-px-4 tw-py-2 tw-bg-red-800 tw-text-white tw-rounded-md hover:tw-bg-red-900">
+                        <i class="fas fa-search tw-mr-2"></i>
                         Check Availability
                     </button>
                     
                     {% if not user.is_authenticated %}
-                    <div class="mt-4 p-3 bg-blue-50 text-blue-700 rounded-lg text-sm">
-                        <i class="fas fa-info-circle mr-1"></i>
-                        <span>Please <a href="{% url 'login' %}" class="font-medium underline">login</a> to make a reservation.</span>
+                    <div class="tw-mt-4 tw-p-3 tw-bg-blue-50 tw-text-blue-700 tw-rounded-lg tw-text-sm">
+                        <i class="fas fa-info-circle tw-mr-1"></i>
+                        <span>Please <a href="{% url 'login' %}" class="tw-font-medium tw-underline">login</a> to make a reservation.</span>
                     </div>
                     {% endif %}
                 </div>
 
                 <!-- Tables Display -->
-                <div class="p-6">
-                    <h2 class="text-xl font-bold text-gray-800 mb-1">Available Tables</h2>
-                    <p class="text-sm text-gray-500 mb-6">Click on an available table to make a reservation</p>
+                <div class="tw-p-6">
+                    <h2 class="tw-text-xl tw-font-bold tw-text-gray-800 tw-mb-1">Available Tables</h2>
+                    <p class="tw-text-sm tw-text-gray-500 tw-mb-6">Click on an available table to make a reservation</p>
                     
                     <!-- Legend -->
-                    <div class="flex flex-wrap gap-4 mb-6">
-                        <div class="flex items-center">
-                            <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
-                            <span class="text-sm text-gray-600">Available</span>
+                    <div class="tw-flex tw-flex-wrap tw-gap-4 tw-mb-6">
+                        <div class="tw-flex tw-items-center">
+                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-green-500 tw-mr-2"></div>
+                            <span class="tw-text-sm tw-text-gray-600">Available</span>
                         </div>
-                        <div class="flex items-center">
-                            <div class="w-4 h-4 rounded-full bg-red-500 mr-2"></div>
-                            <span class="text-sm text-gray-600">Booked</span>
+                        <div class="tw-flex tw-items-center">
+                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-red-500 tw-mr-2"></div>
+                            <span class="tw-text-sm tw-text-gray-600">Booked</span>
                         </div>
                     </div>
                     
                     <!-- Tables Grid -->
-                    <div id="tablesContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <div class="text-center text-gray-500 col-span-full py-4">
+                    <div id="tablesContainer" class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-4">
+                        <div class="tw-text-center tw-text-gray-500 tw-col-span-full tw-py-4">
                             Please select a date and time to view available tables.
                         </div>
                     </div>
@@ -80,9 +80,9 @@
             </div>
             
             <!-- Action Buttons -->
-            <div class="mt-8 flex justify-center">
-                <a href="{% url 'home' %}" class="px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    <i class="fas fa-home mr-2"></i>
+            <div class="tw-mt-8 tw-flex tw-justify-center">
+                <a href="{% url 'home' %}" class="tw-px-6 tw-py-3 tw-rounded-full tw-border tw-border-gray-300 tw-text-gray-700 hover:tw-bg-gray-50">
+                    <i class="fas fa-home tw-mr-2"></i>
                     Return Home
                 </a>
             </div>
@@ -110,7 +110,7 @@
             }
             
             // Show loading state
-            tablesContainer.innerHTML = '<div class="col-span-full text-center py-8"><p class="text-gray-600">Loading available tables...</p></div>';
+            tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">Loading available tables...</p></div>';
             
             // Simple hardcoded demo tables
             setTimeout(function() {
@@ -145,30 +145,30 @@
         function createTableCard(id, number, capacity, available) {
             if (available) {
                 return '<a href="/make-booking/?table_id=' + id + '&date=' + dateInput.value + '&time=' + timeInput.value + '" ' +
-                      'class="bg-white border-2 border-green-500 rounded-lg p-4 text-center shadow hover:shadow-md">' +
-                      '<div class="w-12 h-12 mx-auto mb-2 bg-green-500 text-white rounded-full flex items-center justify-center">' +
-                      '<span class="font-bold">' + number + '</span>' +
+                      'class="tw-bg-white tw-border-2 tw-border-green-500 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md">' +
+                      '<div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-green-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">' +
+                      '<span class="tw-font-bold">' + number + '</span>' +
                       '</div>' +
-                      '<div class="font-medium">Table ' + number + '</div>' +
-                      '<div class="text-sm text-gray-500 mt-1">' +
-                      '<i class="fas fa-users mr-1"></i>' +
+                      '<div class="tw-font-medium">Table ' + number + '</div>' +
+                      '<div class="tw-text-sm tw-text-gray-500 tw-mt-1">' +
+                      '<i class="fas fa-users tw-mr-1"></i>' +
                       'Seats ' + capacity +
                       '</div>' +
-                      '<div class="mt-2 text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full inline-block">' +
+                      '<div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-green-100 tw-text-green-800 tw-rounded-full tw-inline-block">' +
                       'Available' +
                       '</div>' +
                       '</a>';
             } else {
-                return '<div class="bg-white border-2 border-red-500 rounded-lg p-4 text-center opacity-75">' +
-                      '<div class="w-12 h-12 mx-auto mb-2 bg-red-500 text-white rounded-full flex items-center justify-center">' +
-                      '<span class="font-bold">' + number + '</span>' +
+                return '<div class="tw-bg-white tw-border-2 tw-border-red-500 tw-rounded-lg tw-p-4 tw-text-center tw-opacity-75">' +
+                      '<div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-red-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">' +
+                      '<span class="tw-font-bold">' + number + '</span>' +
                       '</div>' +
-                      '<div class="font-medium">Table ' + number + '</div>' +
-                      '<div class="text-sm text-gray-500 mt-1">' +
-                      '<i class="fas fa-users mr-1"></i>' +
+                      '<div class="tw-font-medium">Table ' + number + '</div>' +
+                      '<div class="tw-text-sm tw-text-gray-500 tw-mt-1">' +
+                      '<i class="fas fa-users tw-mr-1"></i>' +
                       'Seats ' + capacity +
                       '</div>' +
-                      '<div class="mt-2 text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full inline-block">' +
+                      '<div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-red-100 tw-text-red-800 tw-rounded-full tw-inline-block">' +
                       'Booked' +
                       '</div>' +
                       '</div>';

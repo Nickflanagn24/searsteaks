@@ -269,6 +269,166 @@ footer a:hover {
 }
 
 /* ===========================
+   Burger Menu Styles
+=========================== */
+.burger-menu {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 20px;
+}
+
+.burger-bar {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.burger-bar:nth-child(1) {
+    top: 0;
+}
+
+.burger-bar:nth-child(2) {
+    top: 8px;
+}
+
+.burger-bar:nth-child(3) {
+    top: 16px;
+}
+
+/* Animation for burger icon when open */
+.navbar-toggler.open .burger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.open .burger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.open .burger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Override Bootstrap default toggler */
+.navbar-toggler {
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Enhanced mobile menu styling */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+    
+    .navbar-nav .nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.8rem 0;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Style for active nav item */
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #8B0000; /* SearSteaks red */
+    font-weight: 600;
+}
+
+/* Mobile menu fix */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        transition: all 0.3s ease;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+    
+    .navbar-nav .nav-item {
+        padding: 5px 0;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 18px;
+        padding: 12px 20px;
+        display: block;
+        transition: background-color 0.2s ease;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Animation for burger icon */
+.burger-menu {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler.open .burger-menu {
+    transform: rotate(180deg);
+}
+
+/* Simple Mobile Menu Styles */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #343a40;
+        padding: 15px;
+        margin-top: 10px;
+    }
+    
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 10px 15px;
+        border-radius: 4px;
+        display: block;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Hide Tailwind effects that might conflict */
+.tw-hidden {
+    display: none !important;
+}
+
+/* ===========================
    Responsive Styles
 =========================== */
 
