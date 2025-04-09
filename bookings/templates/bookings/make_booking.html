@@ -1,424 +1,252 @@
 {% extends "bookings/base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10">
-            <div class="booking-card">
-                <!-- Header with background image -->
-                <div class="booking-header text-center">
-                    <div class="overlay"></div>
-                    <div class="header-content">
-                        <h2 class="text-white mb-0">Complete Your Reservation</h2>
-                        <p class="text-white-50 mt-2">SearSteaks Restaurant</p>
-                    </div>
-                </div>
-                
-                <!-- Booking information cards -->
-                <div class="booking-info-container">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <div class="info-card text-center">
-                                <div class="icon-container">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <h5>Table</h5>
-                                <p class="highlight">{{ table.table_number }}</p>
-                                <small>Capacity: {{ table.capacity }} people</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-card text-center">
-                                <div class="icon-container">
-                                    <i class="far fa-calendar-alt"></i>
-                                </div>
-                                <h5>Date</h5>
-                                <p class="highlight">{{ selected_date|date:"F j, Y" }}</p>
-                                <small>{% now "l" %}</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-card text-center">
-                                <div class="icon-container">
-                                    <i class="far fa-clock"></i>
-                                </div>
-                                <h5>Time</h5>
-                                <p class="highlight">
-                                    {% if selected_time == '18:30' %}
-                                        6:30 PM
-                                    {% elif selected_time == '21:30' %}
-                                        9:30 PM
-                                    {% else %}
-                                        {{ selected_time }}
-                                    {% endif %}
-                                </p>
-                                <small>Dinner Service</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Booking form -->
-                <div class="booking-form-container">
-                    <form method="post" action="" id="bookingForm">
-                        {% csrf_token %}
-                        
-                        <div class="form-group mb-4">
-                            <label for="guests" class="form-label">
-                                <i class="fas fa-users me-2"></i>Number of Guests
-                            </label>
-                            <div class="guest-selector">
-                                <button type="button" id="decreaseGuests" class="btn-guest">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <input type="number" name="guests" id="guests" class="form-control text-center" 
-                                      min="1" max="{{ table.capacity }}" value="2" readonly>
-                                <button type="button" id="increaseGuests" class="btn-guest">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            <div class="text-center mt-2">
-                                <small class="text-muted">Please select the number of guests (maximum {{ table.capacity }})</small>
-                            </div>
-                        </div>
-                        
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" value="" id="agreeTerms" required>
-                            <label class="form-check-label" for="agreeTerms">
-                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">reservation policy</a>
-                            </label>
-                        </div>
-                        
-                        <div class="d-flex justify-content-between mt-4">
-                            <a href="{% url 'floor_plan' %}" class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-2"></i>Back to Floor Plan
-                            </a>
-                            <button type="submit" id="confirmBtn" class="btn btn-primary">
-                                <i class="fas fa-check me-2"></i>Confirm Reservation
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- Booking policy -->
-            <div class="booking-policy mt-4">
-                <h5><i class="fas fa-info-circle me-2"></i>Reservation Policy</h5>
-                <ul>
-                    <li>Please arrive 15 minutes before your scheduled reservation time</li>
-                    <li>Reservations are held for 20 minutes after scheduled time</li>
-                    <li>Cancellations should be made at least 4 hours in advance</li>
-                    <li>For parties of 6 or more, please contact us directly</li>
-                </ul>
-            </div>
-        </div>
+<!-- Hero Banner (styled like floor_plan.html) -->
+<div class="tw-relative tw-bg-red-900 tw-h-56 tw-z-0">
+  <div class="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center tw-opacity-20" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=2000')"></div>
+  <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+    <h1 class="tw-text-4xl tw-font-bold tw-text-white tw-mb-2">Complete Your Reservation</h1>
+    <div class="tw-flex tw-items-center tw-w-64 tw-my-3">
+      <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+      <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
+      <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
     </div>
+    <p class="tw-text-lg tw-text-white">Premium dining at Sear Steaks</p>
+  </div>
 </div>
 
-<!-- Terms and Conditions Modal -->
-<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="termsModalLabel">Reservation Policy</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Main Content (with adjusted margin) -->
+<div class="tw-container tw-mx-auto tw-px-4 tw-pt-12 tw-pb-16 tw-relative tw-z-10">
+  <div class="tw-max-w-5xl tw-mx-auto">
+    <!-- Booking Card -->
+    <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden">
+      <!-- Booking Information Cards -->
+      <div class="tw-bg-gray-50 tw-p-8">
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6">
+          <!-- Table Card -->
+          <div class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
+            <div class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
             </div>
-            <div class="modal-body">
-                <h6>Arrival Time</h6>
-                <p>Please arrive 15 minutes before your scheduled reservation time. Reservations are held for 20 minutes after the scheduled time, after which they may be released to other guests.</p>
-                
-                <h6>Cancellation Policy</h6>
-                <p>Cancellations should be made at least 4 hours in advance. This allows us to accommodate other guests who wish to dine with us.</p>
-                
-                <h6>Large Parties</h6>
-                <p>For parties of 6 or more, please contact us directly at (555) 123-4567 to arrange your reservation.</p>
-                
-                <h6>Special Requests</h6>
-                <p>While we will do our best to accommodate special requests, they cannot be guaranteed.</p>
+            <h3 class="tw-text-gray-700 tw-font-semibold tw-text-lg tw-mb-2">Table</h3>
+            <p class="tw-text-red-700 tw-text-2xl tw-font-bold tw-mb-1">{{ table.table_number }}</p>
+            <p class="tw-text-gray-500 tw-text-sm">Capacity: {{ table.capacity }} people</p>
+          </div>
+          
+          <!-- Date Card -->
+          <div class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
+            <div class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+            <h3 class="tw-text-gray-700 tw-font-semibold tw-text-lg tw-mb-2">Date</h3>
+            <p class="tw-text-red-700 tw-text-2xl tw-font-bold tw-mb-1">{{ selected_date|date:"F j, Y" }}</p>
+            <p class="tw-text-gray-500 tw-text-sm">{% now "l" %}</p>
+          </div>
+          
+          <!-- Time Card -->
+          <div class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
+            <div class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
+            <h3 class="tw-text-gray-700 tw-font-semibold tw-text-lg tw-mb-2">Time</h3>
+            <p class="tw-text-red-700 tw-text-2xl tw-font-bold tw-mb-1">
+              {% if selected_time == '18:30' %}
+                6:30 PM
+              {% elif selected_time == '21:30' %}
+                9:30 PM
+              {% else %}
+                {{ selected_time }}
+              {% endif %}
+            </p>
+            <p class="tw-text-gray-500 tw-text-sm">Dinner Service</p>
+          </div>
         </div>
+      </div>
+      
+      <!-- Booking Form -->
+      <div class="tw-p-8">
+        <form method="post" action="" id="bookingForm" class="tw-space-y-6">
+          {% csrf_token %}
+          
+          <!-- Guest Selector -->
+          <div class="tw-max-w-md tw-mx-auto">
+            <label for="guests" class="tw-block tw-text-gray-700 tw-font-medium tw-mb-3 tw-text-center">
+              <span class="tw-inline-flex tw-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                Number of Guests
+              </span>
+            </label>
+            
+            <div class="tw-flex tw-items-center tw-justify-center tw-space-x-4">
+              <button type="button" id="decreaseGuests" class="tw-w-12 tw-h-12 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-transition tw-duration-300 hover:tw-bg-gray-200 focus:tw-outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+              </button>
+              
+              <div class="tw-relative tw-w-20">
+                <input type="number" name="guests" id="guests" 
+                       class="tw-w-full tw-text-center tw-text-2xl tw-font-bold tw-border-0 tw-bg-transparent tw-text-gray-800 focus:tw-outline-none" 
+                       min="1" max="{{ table.capacity }}" value="2" readonly>
+                <div class="tw-absolute tw-bottom-0 tw-w-full tw-h-0.5 tw-bg-red-700"></div>
+              </div>
+              
+              <button type="button" id="increaseGuests" class="tw-w-12 tw-h-12 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-transition tw-duration-300 hover:tw-bg-gray-200 focus:tw-outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </button>
+            </div>
+            
+            <p class="tw-text-gray-500 tw-text-sm tw-text-center tw-mt-3">
+              Please select the number of guests (maximum {{ table.capacity }})
+            </p>
+          </div>
+          
+          <!-- Reservation Policy Agreement -->
+          <div class="tw-flex tw-items-start tw-max-w-md tw-mx-auto">
+            <div class="tw-flex tw-items-center tw-h-5">
+              <input id="agreeTerms" name="agreeTerms" type="checkbox" required
+                     class="tw-w-4 tw-h-4 tw-border tw-border-gray-300 tw-rounded tw-text-red-700 focus:tw-ring-red-700">
+            </div>
+            <label for="agreeTerms" class="tw-ml-3 tw-text-sm tw-text-gray-600">
+              I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal" class="tw-text-red-700 hover:tw-text-red-800 tw-underline">reservation policy</a>
+            </label>
+          </div>
+          
+          <!-- Form Buttons -->
+          <div class="tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-items-center tw-gap-4 tw-max-w-2xl tw-mx-auto tw-pt-4">
+            <a href="{% url 'floor_plan' %}" class="tw-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg tw-text-gray-700 tw-bg-white hover:tw-bg-gray-50 tw-transition tw-duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Floor Plan
+            </a>
+            
+            <button type="submit" id="confirmBtn" class="tw-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-bg-red-700 tw-rounded-lg tw-text-white hover:tw-bg-red-800 tw-transition tw-duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Confirm Reservation
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Guest counter functionality
-        const decreaseBtn = document.getElementById('decreaseGuests');
-        const increaseBtn = document.getElementById('increaseGuests');
-        const guestsInput = document.getElementById('guests');
-        const maxCapacity = parseInt("{{ table.capacity }}", 10);
-        
-        // Decrease button
-        decreaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(guestsInput.value);
-            if (currentValue > 1) {
-                guestsInput.value = currentValue - 1;
-            }
-            updateGuestCounter();
-        });
-        
-        // Increase button
-        increaseBtn.addEventListener('click', function() {
-            let currentValue = parseInt(guestsInput.value);
-            if (currentValue < maxCapacity) {
-                guestsInput.value = currentValue + 1;
-            } else {
-                // Show a toast or alert about max capacity
-                showToast(`Maximum capacity for this table is ${maxCapacity} guests.`);
-            }
-            updateGuestCounter();
-        });
-        
-        // Update the visual state of buttons based on the current value
-        function updateGuestCounter() {
-            const currentValue = parseInt(guestsInput.value);
-            
-            decreaseBtn.disabled = currentValue <= 1;
-            increaseBtn.disabled = currentValue >= maxCapacity;
-            
-            // Optional: Add visual feedback for disabled state
-            if (currentValue <= 1) {
-                decreaseBtn.classList.add('disabled');
-            } else {
-                decreaseBtn.classList.remove('disabled');
-            }
-            
-            if (currentValue >= maxCapacity) {
-                increaseBtn.classList.add('disabled');
-            } else {
-                increaseBtn.classList.remove('disabled');
-            }
-        }
-        
-        // Initialize button states
-        updateGuestCounter();
-        
-        // Form validation
-        const bookingForm = document.getElementById('bookingForm');
-        const agreeTerms = document.getElementById('agreeTerms');
-        const confirmBtn = document.getElementById('confirmBtn');
-        
-        bookingForm.addEventListener('submit', function(event) {
-            if (!agreeTerms.checked) {
-                event.preventDefault();
-                showToast('Please agree to the reservation policy.');
-            }
-        });
-        
-        // Simple toast notification function
-        function showToast(message) {
-            // Check if a toast container exists, if not create one
-            let toastContainer = document.querySelector('.toast-container');
-            if (!toastContainer) {
-                toastContainer = document.createElement('div');
-                toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
-                document.body.appendChild(toastContainer);
-            }
-            
-            // Create toast element
-            const toastId = 'toast-' + Date.now();
-            const toastHTML = `
-                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto">SearSteaks</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body">
-                        ${message}
-                    </div>
-                </div>
-            `;
-            
-            // Add toast to container
-            toastContainer.innerHTML += toastHTML;
-            
-            // Initialize and show toast
-            const toastElement = document.getElementById(toastId);
-            const toast = new bootstrap.Toast(toastElement);
-            toast.show();
-            
-            // Remove toast after it's hidden
-            toastElement.addEventListener('hidden.bs.toast', function() {
-                toastElement.remove();
-            });
-        }
+  document.addEventListener('DOMContentLoaded', function() {
+    // Guest counter functionality
+    const decreaseBtn = document.getElementById('decreaseGuests');
+    const increaseBtn = document.getElementById('increaseGuests');
+    const guestsInput = document.getElementById('guests');
+    const maxCapacity = parseInt("{{ table.capacity }}", 10);
+    
+    // Decrease button
+    decreaseBtn.addEventListener('click', function() {
+      let currentValue = parseInt(guestsInput.value);
+      if (currentValue > 1) {
+        guestsInput.value = currentValue - 1;
+      }
+      updateGuestCounter();
     });
+    
+    // Increase button
+    increaseBtn.addEventListener('click', function() {
+      let currentValue = parseInt(guestsInput.value);
+      if (currentValue < maxCapacity) {
+        guestsInput.value = currentValue + 1;
+      } else {
+        // Show a toast or alert about max capacity
+        showToast(`Maximum capacity for this table is ${maxCapacity} guests.`);
+      }
+      updateGuestCounter();
+    });
+    
+    // Update the visual state of buttons based on the current value
+    function updateGuestCounter() {
+      const currentValue = parseInt(guestsInput.value);
+      
+      decreaseBtn.disabled = currentValue <= 1;
+      increaseBtn.disabled = currentValue >= maxCapacity;
+      
+      // Optional: Add visual feedback for disabled state
+      if (currentValue <= 1) {
+        decreaseBtn.classList.add('tw-opacity-50');
+      } else {
+        decreaseBtn.classList.remove('tw-opacity-50');
+      }
+      
+      if (currentValue >= maxCapacity) {
+        increaseBtn.classList.add('tw-opacity-50');
+      } else {
+        increaseBtn.classList.remove('tw-opacity-50');
+      }
+    }
+    
+    // Initialize button states
+    updateGuestCounter();
+    
+    // Form validation
+    const bookingForm = document.getElementById('bookingForm');
+    const agreeTerms = document.getElementById('agreeTerms');
+    
+    bookingForm.addEventListener('submit', function(event) {
+      if (!agreeTerms.checked) {
+        event.preventDefault();
+        showToast('Please agree to the reservation policy.');
+      }
+    });
+    
+    // Simple toast notification function
+    function showToast(message) {
+      // Check if a toast container exists, if not create one
+      let toastContainer = document.querySelector('.toast-container');
+      if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+        document.body.appendChild(toastContainer);
+      }
+      
+      // Create toast element
+      const toastId = 'toast-' + Date.now();
+      const toastHTML = `
+        <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Sear Steaks</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            ${message}
+          </div>
+        </div>
+      `;
+      
+      // Add toast to container
+      toastContainer.innerHTML += toastHTML;
+      
+      // Initialize and show toast
+      const toastElement = document.getElementById(toastId);
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
+      
+      // Remove toast after it's hidden
+      toastElement.addEventListener('hidden.bs.toast', function() {
+        toastElement.remove();
+      });
+    }
+  });
 </script>
-
-<style>
-    /* Custom Booking Form Styles */
-    .booking-card {
-        background-color: #fff;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-    }
-    
-    .booking-header {
-        background-image: url('https://images.unsplash.com/photo-1514516345957-556ca7c90a64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-        background-size: cover;
-        background-position: center;
-        height: 180px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .booking-header .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-    }
-    
-    .header-content {
-        position: relative;
-        z-index: 2;
-        padding: 2rem;
-    }
-    
-    .booking-info-container {
-        padding: 2rem;
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #e9ecef;
-    }
-    
-    .info-card {
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 1.5rem 1rem;
-        height: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-        transition: transform 0.2s;
-    }
-    
-    .info-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .icon-container {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        background-color: #f8f9fa;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-    }
-    
-    .icon-container i {
-        font-size: 1.5rem;
-        color: #8B0000;  /* Dark red color for steak theme */
-    }
-    
-    .info-card h5 {
-        margin-bottom: 0.5rem;
-        color: #495057;
-    }
-    
-    .info-card .highlight {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #8B0000;
-        margin-bottom: 0.25rem;
-    }
-    
-    .booking-form-container {
-        padding: 2rem;
-    }
-    
-    .guest-selector {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    .btn-guest {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #e9ecef;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    
-    .btn-guest:hover {
-        background-color: #dee2e6;
-    }
-    
-    .btn-guest.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-    
-    #guests {
-        width: 80px;
-        margin: 0 1rem;
-        font-size: 1.25rem;
-        font-weight: 600;
-        border: none;
-        box-shadow: none;
-    }
-    
-    .booking-policy {
-        background-color: #fff;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-    
-    .booking-policy h5 {
-        color: #8B0000;
-        margin-bottom: 1rem;
-    }
-    
-    .booking-policy ul {
-        padding-left: 1.5rem;
-    }
-    
-    .booking-policy ul li {
-        margin-bottom: 0.5rem;
-    }
-    
-    .btn-primary {
-        background-color: #8B0000;
-        border-color: #8B0000;
-    }
-    
-    .btn-primary:hover {
-        background-color: #6d0000;
-        border-color: #6d0000;
-    }
-    
-    .btn-outline-secondary {
-        color: #495057;
-        border-color: #ced4da;
-    }
-    
-    .toast-container {
-        z-index: 1100;
-    }
-    
-    /* Form validation styles */
-    .form-check-input:checked {
-        background-color: #8B0000;
-        border-color: #8B0000;
-    }
-</style>
 {% endblock %}

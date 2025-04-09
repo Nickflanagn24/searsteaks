@@ -1,33 +1,386 @@
-{% extends "bookings/base.html" %}
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block title %}Menu - Sear Steaks{% endblock %}
+
 {% block content %}
-<div class="container">
-    <h1>Our Menu</h1>
-
-    <div class="menu-section">
-        <h2>Appetisers</h2>
-        <ul>
-            <li>Garlic Bread - £5</li>
-            <li>Bruschetta - £7</li>
-            <li>Caesar Salad - £8</li>
-        </ul>
+<!-- Header with Background Image - Styled like make_booking.html -->
+<div class="tw-bg-gray-50 tw-py-12 md:tw-py-16">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-flex tw-justify-center">
+      <div class="tw-w-full tw-max-w-5xl">
+        <!-- Menu Card -->
+        <div class="tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-xl">
+          
+          <!-- Header with Background Image -->
+          <div class="tw-relative tw-h-56 md:tw-h-64">
+            <div class="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center tw-opacity-20" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=2070')"></div>
+            <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+                <h1 class="tw-text-4xl tw-font-bold tw-text-white tw-mb-2">Our Menu</h1>
+                <div class="tw-flex tw-items-center tw-w-64 tw-my-3">
+                    <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+                    <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
+                    <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+                </div>
+                <p class="tw-text-lg tw-text-white">Expertly crafted dishes featuring the finest ingredients</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="menu-section">
-        <h2>Main Courses</h2>
-        <ul>
-            <li>Grilled Salmon - £18</li>
-            <li>Steak with Mashed Potatoes - £22</li>
-            <li>Vegetable Stir Fry - £15</li>
-        </ul>
+<!-- Main Content - Positioned with negative margin like floor_plan.html -->
+<div class="tw-container tw-mx-auto tw-px-6 tw-pt-10">
+    <div class="tw-max-w-4xl tw-mx-auto">
+        <!-- Menu Navigation Card -->
+        <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-relative tw-z-10 tw-mt-[-2rem]">
+            <div class="tw-flex tw-flex-wrap tw-justify-center tw-py-4 tw-gap-2 md:tw-gap-8">
+                <a href="#starters" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Starters</a>
+                <a href="#mains" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Main Courses</a>
+                <a href="#desserts" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Desserts</a>
+                <a href="#cocktails" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Cocktails</a>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="menu-section">
-        <h2>Desserts</h2>
-        <ul>
-            <li>Chocolate Lava Cake - £9</li>
-            <li>Cheesecake - £8</li>
-            <li>Fruit Salad - £7
-        </ul>
-    </div>
+<!-- Menu Container -->
+<div class="tw-bg-gray-50 tw-py-12 md:tw-py-20">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    
+    <!-- Starters Section -->
+    <section id="starters" class="tw-mb-20">
+      <div class="tw-flex tw-items-center tw-mb-10">
+        <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Starters</h2>
+        <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
+      </div>
+      
+      <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
+        <!-- Featured Starter with Image -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <!-- Beef Carpaccio image -->
+          <img src="https://images.unsplash.com/photo-1653413841723-0dafe53cf4c7?auto=format&fit=crop&q=80&w=1000" alt="Beef Carpaccio" class="tw-w-full tw-h-64 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Beef Carpaccio</h3>
+              <span class="tw-text-red-700 tw-font-bold">$16</span>
+            </div>
+            <p class="tw-text-gray-600">
+              Thinly sliced prime beef, arugula, capers, shaved parmesan and truffle oil
+            </p>
+          </div>
+        </div>
+        
+        <!-- Text-only Menu Items, now with images -->
+        <div class="tw-flex tw-flex-col tw-gap-6">
+          <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+            <img src="https://images.unsplash.com/photo-1579887829494-60835b9eb089?auto=format&fit=crop&q=80&w=1000" alt="Jumbo Shrimp Cocktail" class="tw-w-full tw-h-48 tw-object-cover">
+            <div class="tw-p-6">
+              <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+                <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Jumbo Shrimp Cocktail</h3>
+                <span class="tw-text-red-700 tw-font-bold">$18</span>
+              </div>
+              <p class="tw-text-gray-600">
+                Five jumbo shrimp served with our signature cocktail sauce and lemon
+              </p>
+            </div>
+          </div>
+          
+          <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+            <img src="https://images.unsplash.com/photo-1629320011604-37bbb9ee82bc?auto=format&fit=crop&q=80&w=1000" alt="Crab Cakes" class="tw-w-full tw-h-48 tw-object-cover">
+            <div class="tw-p-6">
+              <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+                <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Crab Cakes</h3>
+                <span class="tw-text-red-700 tw-font-bold">$19</span>
+              </div>
+              <p class="tw-text-gray-600">
+                Lump crab meat, minimal filler, pan-seared and served with remoulade sauce
+              </p>
+            </div>
+          </div>
+          
+          <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+            <img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853?auto=format&fit=crop&q=80&w=1000" alt="French Onion Soup" class="tw-w-full tw-h-48 tw-object-cover">
+            <div class="tw-p-6">
+              <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+                <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">French Onion Soup</h3>
+                <span class="tw-text-red-700 tw-font-bold">$12</span>
+              </div>
+              <p class="tw-text-gray-600">
+                Rich beef broth, caramelized onions, crouton, and melted Gruyère cheese
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Main Courses Section -->
+    <section id="mains" class="tw-mb-20">
+      <div class="tw-flex tw-items-center tw-mb-10">
+        <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Main Courses</h2>
+        <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
+      </div>
+      
+      <!-- Premium Steaks Showcase -->
+      <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8 tw-mb-12">
+        <!-- Ribeye -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&q=80&w=1000" alt="Ribeye Steak" class="tw-w-full tw-h-64 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Prime Ribeye</h3>
+              <span class="tw-text-red-700 tw-font-bold">$42</span>
+            </div>
+            <p class="tw-text-gray-600 tw-mb-4">
+              16oz well-marbled cut, grilled to your preference. Served with roasted garlic mashed potatoes.
+            </p>
+            <div class="tw-text-sm tw-text-gray-500">
+              Recommended wine pairing: Cabernet Sauvignon
+            </div>
+          </div>
+        </div>
+        
+        <!-- Filet Mignon -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=1000" alt="Filet Mignon" class="tw-w-full tw-h-64 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Filet Mignon</h3>
+              <span class="tw-text-red-700 tw-font-bold">$46</span>
+            </div>
+            <p class="tw-text-gray-600 tw-mb-4">
+              8oz center-cut tenderloin, the most tender of all cuts. Served with asparagus and béarnaise sauce.
+            </p>
+            <div class="tw-text-sm tw-text-gray-500">
+              Recommended wine pairing: Pinot Noir
+            </div>
+          </div>
+        </div>
+        
+        <!-- New York Strip -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1565299715199-866c917206bb?auto=format&fit=crop&q=80&w=1000" alt="New York Strip" class="tw-w-full tw-h-64 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">New York Strip</h3>
+              <span class="tw-text-red-700 tw-font-bold">$40</span>
+            </div>
+            <p class="tw-text-gray-600 tw-mb-4">
+              14oz boneless strip with bold flavor and firmer texture. Served with truffle fries.
+            </p>
+            <div class="tw-text-sm tw-text-gray-500">
+              Recommended wine pairing: Malbec
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Other Main Courses -->
+      <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
+        <!-- Added images to these previously text-only items -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1602847161428-672df57e8fec?auto=format&fit=crop&q=80&w=1000" alt="Rack of Lamb" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Rack of Lamb</h3>
+              <span class="tw-text-red-700 tw-font-bold">$38</span>
+            </div>
+            <p class="tw-text-gray-600">
+              Herb-crusted domestic lamb rack, mint jelly, roasted root vegetables and rosemary jus
+            </p>
+          </div>
+        </div>
+        
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=1000" alt="Grilled Salmon" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Grilled Salmon</h3>
+              <span class="tw-text-red-700 tw-font-bold">$34</span>
+            </div>
+            <p class="tw-text-gray-600">
+              Fresh Atlantic salmon, lemon butter sauce, wild rice pilaf and seasonal vegetables
+            </p>
+          </div>
+        </div>
+        
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&q=80&w=1000" alt="Roasted Chicken" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Roasted Chicken</h3>
+              <span class="tw-text-red-700 tw-font-bold">$28</span>
+            </div>
+            <p class="tw-text-gray-600">
+              Free-range half chicken, herb roasted, garlic mashed potatoes and grilled vegetables
+            </p>
+          </div>
+        </div>
+        
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1619221882220-947b3d3c8861?auto=format&fit=crop&q=80&w=1000" alt="Vegetable Wellington" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Vegetable Wellington</h3>
+              <span class="tw-text-red-700 tw-font-bold">$26</span>
+            </div>
+            <p class="tw-text-gray-600">
+              Roasted vegetables and mushroom duxelles in puff pastry, served with port wine reduction
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Desserts Section -->
+    <section id="desserts" class="tw-mb-20">
+      <div class="tw-flex tw-items-center tw-mb-10">
+        <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Desserts</h2>
+        <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
+      </div>
+      
+      <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-8">
+        <!-- Chocolate Lava Cake -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1617303637039-439db8a8a75e?auto=format&fit=crop&q=80&w=1000" alt="Chocolate Lava Cake" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-5">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Chocolate Lava Cake</h3>
+              <span class="tw-text-red-700 tw-font-bold">$12</span>
+            </div>
+            <p class="tw-text-gray-600 tw-text-sm">
+              Warm chocolate cake with a molten center, served with vanilla ice cream
+            </p>
+          </div>
+        </div>
+        
+        <!-- New York Cheesecake -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=1000" alt="New York Cheesecake" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-5">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">New York Cheesecake</h3>
+              <span class="tw-text-red-700 tw-font-bold">$10</span>
+            </div>
+            <p class="tw-text-gray-600 tw-text-sm">
+              Classic creamy cheesecake with graham cracker crust and berry compote
+            </p>
+          </div>
+        </div>
+        
+        <!-- Crème Brûlée -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1470324161839-ce2bb6fa6bc3?auto=format&fit=crop&q=80&w=1000" alt="Crème Brûlée" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-5">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Crème Brûlée</h3>
+              <span class="tw-text-red-700 tw-font-bold">$11</span>
+            </div>
+            <p class="tw-text-gray-600 tw-text-sm">
+              Vanilla custard with caramelized sugar crust and fresh berries
+            </p>
+          </div>
+        </div>
+        
+        <!-- Apple Tart -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <img src="https://images.unsplash.com/photo-1568571780765-9276a958e352?auto=format&fit=crop&q=80&w=1000" alt="Apple Tart" class="tw-w-full tw-h-48 tw-object-cover">
+          <div class="tw-p-5">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+              <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Apple Tart</h3>
+              <span class="tw-text-red-700 tw-font-bold">$10</span>
+            </div>
+            <p class="tw-text-gray-600 tw-text-sm">
+              Warm apple tart with caramel sauce and cinnamon ice cream
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Cocktails Section -->
+    <section id="cocktails">
+      <div class="tw-flex tw-items-center tw-mb-10">
+        <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Cocktails</h2>
+        <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
+      </div>
+      
+      <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
+        <!-- Featured Cocktail with Image -->
+        <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+          <!-- Old Fashioned image -->
+          <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80&w=1000" alt="Old Fashioned" class="tw-w-full tw-h-64 tw-object-cover">
+          <div class="tw-p-6">
+            <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
+              <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Signature Old Fashioned</h3>
+              <span class="tw-text-red-700 tw-font-bold">$14</span>
+            </div>
+            <p class="tw-text-gray-600">
+              Bourbon, aromatic bitters, sugar, and orange peel, served over a large ice cube
+            </p>
+          </div>
+        </div>
+        
+        <!-- Added images to these previously text-only cocktail items -->
+        <div class="tw-grid tw-grid-cols-1 tw-gap-6">
+          <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+            <img src="https://images.unsplash.com/photo-1551751299-1b51cab2694c?auto=format&fit=crop&q=80&w=1000" alt="Manhattan" class="tw-w-full tw-h-48 tw-object-cover">
+            <div class="tw-p-6">
+              <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+                <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Manhattan</h3>
+                <span class="tw-text-red-700 tw-font-bold">$15</span>
+              </div>
+              <p class="tw-text-gray-600">
+                Rye whiskey, sweet vermouth, and bitters, garnished with a cherry
+              </p>
+            </div>
+          </div>
+          
+          <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+            <img src="https://images.unsplash.com/photo-1639928758285-3430a8da373e?auto=format&fit=crop&q=80&w=1000" alt="Whiskey Sour" class="tw-w-full tw-h-48 tw-object-cover">
+            <div class="tw-p-6">
+              <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+                <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Whiskey Sour</h3>
+                <span class="tw-text-red-700 tw-font-bold">$13</span>
+              </div>
+              <p class="tw-text-gray-600">
+                Bourbon, fresh lemon juice, simple syrup, and egg white
+              </p>
+            </div>
+          </div>
+          
+          <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg">
+            <img src="https://images.unsplash.com/photo-1580137197671-820e99b4b3d9?auto=format&fit=crop&q=80&w=1000" alt="Negroni" class="tw-w-full tw-h-48 tw-object-cover">
+            <div class="tw-p-6">
+              <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
+                <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Negroni</h3>
+                <span class="tw-text-red-700 tw-font-bold">$14</span>
+              </div>
+              <p class="tw-text-gray-600">
+                Gin, Campari, and sweet vermouth, garnished with orange peel
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+</div>
+
+<!-- Menu Footer with Call to Action -->
+<div class="tw-bg-gray-900 tw-text-white tw-py-12 tw-text-center">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <h2 class="tw-text-2xl tw-font-bold tw-mb-4">Ready to experience our cuisine?</h2>
+    <p class="tw-text-gray-300 tw-mb-8 tw-max-w-2xl tw-mx-auto">
+      Join us for an unforgettable dining experience at Sear Steaks. Make a reservation to secure your table.
+    </p>
+    <a href="{% url 'floor_plan' %}" class="tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300">
+      Reserve Your Table
+    </a>
+  </div>
 </div>
 {% endblock %}
