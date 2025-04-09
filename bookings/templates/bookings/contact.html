@@ -120,67 +120,78 @@
         
         <!-- Right Side: Contact Form -->
         <div class="tw-w-full lg:tw-w-3/5">
-          <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-8 md:tw-p-10">
-            <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-6">Send Us a Message</h2>
-            <p class="tw-text-gray-600 tw-mb-8">
-              Have a question or need to make special arrangements? Fill out the form below and we'll get back to you as soon as possible.
-            </p>
-            
-            <form class="tw-space-y-6">
-              <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6">
-                <!-- First Name -->
-                <div>
-                  <label for="first_name" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">First Name</label>
-                  <input type="text" id="first_name" name="first_name" class="tw-w-full tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">
+          <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-overflow-hidden">
+            <div class="tw-p-8 md:tw-p-10">
+              <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-6">Send us a Message</h2>
+              
+              <!-- Contact Form -->
+              <form method="POST" action="{% url 'contact' %}" class="tw-space-y-6">
+                {% csrf_token %}
+                
+                <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6">
+                  <!-- First Name -->
+                  <div>
+                    <label for="first_name" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">First Name *</label>
+                    <input type="text" name="first_name" id="first_name" required 
+                          class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-border-red-500 focus:tw-ring-1 focus:tw-ring-red-500">
+                  </div>
+                  
+                  <!-- Last Name -->
+                  <div>
+                    <label for="last_name" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Last Name *</label>
+                    <input type="text" name="last_name" id="last_name" required
+                          class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-border-red-500 focus:tw-ring-1 focus:tw-ring-red-500">
+                  </div>
                 </div>
                 
-                <!-- Last Name -->
-                <div>
-                  <label for="last_name" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Last Name</label>
-                  <input type="text" id="last_name" name="last_name" class="tw-w-full tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">
+                <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6">
+                  <!-- Email -->
+                  <div>
+                    <label for="email" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Email Address *</label>
+                    <input type="email" name="email" id="email" required
+                          class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-border-red-500 focus:tw-ring-1 focus:tw-ring-red-500">
+                  </div>
+                  
+                  <!-- Phone -->
+                  <div>
+                    <label for="phone" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Phone Number</label>
+                    <input type="tel" name="phone" id="phone"
+                          class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-border-red-500 focus:tw-ring-1 focus:tw-ring-red-500">
+                  </div>
                 </div>
-              </div>
+                
+                <!-- Subject -->
+                <div>
+                  <label for="subject" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Subject *</label>
+                  <input type="text" name="subject" id="subject" required
+                        class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-border-red-500 focus:tw-ring-1 focus:tw-ring-red-500">
+                </div>
+                
+                <!-- Message -->
+                <div>
+                  <label for="message" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Message *</label>
+                  <textarea name="message" id="message" rows="5" required
+                           class="tw-w-full tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-border-red-500 focus:tw-ring-1 focus:tw-ring-red-500"></textarea>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="tw-flex tw-justify-end">
+                  <button type="submit" 
+                         class="tw-inline-flex tw-items-center tw-px-6 tw-py-3 tw-border tw-border-transparent tw-rounded-md tw-shadow-sm tw-text-white tw-bg-red-700 hover:tw-bg-red-800 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-red-500 tw-transition tw-duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    </svg>
+                    Send Message
+                  </button>
+                </div>
+              </form>
               
-              <!-- Email -->
-              <div>
-                <label for="email" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Email Address</label>
-                <input type="email" id="email" name="email" class="tw-w-full tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">
+              <!-- Note for required fields -->
+              <div class="tw-text-gray-500 tw-text-sm tw-mt-6">
+                <p>* Required fields</p>
+                <p class="tw-mt-2">We typically respond to all inquiries within 24 hours during business hours.</p>
               </div>
-              
-              <!-- Phone -->
-              <div>
-                <label for="phone" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Phone Number</label>
-                <input type="tel" id="phone" name="phone" class="tw-w-full tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">
-              </div>
-              
-              <!-- Subject -->
-              <div>
-                <label for="subject" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Subject</label>
-                <select id="subject" name="subject" class="tw-w-full tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">
-                  <option value="">Please select a subject</option>
-                  <option value="reservation">Reservation Inquiry</option>
-                  <option value="private_event">Private Event</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              
-              <!-- Message -->
-              <div>
-                <label for="message" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Your Message</label>
-                <textarea id="message" name="message" rows="5" class="tw-w-full tw-px-4 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300"></textarea>
-              </div>
-              
-              <!-- Submit Button -->
-              <div>
-                <button type="submit" class="tw-w-full md:tw-w-auto tw-px-8 tw-py-3 tw-bg-red-700 tw-text-white tw-rounded-lg hover:tw-bg-red-800 tw-transition tw-duration-300 tw-flex tw-items-center tw-justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                  Send Message
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

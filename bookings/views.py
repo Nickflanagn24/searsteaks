@@ -12,6 +12,7 @@ from datetime import date
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET
 from datetime import datetime
+from django.core.mail import send_mail
 
 logger = logging.getLogger(__name__)
 
@@ -172,7 +173,59 @@ def menu(request):
     return render(request, "bookings/menu.html")
 
 def contact(request):
-    return render(request, "bookings/contact.html")
+    if request.method == 'POST':
+        # Get form data
+        first_name = request.POST.get('first_name', '')
+        last_name = request.POST.get('last_name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        subject = request.POST.get('subject', '')
+        message_text = request.POST.get('message', '')
+        
+        # Simple validation
+        if not (first_name and last_name and email and subject and message_text):
+            messages.error(request, "Please fill in all required fields.")
+            return render(request, 'bookings/contact.html')
+        
+        # Format the message
+        formatted_message = f"""
+        New Contact Form Submission
+        --------------------------
+        Name: {first_name} {last_name}
+        Email: {email}
+        Phone: {phone}
+        Subject: {subject}
+        
+        Message:
+        {message_text}
+        """
+        
+        # For prototyping, we'll print to console instead of sending email
+        print("\n" + "="*50)
+        print("NEW CONTACT FORM SUBMISSION")
+        print("="*50)
+        print(formatted_message)
+        print("="*50 + "\n")
+        
+        try:
+            # Try to send email, but don't fail if it doesn't work
+            send_mail(
+                f"Contact Form: {subject}",
+                formatted_message,
+                email,  # From address (the user's email)
+                ['prototype@searsteaks.com'],  # To address
+                fail_silently=True,  # Changed to True so it doesn't raise exceptions
+            )
+        except Exception as e:
+            # Log the exception but don't stop execution
+            print(f"Email sending failed: {e}")
+            # The message is already printed to console above
+        
+        # Show success message
+        messages.success(request, "Thank you for your message! We'll get back to you soon.")
+        return redirect('contact')
+    
+    return render(request, 'bookings/contact.html')
 
 @login_required
 @admin_required
