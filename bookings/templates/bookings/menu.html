@@ -4,46 +4,33 @@
 {% block title %}Menu - Sear Steaks{% endblock %}
 
 {% block content %}
-<!-- Header with Background Image - Styled like make_booking.html -->
-<div class="tw-bg-gray-50 tw-py-12 md:tw-py-16">
-  <div class="tw-container tw-mx-auto tw-px-4">
-    <div class="tw-flex tw-justify-center">
-      <div class="tw-w-full tw-max-w-5xl">
-        <!-- Menu Card -->
-        <div class="tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-xl">
-          
-          <!-- Header with Background Image -->
-          <div class="tw-relative tw-h-56 md:tw-h-64">
-            <div class="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center tw-opacity-20" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=2070')"></div>
-            <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
-                <h1 class="tw-text-4xl tw-font-bold tw-text-white tw-mb-2">Our Menu</h1>
-                <div class="tw-flex tw-items-center tw-w-64 tw-my-3">
-                    <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
-                    <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
-                    <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
-                </div>
-                <p class="tw-text-lg tw-text-white">Expertly crafted dishes featuring the finest ingredients</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- Hero Banner (styled like other pages) -->
+<div class="tw-relative tw-bg-red-900 tw-h-56 tw-z-0">
+  <div class="tw-absolute tw-inset-0 tw-bg-cover tw-bg-center tw-opacity-20" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=2070')"></div>
+  <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+    <h1 class="tw-text-4xl tw-font-bold tw-text-white tw-mb-2">Our Menu</h1>
+    <div class="tw-flex tw-items-center tw-w-64 tw-my-3">
+      <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+      <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
+      <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
     </div>
+    <p class="tw-text-lg tw-text-white">Expertly crafted dishes featuring the finest ingredients</p>
   </div>
 </div>
 
-<!-- Main Content - Positioned with negative margin like floor_plan.html -->
-<div class="tw-container tw-mx-auto tw-px-6 tw-pt-10">
-    <div class="tw-max-w-4xl tw-mx-auto">
-        <!-- Menu Navigation Card -->
-        <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-relative tw-z-10 tw-mt-[-2rem]">
-            <div class="tw-flex tw-flex-wrap tw-justify-center tw-py-4 tw-gap-2 md:tw-gap-8">
-                <a href="#starters" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Starters</a>
-                <a href="#mains" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Main Courses</a>
-                <a href="#desserts" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Desserts</a>
-                <a href="#cocktails" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Cocktails</a>
-            </div>
-        </div>
+<!-- Main Content (removing negative margin to position card below hero) -->
+<div class="tw-container tw-mx-auto tw-px-4 tw-pt-12 tw-pb-16 tw-relative tw-z-10">
+  <div class="tw-max-w-5xl tw-mx-auto">
+    <!-- Menu Navigation Card -->
+    <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden">
+      <div class="tw-flex tw-flex-wrap tw-justify-center tw-py-4 tw-gap-2 md:tw-gap-8">
+        <a href="#starters" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Starters</a>
+        <a href="#mains" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Main Courses</a>
+        <a href="#desserts" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Desserts</a>
+        <a href="#cocktails" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Cocktails</a>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Menu Container -->
