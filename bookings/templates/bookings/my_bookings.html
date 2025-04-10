@@ -23,8 +23,8 @@
             <!-- Tab Navigation -->
             <div class="tw-bg-white tw-rounded-t-xl tw-shadow-lg tw-overflow-hidden">
                 <div class="tw-flex tw-border-b tw-bg-gray-50">
-                    <button id="upcoming-tab" class="tab-btn active tw-flex-1 tw-py-4 tw-text-center tw-font-medium tw-text-gray-700 tw-border-b-2 tw-border-red-700">Upcoming Reservations</button>
-                    <button id="past-tab" class="tab-btn tw-flex-1 tw-py-4 tw-text-center tw-font-medium tw-text-gray-500 tw-border-b-2 tw-border-transparent">Past Reservations</button>
+                    <button id="upcoming-tab" data-tab="upcoming" class="tab-btn active tw-flex-1 tw-py-4 tw-text-center tw-font-medium tw-text-gray-700 tw-border-b-2 tw-border-red-700">Upcoming Reservations</button>
+                    <button id="past-tab" data-tab="past" class="tab-btn tw-flex-1 tw-py-4 tw-text-center tw-font-medium tw-text-gray-500 tw-border-b-2 tw-border-transparent">Past Reservations</button>
                 </div>
                 
                 <div class="tw-p-6">
@@ -174,24 +174,30 @@
             tab.addEventListener('click', () => {
                 // Hide all tab content
                 tabContents.forEach(content => {
-                    content.classList.add('hidden');
+                    content.classList.add('tw-hidden');
                 });
                 
                 // Remove active class from all tabs
                 tabs.forEach(t => {
-                    t.classList.remove('text-red-900', 'font-semibold', 'border-b-2', 'border-red-800', 'bg-white');
-                    t.classList.add('text-gray-600', 'font-medium', 'hover:bg-white/50');
+                    t.classList.remove('active', 'tw-text-gray-700', 'tw-border-red-700');
+                    t.classList.add('tw-text-gray-500', 'tw-border-transparent');
                 });
                 
                 // Add active class to clicked tab
-                tab.classList.remove('text-gray-600', 'font-medium', 'hover:bg-white/50');
-                tab.classList.add('text-red-900', 'font-semibold', 'border-b-2', 'border-red-800', 'bg-white');
+                tab.classList.add('active', 'tw-text-gray-700', 'tw-border-red-700');
+                tab.classList.remove('tw-text-gray-500', 'tw-border-transparent');
                 
                 // Show the selected tab content
-                const targetId = `${tab.dataset.tab}-content`;
-                document.getElementById(targetId).classList.remove('hidden');
+                const targetId = `${tab.getAttribute('data-tab')}-content`;
+                document.getElementById(targetId).classList.remove('tw-hidden');
             });
         });
+        
+        // Initialize - ensure first tab is active on page load
+        const firstTab = document.querySelector('[data-tab="upcoming"]');
+        if (firstTab) {
+            firstTab.click();
+        }
         
         // Handle delete form submission with confirmation
         document.querySelectorAll('.delete-form').forEach(form => {
