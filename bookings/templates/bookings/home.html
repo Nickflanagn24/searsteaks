@@ -4,19 +4,19 @@
 {% block title %}Sear Steaks - Premium Steakhouse{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<div class="tw-relative tw-h-screen">
-  <!-- Hero Background Image -->
-  <div class="tw-absolute tw-inset-0 tw-z-0">
-    <!-- Stock image: You can use https://unsplash.com/photos/grilled-steak-on-black-plate-yMSecCHsIBc -->
-    <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=80&w=1740" alt="Perfectly seared steak" class="tw-w-full tw-h-full tw-object-cover">
-    <div class="tw-absolute tw-inset-0 tw-bg-black tw-bg-opacity-50"></div>
-  </div>
+<!-- Hero Section with Scrolling Effect -->
+<div class="tw-relative tw-h-screen tw-bg-cover tw-bg-center tw-bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=80&w=1740')">
+  <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/70"></div>
   
   <!-- Hero Content -->
   <div class="tw-relative tw-z-10 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center tw-text-white tw-px-4">
-    <h1 class="tw-text-4xl md:tw-text-6xl tw-font-bold tw-mb-4">Sear Steaks</h1>
-    <p class="tw-text-xl md:tw-text-2xl tw-mb-8 tw-max-w-2xl">Premium cuts, expertly prepared and perfectly seared</p>
+    <h1 class="tw-text-4xl md:tw-text-6xl tw-font-bold tw-mb-4 tw-drop-shadow-lg">Sear Steaks</h1>
+    <div class="tw-flex tw-items-center tw-w-72 tw-my-4">
+      <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+      <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
+      <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+    </div>
+    <p class="tw-text-xl md:tw-text-2xl tw-mb-8 tw-max-w-2xl tw-drop-shadow">Premium cuts, expertly prepared and perfectly seared</p>
     <div class="tw-flex tw-flex-col sm:tw-flex-row tw-space-y-4 sm:tw-space-y-0 sm:tw-space-x-4">
       <a href="{% url 'menu' %}" class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300">
         View Menu
