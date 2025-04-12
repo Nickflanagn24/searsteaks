@@ -19,20 +19,28 @@ logger = logging.getLogger(__name__)
 class CustomLoginView(LoginView):
     template_name = 'bookings/login.html'
 
-# Register View
+# Simplified registration view for debugging
 def register(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
+        
+        # Debug POST data
+        print("POST data received:", request.POST)
+        
         if form.is_valid():
+            print("Form is valid")
             user = form.save()
             login(request, user)
-            messages.success(request, "Registration successful.")
-            return redirect("home")
+            print("User created and logged in:", user.username)
+            messages.success(request, "Account created successfully! You are now logged in.")
+            return redirect('home')  # Make sure this URL name exists
         else:
+            print("Form errors:", form.errors)
             messages.error(request, "Registration failed. Please check the form.")
     else:
         form = CustomUserCreationForm()
-    return render(request, "bookings/register.html", {"form": form})
+    
+    return render(request, 'bookings/register.html', {'form': form})
 
 # Login View
 def user_login(request):
