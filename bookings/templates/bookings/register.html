@@ -1,10 +1,219 @@
 {% extends "bookings/base.html" %}
+{% load static %}
+
+{% block title %}Register - Sear Steaks{% endblock %}
+
 {% block content %}
-<h2>Register</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
-<a href="{% url 'login' %}">Already have an account? Login here.</a>
+<!-- Hero Section with Premium Steak Image -->
+<div class="tw-relative tw-h-72 md:tw-h-96">
+  <!-- Hero Background Image - premium steak restaurant image -->
+  <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=2070" 
+       alt="Premium Steak Restaurant" class="tw-w-full tw-h-full tw-object-cover">
+  <div class="tw-absolute tw-inset-0 tw-bg-black tw-bg-opacity-60"></div>
+  <div class="tw-absolute tw-inset-0 tw-flex tw-items-center tw-justify-center">
+    <div class="tw-text-center tw-text-white tw-px-4">
+      <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-mb-2">Create Your Account</h1>
+      <p class="tw-text-lg md:tw-text-xl">Join Sear Steaks for a premium dining experience</p>
+    </div>
+  </div>
+</div>
+
+<!-- Registration Form Section -->
+<div class="tw-py-16 tw-bg-gray-50">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-max-w-2xl tw-mx-auto">
+      <!-- Registration Card -->
+      <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-overflow-hidden">
+        <!-- Card Header -->
+        <div class="tw-bg-gray-900 tw-p-6 tw-text-white">
+          <h2 class="tw-text-xl tw-font-bold">Create Your Account</h2>
+          <p class="tw-text-gray-300 tw-mt-1">Please fill in the information below</p>
+        </div>
+        
+        <!-- Form Section -->
+        <div class="tw-p-6 md:tw-p-8">
+          <!-- Error Messages -->
+          {% if form.errors %}
+            <div class="tw-bg-red-50 tw-text-red-700 tw-p-4 tw-rounded-lg tw-mb-6">
+              <p class="tw-font-medium">Please correct the errors below:</p>
+              <ul class="tw-list-disc tw-pl-5 tw-mt-2">
+                {% for field in form %}
+                  {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          
+          <!-- Registration Form -->
+          <form method="post" class="tw-space-y-6">
+            {% csrf_token %}
+            
+            <!-- Username Field -->
+            <div>
+              <label for="{{ form.username.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Username</label>
+              <div class="tw-relative">
+                <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
+                  <i class="fas fa-user tw-text-gray-400"></i>
+                </div>
+                {{ form.username }}
+              </div>
+              {% if form.username.help_text %}
+                <p class="tw-mt-1 tw-text-xs tw-text-gray-500">{{ form.username.help_text|safe }}</p>
+              {% endif %}
+            </div>
+            
+            <!-- Email Field (if present) -->
+            {% if form.email %}
+            <div>
+              <label for="{{ form.email.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Email Address</label>
+              <div class="tw-relative">
+                <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
+                  <i class="fas fa-envelope tw-text-gray-400"></i>
+                </div>
+                {{ form.email }}
+              </div>
+              {% if form.email.help_text %}
+                <p class="tw-mt-1 tw-text-xs tw-text-gray-500">{{ form.email.help_text|safe }}</p>
+              {% endif %}
+            </div>
+            {% endif %}
+            
+            <!-- Password Field -->
+            <div>
+              <label for="{{ form.password1.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Password</label>
+              <div class="tw-relative">
+                <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
+                  <i class="fas fa-lock tw-text-gray-400"></i>
+                </div>
+                {{ form.password1 }}
+              </div>
+              <!-- Password Help Text - Properly Formatted -->
+              <div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-bg-gray-50 tw-p-3 tw-rounded-md">
+                <p class="tw-font-medium tw-mb-1">Your password:</p>
+                <ul class="tw-list-disc tw-pl-5 tw-space-y-1">
+                  <li>Must contain at least 8 characters</li>
+                  <li>Cannot be too similar to your other personal information</li>
+                  <li>Cannot be a commonly used password</li>
+                  <li>Cannot be entirely numeric</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Password Confirmation Field -->
+            <div>
+              <label for="{{ form.password2.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Confirm Password</label>
+              <div class="tw-relative">
+                <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
+                  <i class="fas fa-lock tw-text-gray-400"></i>
+                </div>
+                {{ form.password2 }}
+              </div>
+              <p class="tw-mt-1 tw-text-xs tw-text-gray-500">Enter the same password as before, for verification.</p>
+            </div>
+            
+            <!-- Terms & Conditions -->
+            <div class="tw-flex tw-items-start">
+              <div class="tw-flex tw-items-center tw-h-5">
+                <input id="terms" name="terms" type="checkbox" class="tw-h-4 tw-w-4 tw-text-red-700 tw-border-gray-300 tw-rounded">
+              </div>
+              <div class="tw-ml-3 tw-text-sm">
+                <label for="terms" class="tw-font-medium tw-text-gray-700">I agree to the Terms & Conditions</label>
+                <p class="tw-text-gray-500">By registering, you agree to our <a href="#" class="tw-text-red-700 hover:tw-text-red-800">Privacy Policy</a> and <a href="#" class="tw-text-red-700 hover:tw-text-red-800">Terms of Service</a>.</p>
+              </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <div>
+              <button type="submit" class="tw-w-full tw-py-3 tw-px-4 tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-lg tw-transition-colors tw-duration-200 tw-flex tw-items-center tw-justify-center">
+                <i class="fas fa-user-plus tw-mr-2"></i>Create Account
+              </button>
+            </div>
+          </form>
+          
+          <!-- Login Link -->
+          <div class="tw-mt-6 tw-text-center">
+            <p class="tw-text-gray-600">
+              Already have an account? 
+              <a href="{% url 'login' %}" class="tw-text-red-700 hover:tw-text-red-800 tw-font-medium">
+                Login here
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Benefits Section -->
+      <div class="tw-mt-8 tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
+        <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-4">Benefits of Registration</h3>
+        
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6">
+          <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
+              <i class="fas fa-calendar-check tw-text-xl tw-text-red-700"></i>
+            </div>
+            <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Easy Reservations</h4>
+            <p class="tw-text-sm tw-text-gray-500">Book your table anytime with just a few clicks</p>
+          </div>
+          
+          <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
+              <i class="fas fa-history tw-text-xl tw-text-red-700"></i>
+            </div>
+            <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Booking History</h4>
+            <p class="tw-text-sm tw-text-gray-500">Access your past and upcoming reservations</p>
+          </div>
+          
+          <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
+              <i class="fas fa-tag tw-text-xl tw-text-red-700"></i>
+            </div>
+            <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Special Offers</h4>
+            <p class="tw-text-sm tw-text-gray-500">Receive exclusive promotions and offers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Add Tailwind classes to the Django form fields
+  document.addEventListener('DOMContentLoaded', function() {
+    // Username field
+    var usernameField = document.getElementById('{{ form.username.id_for_label }}');
+    if (usernameField) {
+      usernameField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+    
+    // Email field
+    var emailField = document.getElementById('{{ form.email.id_for_label }}');
+    if (emailField) {
+      emailField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+    
+    // Password fields
+    var passwordField = document.getElementById('{{ form.password1.id_for_label }}');
+    if (passwordField) {
+      passwordField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+    
+    var confirmPasswordField = document.getElementById('{{ form.password2.id_for_label }}');
+    if (confirmPasswordField) {
+      confirmPasswordField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+    
+    // Hide Django's default password help text since we're providing our own formatted version
+    var helpText = document.querySelector('.helptext');
+    if (helpText) {
+      helpText.style.display = 'none';
+    }
+  });
+</script>
 {% endblock %}
