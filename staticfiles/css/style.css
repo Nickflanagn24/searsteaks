@@ -1,0 +1,449 @@
+/* ===========================
+   Global Styles
+=========================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+/* Color Definitions */
+:root {
+    --primary-color: #3B2C25; /* Dark Brown */
+    --accent-color: #A33B20; /* Brick Red */
+    --background-color: #EFE6DD; /* Beige */
+    --text-color: #2F2F2F; /* Charcoal Gray */
+    --deep-green: #2A3B2D;
+    --gold-accent: #B89F6A;
+    --off-white: #F5F5F5;
+    --dark-gray: #1c1c1c;
+}
+
+/* General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-accent);
+}
+
+section {
+    padding: 60px 20px;
+    margin: auto;
+}
+
+/* ===========================
+   Shared Components (base.html)
+=========================== */
+
+/* Navigation */
+nav {
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--off-white);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--gold-accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* ===========================
+   Home Page (home.html)
+=========================== */
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background-image: url('/static/images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #db545a;
+    color: white;
+    padding: 40px 20px;
+    gap: 20px;
+}
+
+.about-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Gallery Section */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===========================
+   Floor Plan Page (floor_plan.html)
+=========================== */
+
+/* Floor Plan Layout */
+#floor-plan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    margin: 30px auto;
+    max-width: 1000px;
+}
+
+.table-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.table-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    margin: auto;
+    cursor: pointer;
+}
+
+/* Tooltip */
+.table-icon:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.table-icon:hover::after {
+    opacity: 1;
+}
+
+/* ===========================
+   Booking Page (make_booking.html)
+=========================== */
+
+/* Date Time Selector */
+.date-time-selector {
+    margin-bottom: 20px;
+}
+
+.date-time-selector label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.time-slots {
+    margin-top: 10px;
+}
+
+.time-slot-button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.time-slot-button:hover {
+    background-color: #0056b3;
+}
+
+.time-slot-button.selected {
+    background-color: #28a745; /* Green for selected */
+    color: white;
+}
+
+/* ===========================
+   Contact Page (contact.html)
+=========================== */
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--off-white);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ===========================
+   Burger Menu Styles
+=========================== */
+.burger-menu {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 20px;
+}
+
+.burger-bar {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.burger-bar:nth-child(1) {
+    top: 0;
+}
+
+.burger-bar:nth-child(2) {
+    top: 8px;
+}
+
+.burger-bar:nth-child(3) {
+    top: 16px;
+}
+
+/* Animation for burger icon when open */
+.navbar-toggler.open .burger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.open .burger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.open .burger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Override Bootstrap default toggler */
+.navbar-toggler {
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Enhanced mobile menu styling */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+    
+    .navbar-nav .nav-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.8rem 0;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Style for active nav item */
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #8B0000; /* SearSteaks red */
+    font-weight: 600;
+}
+
+/* Mobile menu fix */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        transition: all 0.3s ease;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+    
+    .navbar-nav .nav-item {
+        padding: 5px 0;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 18px;
+        padding: 12px 20px;
+        display: block;
+        transition: background-color 0.2s ease;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Animation for burger icon */
+.burger-menu {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler.open .burger-menu {
+    transform: rotate(180deg);
+}
+
+/* Simple Mobile Menu Styles */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #343a40;
+        padding: 15px;
+        margin-top: 10px;
+    }
+    
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 10px 15px;
+        border-radius: 4px;
+        display: block;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:active {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Hide Tailwind effects that might conflict */
+.tw-hidden {
+    display: none !important;
+}
+
+/* ===========================
+   Responsive Styles
+=========================== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero {
+        height: 70vh;
+    }
+
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+}
