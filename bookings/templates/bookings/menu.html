@@ -21,17 +21,51 @@
 <!-- Main Content (removing negative margin to position card below hero) -->
 <div class="tw-container tw-mx-auto tw-px-4 tw-pt-12 tw-pb-16 tw-relative tw-z-10">
   <div class="tw-max-w-5xl tw-mx-auto">
-    <!-- Menu Navigation Card -->
-    <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden">
-      <div class="tw-flex tw-flex-wrap tw-justify-center tw-py-4 tw-gap-2 md:tw-gap-8">
-        <a href="#starters" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Starters</a>
-        <a href="#mains" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Main Courses</a>
-        <a href="#desserts" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Desserts</a>
-        <a href="#cocktails" class="tw-px-4 tw-py-2 tw-text-gray-800 hover:tw-text-red-700 tw-font-medium tw-transition tw-duration-300">Cocktails</a>
+    <!-- Enhanced Menu Navigation Card with Ivory Hover Background -->
+    <div class="tw-bg-white tw-rounded-xl tw-shadow-xl tw-overflow-hidden tw-border-b-4 tw-border-red-700">
+      <!-- Card Header -->
+      <div class="tw-bg-gradient-to-r tw-from-gray-900 tw-to-red-900 tw-py-3 tw-px-6 tw-text-white tw-border-b tw-border-amber-400">
+        <div class="tw-flex tw-justify-center tw-items-center">
+          <h3 class="tw-text-sm tw-font-bold tw-tracking-wider tw-uppercase">Explore Our Menu</h3>
+        </div>
       </div>
+      
+<!-- Alternative approach with inline style override for hover -->
+<div class="tw-relative tw-z-20 tw-py-4 tw-px-4 tw-bg-gray-900">
+  <nav class="tw-flex tw-justify-center">
+    <!-- Responsive menu with wrapping on small screens -->
+    <div class="tw-flex tw-flex-wrap tw-justify-center tw-gap-x-8 tw-gap-y-4">
+      <a href="#starters" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+        <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+          <i class="fas fa-utensils"></i>
+        </span>
+        <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Starters</span>
+      </a>
+      
+      <a href="#mains" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+        <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+          <i class="fas fa-fire"></i>
+        </span>
+        <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Main Courses</span>
+      </a>
+      
+      <a href="#desserts" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+        <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+          <i class="fas fa-cookie"></i>
+        </span>
+        <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Desserts</span>
+      </a>
+      
+      <a href="#cocktails" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+        <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+          <i class="fas fa-glass-martini-alt"></i>
+        </span>
+        <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Cocktails</span>
+      </a>
     </div>
-  </div>
+  </nav>
 </div>
+
 
 <!-- Menu Container -->
 <div class="tw-bg-gray-50 tw-py-12 md:tw-py-20">
@@ -52,7 +86,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Beef Carpaccio</h3>
-              <span class="tw-text-red-700 tw-font-bold">$16</span>
+              <span class="tw-text-red-700 tw-font-bold">£16</span>
             </div>
             <p class="tw-text-gray-600">
               Thinly sliced prime beef, arugula, capers, shaved parmesan and truffle oil
@@ -67,7 +101,7 @@
             <div class="tw-p-6">
               <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                 <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Jumbo Shrimp Cocktail</h3>
-                <span class="tw-text-red-700 tw-font-bold">$18</span>
+                <span class="tw-text-red-700 tw-font-bold">£18</span>
               </div>
               <p class="tw-text-gray-600">
                 Five jumbo shrimp served with our signature cocktail sauce and lemon
@@ -80,7 +114,7 @@
             <div class="tw-p-6">
               <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                 <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Crab Cakes</h3>
-                <span class="tw-text-red-700 tw-font-bold">$19</span>
+                <span class="tw-text-red-700 tw-font-bold">£19</span>
               </div>
               <p class="tw-text-gray-600">
                 Lump crab meat, minimal filler, pan-seared and served with remoulade sauce
@@ -93,7 +127,7 @@
             <div class="tw-p-6">
               <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                 <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">French Onion Soup</h3>
-                <span class="tw-text-red-700 tw-font-bold">$12</span>
+                <span class="tw-text-red-700 tw-font-bold">£12</span>
               </div>
               <p class="tw-text-gray-600">
                 Rich beef broth, caramelized onions, crouton, and melted Gruyère cheese
@@ -119,7 +153,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Prime Ribeye</h3>
-              <span class="tw-text-red-700 tw-font-bold">$42</span>
+              <span class="tw-text-red-700 tw-font-bold">£42</span>
             </div>
             <p class="tw-text-gray-600 tw-mb-4">
               16oz well-marbled cut, grilled to your preference. Served with roasted garlic mashed potatoes.
@@ -136,7 +170,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Filet Mignon</h3>
-              <span class="tw-text-red-700 tw-font-bold">$46</span>
+              <span class="tw-text-red-700 tw-font-bold">£46</span>
             </div>
             <p class="tw-text-gray-600 tw-mb-4">
               8oz center-cut tenderloin, the most tender of all cuts. Served with asparagus and béarnaise sauce.
@@ -153,7 +187,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">New York Strip</h3>
-              <span class="tw-text-red-700 tw-font-bold">$40</span>
+              <span class="tw-text-red-700 tw-font-bold">£40</span>
             </div>
             <p class="tw-text-gray-600 tw-mb-4">
               14oz boneless strip with bold flavor and firmer texture. Served with truffle fries.
@@ -173,7 +207,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Rack of Lamb</h3>
-              <span class="tw-text-red-700 tw-font-bold">$38</span>
+              <span class="tw-text-red-700 tw-font-bold">£38</span>
             </div>
             <p class="tw-text-gray-600">
               Herb-crusted domestic lamb rack, mint jelly, roasted root vegetables and rosemary jus
@@ -186,7 +220,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Grilled Salmon</h3>
-              <span class="tw-text-red-700 tw-font-bold">$34</span>
+              <span class="tw-text-red-700 tw-font-bold">£34</span>
             </div>
             <p class="tw-text-gray-600">
               Fresh Atlantic salmon, lemon butter sauce, wild rice pilaf and seasonal vegetables
@@ -199,7 +233,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Roasted Chicken</h3>
-              <span class="tw-text-red-700 tw-font-bold">$28</span>
+              <span class="tw-text-red-700 tw-font-bold">£28</span>
             </div>
             <p class="tw-text-gray-600">
               Free-range half chicken, herb roasted, garlic mashed potatoes and grilled vegetables
@@ -212,7 +246,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Vegetable Wellington</h3>
-              <span class="tw-text-red-700 tw-font-bold">$26</span>
+              <span class="tw-text-red-700 tw-font-bold">£26</span>
             </div>
             <p class="tw-text-gray-600">
               Roasted vegetables and mushroom duxelles in puff pastry, served with port wine reduction
@@ -236,7 +270,7 @@
           <div class="tw-p-5">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Chocolate Lava Cake</h3>
-              <span class="tw-text-red-700 tw-font-bold">$12</span>
+              <span class="tw-text-red-700 tw-font-bold">£12</span>
             </div>
             <p class="tw-text-gray-600 tw-text-sm">
               Warm chocolate cake with a molten center, served with vanilla ice cream
@@ -250,7 +284,7 @@
           <div class="tw-p-5">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">New York Cheesecake</h3>
-              <span class="tw-text-red-700 tw-font-bold">$10</span>
+              <span class="tw-text-red-700 tw-font-bold">£10</span>
             </div>
             <p class="tw-text-gray-600 tw-text-sm">
               Classic creamy cheesecake with graham cracker crust and berry compote
@@ -264,7 +298,7 @@
           <div class="tw-p-5">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Crème Brûlée</h3>
-              <span class="tw-text-red-700 tw-font-bold">$11</span>
+              <span class="tw-text-red-700 tw-font-bold">£11</span>
             </div>
             <p class="tw-text-gray-600 tw-text-sm">
               Vanilla custard with caramelized sugar crust and fresh berries
@@ -278,7 +312,7 @@
           <div class="tw-p-5">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
               <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Apple Tart</h3>
-              <span class="tw-text-red-700 tw-font-bold">$10</span>
+              <span class="tw-text-red-700 tw-font-bold">£10</span>
             </div>
             <p class="tw-text-gray-600 tw-text-sm">
               Warm apple tart with caramel sauce and cinnamon ice cream
@@ -303,7 +337,7 @@
           <div class="tw-p-6">
             <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
               <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Signature Old Fashioned</h3>
-              <span class="tw-text-red-700 tw-font-bold">$14</span>
+              <span class="tw-text-red-700 tw-font-bold">£14</span>
             </div>
             <p class="tw-text-gray-600">
               Bourbon, aromatic bitters, sugar, and orange peel, served over a large ice cube
@@ -318,7 +352,7 @@
             <div class="tw-p-6">
               <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                 <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Manhattan</h3>
-                <span class="tw-text-red-700 tw-font-bold">$15</span>
+                <span class="tw-text-red-700 tw-font-bold">£15</span>
               </div>
               <p class="tw-text-gray-600">
                 Rye whiskey, sweet vermouth, and bitters, garnished with a cherry
@@ -331,7 +365,7 @@
             <div class="tw-p-6">
               <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                 <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Whiskey Sour</h3>
-                <span class="tw-text-red-700 tw-font-bold">$13</span>
+                <span class="tw-text-red-700 tw-font-bold">£13</span>
               </div>
               <p class="tw-text-gray-600">
                 Bourbon, fresh lemon juice, simple syrup, and egg white
@@ -344,7 +378,7 @@
             <div class="tw-p-6">
               <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                 <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Negroni</h3>
-                <span class="tw-text-red-700 tw-font-bold">$14</span>
+                <span class="tw-text-red-700 tw-font-bold">£14</span>
               </div>
               <p class="tw-text-gray-600">
                 Gin, Campari, and sweet vermouth, garnished with orange peel
