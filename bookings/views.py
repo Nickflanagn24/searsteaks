@@ -13,6 +13,10 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET
 from datetime import datetime
 from django.core.mail import send_mail
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import user_passes_test
+from django.urls import reverse_lazy
+from django.views import generic
 
 logger = logging.getLogger(__name__)
 
@@ -450,4 +454,24 @@ def test_floor_plan(request):
     """
     
     return HttpResponse(html)
+
+# Add this new view for staff registration
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class StaffRegistrationView(generic.CreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'bookings/staff_register.html'
+    success_url = reverse_lazy('admin_dashboard')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_staff_registration'] = True
+        return context
+    
+    def form_valid(self, form):
+        # Force role to be admin regardless of selection
+        form.instance.role = 'admin'
+        messages.success(self.request, "New staff member registered successfully!")
+        return super().form_valid(form)
 

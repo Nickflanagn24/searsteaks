@@ -19,4 +19,5 @@ urlpatterns = [
     path('menu/', views.menu, name='menu'),
     path('contact/', views.contact, name='contact'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('internal/staff-registration/', views.StaffRegistrationView.as_view(), name='staff_register'),
 ]
