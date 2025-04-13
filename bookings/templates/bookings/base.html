@@ -38,36 +38,42 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <!-- Simple Bootstrap Navbar -->
+    <!-- Updated navbar with text color #E9E4DA -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">SearSteaks</a>
+            <!-- Logo remains unchanged -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo_sear_steaks (1).svg' %}" alt="Sear Steaks" 
+                     height="60" class="d-inline-block align-top"
+                     style="filter: drop-shadow(0px 0px 1px rgba(255,255,255,0.4)); margin-right: 10px;">
+            </a>
             
-            <!-- Standard Bootstrap Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <!-- Toggler unchanged -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
+            <!-- Updated navigation links with new color -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'menu' %}">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'floor_plan' %}">Book</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}" style="color: #E9E4DA;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'menu' %}" style="color: #E9E4DA;">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}" style="color: #E9E4DA;">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'floor_plan' %}" style="color: #E9E4DA;">Book</a></li>
                     {% if user.is_authenticated %}
                         {% if user.role == "admin" %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}" style="color: #E9E4DA;">Admin</a></li>
                         {% endif %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'my_bookings' %}">My Bookings</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'my_bookings' %}" style="color: #E9E4DA;">My Bookings</a></li>
                         <li class="nav-item">
                             <form action="{% url 'logout' %}" method="post" class="d-inline">
                                 {% csrf_token %}
-                                <button type="submit" class="nav-link bg-transparent border-0">Logout</button>
+                                <button type="submit" class="nav-link bg-transparent border-0" style="color: #E9E4DA;">Logout</button>
                             </form>
                         </li>
                     {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}" style="color: #E9E4DA;">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}" style="color: #E9E4DA;">Register</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -78,33 +84,34 @@
         {% block content %}{% endblock %}
     </main>
     
-    <footer class="bg-dark text-white py-4">
+    <!-- Updated footer with text color #E9E4DA -->
+    <footer class="bg-dark py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p>Serving flame-grilled perfection with a side of rustic charm. Family-owned and flavor-focused.</p>
+                    <h5 style="color: #E9E4DA;">About Us</h5>
+                    <p style="color: #E9E4DA;">Serving flame-grilled perfection with a side of rustic charm. Family-owned and flavor-focused.</p>
                 </div>
                 <div class="col-md-4">
-                    <h5>Quick Links</h5>
+                    <h5 style="color: #E9E4DA;">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'home' %}" class="text-white">Home</a></li>
-                        <li><a href="{% url 'menu' %}" class="text-white">Menu</a></li>
-                        <li><a href="{% url 'floor_plan' %}" class="text-white">Book a Table</a></li>
-                        <li><a href="{% url 'contact' %}" class="text-white">Contact</a></li>
+                        <li><a href="{% url 'home' %}" style="color: #E9E4DA;">Home</a></li>
+                        <li><a href="{% url 'menu' %}" style="color: #E9E4DA;">Menu</a></li>
+                        <li><a href="{% url 'floor_plan' %}" style="color: #E9E4DA;">Book a Table</a></li>
+                        <li><a href="{% url 'contact' %}" style="color: #E9E4DA;">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Connect with Us</h5>
+                    <h5 style="color: #E9E4DA;">Connect with Us</h5>
                     <div class="d-flex flex-column gap-2">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="text-white"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="text-white"><i class="fab fa-instagram me-2"></i> Instagram</a>
-                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="text-white"><i class="fab fa-twitter me-2"></i> Twitter</a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style="color: #E9E4DA;"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" style="color: #E9E4DA;"><i class="fab fa-instagram me-2"></i> Instagram</a>
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" style="color: #E9E4DA;"><i class="fab fa-twitter me-2"></i> Twitter</a>
                     </div>
                 </div>
             </div>
             <div class="mt-4 text-center">
-                <p class="mb-0">&copy; 2025 SearSteaks. All rights reserved.</p>
+                <p class="mb-0" style="color: #E9E4DA;">&copy; 2025 SearSteaks. All rights reserved.</p>
             </div>
         </div>
     </footer>
