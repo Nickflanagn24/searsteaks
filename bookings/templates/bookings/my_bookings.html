@@ -17,11 +17,11 @@
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="tw-container tw-mx-auto tw-px-4 tw--mt-16 tw-pb-16 tw-relative tw-z-10">
+    <!-- Main Content - Modified margin-top to prevent overlapping with hero -->
+    <div class="tw-container tw-mx-auto tw-px-4 tw-pt-10 tw-pb-16 tw-relative tw-z-10">
         <div class="tw-max-w-4xl tw-mx-auto">
             <!-- Tab Navigation -->
-            <div class="tw-bg-white tw-rounded-t-xl tw-shadow-lg tw-overflow-hidden">
+            <div class="tw-bg-white tw-rounded-xl tw-shadow-lg tw-overflow-hidden">
                 <div class="tw-flex tw-border-b tw-bg-gray-50">
                     <button id="upcoming-tab" data-tab="upcoming" class="tab-btn active tw-flex-1 tw-py-4 tw-text-center tw-font-medium tw-text-gray-700 tw-border-b-2 tw-border-red-700">Upcoming Reservations</button>
                     <button id="past-tab" data-tab="past" class="tab-btn tw-flex-1 tw-py-4 tw-text-center tw-font-medium tw-text-gray-500 tw-border-b-2 tw-border-transparent">Past Reservations</button>
@@ -147,15 +147,15 @@
                 </div>
             </div>
             
-            <!-- Action Buttons -->
-            <div class="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center tw-gap-4">
-                <a href="{% url 'floor_plan' %}" class="tw-inline-flex tw-items-center tw-px-6 tw-py-3 tw-rounded-full tw-border tw-border-gray-300 tw-text-gray-700 tw-font-medium hover:tw-bg-gray-50 tw-transition-colors tw-duration-200">
-                    <i class="fas fa-th tw-mr-2"></i>
-                    View Floor Plan
+            <!-- Action Buttons - Enhanced with more sophisticated hover and click effects -->
+            <div class="tw-mt-10 tw-flex tw-flex-wrap tw-justify-center tw-gap-6">
+                <a href="{% url 'floor_plan' %}" class="tw-flex tw-items-center tw-px-6 tw-py-3 tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md tw-shadow-md hover:tw-shadow-lg tw-transition-all tw-duration-300 tw-group active:tw-bg-red-900 active:tw-shadow-inner active:tw-scale-95 hover:tw-translate-y-[-2px]">
+                    <i class="fas fa-th tw-mr-3 tw-text-amber-300 tw-group-hover:tw-text-amber-200 tw-transition-colors tw-group-hover:tw-rotate-12 tw-transform tw-duration-300"></i>
+                    <span>View Floor Plan</span>
                 </a>
-                <a href="{% url 'home' %}" class="tw-inline-flex tw-items-center tw-px-6 tw-py-3 tw-rounded-full tw-border tw-border-gray-300 tw-text-gray-700 tw-font-medium hover:tw-bg-gray-50 tw-transition-colors tw-duration-200">
-                    <i class="fas fa-home tw-mr-2"></i>
-                    Return Home
+                <a href="{% url 'home' %}" class="tw-flex tw-items-center tw-px-6 tw-py-3 tw-bg-gray-800 hover:tw-bg-gray-900 tw-text-white tw-font-medium tw-rounded-md tw-shadow-md hover:tw-shadow-lg tw-transition-all tw-duration-300 tw-group active:tw-bg-gray-950 active:tw-shadow-inner active:tw-scale-95 hover:tw-translate-y-[-2px]">
+                    <i class="fas fa-home tw-mr-3 tw-text-amber-300 tw-group-hover:tw-text-amber-200 tw-transition-colors tw-group-hover:tw-bounce tw-transform tw-duration-300"></i>
+                    <span>Return Home</span>
                 </a>
             </div>
         </div>
