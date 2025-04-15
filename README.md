@@ -126,6 +126,9 @@ To ensure data is well-structured and easily retrievable, the following database
 
 #### Color Scheme
 
+This is the colour scheme I will use. I used coolors.co to create the colour scheme
+![Sear Steaks Color Palette](bookings/static/images/readme-images/colour_scheme.png)
+
 A modern, restaurant-friendly color palette was chosen using Coolors.co, ensuring:
 - ✅ High contrast for readability.
 - ✅ Warm & inviting tones to reflect a comfortable dining experience.
