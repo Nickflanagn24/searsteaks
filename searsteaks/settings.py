@@ -60,10 +60,19 @@ WSGI_APPLICATION = 'searsteaks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# PostgreSQL configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'chant_wheat_acid_308151'),
+        'USER': os.environ.get('DB_USER', 'neondb_owner'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'npg_xwLnZ8Hjai0K'),
+        'HOST': os.environ.get('DB_HOST', 'ep-green-fog-a2vyxcsr.eu-central-1.aws.neon.tech'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+        'CONN_MAX_AGE': 600,  # Keep connection alive for 10 minutes
+        'OPTIONS': {
+            'connect_timeout': 10,
+        },
     }
 }
 
