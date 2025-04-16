@@ -72,6 +72,7 @@ DATABASES = {
         'CONN_MAX_AGE': 600,  # Keep connection alive for 10 minutes
         'OPTIONS': {
             'connect_timeout': 10,
+            'sslmode': 'require',
         },
     }
 }

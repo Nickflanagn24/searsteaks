@@ -125,10 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Add this line for collectstatic to work properly
+# The directory where static files will be collected
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Optionally add these lines if you're having issues finding static files
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'bookings/static'),
 ]
