@@ -110,6 +110,10 @@
                                                             <span class="tw-text-gray-600">{{ booking.date|date:"l, F j, Y" }}</span>
                                                         </div>
                                                         <div class="tw-flex tw-items-center">
+                                                            <i class="fas fa-clock tw-w-5 tw-text-gray-500 tw-mr-3"></i>
+                                                            <span class="tw-text-gray-600">{{ booking.time }}</span>
+                                                        </div>
+                                                        <div class="tw-flex tw-items-center">
                                                             <i class="fas fa-user-friends tw-w-5 tw-text-gray-500 tw-mr-3"></i>
                                                             <span class="tw-text-gray-600">{{ booking.guests }} Guest{% if booking.guests > 1 %}s{% endif %}</span>
                                                         </div>

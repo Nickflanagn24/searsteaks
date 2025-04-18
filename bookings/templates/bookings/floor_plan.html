@@ -112,32 +112,33 @@
             // Show loading state
             tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">Loading available tables...</p></div>';
             
-            // Simple hardcoded demo tables
-            setTimeout(function() {
-                // Display basic demo tables - all available
-                displayDemoTables();
-            }, 500);
+            // Fetch real availability data
+            fetch(`/api/table-availability/?date=${date}&time=${time}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayTables(data.tables);
+                })
+                .catch(error => {
+                    console.error('Error fetching table availability:', error);
+                    tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-red-600">Error loading tables. Please try again.</p></div>';
+                });
         });
         
-        function displayDemoTables() {
-            let html = '';
+        function displayTables(tables) {
+            if (!tables || tables.length === 0) {
+                tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">No tables found.</p></div>';
+                return;
+            }
             
-            // Table 1
-            html += createTableCard(1, 1, 2, true);
-            // Table 2
-            html += createTableCard(2, 2, 4, true);
-            // Table 3
-            html += createTableCard(3, 3, 2, false);
-            // Table 4
-            html += createTableCard(4, 4, 6, true);
-            // Table 5
-            html += createTableCard(5, 5, 4, false);
-            // Table 6
-            html += createTableCard(6, 6, 2, true);
-            // Table 7
-            html += createTableCard(7, 7, 4, true);
-            // Table 8
-            html += createTableCard(8, 8, 8, false);
+            let html = '';
+            tables.forEach(table => {
+                html += createTableCard(
+                    table.id, 
+                    table.table_number, 
+                    table.capacity, 
+                    !table.is_booked
+                );
+            });
             
             tablesContainer.innerHTML = html;
         }
@@ -174,6 +175,9 @@
                       '</div>';
             }
         }
+        
+        // Trigger the availability check on page load
+        checkBtn.click();
     });
 </script>
 {% endblock %}
