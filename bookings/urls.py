@@ -20,4 +20,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('internal/staff-registration/', views.StaffRegistrationView.as_view(), name='staff_register'),
+    path('api/check-availability/', views.check_table_availability, name='check_availability'),
 ]

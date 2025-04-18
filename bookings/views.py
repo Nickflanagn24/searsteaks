@@ -17,6 +17,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse_lazy
 from django.views import generic
+from django.db import IntegrityError
 
 logger = logging.getLogger(__name__)
 
@@ -81,56 +82,72 @@ def make_booking(request):
     selected_date = request.GET.get('date')
     selected_time = request.GET.get('time')
     
-    # Validate time slot
-    valid_times = ['18:30', '21:30']
-    if selected_time not in valid_times:
-        messages.error(request, "Invalid time slot selected.")
-        return redirect("floor_plan")
-    
-    # Fetch the table object
+    # Get the table
     table = get_object_or_404(Table, id=table_id)
     
-    if request.method == "POST":
+    if request.method == 'POST':
         guests = request.POST.get('guests')
+        special_requests = request.POST.get('special_requests', '')
         
-        # Create the booking
-        booking = Booking.objects.create(
-            user=request.user,
-            table=table,
-            date=selected_date,
-            time=selected_time,
-            guests=guests
-        )
+        # Check if table is already booked
+        if Booking.objects.filter(table=table, date=selected_date, time=selected_time).exists():
+            messages.error(
+                request, 
+                f"Sorry, table {table.table_number} is already booked for this date and time. "
+                "Please select another table or time slot."
+            )
+            return redirect('floor_plan')
         
-        messages.success(request, "Booking confirmed!")
-        return redirect("my_bookings")
+        try:
+            # Create the booking
+            booking = Booking.objects.create(
+                user=request.user,
+                table=table,
+                date=selected_date,
+                time=selected_time,
+                guests=guests,
+                special_requests=special_requests
+            )
+            
+            # Show a success message
+            messages.success(request, "Your reservation has been confirmed!")
+            
+            # Redirect to the my_bookings page
+            return redirect('my_bookings')
+            
+        except IntegrityError:
+            # This is a fallback in case two requests try to book 
+            # the same table simultaneously
+            messages.error(request, "This table was just booked by someone else. Please try another table.")
+            return redirect('floor_plan')
     
-    # Render the booking details page
-    return render(request, "bookings/make_booking.html", {
-        "table": table,
-        "selected_date": selected_date,
-        "selected_time": selected_time,
+    # For GET requests, render the booking form
+    return render(request, 'bookings/make_booking.html', {
+        'table': table,
+        'selected_date': selected_date,
+        'selected_time': selected_time,
     })
 
 def floor_plan(request):
-    """View for table reservation floor plan."""
-    # Get today's date formatted as YYYY-MM-DD
-    today_str = date.today().strftime("%Y-%m-%d")
+    # Get date and time parameters or use defaults
+    selected_date = request.GET.get('date', datetime.now().strftime('%Y-%m-%d'))
+    selected_time = request.GET.get('time', '18:30')  # Default to 6:30 PM
     
-    # Convert QuerySet to list of dictionaries
-    tables_list = []
-    for table in Table.objects.all():
-        tables_list.append({
-            'id': table.id,
-            'table_number': table.table_number,
-            'capacity': table.capacity,
-            'is_available': table.is_available
-        })
+    # Get all tables
+    tables = Table.objects.all()
     
-    # Render the template with today's date and tables as a list
-    return render(request, "bookings/floor_plan.html", {
-        'today': today_str,
-        'tables_list': tables_list  # Use a different variable name
+    # Get all bookings for the selected date and time
+    booked_table_ids = Booking.objects.filter(
+        date=selected_date,
+        time=selected_time
+    ).values_list('table_id', flat=True)
+    
+    return render(request, 'bookings/floor_plan.html', {
+        'tables': tables,
+        'selected_date': selected_date,
+        'selected_time': selected_time,
+        'booked_table_ids': list(booked_table_ids),
+        'today': datetime.now().strftime('%Y-%m-%d')
     })
 
 @login_required
@@ -247,70 +264,48 @@ def cancel_booking(request, booking_id):
     messages.success(request, "Booking successfully canceled.")
     return redirect("manage_bookings")
 
-@require_GET
 def table_availability(request):
-    """API endpoint to check table availability."""
-    date_str = request.GET.get('date')
-    time_str = request.GET.get('time')
+    date = request.GET.get('date')
+    time = request.GET.get('time')
     
-    logger.info(f"Table availability request: date={date_str}, time={time_str}")
+    if not date or not time:
+        return JsonResponse({'error': 'Missing date or time parameter'}, status=400)
     
-    # Validate time slot
-    valid_times = ['18:30', '21:30']
-    if time_str not in valid_times:
-        logger.warning(f"Invalid time slot requested: {time_str}")
-        return JsonResponse({'error': 'Invalid time slot selected'}, status=400)
+    # Get all tables
+    tables = Table.objects.all()
     
-    if not date_str:
-        logger.warning("Missing date parameter")
-        return JsonResponse({'error': 'Date parameter is required'}, status=400)
+    # Get all bookings for the selected date and time
+    booked_table_ids = set(Booking.objects.filter(
+        date=date,
+        time=time
+    ).values_list('table_id', flat=True))
     
-    try:
-        # Parse the date
-        selected_date = datetime.strptime(date_str, '%Y-%m-%d').date()
-        
-        # Get all tables
-        tables = Table.objects.all()
-        logger.info(f"Found {tables.count()} tables in the database")
-        
-        if tables.count() == 0:
-            # Create some demo tables if none exist
-            logger.warning("No tables found in database, creating demo tables")
-            for i in range(1, 11):  # Create 10 demo tables
-                Table.objects.create(
-                    table_number=i,
-                    capacity=i % 2 == 0 and 4 or 2,  # Alternate between 2 and 4 capacity
-                    is_available=True
-                )
-            tables = Table.objects.all()
-        
-        # Get all bookings for the selected date and time
-        bookings = Booking.objects.filter(date=selected_date, time=time_str)
-        logger.info(f"Found {bookings.count()} bookings for date={date_str}, time={time_str}")
-        
-        # Find booked table IDs
-        booked_table_ids = bookings.values_list('table_id', flat=True)
-        
-        # Create table data with availability info
-        table_data = []
-        for table in tables:
-            table_data.append({
-                'id': table.id,
-                'number': table.table_number,
-                'capacity': table.capacity,
-                'available': table.id not in booked_table_ids
-            })
-        
-        response_data = {
-            'date': date_str,
-            'time': time_str,
-            'tables': table_data
-        }
-        logger.info(f"Returning {len(table_data)} tables in response")
-        return JsonResponse(response_data)
-    except Exception as e:
-        logger.exception(f"Error in table_availability: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=400)
+    table_data = []
+    for table in tables:
+        table_data.append({
+            'id': table.id,
+            'table_number': table.table_number,
+            'capacity': table.capacity,
+            'is_booked': table.id in booked_table_ids
+        })
+    
+    return JsonResponse({'tables': table_data})
+
+def check_table_availability(request):
+    table_id = request.GET.get('table_id')
+    date = request.GET.get('date')
+    time = request.GET.get('time')
+    
+    if not all([table_id, date, time]):
+        return JsonResponse({'error': 'Missing parameters'}, status=400)
+    
+    is_available = not Booking.objects.filter(
+        table_id=table_id,
+        date=date,
+        time=time
+    ).exists()
+    
+    return JsonResponse({'available': is_available})
 
 def test_floor_plan(request):
     """A simple self-contained test view to diagnose rendering issues."""

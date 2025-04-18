@@ -28,13 +28,27 @@ class Booking(models.Model):
     date = models.DateField()
     time = models.CharField(max_length=10)  # e.g., "18:30" or "21:30"
     guests = models.IntegerField()
+    special_requests = models.TextField(blank=True, null=True)  # Add this field
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        # Add this constraint to prevent duplicate bookings
+        constraints = [
+            models.UniqueConstraint(
+                fields=['table', 'date', 'time'], 
+                name='unique_booking'
+            )
+        ]
     
     def clean(self):
         # Validate time slot
         valid_times = ['18:30', '21:30']
         if self.time not in valid_times:
             raise ValidationError({'time': 'Invalid time slot selected.'})
+        
+        # Check for existing bookings
+        if Booking.objects.filter(table=self.table, date=self.date, time=self.time).exists():
+            raise ValidationError('This table is already booked for the selected time.')
     
     def __str__(self):
         return f"Booking for {self.user} on {self.date} at {self.time}"
