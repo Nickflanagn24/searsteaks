@@ -1,0 +1,520 @@
+{
+  "django_content_type": [
+    {
+      "id": 1,
+      "app_label": "admin",
+      "model": "logentry"
+    },
+    {
+      "id": 2,
+      "app_label": "auth",
+      "model": "permission"
+    },
+    {
+      "id": 3,
+      "app_label": "auth",
+      "model": "group"
+    },
+    {
+      "id": 4,
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    },
+    {
+      "id": 5,
+      "app_label": "sessions",
+      "model": "session"
+    },
+    {
+      "id": 6,
+      "app_label": "bookings",
+      "model": "table"
+    },
+    {
+      "id": 7,
+      "app_label": "bookings",
+      "model": "customuser"
+    },
+    {
+      "id": 8,
+      "app_label": "bookings",
+      "model": "booking"
+    }
+  ],
+  "auth_group_permissions": [],
+  "auth_permission": [
+    {
+      "id": 1,
+      "content_type_id": 1,
+      "codename": "add_logentry",
+      "name": "Can add log entry"
+    },
+    {
+      "id": 2,
+      "content_type_id": 1,
+      "codename": "change_logentry",
+      "name": "Can change log entry"
+    },
+    {
+      "id": 3,
+      "content_type_id": 1,
+      "codename": "delete_logentry",
+      "name": "Can delete log entry"
+    },
+    {
+      "id": 4,
+      "content_type_id": 1,
+      "codename": "view_logentry",
+      "name": "Can view log entry"
+    },
+    {
+      "id": 5,
+      "content_type_id": 2,
+      "codename": "add_permission",
+      "name": "Can add permission"
+    },
+    {
+      "id": 6,
+      "content_type_id": 2,
+      "codename": "change_permission",
+      "name": "Can change permission"
+    },
+    {
+      "id": 7,
+      "content_type_id": 2,
+      "codename": "delete_permission",
+      "name": "Can delete permission"
+    },
+    {
+      "id": 8,
+      "content_type_id": 2,
+      "codename": "view_permission",
+      "name": "Can view permission"
+    },
+    {
+      "id": 9,
+      "content_type_id": 3,
+      "codename": "add_group",
+      "name": "Can add group"
+    },
+    {
+      "id": 10,
+      "content_type_id": 3,
+      "codename": "change_group",
+      "name": "Can change group"
+    },
+    {
+      "id": 11,
+      "content_type_id": 3,
+      "codename": "delete_group",
+      "name": "Can delete group"
+    },
+    {
+      "id": 12,
+      "content_type_id": 3,
+      "codename": "view_group",
+      "name": "Can view group"
+    },
+    {
+      "id": 13,
+      "content_type_id": 4,
+      "codename": "add_contenttype",
+      "name": "Can add content type"
+    },
+    {
+      "id": 14,
+      "content_type_id": 4,
+      "codename": "change_contenttype",
+      "name": "Can change content type"
+    },
+    {
+      "id": 15,
+      "content_type_id": 4,
+      "codename": "delete_contenttype",
+      "name": "Can delete content type"
+    },
+    {
+      "id": 16,
+      "content_type_id": 4,
+      "codename": "view_contenttype",
+      "name": "Can view content type"
+    },
+    {
+      "id": 17,
+      "content_type_id": 5,
+      "codename": "add_session",
+      "name": "Can add session"
+    },
+    {
+      "id": 18,
+      "content_type_id": 5,
+      "codename": "change_session",
+      "name": "Can change session"
+    },
+    {
+      "id": 19,
+      "content_type_id": 5,
+      "codename": "delete_session",
+      "name": "Can delete session"
+    },
+    {
+      "id": 20,
+      "content_type_id": 5,
+      "codename": "view_session",
+      "name": "Can view session"
+    },
+    {
+      "id": 21,
+      "content_type_id": 6,
+      "codename": "add_table",
+      "name": "Can add table"
+    },
+    {
+      "id": 22,
+      "content_type_id": 6,
+      "codename": "change_table",
+      "name": "Can change table"
+    },
+    {
+      "id": 23,
+      "content_type_id": 6,
+      "codename": "delete_table",
+      "name": "Can delete table"
+    },
+    {
+      "id": 24,
+      "content_type_id": 6,
+      "codename": "view_table",
+      "name": "Can view table"
+    },
+    {
+      "id": 25,
+      "content_type_id": 7,
+      "codename": "add_customuser",
+      "name": "Can add user"
+    },
+    {
+      "id": 26,
+      "content_type_id": 7,
+      "codename": "change_customuser",
+      "name": "Can change user"
+    },
+    {
+      "id": 27,
+      "content_type_id": 7,
+      "codename": "delete_customuser",
+      "name": "Can delete user"
+    },
+    {
+      "id": 28,
+      "content_type_id": 7,
+      "codename": "view_customuser",
+      "name": "Can view user"
+    },
+    {
+      "id": 29,
+      "content_type_id": 8,
+      "codename": "add_booking",
+      "name": "Can add booking"
+    },
+    {
+      "id": 30,
+      "content_type_id": 8,
+      "codename": "change_booking",
+      "name": "Can change booking"
+    },
+    {
+      "id": 31,
+      "content_type_id": 8,
+      "codename": "delete_booking",
+      "name": "Can delete booking"
+    },
+    {
+      "id": 32,
+      "content_type_id": 8,
+      "codename": "view_booking",
+      "name": "Can view booking"
+    }
+  ],
+  "auth_group": [],
+  "bookings_table": [
+    {
+      "id": 1,
+      "table_number": 1,
+      "capacity": 2,
+      "is_available": 1
+    },
+    {
+      "id": 2,
+      "table_number": 2,
+      "capacity": 4,
+      "is_available": 1
+    },
+    {
+      "id": 3,
+      "table_number": 3,
+      "capacity": 2,
+      "is_available": 1
+    },
+    {
+      "id": 4,
+      "table_number": 4,
+      "capacity": 6,
+      "is_available": 1
+    },
+    {
+      "id": 5,
+      "table_number": 5,
+      "capacity": 4,
+      "is_available": 1
+    },
+    {
+      "id": 6,
+      "table_number": 6,
+      "capacity": 8,
+      "is_available": 1
+    },
+    {
+      "id": 7,
+      "table_number": 7,
+      "capacity": 2,
+      "is_available": 1
+    },
+    {
+      "id": 8,
+      "table_number": 8,
+      "capacity": 4,
+      "is_available": 1
+    }
+  ],
+  "bookings_customuser": [
+    {
+      "id": 1,
+      "password": "pbkdf2_sha256$870000$LhVwtdi5FDWwPFkeu0lvfc$xQaxo2Bi6FNSmIyiPP2FdkcuJoEw+H2JDSBCV8UzT+k=",
+      "last_login": "2025-04-18 19:28:46.894974",
+      "is_superuser": 1,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@googlemail.com",
+      "is_staff": 1,
+      "is_active": 1,
+      "date_joined": "2025-04-06 19:14:50",
+      "phone_number": "",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "password": "pbkdf2_sha256$870000$uRovuGkt2jjE3Ulvg9lCFP$FhAIRz9nn32Eh5Cbu1IEUNWkdbMLS4pba1cQAfUzP30=",
+      "last_login": "2025-04-18 18:58:04.761572",
+      "is_superuser": 0,
+      "username": "cassie",
+      "first_name": "",
+      "last_name": "",
+      "email": "appland22@gmail.com",
+      "is_staff": 0,
+      "is_active": 1,
+      "date_joined": "2025-04-06 19:49:23.745898",
+      "phone_number": "03930202939",
+      "role": "customer"
+    },
+    {
+      "id": 3,
+      "password": "pbkdf2_sha256$870000$NJgKMdDJVm0TqEdN8EQj3o$CL+xHzw4fyjcEc93NtRPa7vsU5x51m2r4UJY/pEIGqc=",
+      "last_login": "2025-04-12 19:42:27.013489",
+      "is_superuser": 0,
+      "username": "andy",
+      "first_name": "",
+      "last_name": "",
+      "email": "andy1@gmail.com",
+      "is_staff": 0,
+      "is_active": 1,
+      "date_joined": "2025-04-12 19:42:26.710261",
+      "phone_number": "03930202933",
+      "role": "customer"
+    },
+    {
+      "id": 4,
+      "password": "pbkdf2_sha256$870000$n9WAXMpa2wkRunXZmJKQsO$4CAGdg8auPYwMEGLrnin77MB2br/uAKCK6VNPWgWW9k=",
+      "last_login": "2025-04-13 19:24:51.397143",
+      "is_superuser": 0,
+      "username": "robert",
+      "first_name": "",
+      "last_name": "",
+      "email": "rob@gmail.com",
+      "is_staff": 0,
+      "is_active": 1,
+      "date_joined": "2025-04-13 19:24:51.116073",
+      "phone_number": "03930202933",
+      "role": "customer"
+    }
+  ],
+  "bookings_customuser_groups": [],
+  "bookings_customuser_user_permissions": [],
+  "django_admin_log": [
+    {
+      "id": 1,
+      "object_id": "1",
+      "object_repr": "admin",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]",
+      "content_type_id": 7,
+      "user_id": 1,
+      "action_time": "2025-04-13 19:21:51.223277"
+    }
+  ],
+  "django_session": [
+    {
+      "session_key": "q43gpzdejsp1hoy7uw98d0r2hp505mn6",
+      "session_data": ".eJxVjMsOwiAURP-FtSHA5SEu3fsN5HIBqRqalHZl_Hdp0oWuJpk5Z94s4LbWsPW8hCmxC9Ps9NtFpGdu-5Ae2O4zp7mtyxT5jvBj7fw2p_y6HuzfQcVehw2kyYHMVrmRCdHrLJQ5C0GAvhgCmVA7UUoEBxittCpHr9A4gOGwzxfb_DeQ:1u42wl:IkKqsfTYKFk8C79Kn5HCQSGSqFsP3WsPJL2mhf6tgD8",
+      "expire_date": "2025-04-27 19:24:51.400212"
+    },
+    {
+      "session_key": "i7thb1evtwb0n0z56i57fol85aynazbr",
+      "session_data": ".eJxVjDsOwyAQRO9CHSGWj4GU6X0GtHghOIlAMnYV5e6xJRdJOfPezJsF3NYStp6WMBO7MmCX3y7i9Ez1APTAem98anVd5sgPhZ-087FRet1O9--gYC_7OkslnNeUldPKJwskyYHZo9DRC-2iz4m000BgPEkF1kY5DAjR5CyRfb6_Djch:1u5rOI:kaQ5ou-bA0_Snk2Jqad-2QmybXWJB5iTYC8RLMOtXfY",
+      "expire_date": "2025-05-02 19:28:46.898335"
+    }
+  ],
+  "bookings_booking": [
+    {
+      "id": 3,
+      "date": "2025-04-06",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 2,
+      "created_at": "2025-04-06 20:14:08.273426",
+      "special_requests": null
+    },
+    {
+      "id": 5,
+      "date": "2025-04-07",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 1,
+      "created_at": "2025-04-07 18:31:53.840902",
+      "special_requests": null
+    },
+    {
+      "id": 7,
+      "date": "2025-04-07",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 3,
+      "created_at": "2025-04-07 18:52:59.047350",
+      "special_requests": null
+    },
+    {
+      "id": 9,
+      "date": "2025-04-25",
+      "time": "21:30",
+      "guests": 4,
+      "user_id": 2,
+      "table_id": 2,
+      "created_at": "2025-04-09 18:39:25.557281",
+      "special_requests": null
+    },
+    {
+      "id": 10,
+      "date": "2025-04-09",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 7,
+      "created_at": "2025-04-09 18:40:21.691650",
+      "special_requests": null
+    },
+    {
+      "id": 11,
+      "date": "2025-04-10",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 2,
+      "created_at": "2025-04-10 19:15:10.922885",
+      "special_requests": null
+    },
+    {
+      "id": 12,
+      "date": "2025-04-10",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 1,
+      "created_at": "2025-04-10 19:31:23.231379",
+      "special_requests": null
+    },
+    {
+      "id": 13,
+      "date": "2025-04-18",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 2,
+      "created_at": "2025-04-18 18:59:07.251600",
+      "special_requests": null
+    },
+    {
+      "id": 14,
+      "date": "2025-04-18",
+      "time": "18:30",
+      "guests": 3,
+      "user_id": 2,
+      "table_id": 4,
+      "created_at": "2025-04-18 18:59:36.036961",
+      "special_requests": null
+    },
+    {
+      "id": 15,
+      "date": "2025-04-18",
+      "time": "18:30",
+      "guests": 3,
+      "user_id": 2,
+      "table_id": 6,
+      "created_at": "2025-04-18 19:09:24.784046",
+      "special_requests": ""
+    },
+    {
+      "id": 16,
+      "date": "2025-05-03",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 7,
+      "created_at": "2025-04-18 19:14:12.047412",
+      "special_requests": ""
+    },
+    {
+      "id": 17,
+      "date": "2025-04-18",
+      "time": "18:30",
+      "guests": 2,
+      "user_id": 2,
+      "table_id": 3,
+      "created_at": "2025-04-18 19:18:38.264462",
+      "special_requests": ""
+    },
+    {
+      "id": 18,
+      "date": "2025-04-18",
+      "time": "18:30",
+      "guests": 1,
+      "user_id": 2,
+      "table_id": 1,
+      "created_at": "2025-04-18 19:21:23.310642",
+      "special_requests": ""
+    },
+    {
+      "id": 19,
+      "date": "2025-04-18",
+      "time": "18:30",
+      "guests": 1,
+      "user_id": 2,
+      "table_id": 5,
+      "created_at": "2025-04-18 19:21:51.867594",
+      "special_requests": ""
+    }
+  ]
+}
