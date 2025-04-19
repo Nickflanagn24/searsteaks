@@ -423,11 +423,6 @@ footer a:hover {
     }
 }
 
-/* Hide Tailwind effects that might conflict */
-.tw-hidden {
-    display: none !important;
-}
-
 /* ===========================
    Responsive Styles
 =========================== */
@@ -446,4 +441,23 @@ footer a:hover {
         flex-direction: column;
         text-align: center;
     }
+}
+
+.gold-hover-btn {
+    border: 2px solid transparent !important;
+    transition: all 0.3s ease !important;
+}
+
+.gold-hover-btn:hover {
+    border-color: var(--gold-accent) !important;
+}
+
+/* Make this more specific */
+a.gold-hover-btn, button.gold-hover-btn {
+    border: 2px solid transparent !important;
+    transition: all 0.3s ease !important;
+}
+
+a.gold-hover-btn:hover, button.gold-hover-btn:hover {
+    border-color: var(--gold-accent) !important;
 }

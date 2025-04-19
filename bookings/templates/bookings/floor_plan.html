@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     
-                    <button id="checkBtn" type="button" class="tw-mt-4 tw-px-4 tw-py-2 tw-bg-red-800 tw-text-white tw-rounded-md hover:tw-bg-red-900">
+                    <button id="checkBtn" type="button" class="gold-hover-btn tw-mt-4 tw-px-4 tw-py-2 tw-bg-red-800 tw-text-white tw-rounded-md hover:tw-bg-red-900 tw-border-2 tw-border-transparent hover:tw-border-amber-400 tw-transition-all tw-duration-300">
                         <i class="fas fa-search tw-mr-2"></i>
                         Check Availability
                     </button>
@@ -81,7 +81,7 @@
             
             <!-- Action Button - Using the solid red style -->
             <div class="tw-mt-8 tw-flex tw-justify-center">
-                <a href="{% url 'home' %}" class="tw-px-6 tw-py-3 tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md hover:tw-bg-red-900 tw-transition-all tw-duration-300 tw-flex tw-items-center tw-justify-center tw-no-underline">
+                <a href="{% url 'home' %}" class="gold-hover-btn tw-px-6 tw-py-3 tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md hover:tw-bg-red-900 tw-transition-all tw-duration-300 tw-flex tw-items-center tw-justify-center tw-no-underline tw-border-2 tw-border-transparent hover:tw-border-amber-400">
                     <i class="fas fa-home tw-mr-2"></i>
                     Return Home
                 </a>
@@ -146,11 +146,11 @@
         function createTableCard(id, number, capacity, available) {
             if (available) {
                 return '<a href="/make-booking/?table_id=' + id + '&date=' + dateInput.value + '&time=' + timeInput.value + '" ' +
-                      'class="tw-bg-white tw-border-2 tw-border-green-500 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md">' +
+                      'class="gold-hover-btn tw-bg-white tw-border-2 tw-border-green-500 hover:tw-border-amber-400 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md tw-no-underline tw-transition-all tw-duration-300">' +
                       '<div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-green-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">' +
                       '<span class="tw-font-bold">' + number + '</span>' +
                       '</div>' +
-                      '<div class="tw-font-medium">Table ' + number + '</div>' +
+                      '<div class="tw-font-medium tw-text-gray-900">' + 'Table ' + number + '</div>' +
                       '<div class="tw-text-sm tw-text-gray-500 tw-mt-1">' +
                       '<i class="fas fa-users tw-mr-1"></i>' +
                       'Seats ' + capacity +
