@@ -226,25 +226,6 @@ footer a:hover {
     margin-top: 10px;
 }
 
-.time-slot-button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.time-slot-button:hover {
-    background-color: #0056b3;
-}
-
-.time-slot-button.selected {
-    background-color: #28a745; /* Green for selected */
-    color: white;
-}
-
 /* ===========================
    Contact Page (contact.html)
 =========================== */
@@ -443,21 +424,14 @@ footer a:hover {
     }
 }
 
-.gold-hover-btn {
+/* Add this at the end of your style.css file */
+
+/* Gold border hover effect for buttons */
+[class*="hover-gold-border"] {
     border: 2px solid transparent !important;
-    transition: all 0.3s ease !important;
+    transition: border-color 0.3s ease !important;
 }
 
-.gold-hover-btn:hover {
-    border-color: var(--gold-accent) !important;
-}
-
-/* Make this more specific */
-a.gold-hover-btn, button.gold-hover-btn {
-    border: 2px solid transparent !important;
-    transition: all 0.3s ease !important;
-}
-
-a.gold-hover-btn:hover, button.gold-hover-btn:hover {
-    border-color: var(--gold-accent) !important;
+[class*="hover-gold-border"]:hover {
+    border-color: #B89F6A !important;
 }

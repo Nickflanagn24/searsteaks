@@ -18,10 +18,10 @@
     </div>
     <p class="tw-text-xl md:tw-text-2xl tw-mb-8 tw-max-w-2xl tw-drop-shadow">Premium cuts, expertly prepared and perfectly seared</p>
     <div class="tw-flex tw-flex-col sm:tw-flex-row tw-space-y-4 sm:tw-space-y-0 sm:tw-space-x-4">
-      <a href="{% url 'menu' %}" class="gold-hover-btn tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline">
+      <a href="{% url 'menu' %}" class="hover-gold-border tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition-all tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
         View Menu
       </a>
-      <a href="{% url 'floor_plan' %}" class="gold-hover-btn tw-bg-white hover:tw-bg-gray-100 hover:tw-border-amber-400 tw-border-2 tw-border-transparent tw-text-gray-900 tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline">
+      <a href="{% url 'floor_plan' %}" class="hover-gold-border tw-bg-white hover:tw-bg-gray-100 tw-text-gray-900 tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
         Reserve Table
       </a>
     </div>
@@ -41,7 +41,7 @@
         <p class="tw-text-gray-700 tw-text-lg tw-mb-6">
           At Sear Steaks, we believe in the perfect union of exceptional meat, expert preparation, and warm hospitality. Our restaurant offers an intimate dining experience where every steak is cooked to perfection.
         </p>
-        <a href="{% url 'contact' %}" class="gold-hover-btn tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 hover:tw-border-amber-400 tw-border-2 tw-border-transparent tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline">
+        <a href="{% url 'contact' %}" class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
           Learn More About Us
         </a>
       </div>
@@ -57,7 +57,6 @@
       <p class="tw-text-gray-600 tw-text-lg tw-max-w-3xl tw-mx-auto">
         Discover our most beloved cuts, each prepared with our signature searing technique.
       </p>
-    </div>
     
     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8">
       <!-- Steak Item 1 -->
@@ -108,7 +107,7 @@
     </div>
     
     <div class="tw-text-center tw-mt-10">
-      <a href="{% url 'menu' %}" class="gold-hover-btn tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 hover:tw-border-amber-400 tw-border-2 tw-border-transparent tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline">
+      <a href="{% url 'menu' %}" class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
         View Full Menu
       </a>
     </div>
@@ -123,7 +122,7 @@
       <p class="tw-text-lg tw-text-gray-300 tw-mb-8">
         Secure your preferred dining time and table location for a memorable steakhouse experience.
       </p>
-      <a href="{% url 'floor_plan' %}" class="gold-hover-btn tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 hover:tw-border-amber-400 tw-border-2 tw-border-transparent tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline">
+      <a href="{% url 'floor_plan' %}" class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
         Make Reservation
       </a>
     </div>
@@ -139,17 +138,17 @@
         <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-6">Hours & Location</h2>
         <div class="tw-mb-8">
           <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-3">Opening Hours</h3>
-          <ul class="tw-space-y-2 tw-text-gray-700">
-            <li class="tw-flex tw-justify-between">
-              <span>Monday - Thursday</span>
+          <ul class="tw-space-y-2 tw-text-gray-700 tw-pl-0 list-none">
+            <li class="tw-flex">
+              <span class="tw-w-44">Monday - Thursday</span>
               <span class="tw-font-medium">5:00 PM - 10:00 PM</span>
             </li>
-            <li class="tw-flex tw-justify-between">
-              <span>Friday - Saturday</span>
+            <li class="tw-flex">
+              <span class="tw-w-44">Friday - Saturday</span>
               <span class="tw-font-medium">4:00 PM - 11:00 PM</span>
             </li>
-            <li class="tw-flex tw-justify-between">
-              <span>Sunday</span>
+            <li class="tw-flex">
+              <span class="tw-w-44">Sunday</span>
               <span class="tw-font-medium">4:00 PM - 9:00 PM</span>
             </li>
           </ul>
@@ -169,8 +168,16 @@
       
       <!-- Map -->
       <div class="lg:tw-w-1/2 tw-h-80 tw-bg-gray-200 tw-rounded-lg tw-overflow-hidden">
-        <!-- You can use an actual Google Maps embed here or this placeholder image -->
-        <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69c8bf?auto=format&fit=crop&q=80&w=1631" alt="Restaurant location map" class="tw-w-full tw-h-full tw-object-cover">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150789.8268568214!2d-1.7005386559748092!3d53.80566362879145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795dc77564945b%3A0xb905005f4d10083b!2sBison%20Steakhouse%20LEEDS!5e0!3m2!1sen!2suk!4v1745093522000!5m2!1sen!2suk" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="tw-w-full tw-h-full">
+        </iframe>
       </div>
     </div>
   </div>
