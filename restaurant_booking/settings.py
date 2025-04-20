@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 # Load environment variables from .env file
 load_dotenv()
@@ -30,7 +31,7 @@ SECRET_KEY = "django-insecure-lm=&^lw9q)czri)62fj=8+n$ec4j8i4x3t1589lx3a31xds%nt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this line
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -81,20 +83,24 @@ WSGI_APPLICATION = "restaurant_booking.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# PostgreSQL configuration
+# Database configuration that works with both local development and Heroku
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': os.environ.get('DB_PORT', '5432'),
         'OPTIONS': {
-            'sslmode': 'require',  # Required for secure connections to Neon
+            'sslmode': os.environ.get('DB_SSLMODE', 'prefer'),
         }
     }
 }
+
+# Configure database for Heroku if DATABASE_URL is present
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Comment out the SQLite configuration
 # DATABASES = {
@@ -144,10 +150,14 @@ STATIC_URL = '/static/'
 # Add this line for collectstatic to work properly
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Optionally add these lines if you're having issues finding static files
+# Update the STATICFILES_DIRS to include both paths
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'bookings/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
+
+# Add WhiteNoise for simplified static file serving
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
