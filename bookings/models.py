@@ -1,10 +1,11 @@
+"""Models for user authentication and restaurant booking system."""
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 
-# Custom User Model for Authentication
 class CustomUser(AbstractUser):
+    """Extended user model with restaurant-specific fields."""
     phone_number = models.CharField(max_length=15, blank=True)
     ROLE_CHOICES = [
         ('customer', 'Customer'),
@@ -12,8 +13,8 @@ class CustomUser(AbstractUser):
     ]
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='customer')
 
-# Table Model - Represents restaurant tables
 class Table(models.Model):
+    """Restaurant table with number, capacity and availability status."""
     table_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
     is_available = models.BooleanField(default=True)
@@ -21,18 +22,18 @@ class Table(models.Model):
     def __str__(self):
         return f"Table {self.table_number} ({self.capacity} seats)"
 
-# Booking Model - Stores customer reservations
 class Booking(models.Model):
+    """Reservation record linking users to tables at specific dates and times."""
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.CharField(max_length=10)  # e.g., "18:30" or "21:30"
     guests = models.IntegerField()
-    special_requests = models.TextField(blank=True, null=True)  # Add this field
+    special_requests = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        # Add this constraint to prevent duplicate bookings
+        """Meta options for the Booking model."""
         constraints = [
             models.UniqueConstraint(
                 fields=['table', 'date', 'time'], 
@@ -41,6 +42,7 @@ class Booking(models.Model):
         ]
     
     def clean(self):
+        """Validate time slots and check for double bookings."""
         # Validate time slot
         valid_times = ['18:30', '21:30']
         if self.time not in valid_times:
