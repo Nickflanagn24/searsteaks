@@ -226,25 +226,6 @@ footer a:hover {
     margin-top: 10px;
 }
 
-.time-slot-button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.time-slot-button:hover {
-    background-color: #0056b3;
-}
-
-.time-slot-button.selected {
-    background-color: #28a745; /* Green for selected */
-    color: white;
-}
-
 /* ===========================
    Contact Page (contact.html)
 =========================== */
@@ -423,11 +404,6 @@ footer a:hover {
     }
 }
 
-/* Hide Tailwind effects that might conflict */
-.tw-hidden {
-    display: none !important;
-}
-
 /* ===========================
    Responsive Styles
 =========================== */
@@ -446,4 +422,55 @@ footer a:hover {
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* Add this at the end of your style.css file */
+
+/* Gold border hover effect for buttons */
+[class*="hover-gold-border"] {
+    border: 2px solid transparent !important;
+    transition: border-color 0.3s ease !important;
+}
+
+[class*="hover-gold-border"]:hover {
+    border-color: #B89F6A !important;
+}
+
+/* Menu item card hover effects */
+.menu-card {
+  transition: all 0.3s ease;
+  transform-origin: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+  border-color: #f59e0b; /* amber-500 */
+  z-index: 10;
+}
+
+.menu-card img {
+  transition: all 0.5s ease;
+}
+
+.menu-card:hover img {
+  transform: scale(1.05);
+}
+
+.menu-card .card-content {
+  transition: all 0.3s ease;
+}
+
+.menu-card:hover .card-content {
+  background-color: #fffbeb; /* amber-50 */
+}
+
+.menu-card .price {
+  transition: all 0.3s ease;
+}
+
+.menu-card:hover .price {
+  transform: scale(1.1);
+  color: #b91c1c; /* red-800 */
 }
