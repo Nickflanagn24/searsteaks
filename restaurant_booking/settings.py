@@ -26,7 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-lm=&^lw9q)czri)62fj=8+n$ec4j8i4x3t1589lx3a31xds%nt"
+SECRET_KEY = os.environ.get('SECRET_KEY')
+if not SECRET_KEY:
+    # For development only - move this to your .env file immediately
+    raise RuntimeError(
+        "SECRET_KEY is not set. Please create a .env file with a SECRET_KEY variable."
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,7 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this line
+    "whitenoise.middleware.WhiteNoiseMiddleware", 
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
