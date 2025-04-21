@@ -14,8 +14,8 @@ except ImportError:
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
-SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key-for-development-only')
-DEBUG = os.environ.get('DEBUG', 'False') != 'False'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', '').lower() == 'true'
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
 # Application definition
