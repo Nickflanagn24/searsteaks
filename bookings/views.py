@@ -79,66 +79,137 @@ def admin_dashboard(request):
 @login_required
 @customer_required
 def make_booking(request):
-    """Handle creation of new table reservations."""
+    """Handle creation or modification of table reservations."""
     table_id = request.GET.get('table_id')
     selected_date = request.GET.get('date')
     selected_time = request.GET.get('time')
+    modify_booking_id = request.GET.get('modify_booking_id', None)
     
     table = get_object_or_404(Table, id=table_id)
+    booking_to_modify = None
+    
+    # Check if we're modifying an existing booking
+    if modify_booking_id:
+        booking_to_modify = get_object_or_404(Booking, id=modify_booking_id, user=request.user)
     
     if request.method == 'POST':
         guests = request.POST.get('guests')
         special_requests = request.POST.get('special_requests', '')
         
-        if Booking.objects.filter(table=table, date=selected_date, time=selected_time).exists():
-            messages.error(
-                request, 
-                f"Sorry, table {table.table_number} is already booked for this date and time. "
-                "Please select another table or time slot."
-            )
-            return redirect('floor_plan')
+        # If we're modifying an existing booking
+        if modify_booking_id:
+            # Check if the table, date, or time has changed and if the new selection is available
+            if (str(booking_to_modify.table.id) != table_id or 
+                str(booking_to_modify.date) != selected_date or 
+                booking_to_modify.time != selected_time):
+                
+                # Check if the new table is already booked (excluding our current booking)
+                if Booking.objects.filter(
+                    table=table, 
+                    date=selected_date, 
+                    time=selected_time
+                ).exclude(id=modify_booking_id).exists():
+                    messages.error(
+                        request, 
+                        f"Sorry, table {table.table_number} is already booked for this date and time. "
+                        "Please select another table or time slot."
+                    )
+                    return redirect('floor_plan')
+            
+            # Update the existing booking
+            booking_to_modify.table = table
+            booking_to_modify.date = selected_date
+            booking_to_modify.time = selected_time
+            booking_to_modify.guests = guests
+            booking_to_modify.special_requests = special_requests
+            
+            try:
+                booking_to_modify.save()
+                messages.success(request, "Your reservation has been updated!")
+            except IntegrityError:
+                messages.error(request, "This table was just booked by someone else. Please try another table.")
+                return redirect('floor_plan')
         
-        try:
-            booking = Booking.objects.create(
-                user=request.user,
-                table=table,
-                date=selected_date,
-                time=selected_time,
-                guests=guests,
-                special_requests=special_requests
-            )
+        # Creating a new booking
+        else:
+            if Booking.objects.filter(table=table, date=selected_date, time=selected_time).exists():
+                messages.error(
+                    request, 
+                    f"Sorry, table {table.table_number} is already booked for this date and time. "
+                    "Please select another table or time slot."
+                )
+                return redirect('floor_plan')
             
-            messages.success(request, "Your reservation has been confirmed!")
-            return redirect('my_bookings')
-            
-        except IntegrityError:
-            messages.error(request, "This table was just booked by someone else. Please try another table.")
-            return redirect('floor_plan')
+            try:
+                booking = Booking.objects.create(
+                    user=request.user,
+                    table=table,
+                    date=selected_date,
+                    time=selected_time,
+                    guests=guests,
+                    special_requests=special_requests
+                )
+                
+                messages.success(request, "Your reservation has been confirmed!")
+            except IntegrityError:
+                messages.error(request, "This table was just booked by someone else. Please try another table.")
+                return redirect('floor_plan')
+        
+        return redirect('my_bookings')
     
-    return render(request, 'bookings/make_booking.html', {
+    # Prepare context for GET request
+    context = {
         'table': table,
         'selected_date': selected_date,
         'selected_time': selected_time,
-    })
+        'is_modification': bool(modify_booking_id)
+    }
+    
+    # If modifying, add the booking details to pre-fill the form
+    if booking_to_modify:
+        context['booking'] = booking_to_modify
+        context['initial_guests'] = booking_to_modify.guests
+        context['special_requests'] = booking_to_modify.special_requests
+    
+    return render(request, 'bookings/make_booking.html', context)
 
 def floor_plan(request):
     """Display restaurant floor plan with table availability."""
     selected_date = request.GET.get('date', datetime.now().strftime('%Y-%m-%d'))
     selected_time = request.GET.get('time', '18:30')
+    modify_booking_id = request.GET.get('modify_booking_id', None)
     
     tables = Table.objects.all()
+    booking_to_modify = None
     
-    booked_table_ids = Booking.objects.filter(
-        date=selected_date,
-        time=selected_time
-    ).values_list('table_id', flat=True)
+    # If we're modifying a booking, exclude it from the booked tables
+    if modify_booking_id:
+        try:
+            booking_to_modify = Booking.objects.get(id=modify_booking_id, user=request.user)
+            # Exclude the current booking from the booked tables list
+            booked_table_ids = Booking.objects.filter(
+                date=selected_date,
+                time=selected_time
+            ).exclude(id=modify_booking_id).values_list('table_id', flat=True)
+        except Booking.DoesNotExist:
+            booked_table_ids = Booking.objects.filter(
+                date=selected_date,
+                time=selected_time
+            ).values_list('table_id', flat=True)
+    else:
+        booked_table_ids = Booking.objects.filter(
+            date=selected_date,
+            time=selected_time
+        ).values_list('table_id', flat=True)
     
     return render(request, 'bookings/floor_plan.html', {
         'tables': tables,
         'selected_date': selected_date,
         'selected_time': selected_time,
         'booked_table_ids': list(booked_table_ids),
-        'today': datetime.now().strftime('%Y-%m-%d')
+        'today': datetime.now().strftime('%Y-%m-%d'),
+        'modify_booking_id': modify_booking_id,
+        'booking_to_modify': booking_to_modify
     })
 
 @login_required
@@ -250,16 +321,34 @@ def table_availability(request):
     """API endpoint to get all tables with their availability."""
     date = request.GET.get('date')
     time = request.GET.get('time')
+    modify_booking_id = request.GET.get('modify_booking_id')
     
     if not date or not time:
         return JsonResponse({'error': 'Missing date or time parameter'}, status=400)
     
     tables = Table.objects.all()
     
-    booked_table_ids = set(Booking.objects.filter(
-        date=date,
-        time=time
-    ).values_list('table_id', flat=True))
+    # If we're modifying a booking, exclude it from the booked tables
+    if modify_booking_id:
+        try:
+            booking_to_modify = Booking.objects.get(id=modify_booking_id)
+            previously_selected_table_id = booking_to_modify.table.id
+            booked_table_ids = set(Booking.objects.filter(
+                date=date,
+                time=time
+            ).exclude(id=modify_booking_id).values_list('table_id', flat=True))
+        except Booking.DoesNotExist:
+            previously_selected_table_id = None
+            booked_table_ids = set(Booking.objects.filter(
+                date=date,
+                time=time
+            ).values_list('table_id', flat=True))
+    else:
+        previously_selected_table_id = None
+        booked_table_ids = set(Booking.objects.filter(
+            date=date,
+            time=time
+        ).values_list('table_id', flat=True))
     
     table_data = []
     for table in tables:
@@ -267,7 +356,8 @@ def table_availability(request):
             'id': table.id,
             'table_number': table.table_number,
             'capacity': table.capacity,
-            'is_booked': table.id in booked_table_ids
+            'is_booked': table.id in booked_table_ids,
+            'is_previously_selected': table.id == previously_selected_table_id if previously_selected_table_id else False
         })
     
     return JsonResponse({'tables': table_data})
@@ -277,15 +367,24 @@ def check_table_availability(request):
     table_id = request.GET.get('table_id')
     date = request.GET.get('date')
     time = request.GET.get('time')
+    modify_booking_id = request.GET.get('modify_booking_id')
     
     if not all([table_id, date, time]):
         return JsonResponse({'error': 'Missing parameters'}, status=400)
     
-    is_available = not Booking.objects.filter(
-        table_id=table_id,
-        date=date,
-        time=time
-    ).exists()
+    # If we're modifying a booking, exclude it from availability check
+    if modify_booking_id:
+        is_available = not Booking.objects.filter(
+            table_id=table_id,
+            date=date,
+            time=time
+        ).exclude(id=modify_booking_id).exists()
+    else:
+        is_available = not Booking.objects.filter(
+            table_id=table_id,
+            date=date,
+            time=time
+        ).exists()
     
     return JsonResponse({'available': is_available})
 
@@ -307,4 +406,3 @@ class StaffRegistrationView(generic.CreateView):
         form.instance.role = 'admin'
         messages.success(self.request, "New staff member registered successfully!")
         return super().form_valid(form)
-
