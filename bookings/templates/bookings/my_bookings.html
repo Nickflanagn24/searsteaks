@@ -210,7 +210,7 @@
         }
         
         // Handle delete form submission with confirmation
-        document.querySelectorAll('.delete-form').forEach(form => {
+        document.querySelectorAll('.tw-delete-form').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -218,12 +218,83 @@
                 const btnText = this.querySelector('button').textContent.trim().toLowerCase();
                 const action = btnText.includes('cancel') ? 'cancel' : 'delete';
                 
-                // Show confirmation dialog
-                if (confirm(`Are you sure you want to ${action} this reservation? This action cannot be undone.`)) {
-                    this.submit();
-                }
+                // Create and show elegant confirmation dialog
+                showConfirmDialog({
+                    title: `${action.charAt(0).toUpperCase() + action.slice(1)} Reservation`,
+                    message: `Are you sure you want to ${action} this reservation? This action cannot be undone.`,
+                    confirmText: action.charAt(0).toUpperCase() + action.slice(1),
+                    cancelText: 'Go Back',
+                    confirmButtonClass: action === 'cancel' ? 'tw-bg-red-600' : 'tw-bg-gray-600',
+                    onConfirm: () => {
+                        this.submit();
+                    }
+                });
             });
         });
+        
+        // Custom confirmation dialog function
+        function showConfirmDialog({ title, message, confirmText, cancelText, confirmButtonClass, onConfirm }) {
+            // Create overlay and dialog
+            const overlay = document.createElement('div');
+            overlay.className = 'tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-flex tw-items-center tw-justify-center tw-z-50 tw-transition-opacity tw-duration-300 tw-opacity-0';
+            
+            const dialog = document.createElement('div');
+            dialog.className = 'tw-bg-white tw-rounded-xl tw-shadow-2xl tw-max-w-md tw-w-full tw-mx-4 tw-overflow-hidden tw-transform tw-transition-all tw-duration-300 tw-scale-95 tw-opacity-0';
+            
+            // Dialog content
+            dialog.innerHTML = `
+                <div class="tw-p-6 tw-border-b tw-border-gray-200">
+                    <h3 class="tw-text-xl tw-font-semibold tw-text-gray-800">${title}</h3>
+                </div>
+                <div class="tw-p-6">
+                    <p class="tw-text-gray-600">${message}</p>
+                </div>
+                <div class="tw-p-4 tw-bg-gray-50 tw-flex tw-justify-end tw-space-x-3">
+                    <button id="dialog-cancel" class="tw-px-4 tw-py-2 tw-rounded-md tw-bg-white tw-text-gray-700 tw-border tw-border-gray-300 hover:tw-bg-gray-50 tw-font-medium tw-text-sm tw-transition-colors">
+                        ${cancelText}
+                    </button>
+                    <button id="dialog-confirm" class="${confirmButtonClass} tw-px-4 tw-py-2 tw-rounded-md tw-text-white hover:tw-bg-opacity-90 tw-font-medium tw-text-sm tw-transition-colors">
+                        ${confirmText}
+                    </button>
+                </div>
+            `;
+            
+            // Add to DOM
+            overlay.appendChild(dialog);
+            document.body.appendChild(overlay);
+            
+            // Animation timing
+            setTimeout(() => {
+                overlay.classList.remove('tw-opacity-0');
+                dialog.classList.remove('tw-scale-95', 'tw-opacity-0');
+                dialog.classList.add('tw-scale-100', 'tw-opacity-100');
+            }, 10);
+            
+            // Close function
+            const closeDialog = () => {
+                overlay.classList.add('tw-opacity-0');
+                dialog.classList.add('tw-scale-95', 'tw-opacity-0');
+                dialog.classList.remove('tw-scale-100');
+                setTimeout(() => overlay.remove(), 300);
+            };
+            
+            // Event listeners
+            document.getElementById('dialog-cancel').addEventListener('click', closeDialog);
+            document.getElementById('dialog-confirm').addEventListener('click', () => {
+                closeDialog();
+                if (onConfirm) onConfirm();
+            });
+            
+            // Close on background click
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeDialog();
+            });
+            
+            // Close on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeDialog();
+            }, { once: true });
+        }
     });
 </script>
 {% endblock %}
