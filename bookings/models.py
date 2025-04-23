@@ -54,3 +54,19 @@ class Booking(models.Model):
     
     def __str__(self):
         return f"Booking for {self.user} on {self.date} at {self.time}"
+
+class ContactMessage(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"{self.subject} - {self.first_name} {self.last_name}"

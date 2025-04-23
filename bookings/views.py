@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, BookingForm
 from .decorators import admin_required, customer_required
-from .models import Table, Booking
+from .models import Table, Booking, ContactMessage
 from django.contrib.auth.views import LoginView
 from datetime import date
 from django.http import JsonResponse, HttpResponse
@@ -262,49 +262,30 @@ def menu(request):
     return render(request, "bookings/menu.html")
 
 def contact(request):
-    """Handle contact form submissions and inquiries."""
     if request.method == 'POST':
-        first_name = request.POST.get('first_name', '')
-        last_name = request.POST.get('last_name', '')
-        email = request.POST.get('email', '')
-        phone = request.POST.get('phone', '')
-        subject = request.POST.get('subject', '')
-        message_text = request.POST.get('message', '')
+        # Get form data
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        message_text = request.POST.get('message')
         
-        if not (first_name and last_name and email and subject and message_text):
-            messages.error(request, "Please fill in all required fields.")
-            return render(request, 'bookings/contact.html')
+        # Create and save the ContactMessage
+        contact_message = ContactMessage(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone=phone,
+            subject=subject,
+            message=message_text
+        )
+        contact_message.save()
         
-        formatted_message = f"""
-        New Contact Form Submission
-        --------------------------
-        Name: {first_name} {last_name}
-        Email: {email}
-        Phone: {phone}
-        Subject: {subject}
+        # Show a success message to the user
+        messages.success(request, 'Your message has been sent successfully. We will get back to you soon.')
         
-        Message:
-        {message_text}
-        """
-        
-        print("\n" + "="*50)
-        print("NEW CONTACT FORM SUBMISSION")
-        print("="*50)
-        print(formatted_message)
-        print("="*50 + "\n")
-        
-        try:
-            send_mail(
-                f"Contact Form: {subject}",
-                formatted_message,
-                email,
-                ['prototype@searsteaks.com'],
-                fail_silently=True,
-            )
-        except Exception as e:
-            print(f"Email sending failed: {e}")
-        
-        messages.success(request, "Thank you for your message! We'll get back to you soon.")
+        # Redirect to avoid form resubmission
         return redirect('contact')
     
     return render(request, 'bookings/contact.html')
