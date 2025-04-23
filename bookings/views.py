@@ -81,7 +81,8 @@ def admin_dashboard(request):
 def make_booking(request):
     """Handle creation or modification of table reservations."""
     table_id = request.GET.get('table_id')
-    selected_date = request.GET.get('date')
+    date_str = request.GET.get('date')
+    selected_date = datetime.strptime(date_str, '%Y-%m-%d').date()
     selected_time = request.GET.get('time')
     modify_booking_id = request.GET.get('modify_booking_id', None)
     
