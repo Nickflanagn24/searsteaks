@@ -1,7 +1,13 @@
 {% extends "bookings/base.html" %}
 {% load static %}
 
-{% block title %}Login - Sear Steaks{% endblock %}
+{% block meta_description %}Sign in to your Sear Steaks account to manage reservations, view booking history, and access exclusive offers at Leeds' premier steakhouse.{% endblock %}
+
+{% block meta_keywords %}Sear Steaks login, steakhouse account, restaurant booking login, Leeds steakhouse, member access{% endblock %}
+
+{% block canonical_url %}https://searsteaks.herokuapp.com{% url 'login' %}{% endblock %}
+
+{% block title %}Sign In | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->

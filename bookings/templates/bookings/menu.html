@@ -1,7 +1,13 @@
-{% extends 'bookings/base.html' %}
+{% extends "bookings/base.html" %}
 {% load static %}
 
-{% block title %}Menu - Sear Steaks{% endblock %}
+{% block meta_description %}Explore our premium selection of steaks and dishes at Sear Steaks Leeds. From perfectly aged ribeye to signature sides and decadent desserts - view our full menu.{% endblock %}
+
+{% block meta_keywords %}Sear Steaks menu, Leeds restaurant menu, premium steaks, ribeye, sirloin, fillet steak, steak restaurant Leeds{% endblock %}
+
+{% block canonical_url %}https://searsteaks.herokuapp.com{% url 'menu' %}{% endblock %}
+
+{% block title %}Menu | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
 <!-- Hero Banner with scrolling effect -->

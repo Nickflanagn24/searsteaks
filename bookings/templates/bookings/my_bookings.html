@@ -1,4 +1,13 @@
 {% extends "bookings/base.html" %}
+{% load static %}
+
+{% block meta_description %}Manage your reservations at Sear Steaks Leeds. View upcoming bookings, modify your table selections, or cancel reservations through your personal account.{% endblock %}
+
+{% block meta_keywords %}manage restaurant booking, Sear Steaks reservations, view my bookings, cancel restaurant reservation{% endblock %}
+
+{% block canonical_url %}https://searsteaks.herokuapp.com{% url 'my_bookings' %}{% endblock %}
+
+{% block title %}My Bookings | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
 <!-- Main container -->

@@ -1,4 +1,13 @@
 {% extends "bookings/base.html" %}
+{% load static %}
+
+{% block meta_description %}Book your table at Sear Steaks Leeds using our interactive floor plan. Select your preferred table location, date, and time for your perfect dining experience.{% endblock %}
+
+{% block meta_keywords %}book table Leeds, Sear Steaks reservation, restaurant booking, table reservation, steakhouse Leeds booking{% endblock %}
+
+{% block canonical_url %}https://searsteaks.herokuapp.com{% url 'floor_plan' %}{% endblock %}
+
+{% block title %}Book a Table | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
 <div class="tw-bg-amber-50 tw-min-h-screen tw-pb-16">

@@ -1,7 +1,19 @@
-{% extends 'bookings/base.html' %}
+{% extends "bookings/base.html" %}
 {% load static %}
 
-{% block title %}Sear Steaks - Premium Steakhouse{% endblock %}
+{% block meta_description %}Sear Steaks - Leeds' premier steakhouse offering exceptional dry-aged steaks, fine wines, and a memorable dining experience in an elegant atmosphere.{% endblock %}
+
+{% block meta_keywords %}Sear Steaks, Leeds steakhouse, premium steaks, fine dining, book a table, dry-aged beef, restaurant Leeds{% endblock %}
+
+{% block og_title %}Sear Steaks | Premier Steakhouse in Leeds{% endblock %}
+
+{% block og_description %}Experience Leeds' premier steakhouse with exceptional dry-aged steaks, fine wines, and a memorable dining experience in an elegant atmosphere.{% endblock %}
+
+{% block og_image %}{% static 'images/restaurant-interior.jpg' %}{% endblock %}
+
+{% block canonical_url %}https://searsteaks.herokuapp.com/{% endblock %}
+
+{% block title %}Sear Steaks | Premier Steakhouse in Leeds{% endblock %}
 
 {% block content %}
 <!-- Hero Section with Scrolling Effect -->

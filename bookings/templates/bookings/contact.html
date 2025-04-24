@@ -1,4 +1,13 @@
 {% extends "bookings/base.html" %}
+{% load static %}
+
+{% block meta_description %}Contact Sear Steaks in Leeds for reservations, inquiries, or feedback. Find our location, opening hours, phone numbers, and send us a message directly through our contact form.{% endblock %}
+
+{% block meta_keywords %}contact Sear Steaks, Leeds steakhouse location, restaurant contact, reservation help, steakhouse inquiries{% endblock %}
+
+{% block canonical_url %}https://searsteaks.herokuapp.com{% url 'contact' %}{% endblock %}
+
+{% block title %}Contact Us | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
 <!-- Hero Banner with scrolling effect -->
