@@ -1,4 +1,34 @@
-# searsteaks
+# Sear Steaks
+
+![Django](https://img.shields.io/badge/Framework-Django-green?logo=django&logoColor=white)  
+![Deployed on Heroku](https://img.shields.io/badge/Deployed-Heroku-purple?logo=heroku&logoColor=white)  
+![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python&logoColor=white)  
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+---
+
+A restaurant table booking system that allows customers to select a table from a visual floor plan and manage their reservations.
+
+[🔗 View the Live Site Here](#) <!-- Replace # with your actual live site URL -->
+
+---
+
+---
+
+## 📋 Table Of Contents
+- [Sear Steaks](#sear-steaks)
+- [Planning Phase](#planning-phase)
+- [Structure & User Flow](#structure--user-flow)
+- [Database Schema](#database-schema)
+- [Surface: Branding & UI Design](#surface-branding--ui-design)
+- [Features](#features)
+- [Future Development](#future-development)
+- [Testing Phase](#testing-phase)
+- [Deployment](#deployment)
+- [Technologies Used](#technologies-used)
+- [Credits](#credits)
+
+---
 
 ## Planning Phase
 
@@ -143,5 +173,160 @@ A modern, restaurant-friendly color palette was chosen using Coolors.co, ensurin
 
 This planning phase ensures that the restaurant booking web application aligns with Agile methodology, MVC structure, and the project assessment criteria.
 
+---
 
+# ✨ Features
 
+## Site Navigation
+### Navbar
+- **Brand Identity**: The Sear Steaks logo prominently displayed in the top-left corner serves as a home button across all pages.
+- **Responsive Design**: The navigation automatically transforms from a horizontal menu to a hamburger dropdown on mobile and tablet devices.
+- **Authentication-Based Navigation**:
+  - Logged-out users: Home, Menu, About, Contact, Login, and Register.
+  - Logged-in customers: Home, Menu, About, Contact, My Bookings, and Logout.
+  - Admin users: Additional Admin Dashboard link.
+- **Hover Effects**: Subtle animation on hover for tactile feedback.
+
+## Hero Section
+- **Dynamic Hero Images**: Unique hero image per page.
+- **Call-to-Action Buttons**: "Reserve Your Table" button leading to booking page.
+- **Overlay Text**: Highlighting restaurant’s identity: "Authentic BBQ flavors, grilled to perfection."
+
+## User Authentication
+### Registration System
+- Clean, straightforward registration form.
+- Form validation and error handling.
+- Redirection to login on successful registration.
+
+### Login System
+- Secure authentication (Django built-in).
+- Remember Me functionality.
+- Login verification and protected routes.
+
+### Profile Management
+- Display and manage user details.
+- View booking history.
+- Update contact information.
+
+## Main Page Content
+### Homepage
+- Welcome Section with intro text.
+- About Section: Restaurant story and quality commitment.
+- Menu Preview with call-to-action button.
+- Contact Preview with basic info.
+- Visual Appeal: High-quality images.
+
+## Floor Plan & Table Selection
+- Interactive layout of restaurant seating.
+- Color-coded tables (availability shown visually).
+- Table details like capacity and location.
+- Easy click-to-select process.
+- Availability filters by date/time.
+
+## Booking Form
+- Calendar date selection.
+- Time slot selection.
+- Party size input.
+- Special requests field.
+- Real-time validation.
+- Booking summary confirmation.
+
+## Booking Management
+- Reservation list view.
+- Modify or cancel reservations.
+- Booking details page.
+- Visual status indicators (confirmed, pending, past).
+
+## Menu Page
+- Categorized sections (Appetizers, Mains, Sides, Desserts).
+- Descriptive food items.
+- Pricing info.
+- Featured dishes highlighted.
+- Visual food images.
+
+## Contact Page
+- Address info with Google Map embed.
+- Business hours displayed clearly.
+- Phone, email, and contact form.
+- Social media links.
+
+## Admin Features
+### Admin Dashboard
+- Overview statistics.
+- Quick access to booking and table management.
+- Today's bookings focus.
+- Notifications for pending actions.
+
+### Bookings Management
+- Full booking list with filters.
+- Booking details view.
+- Status management (confirm, seat, cancel, complete).
+- Customer search functionality.
+- Customer booking history view.
+
+### Table Management
+- Table status overview.
+- Availability control.
+- Capacity management.
+- Reassign bookings to different tables.
+
+## Responsive Design
+- Mobile-first layout strategy.
+- Flexible grids adapting to screen sizes.
+- Touch-friendly interactive elements.
+- Responsive images.
+- Accessible, readable typography.
+- Simplified navigation for smaller devices.
+
+---
+
+# 🔮 Future Development
+- Payment Integration
+- Customer Reviews
+- Loyalty Program
+- Menu Pre-ordering
+- Staff Scheduling
+- Google Calendar API Sync
+
+---
+
+# 🧪 Testing Phase
+
+## Code Validation
+- HTML5: W3C Validator
+- CSS3: W3C Validator
+- JavaScript: JSHint
+- Python: PEP8 Standards
+
+## Browser Testing
+- Chrome, Firefox, Safari, Edge
+- Mobile device testing
+
+## User Story Testing
+- Functional testing against user stories
+- Edge case testing
+
+## Lighthouse Testing
+- Performance
+- Accessibility
+- Best Practices
+- SEO scores
+
+## Known Bugs
+- [List any known issues here]
+
+---
+
+# 🚀 Deployment
+
+## Local Deployment
+
+```bash
+git clone https://github.com/Nickflanagn24/searsteaks.git
+python -m venv venv
+# Activate environment
+# Windows
+venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+pip install -r requirements.txt
