@@ -43,9 +43,20 @@
     <!-- Custom CSS -->
     <link href="{% static 'css/style.css' %}?v={% now 'U' %}" rel="stylesheet">
     
-    {% block extra_head %}{% endblock %}
-
+    {% block extra_head %}
     <style>
+      /* Reduce spacing between sections while maintaining readability */
+      .modal .tw-space-y-8 {
+        --tw-space-y-reverse: 0;
+        margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+        margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+      }
+
+      /* Make paragraph spacing within sections tighter */
+      .modal .tw-space-y-8 section p {
+        margin-bottom: 0.75rem;
+      }
+
       /* Menu item card hover effects */
       .menu-card {
         transition: all 0.3s ease;
@@ -85,6 +96,8 @@
         color: #b91c1c; /* red-800 */
       }
     </style>
+    {% endblock %}
+
 </head>
 <body>
     <!-- In base.html, right after opening the <body> tag -->
