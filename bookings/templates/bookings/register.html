@@ -1,9 +1,11 @@
 {% extends "bookings/base.html" %}
 {% load static %}
 
-{% block meta_description %}Create an account with Sear Steaks Leeds to enjoy easy table bookings, reservation management, and exclusive offers at our premium steakhouse.{% endblock %}
+{% block meta_description %}Create an account with Sear Steaks Leeds to enjoy easy table bookings, reservation
+management, and exclusive offers at our premium steakhouse.{% endblock %}
 
-{% block meta_keywords %}Sear Steaks registration, create restaurant account, sign up steakhouse, Leeds restaurant membership{% endblock %}
+{% block meta_keywords %}Sear Steaks registration, create restaurant account, sign up steakhouse, Leeds restaurant
+membership{% endblock %}
 
 {% block canonical_url %}https://searsteaks.herokuapp.com{% url 'register' %}{% endblock %}
 
@@ -11,9 +13,11 @@
 
 {% block content %}
 <!-- Hero Section with Premium Steak Image - Updated to match floor_plan.html styling -->
-<div class="tw-relative tw-h-72 tw-bg-cover tw-bg-center tw-bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=2070')">
+<div class="tw-relative tw-h-72 tw-bg-cover tw-bg-center tw-bg-fixed"
+  style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=2070')">
   <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/90"></div>
-  <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+  <div
+    class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
     <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-text-white tw-mb-2 tw-drop-shadow-lg">Create Your Account</h1>
     <div class="tw-flex tw-items-center tw-w-64 tw-my-4">
       <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
@@ -35,112 +39,116 @@
           <h2 class="tw-text-xl tw-font-bold">Create Your Account</h2>
           <p class="tw-text-gray-300 tw-mt-1">Please fill in the information below</p>
         </div>
-        
+
         <!-- Form Section -->
         <div class="tw-p-6 md:tw-p-8">
           <!-- Error Messages - Modified to show only non-field errors here -->
           {% if form.non_field_errors %}
-            <div class="tw-bg-red-50 tw-text-red-700 tw-p-4 tw-rounded-lg tw-mb-6" id="form-error">
-              <p class="tw-font-medium">Please correct the errors below:</p>
-              <ul class="tw-list-disc tw-pl-5 tw-mt-2">
-                {% for error in form.non_field_errors %}
-                  <li>{{ error }}</li>
-                {% endfor %}
-              </ul>
-            </div>
+          <div class="tw-bg-red-50 tw-text-red-700 tw-p-4 tw-rounded-lg tw-mb-6" id="form-error">
+            <p class="tw-font-medium">Please correct the errors below:</p>
+            <ul class="tw-list-disc tw-pl-5 tw-mt-2">
+              {% for error in form.non_field_errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </div>
           {% endif %}
-          
+
           <!-- Registration Form -->
           <form method="post" class="tw-space-y-6">
             {% csrf_token %}
-            
+
             <!-- Username Field - Modified to show field-specific errors -->
             <div>
-              <label for="{{ form.username.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Username</label>
+              <label for="{{ form.username.id_for_label }}"
+                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Username</label>
               <div class="tw-relative">
                 <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
                   <i class="fas fa-user tw-text-gray-400"></i>
                 </div>
-                <input type="text" name="username" id="{{ form.username.id_for_label }}" 
-                       value="{{ form.username.value|default:'' }}" required
-                       class="{% if form.username.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
+                <input type="text" name="username" id="{{ form.username.id_for_label }}"
+                  value="{{ form.username.value|default:'' }}" required
+                  class="{% if form.username.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
               </div>
               {% if form.username.errors %}
-                <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="username-error">
-                  {% for error in form.username.errors %}
-                    <p>{{ error }}</p>
-                  {% endfor %}
-                </div>
+              <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="username-error">
+                {% for error in form.username.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
               {% endif %}
               {% if form.username.help_text %}
-                <p class="tw-mt-1 tw-text-xs tw-text-gray-500">{{ form.username.help_text|safe }}</p>
+              <p class="tw-mt-1 tw-text-xs tw-text-gray-500">{{ form.username.help_text|safe }}</p>
               {% endif %}
             </div>
-            
+
             <!-- Email Field (if present) - Modified to show field-specific errors -->
             {% if form.email %}
             <div>
-              <label for="{{ form.email.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Email Address</label>
+              <label for="{{ form.email.id_for_label }}"
+                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Email Address</label>
               <div class="tw-relative">
                 <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
                   <i class="fas fa-envelope tw-text-gray-400"></i>
                 </div>
-                <input type="email" name="email" id="{{ form.email.id_for_label }}" 
-                       value="{{ form.email.value|default:'' }}" required
-                       class="{% if form.email.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
+                <input type="email" name="email" id="{{ form.email.id_for_label }}"
+                  value="{{ form.email.value|default:'' }}" required
+                  class="{% if form.email.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
               </div>
               {% if form.email.errors %}
-                <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="email-error">
-                  {% for error in form.email.errors %}
-                    <p>{{ error }}</p>
-                  {% endfor %}
-                </div>
+              <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="email-error">
+                {% for error in form.email.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
               {% endif %}
               {% if form.email.help_text %}
-                <p class="tw-mt-1 tw-text-xs tw-text-gray-500">{{ form.email.help_text|safe }}</p>
+              <p class="tw-mt-1 tw-text-xs tw-text-gray-500">{{ form.email.help_text|safe }}</p>
               {% endif %}
             </div>
             {% endif %}
-            
+
             <!-- ADD THIS NEW FIELD: Phone Number -->
             <div>
-              <label for="{{ form.phone_number.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Phone Number</label>
+              <label for="{{ form.phone_number.id_for_label }}"
+                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Phone Number</label>
               <div class="tw-relative">
                 <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
                   <i class="fas fa-phone tw-text-gray-400"></i>
                 </div>
-                <input type="tel" name="phone_number" id="{{ form.phone_number.id_for_label }}" 
-                       value="{{ form.phone_number.value|default:'' }}" required
-                       class="{% if form.phone_number.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
+                <input type="tel" name="phone_number" id="{{ form.phone_number.id_for_label }}"
+                  value="{{ form.phone_number.value|default:'' }}" required
+                  class="{% if form.phone_number.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
               </div>
               {% if form.phone_number.errors %}
-                <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="phone_number-error">
-                  {% for error in form.phone_number.errors %}
-                    <p>{{ error }}</p>
-                  {% endfor %}
-                </div>
+              <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="phone_number-error">
+                {% for error in form.phone_number.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
               {% endif %}
             </div>
-            
+
             <!-- Replace the role selection dropdown with this hidden field -->
             <input type="hidden" name="role" value="customer">
-            
+
             <!-- Password Field - Modified to show field-specific errors -->
             <div>
-              <label for="{{ form.password1.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Password</label>
+              <label for="{{ form.password1.id_for_label }}"
+                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Password</label>
               <div class="tw-relative">
                 <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
                   <i class="fas fa-lock tw-text-gray-400"></i>
                 </div>
                 <input type="password" name="password1" id="{{ form.password1.id_for_label }}" required
-                       class="{% if form.password1.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
+                  class="{% if form.password1.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
               </div>
               {% if form.password1.errors %}
-                <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="password1-error">
-                  {% for error in form.password1.errors %}
-                    <p>{{ error }}</p>
-                  {% endfor %}
-                </div>
+              <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="password1-error">
+                {% for error in form.password1.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
               {% endif %}
               <!-- Password Help Text - Properly Formatted -->
               <div class="tw-mt-2 tw-text-xs tw-text-gray-500 tw-bg-gray-50 tw-p-3 tw-rounded-md">
@@ -153,50 +161,52 @@
                 </ul>
               </div>
             </div>
-            
+
             <!-- Password Confirmation Field - Modified to show field-specific errors -->
             <div>
-              <label for="{{ form.password2.id_for_label }}" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Confirm Password</label>
+              <label for="{{ form.password2.id_for_label }}"
+                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Confirm Password</label>
               <div class="tw-relative">
                 <div class="tw-absolute tw-inset-y-0 tw-left-0 tw-pl-3 tw-flex tw-items-center tw-pointer-events-none">
                   <i class="fas fa-lock tw-text-gray-400"></i>
                 </div>
                 <input type="password" name="password2" id="{{ form.password2.id_for_label }}" required
-                       class="{% if form.password2.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
+                  class="{% if form.password2.errors %}invalid-field{% endif %} tw-w-full tw-pl-10 tw-pr-3 tw-py-2 tw-border tw-border-gray-300 tw-rounded-lg focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-200">
               </div>
               {% if form.password2.errors %}
-                <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="password2-error">
-                  {% for error in form.password2.errors %}
-                    <p>{{ error }}</p>
-                  {% endfor %}
-                </div>
+              <div class="tw-mt-1 tw-text-sm tw-text-red-600" id="password2-error">
+                {% for error in form.password2.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+              </div>
               {% endif %}
               <p class="tw-mt-1 tw-text-xs tw-text-gray-500">Enter the same password as before, for verification.</p>
             </div>
-            
+
             <!-- Simplify the terms checkbox -->
             <div class="tw-flex tw-items-start">
               <div class="tw-flex tw-items-center tw-h-5">
                 <input id="terms" name="terms" type="checkbox" required
-                       class="tw-h-4 tw-w-4 tw-text-red-700 tw-border-gray-300 tw-rounded">
+                  class="tw-h-4 tw-w-4 tw-text-red-700 tw-border-gray-300 tw-rounded">
               </div>
               <div class="tw-ml-3 tw-text-sm">
                 <label for="terms" class="tw-font-medium tw-text-gray-700">I agree to the Terms & Conditions</label>
               </div>
             </div>
-            
+
             <!-- Submit Button -->
             <div>
-              <button type="submit" class="tw-w-full tw-py-3 tw-px-4 tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-lg tw-transition-colors tw-duration-200 tw-flex tw-items-center tw-justify-center">
+              <button type="submit"
+                class="tw-w-full tw-py-3 tw-px-4 tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-lg tw-transition-colors tw-duration-200 tw-flex tw-items-center tw-justify-center">
                 <i class="fas fa-user-plus tw-mr-2"></i>Create Account
               </button>
             </div>
           </form>
-          
+
           <!-- Login Link -->
           <div class="tw-mt-6 tw-text-center">
             <p class="tw-text-gray-600">
-              Already have an account? 
+              Already have an account?
               <a href="{% url 'login' %}" class="tw-text-red-700 hover:tw-text-red-800 tw-font-medium">
                 Login here
               </a>
@@ -204,30 +214,33 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Benefits Section -->
       <div class="tw-mt-8 tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
         <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-4">Benefits of Registration</h3>
-        
+
         <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6">
           <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
-            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
+            <div
+              class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
               <i class="fas fa-calendar-check tw-text-xl tw-text-red-700"></i>
             </div>
             <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Easy Reservations</h4>
             <p class="tw-text-sm tw-text-gray-500">Book your table anytime with just a few clicks</p>
           </div>
-          
+
           <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
-            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
+            <div
+              class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
               <i class="fas fa-history tw-text-xl tw-text-red-700"></i>
             </div>
             <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Booking History</h4>
             <p class="tw-text-sm tw-text-gray-500">Access your past and upcoming reservations</p>
           </div>
-          
+
           <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
-            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
+            <div
+              class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
               <i class="fas fa-tag tw-text-xl tw-text-red-700"></i>
             </div>
             <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Special Offers</h4>
@@ -247,12 +260,15 @@
       <div class="tw-bg-gray-900 tw-p-6">
         <div class="tw-flex tw-items-center tw-justify-between">
           <div class="tw-flex tw-items-center">
-            <div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
+            <div
+              class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
               <i class="fas fa-shield-alt tw-text-white"></i>
             </div>
             <h5 class="tw-text-xl tw-font-bold tw-text-white tw-m-0" id="privacyModalLabel">Privacy Policy</h5>
           </div>
-          <button type="button" class="tw-bg-transparent tw-border-0 tw-text-white hover:tw-text-gray-300 tw-transition-colors tw-duration-200" data-bs-dismiss="modal" aria-label="Close">
+          <button type="button"
+            class="tw-bg-transparent tw-border-0 tw-text-white hover:tw-text-gray-300 tw-transition-colors tw-duration-200"
+            data-bs-dismiss="modal" aria-label="Close">
             <i class="fas fa-times tw-text-2xl"></i>
           </button>
         </div>
@@ -266,28 +282,35 @@
             <p class="tw-text-gray-500">Last Updated: April 10, 2025</p>
             <div class="tw-w-24 tw-h-1 tw-bg-red-700 tw-mt-4"></div>
           </div>
-          
+
           <!-- Privacy Policy Content -->
           <div class="tw-space-y-4">
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">1. Introduction</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                Sear Steaks ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our reservation system, or dine at our restaurant.
+                Sear Steaks ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains
+                how we collect, use, disclose, and safeguard your information when you visit our website, use our
+                reservation system, or dine at our restaurant.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">2. Information We Collect</h5>
               <p class="tw-text-gray-700 tw-mb-2">We may collect the following types of information:</p>
               <ul class="tw-space-y-1 tw-list-disc tw-pl-5 tw-text-gray-700 tw-mb-2">
-                <li><span class="tw-font-medium tw-text-gray-900">Personal Information:</span> Name, email address, phone number, billing information, and dining preferences.</li>
-                <li><span class="tw-font-medium tw-text-gray-900">Account Information:</span> Username, password, and account preferences.</li>
-                <li><span class="tw-font-medium tw-text-gray-900">Reservation Details:</span> Date, time, party size, special requests, and dining history.</li>
-                <li><span class="tw-font-medium tw-text-gray-900">Transaction Information:</span> Payment details and billing address.</li>
-                <li><span class="tw-font-medium tw-text-gray-900">Usage Data:</span> Information about how you interact with our website, including IP address, browser type, and pages visited.</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Personal Information:</span> Name, email address,
+                  phone number, billing information, and dining preferences.</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Account Information:</span> Username, password, and
+                  account preferences.</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Reservation Details:</span> Date, time, party size,
+                  special requests, and dining history.</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Transaction Information:</span> Payment details and
+                  billing address.</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Usage Data:</span> Information about how you interact
+                  with our website, including IP address, browser type, and pages visited.</li>
               </ul>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">3. How We Use Your Information</h5>
               <p class="tw-text-gray-700 tw-mb-2">We use your information for the following purposes:</p>
@@ -302,33 +325,41 @@
                 <li>Comply with legal obligations</li>
               </ul>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">4. Cookies and Tracking Technologies</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                We use cookies and similar tracking technologies to track activity on our website and collect certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+                We use cookies and similar tracking technologies to track activity on our website and collect certain
+                information. Cookies are files with a small amount of data which may include an anonymous unique
+                identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being
+                sent.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">5. Sharing Your Information</h5>
               <p class="tw-text-gray-700 tw-mb-2">We may share your information with:</p>
               <ul class="tw-space-y-1 tw-list-disc tw-pl-5 tw-text-gray-700 tw-mb-2">
-                <li><span class="tw-font-medium tw-text-gray-900">Service Providers:</span> Third-party vendors who provide services on our behalf (payment processors, reservation systems)</li>
-                <li><span class="tw-font-medium tw-text-gray-900">Legal Requirements:</span> To comply with applicable law, court order, or government regulation</li>
-                <li><span class="tw-font-medium tw-text-gray-900">Business Transfers:</span> In connection with a merger, acquisition, or sale of assets</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Service Providers:</span> Third-party vendors who
+                  provide services on our behalf (payment processors, reservation systems)</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Legal Requirements:</span> To comply with applicable
+                  law, court order, or government regulation</li>
+                <li><span class="tw-font-medium tw-text-gray-900">Business Transfers:</span> In connection with a
+                  merger, acquisition, or sale of assets</li>
               </ul>
               <p class="tw-text-gray-700 tw-mt-2">We do not sell your personal information to third parties.</p>
             </section>
-            
+
             <!-- Additional sections continue with the same styling pattern -->
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">6. Data Security</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+                We implement appropriate security measures to protect your personal information. However, no method of
+                transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute
+                security.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">7. Your Rights</h5>
               <p class="tw-text-gray-700 tw-mb-2">Depending on your location, you may have the right to:</p>
@@ -340,21 +371,23 @@
                 <li>Object to the processing of your personal information</li>
               </ul>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">8. Children's Privacy</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children.
+                Our services are not intended for individuals under the age of 18. We do not knowingly collect personal
+                information from children.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">9. Changes to This Privacy Policy</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+                We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new
+                Privacy Policy on this page and updating the "Last Updated" date.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">10. Contact Us</h5>
               <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border tw-border-gray-200">
@@ -374,10 +407,12 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Modal Footer with Improved Button -->
       <div class="tw-bg-gray-100 tw-p-4 tw-flex tw-justify-end">
-        <button type="button" class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200" data-bs-dismiss="modal">
+        <button type="button"
+          class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
+          data-bs-dismiss="modal">
           I Understand
         </button>
       </div>
@@ -393,17 +428,20 @@
       <div class="tw-bg-gray-900 tw-p-6">
         <div class="tw-flex tw-items-center tw-justify-between">
           <div class="tw-flex tw-items-center">
-            <div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
+            <div
+              class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
               <i class="fas fa-file-contract tw-text-white"></i>
             </div>
             <h5 class="tw-text-xl tw-font-bold tw-text-white tw-m-0" id="termsModalLabel">Terms of Service</h5>
           </div>
-          <button type="button" class="tw-bg-transparent tw-border-0 tw-text-white hover:tw-text-gray-300 tw-transition-colors tw-duration-200" data-bs-dismiss="modal" aria-label="Close">
+          <button type="button"
+            class="tw-bg-transparent tw-border-0 tw-text-white hover:tw-text-gray-300 tw-transition-colors tw-duration-200"
+            data-bs-dismiss="modal" aria-label="Close">
             <i class="fas fa-times tw-text-2xl"></i>
           </button>
         </div>
       </div>
-      
+
       <!-- Modal Body with Better Formatting -->
       <div class="modal-body tw-p-0">
         <div class="tw-p-6 md:tw-p-8">
@@ -412,429 +450,469 @@
             <p class="tw-text-gray-500">Last Updated: April 10, 2025</p>
             <div class="tw-w-24 tw-h-1 tw-bg-red-700 tw-mt-4"></div>
           </div>
-          
+
           <!-- Terms of Service Content -->
           <div class="tw-space-y-4">
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">1. Acceptance of Terms</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                By accessing or using the Sear Steaks website and reservation system, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+                By accessing or using the Sear Steaks website and reservation system, you agree to be bound by these
+                Terms of Service. If you do not agree to these terms, please do not use our services.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">2. Account Registration</h5>
               <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                To use certain features of our website, you may need to register for an account. You agree to provide accurate information during registration and to keep your information updated. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+                To use certain features of our website, you may need to register for an account. You agree to provide
+                accurate information during registration and to keep your information updated. You are responsible for
+                maintaining the confidentiality of your account credentials and for all activities that occur under your
+                account.
               </p>
             </section>
-            
+
             <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
               <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">3. Reservation Policies</h5>
               <div class="tw-space-y-4">
                 <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border-l-4 tw-border-red-700">
                   <p class="tw-font-medium tw-text-gray-900 tw-mb-1">Booking Confirmation:</p>
-                  <p class="tw-text-gray-700 tw-mb-2">All reservations are subject to availability and confirmation. You will receive a confirmation email once your reservation is confirmed.</p>
+                  <p class="tw-text-gray-700 tw-mb-2">All reservations are subject to availability and confirmation. You
+                    will receive a confirmation email once your reservation is confirmed.</p>
                 </div>
-                
+
                 <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border-l-4 tw-border-red-700">
-                    <p class="tw-font-medium tw-text-gray-900 tw-mb-1">Arrival Time:</p>
-                    <p class="tw-text-gray-700 tw-mb-2">Please arrive 15 minutes before your scheduled reservation time. We hold reservations for 20 minutes after the scheduled time, after which they may be released to other guests.</p>
-                  </div>
-                  
-                  <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border-l-4 tw-border-red-700">
-                    <p class="tw-font-medium tw-text-gray-900 tw-mb-1">Special Requests:</p>
-                    <p class="tw-text-gray-700 tw-mb-2">While we will try to accommodate special requests, these cannot be guaranteed and remain subject to availability.</p>
-                  </div>
+                  <p class="tw-font-medium tw-text-gray-900 tw-mb-1">Arrival Time:</p>
+                  <p class="tw-text-gray-700 tw-mb-2">Please arrive 15 minutes before your scheduled reservation time.
+                    We hold reservations for 20 minutes after the scheduled time, after which they may be released to
+                    other guests.</p>
                 </div>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">4. Cancellation Policy</h5>
-                <div class="tw-flex tw-items-start">
-                  <div class="tw-flex-shrink-0 tw-mt-1">
-                    <i class="fas fa-info-circle tw-text-red-700 tw-text-xl"></i>
-                  </div>
-                  <p class="tw-text-gray-700 tw-leading-relaxed tw-ml-4 tw-mb-2">
-                    We require cancellations to be made at least 4 hours in advance of your reservation time. This allows us to accommodate other guests who wish to dine with us. Frequent no-shows or late cancellations may result in restrictions on future reservations.
-                  </p>
+
+                <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border-l-4 tw-border-red-700">
+                  <p class="tw-font-medium tw-text-gray-900 tw-mb-1">Special Requests:</p>
+                  <p class="tw-text-gray-700 tw-mb-2">While we will try to accommodate special requests, these cannot be
+                    guaranteed and remain subject to availability.</p>
                 </div>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">5. Large Party Reservations</h5>
-                <div class="tw-flex tw-items-start">
-                  <div class="tw-flex-shrink-0 tw-mt-1">
-                    <i class="fas fa-users tw-text-red-700 tw-text-xl"></i>
-                  </div>
-                  <p class="tw-text-gray-700 tw-leading-relaxed tw-ml-4 tw-mb-2">
-                    For parties of 6 or more, please contact us directly at (555) 123-4567 to arrange your reservation. A credit card may be required to secure large party reservations.
-                  </p>
+              </div>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">4. Cancellation Policy</h5>
+              <div class="tw-flex tw-items-start">
+                <div class="tw-flex-shrink-0 tw-mt-1">
+                  <i class="fas fa-info-circle tw-text-red-700 tw-text-xl"></i>
                 </div>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">6. User Conduct</h5>
-                <p class="tw-text-gray-700 tw-mb-2">You agree not to:</p>
-                <ul class="tw-space-y-1 tw-list-disc tw-pl-5 tw-text-gray-700 tw-mb-2">
-                  <li>Use our services for any unlawful purpose</li>
-                  <li>Create multiple accounts or reservations for the same time</li>
-                  <li>Provide false information when making a reservation</li>
-                  <li>Transfer or sell your reservations to others</li>
-                  <li>Attempt to access restricted areas of the website</li>
-                  <li>Interfere with the proper operation of the reservation system</li>
-                </ul>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">7. Intellectual Property</h5>
-                <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                  All content on the Sear Steaks website, including text, graphics, logos, images, and software, is the property of Sear Steaks and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express permission.
+                <p class="tw-text-gray-700 tw-leading-relaxed tw-ml-4 tw-mb-2">
+                  We require cancellations to be made at least 4 hours in advance of your reservation time. This allows
+                  us to accommodate other guests who wish to dine with us. Frequent no-shows or late cancellations may
+                  result in restrictions on future reservations.
                 </p>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">8. Limitation of Liability</h5>
-                <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg">
-                  <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                    Sear Steaks shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services. In no event shall our total liability exceed the amount paid by you, if any, for using our services.
-                  </p>
+              </div>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">5. Large Party Reservations</h5>
+              <div class="tw-flex tw-items-start">
+                <div class="tw-flex-shrink-0 tw-mt-1">
+                  <i class="fas fa-users tw-text-red-700 tw-text-xl"></i>
                 </div>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">9. Modifications to Service</h5>
-                <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                  We reserve the right to modify or discontinue, temporarily or permanently, any part of our services with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of the service.
+                <p class="tw-text-gray-700 tw-leading-relaxed tw-ml-4 tw-mb-2">
+                  For parties of 6 or more, please contact us directly at (555) 123-4567 to arrange your reservation. A
+                  credit card may be required to secure large party reservations.
                 </p>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">10. Changes to Terms</h5>
+              </div>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">6. User Conduct</h5>
+              <p class="tw-text-gray-700 tw-mb-2">You agree not to:</p>
+              <ul class="tw-space-y-1 tw-list-disc tw-pl-5 tw-text-gray-700 tw-mb-2">
+                <li>Use our services for any unlawful purpose</li>
+                <li>Create multiple accounts or reservations for the same time</li>
+                <li>Provide false information when making a reservation</li>
+                <li>Transfer or sell your reservations to others</li>
+                <li>Attempt to access restricted areas of the website</li>
+                <li>Interfere with the proper operation of the reservation system</li>
+              </ul>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">7. Intellectual Property</h5>
+              <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
+                All content on the Sear Steaks website, including text, graphics, logos, images, and software, is the
+                property of Sear Steaks and is protected by copyright and other intellectual property laws. You may not
+                reproduce, distribute, or create derivative works without our express permission.
+              </p>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">8. Limitation of Liability</h5>
+              <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg">
                 <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                  We may revise these Terms of Service from time to time. The most current version will always be posted on our website. By continuing to use our services after any changes, you accept the revised terms.
+                  Sear Steaks shall not be liable for any indirect, incidental, special, consequential, or punitive
+                  damages resulting from your use or inability to use our services. In no event shall our total
+                  liability exceed the amount paid by you, if any, for using our services.
                 </p>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">11. Governing Law</h5>
-                <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
-                  These Terms shall be governed by and construed in accordance with the laws of the state of Massachusetts, without regard to its conflict of law provisions.
+              </div>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">9. Modifications to Service</h5>
+              <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
+                We reserve the right to modify or discontinue, temporarily or permanently, any part of our services with
+                or without notice. We shall not be liable to you or any third party for any modification, suspension, or
+                discontinuance of the service.
+              </p>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">10. Changes to Terms</h5>
+              <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
+                We may revise these Terms of Service from time to time. The most current version will always be posted
+                on our website. By continuing to use our services after any changes, you accept the revised terms.
+              </p>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">11. Governing Law</h5>
+              <p class="tw-text-gray-700 tw-leading-relaxed tw-mb-2">
+                These Terms shall be governed by and construed in accordance with the laws of the state of
+                Massachusetts, without regard to its conflict of law provisions.
+              </p>
+            </section>
+
+            <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
+              <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">12. Contact Information</h5>
+              <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border tw-border-gray-200">
+                <p class="tw-text-gray-700 tw-mb-2">
+                  If you have any questions about these Terms, please contact us at:
                 </p>
-              </section>
-              
-              <section class="tw-pb-3 tw-border-b tw-border-gray-100 last:tw-border-b-0">
-                <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">12. Contact Information</h5>
-                <div class="tw-bg-gray-50 tw-p-4 tw-rounded-lg tw-border tw-border-gray-200">
-                  <p class="tw-text-gray-700 tw-mb-2">
-                    If you have any questions about these Terms, please contact us at:
-                  </p>
-                  <div class="tw-flex tw-items-center tw-mb-2">
-                    <i class="fas fa-envelope tw-text-red-700 tw-mr-3"></i>
-                    <span class="tw-text-gray-900">terms@searsteaks.com</span>
-                  </div>
-                  <div class="tw-flex tw-items-center">
-                    <i class="fas fa-phone tw-text-red-700 tw-mr-3"></i>
-                    <span class="tw-text-gray-900">(555) 123-4567</span>
-                  </div>
+                <div class="tw-flex tw-items-center tw-mb-2">
+                  <i class="fas fa-envelope tw-text-red-700 tw-mr-3"></i>
+                  <span class="tw-text-gray-900">terms@searsteaks.com</span>
                 </div>
-              </section>
-            </div>
+                <div class="tw-flex tw-items-center">
+                  <i class="fas fa-phone tw-text-red-700 tw-mr-3"></i>
+                  <span class="tw-text-gray-900">(555) 123-4567</span>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
-          
-        <!-- Modal Footer with Improved Button -->
-        <div class="tw-bg-gray-100 tw-p-4 tw-flex tw-justify-end">
-          <button type="button" class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200" data-bs-dismiss="modal">
-            I Agree
-          </button>
-        </div>
+      </div>
+
+      <!-- Modal Footer with Improved Button -->
+      <div class="tw-bg-gray-100 tw-p-4 tw-flex tw-justify-end">
+        <button type="button"
+          class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
+          data-bs-dismiss="modal">
+          I Agree
+        </button>
       </div>
     </div>
   </div>
-  {% endblock %}
-  
-  {% block extra_js %}
-  <script>
-    // Add Tailwind classes to the Django form fields
-    document.addEventListener('DOMContentLoaded', function() {
-      // Username field
-      var usernameField = document.getElementById('{{ form.username.id_for_label }}');
-      if (usernameField) {
-        usernameField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
-      }
-      
-      // Email field
-      var emailField = document.getElementById('{{ form.email.id_for_label }}');
-      if (emailField) {
-        emailField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
-      }
-      
-      // Password fields
-      var passwordField = document.getElementById('{{ form.password1.id_for_label }}');
-      if (passwordField) {
-        passwordField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
-      }
-      
-      var confirmPasswordField = document.getElementById('{{ form.password2.id_for_label }}');
-      if (confirmPasswordField) {
-        confirmPasswordField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
-      }
-      
-      // Hide Django's default password help text since we're providing our own formatted version
-      var helpText = document.querySelector('.helptext');
-      if (helpText) {
-        helpText.style.display = 'none';
-      }
-      
-      // Add real-time validation as user types - Enhanced client-side validation
-      const fields = {
-        username: document.getElementById('{{ form.username.id_for_label }}'),
-        email: document.getElementById('{{ form.email.id_for_label }}'),
-        phone_number: document.getElementById('{{ form.phone_number.id_for_label }}'),
-        role: document.getElementById('{{ form.role.id_for_label }}'),
-        password1: document.getElementById('{{ form.password1.id_for_label }}'),
-        password2: document.getElementById('{{ form.password2.id_for_label }}')
-      };
-      
-      for (const [fieldName, field] of Object.entries(fields)) {
-        if (field) {
-          // Add input event listener for real-time validation
-          field.addEventListener('input', function() {
-            // Only validate after user has entered something
-            if (field.value.length > 0) {
-              validateField(field, fieldName);
-            }
-          });
-          
-          // Add Django error class if server-side validation failed
-          if (field.parentNode.parentNode.querySelector('.tw-text-red-600:not(.tw-hidden)')) {
-            field.classList.add('invalid-field');
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Add Tailwind classes to the Django form fields
+  document.addEventListener('DOMContentLoaded', function () {
+    // Username field
+    var usernameField = document.getElementById('{{ form.username.id_for_label }}');
+    if (usernameField) {
+      usernameField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+
+    // Email field
+    var emailField = document.getElementById('{{ form.email.id_for_label }}');
+    if (emailField) {
+      emailField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+
+    // Password fields
+    var passwordField = document.getElementById('{{ form.password1.id_for_label }}');
+    if (passwordField) {
+      passwordField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+
+    var confirmPasswordField = document.getElementById('{{ form.password2.id_for_label }}');
+    if (confirmPasswordField) {
+      confirmPasswordField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
+    }
+
+    // Hide Django's default password help text since we're providing our own formatted version
+    var helpText = document.querySelector('.helptext');
+    if (helpText) {
+      helpText.style.display = 'none';
+    }
+
+    // Add real-time validation as user types - Enhanced client-side validation
+    const fields = {
+      username: document.getElementById('{{ form.username.id_for_label }}'),
+      email: document.getElementById('{{ form.email.id_for_label }}'),
+      phone_number: document.getElementById('{{ form.phone_number.id_for_label }}'),
+      role: document.getElementById('{{ form.role.id_for_label }}'),
+      password1: document.getElementById('{{ form.password1.id_for_label }}'),
+      password2: document.getElementById('{{ form.password2.id_for_label }}')
+    };
+
+    for (const [fieldName, field] of Object.entries(fields)) {
+      if (field) {
+        // Add input event listener for real-time validation
+        field.addEventListener('input', function () {
+          // Only validate after user has entered something
+          if (field.value.length > 0) {
+            validateField(field, fieldName);
           }
+        });
+
+        // Add Django error class if server-side validation failed
+        if (field.parentNode.parentNode.querySelector('.tw-text-red-600:not(.tw-hidden)')) {
+          field.classList.add('invalid-field');
         }
       }
+    }
 
-      const termsCheckbox = document.getElementById('terms');
-      const termsAccepted = document.getElementById('terms_accepted');
-      
-      if (termsCheckbox && termsAccepted) {
-        termsCheckbox.addEventListener('change', function() {
-          // Update the hidden field when checkbox is clicked
-          termsAccepted.value = this.checked ? 'true' : 'false';
-          
-          if(this.checked) {
-            // Store in session that user has agreed to terms
-            sessionStorage.setItem('termsAgreed', 'true');
-            // Remove any error message
-            const termsError = document.getElementById('terms-error');
-            if (termsError) {
-              termsError.classList.add('tw-hidden');
-            }
-          }
-        });
-      }
-  
-      // Show terms reminder if user tries to submit without reading terms
-      const form = document.querySelector('form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          const checkbox = document.getElementById('terms');
-          if(checkbox && checkbox.checked && !sessionStorage.getItem('termsAgreed')) {
-            e.preventDefault();
-            alert('Please review our Privacy Policy and Terms of Service before agreeing.');
-            // Show the terms modal
-            if (typeof bootstrap !== 'undefined') {
-              new bootstrap.Modal(document.getElementById('termsModal')).show();
-            }
-          }
-        });
-      }
-  
-      // Mark as read when modal is closed
-      document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(button => {
-        button.addEventListener('click', function() {
+    const termsCheckbox = document.getElementById('terms');
+    const termsAccepted = document.getElementById('terms_accepted');
+
+    if (termsCheckbox && termsAccepted) {
+      termsCheckbox.addEventListener('change', function () {
+        // Update the hidden field when checkbox is clicked
+        termsAccepted.value = this.checked ? 'true' : 'false';
+
+        if (this.checked) {
+          // Store in session that user has agreed to terms
           sessionStorage.setItem('termsAgreed', 'true');
-        });
+          // Remove any error message
+          const termsError = document.getElementById('terms-error');
+          if (termsError) {
+            termsError.classList.add('tw-hidden');
+          }
+        }
+      });
+    }
+
+    // Show terms reminder if user tries to submit without reading terms
+    const form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        const checkbox = document.getElementById('terms');
+        if (checkbox && checkbox.checked && !sessionStorage.getItem('termsAgreed')) {
+          e.preventDefault();
+          alert('Please review our Privacy Policy and Terms of Service before agreeing.');
+          // Show the terms modal
+          if (typeof bootstrap !== 'undefined') {
+            new bootstrap.Modal(document.getElementById('termsModal')).show();
+          }
+        }
+      });
+    }
+
+    // Mark as read when modal is closed
+    document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(button => {
+      button.addEventListener('click', function () {
+        sessionStorage.setItem('termsAgreed', 'true');
       });
     });
-  
-    // Field validation function - Enhanced
-    function validateField(field, fieldName) {
-      if (!field) return true; // Skip if field doesn't exist
-      
-      // Check for existing error container, or create one if it doesn't exist
-      let errorContainer = document.getElementById(`${fieldName}-error`);
-      if (!errorContainer) {
-        errorContainer = document.createElement('div');
-        errorContainer.id = `${fieldName}-error`;
-        errorContainer.className = 'tw-mt-1 tw-text-sm tw-text-red-600 tw-hidden';
-        field.parentNode.parentNode.appendChild(errorContainer);
-      }
-      
-      let errorMessage = '';
-      
-      // Check if field has a value
-      if (!field.value.trim()) {
-        errorMessage = 'This field is required';
-      } else if (fieldName === 'username' && field.value.length < 3) {
-        errorMessage = 'Username must be at least 3 characters';
-      } else if (fieldName === 'email' && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value)) {
-        errorMessage = 'Please enter a valid email address';
-      } else if (fieldName === 'phone_number' && !/^[0-9()\-\s+]{7,20}$/.test(field.value)) {
-        errorMessage = 'Please enter a valid phone number';
-      } else if (fieldName === 'password1' && field.value.length < 8) {
-        errorMessage = 'Password must be at least 8 characters';
-      } else if (fieldName === 'password2') {
-        const password1 = document.getElementById('{{ form.password1.id_for_label }}');
-        if (password1 && field.value !== password1.value) {
-          errorMessage = 'Passwords do not match';
-        }
-      }
-      
-      if (errorMessage) {
-        errorContainer.textContent = errorMessage;
-        errorContainer.classList.remove('tw-hidden');
-        field.classList.add('invalid-field');
-        return false;
-      } else {
-        errorContainer.classList.add('tw-hidden');
-        field.classList.remove('invalid-field');
-        return true;
-      }
-    }
-    
-    // Form submission validation - Enhanced
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          let isValid = true;
-          const fields = {
-            username: document.getElementById('{{ form.username.id_for_label }}'),
-            email: document.getElementById('{{ form.email.id_for_label }}'),
-            phone_number: document.getElementById('{{ form.phone_number.id_for_label }}'),
-            role: document.getElementById('{{ form.role.id_for_label }}'),
-            password1: document.getElementById('{{ form.password1.id_for_label }}'),
-            password2: document.getElementById('{{ form.password2.id_for_label }}')
-          };
-          
-          // Validate all fields
-          for (const [fieldName, field] of Object.entries(fields)) {
-            if (field) {
-              const fieldValid = validateField(field, fieldName);
-              if (!fieldValid) {
-                isValid = false;
-              }
-            }
-          }
-          
-          // Check terms checkbox
-          const checkbox = document.getElementById('terms');
-          if (checkbox && !checkbox.checked) {
-            let termsError = document.getElementById('terms-error');
-            if (!termsError) {
-              termsError = document.createElement('div');
-              termsError.id = 'terms-error';
-              termsError.className = 'tw-mt-1 tw-text-sm tw-text-red-600';
-              checkbox.parentNode.parentNode.parentNode.appendChild(termsError);
-            }
-            termsError.textContent = 'You must agree to the terms and conditions';
-            termsError.classList.remove('tw-hidden');
-            isValid = false;
-          }
-          
-          // Prevent form submission if invalid
-          if (!isValid) {
-            e.preventDefault();
-            
-            // Show general error message at top of form if it doesn't exist yet
-            let formError = document.getElementById('form-error');
-            if (!formError) {
-              formError = document.createElement('div');
-              formError.id = 'form-error';
-              formError.className = 'tw-bg-red-50 tw-text-red-700 tw-p-4 tw-rounded-lg tw-mb-6';
-              formError.innerHTML = '<p class="tw-font-medium">Please correct the errors below:</p>';
-              form.prepend(formError);
-            }
-            
-            // Scroll to first error
-            const firstError = document.querySelector('.tw-text-red-600:not(.tw-hidden)');
-            if (firstError) {
-              firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          }
-        });
-      }
-    });
-  </script>
-  
-  <style>
-    /* Reduce spacing between sections while maintaining readability */
-    .modal .tw-space-y-8 {
-      --tw-space-y-reverse: 0;
-      margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-      margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-    }
-    
-    /* Make paragraph spacing within sections tighter */
-    .modal .tw-space-y-8 section p {
-      margin-bottom: 0.75rem;
-    }
-  
-    /* Highlight invalid fields with red border and shake animation */
-    .invalid-field {
-      animation: shake 0.5s;
-      border-color: #ef4444 !important;
-      box-shadow: 0 0 0 1px #ef4444 !important;
-    }
-    
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-      20%, 40%, 60%, 80% { transform: translateX(5px); }
-    }
-    
-    /* Make error messages stand out */
-    .tw-text-red-600 {
-      font-weight: 500;
-    }
-    
-    /* Add icon to error messages */
-    .tw-text-red-600:not(.tw-hidden)::before {
-      content: "⚠️ ";
-    }
-    
-    /* Ensure error messages are visible */
-    .tw-text-red-600:not(.tw-hidden) {
-      display: block !important;
-      margin-top: 0.25rem;
-    }
-    
-    /* Add success styling for valid fields */
-    input:not(.invalid-field):focus:valid {
-      border-color: #10b981 !important;
-      box-shadow: 0 0 0 1px #10b981 !important;
+  });
+
+  // Field validation function - Enhanced
+  function validateField(field, fieldName) {
+    if (!field) return true; // Skip if field doesn't exist
+
+    // Check for existing error container, or create one if it doesn't exist
+    let errorContainer = document.getElementById(`${fieldName}-error`);
+    if (!errorContainer) {
+      errorContainer = document.createElement('div');
+      errorContainer.id = `${fieldName}-error`;
+      errorContainer.className = 'tw-mt-1 tw-text-sm tw-text-red-600 tw-hidden';
+      field.parentNode.parentNode.appendChild(errorContainer);
     }
 
-    .hero-container {
-      position: relative;
+    let errorMessage = '';
+
+    // Check if field has a value
+    if (!field.value.trim()) {
+      errorMessage = 'This field is required';
+    } else if (fieldName === 'username' && field.value.length < 3) {
+      errorMessage = 'Username must be at least 3 characters';
+    } else if (fieldName === 'email' && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(field.value)) {
+      errorMessage = 'Please enter a valid email address';
+    } else if (fieldName === 'phone_number' && !/^[0-9()\-\s+]{7,20}$/.test(field.value)) {
+      errorMessage = 'Please enter a valid phone number';
+    } else if (fieldName === 'password1' && field.value.length < 8) {
+      errorMessage = 'Password must be at least 8 characters';
+    } else if (fieldName === 'password2') {
+      const password1 = document.getElementById('{{ form.password1.id_for_label }}');
+      if (password1 && field.value !== password1.value) {
+        errorMessage = 'Passwords do not match';
+      }
     }
-    
-    .hero-container::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-      z-index: 1;
-      pointer-events: none;
+
+    if (errorMessage) {
+      errorContainer.textContent = errorMessage;
+      errorContainer.classList.remove('tw-hidden');
+      field.classList.add('invalid-field');
+      return false;
+    } else {
+      errorContainer.classList.add('tw-hidden');
+      field.classList.remove('invalid-field');
+      return true;
     }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
+  }
+
+  // Form submission validation - Enhanced
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        let isValid = true;
+        const fields = {
+          username: document.getElementById('{{ form.username.id_for_label }}'),
+          email: document.getElementById('{{ form.email.id_for_label }}'),
+          phone_number: document.getElementById('{{ form.phone_number.id_for_label }}'),
+          role: document.getElementById('{{ form.role.id_for_label }}'),
+          password1: document.getElementById('{{ form.password1.id_for_label }}'),
+          password2: document.getElementById('{{ form.password2.id_for_label }}')
+        };
+
+        // Validate all fields
+        for (const [fieldName, field] of Object.entries(fields)) {
+          if (field) {
+            const fieldValid = validateField(field, fieldName);
+            if (!fieldValid) {
+              isValid = false;
+            }
+          }
+        }
+
+        // Check terms checkbox
+        const checkbox = document.getElementById('terms');
+        if (checkbox && !checkbox.checked) {
+          let termsError = document.getElementById('terms-error');
+          if (!termsError) {
+            termsError = document.createElement('div');
+            termsError.id = 'terms-error';
+            termsError.className = 'tw-mt-1 tw-text-sm tw-text-red-600';
+            checkbox.parentNode.parentNode.parentNode.appendChild(termsError);
+          }
+          termsError.textContent = 'You must agree to the terms and conditions';
+          termsError.classList.remove('tw-hidden');
+          isValid = false;
+        }
+
+        // Prevent form submission if invalid
+        if (!isValid) {
+          e.preventDefault();
+
+          // Show general error message at top of form if it doesn't exist yet
+          let formError = document.getElementById('form-error');
+          if (!formError) {
+            formError = document.createElement('div');
+            formError.id = 'form-error';
+            formError.className = 'tw-bg-red-50 tw-text-red-700 tw-p-4 tw-rounded-lg tw-mb-6';
+            formError.innerHTML = '<p class="tw-font-medium">Please correct the errors below:</p>';
+            form.prepend(formError);
+          }
+
+          // Scroll to first error
+          const firstError = document.querySelector('.tw-text-red-600:not(.tw-hidden)');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      });
     }
-  </style>
-  {% endblock %}
+  });
+</script>
+
+{% block custom_styles %}
+<style>
+  /* Reduce spacing between sections while maintaining readability */
+  .modal .tw-space-y-8 {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+  }
+
+  /* Make paragraph spacing within sections tighter */
+  .modal .tw-space-y-8 section p {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Highlight invalid fields with red border and shake animation */
+  .invalid-field {
+    animation: shake 0.5s;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 1px #ef4444 !important;
+  }
+
+  @keyframes shake {
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(5px);
+    }
+  }
+
+  /* Make error messages stand out */
+  .tw-text-red-600 {
+    font-weight: 500;
+  }
+
+  /* Add icon to error messages */
+  .tw-text-red-600:not(.tw-hidden)::before {
+    content: "⚠️ ";
+  }
+
+  /* Ensure error messages are visible */
+  .tw-text-red-600:not(.tw-hidden) {
+    display: block !important;
+    margin-top: 0.25rem;
+  }
+
+  /* Add success styling for valid fields */
+  input:not(.invalid-field):focus:valid {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 1px #10b981 !important;
+  }
+
+  .hero-container {
+    position: relative;
+  }
+
+  .hero-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+</style>
+{% endblock %}
+{% endblock %}
