@@ -42,58 +42,31 @@
     
     <!-- Custom CSS -->
     <link href="{% static 'css/style.css' %}?v={% now 'U' %}" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     {% block extra_head %}
+    {{ block.super }}
     <style>
-      /* Reduce spacing between sections while maintaining readability */
-      .modal .tw-space-y-8 {
-        --tw-space-y-reverse: 0;
-        margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-        margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+      /* Enhanced icon contrast for benefits section */
+      .benefit-icon-container {
+        background-color: #fee2e2 !important; /* red-100 with more saturation */
+        box-shadow: 0 4px 8px rgba(185, 28, 28, 0.15) !important; /* red-700 shadow */
       }
-
-      /* Make paragraph spacing within sections tighter */
-      .modal .tw-space-y-8 section p {
-        margin-bottom: 0.75rem;
+      
+      .benefit-icon-container .fas {
+        color: #b91c1c !important; /* red-800 for better contrast */
+        font-size: 1.75rem !important; /* Slightly larger icons */
       }
-
-      /* Menu item card hover effects */
-      .menu-card {
-        transition: all 0.3s ease;
-        transform-origin: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      
+      .benefit-icon-container:hover {
+        background-color: #fecaca !important; /* red-200 for hover */
+        transform: scale(1.05) !important;
+        transition: all 0.3s ease !important;
       }
-
-      .menu-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
-        border-color: #f59e0b; /* amber-500 */
-        z-index: 10;
-      }
-
-      .menu-card img {
-        transition: all 0.5s ease;
-      }
-
-      .menu-card:hover img {
-        transform: scale(1.05);
-      }
-
-      .menu-card .card-content {
-        transition: all 0.3s ease;
-      }
-
-      .menu-card:hover .card-content {
-        background-color: #fffbeb; /* amber-50 */
-      }
-
-      .menu-card .price {
-        transition: all 0.3s ease;
-      }
-
-      .menu-card:hover .price {
-        transform: scale(1.1);
-        color: #b91c1c; /* red-800 */
+      
+      .benefit-card:hover {
+        background-color: #fef2f2 !important; /* red-50 with more saturation */
+        box-shadow: 0 8px 15px rgba(185, 28, 28, 0.1) !important;
       }
     </style>
     {% endblock %}

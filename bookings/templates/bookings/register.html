@@ -11,6 +11,62 @@ membership{% endblock %}
 
 {% block title %}Create an Account | Sear Steaks Leeds{% endblock %}
 
+{% block extra_head %}
+{{ block.super }}
+<style>
+  /* Enhanced icon contrast for benefits section with brand colors */
+  .benefit-icon-container {
+    background-color: #fef2f2 !important; /* lighter red background */
+    box-shadow: 0 4px 10px rgba(185, 28, 28, 0.2) !important; /* deeper shadow */
+    border: 2px solid #fecaca !important; /* border for definition */
+    transition: all 0.3s ease !important;
+  }
+  
+  .benefit-icon-container .fas {
+    color: #991b1b !important; /* darker red (red-900) for better contrast */
+    font-size: 1.85rem !important; /* Larger icons */
+  }
+  
+  .benefit-icon-container:hover {
+    background-color: #fee2e2 !important; /* slightly darker on hover */
+    transform: scale(1.08) !important; /* more pronounced scale effect */
+    box-shadow: 0 6px 12px rgba(185, 28, 28, 0.25) !important; /* enhanced shadow on hover */
+    border-color: #f87171 !important; /* brighter border on hover */
+  }
+  
+  .benefit-card:hover {
+    background-color: #fffbeb !important; /* amber-50 background on hover */
+    box-shadow: 0 8px 15px rgba(146, 64, 14, 0.1) !important; /* amber shadow */
+    transform: translateY(-3px) !important; /* slight lift effect */
+    transition: all 0.3s ease !important;
+  }
+  
+  /* Add gold accent for section heading */
+  .benefits-heading .fas {
+    color: #f59e0b !important; /* amber-500 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Make benefit titles more prominent */
+  .benefit-title {
+    font-size: 1.1rem !important; 
+    font-weight: 600 !important;
+    color: #ef1818 !important; /* red-900 for stronger contrast */
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.35rem !important;
+    border-bottom: 2px solid #fecaca !important; /* subtle underline */
+    display: inline-block !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .benefit-card:hover .benefit-title {
+    color: #caa732 !important; /* darker red on hover */
+    border-bottom-color: lch(#fcd34d ) !important; /* brighter underline on hover */
+    transform: translateY(-2px) !important;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section with Premium Steak Image - Updated to match floor_plan.html styling -->
 <div class="tw-relative tw-h-72 tw-bg-cover tw-bg-center tw-bg-fixed"
@@ -217,33 +273,33 @@ membership{% endblock %}
 
       <!-- Benefits Section -->
       <div class="tw-mt-8 tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6">
-        <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-4">Benefits of Registration</h3>
+        <h3 class="benefits-heading tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-6 tw-flex tw-items-center">
+          <i class="fas fa-star tw-text-amber-500 tw-mr-3"></i>
+          Benefits of Registration
+        </h3>
 
         <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6">
-          <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
-            <div
-              class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
-              <i class="fas fa-calendar-check tw-text-xl tw-text-red-700"></i>
+          <div class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
+            <div class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
+              <i class="fas fa-calendar-alt tw-text-2xl tw-text-red-700"></i>
             </div>
-            <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Easy Reservations</h4>
+            <h4 class="benefit-title">Easy Reservations</h4>
             <p class="tw-text-sm tw-text-gray-500">Book your table anytime with just a few clicks</p>
           </div>
 
-          <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
-            <div
-              class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
-              <i class="fas fa-history tw-text-xl tw-text-red-700"></i>
+          <div class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
+            <div class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
+              <i class="fas fa-clock tw-text-2xl tw-text-red-700"></i>
             </div>
-            <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Booking History</h4>
+            <h4 class="benefit-title">Booking History</h4>
             <p class="tw-text-sm tw-text-gray-500">Access your past and upcoming reservations</p>
           </div>
 
-          <div class="tw-flex tw-flex-col tw-items-center tw-text-center">
-            <div
-              class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-3">
-              <i class="fas fa-tag tw-text-xl tw-text-red-700"></i>
+          <div class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
+            <div class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
+              <i class="fas fa-gift tw-text-2xl tw-text-red-700"></i>
             </div>
-            <h4 class="tw-text-base tw-font-medium tw-text-gray-900 tw-mb-1">Special Offers</h4>
+            <h4 class="benefit-title">Special Offers</h4>
             <p class="tw-text-sm tw-text-gray-500">Receive exclusive promotions and offers</p>
           </div>
         </div>
@@ -264,7 +320,7 @@ membership{% endblock %}
               class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
               <i class="fas fa-shield-alt tw-text-white"></i>
             </div>
-            <h5 class="tw-text-xl tw-font-bold tw-text-white tw-m-0" id="privacyModalLabel">Privacy Policy</h5>
+            <h5 class="tw-text-xl tw-font-bold tw-text-white tw-mb-0" id="privacyModalLabel">Privacy Policy</h5>
           </div>
           <button type="button"
             class="tw-bg-transparent tw-border-0 tw-text-white hover:tw-text-gray-300 tw-transition-colors tw-duration-200"
@@ -409,22 +465,6 @@ membership{% endblock %}
       </div>
 
       <!-- Modal Footer with Improved Button -->
-      <div class="tw-bg-gray-100 tw-p-4 tw-flex tw-justify-end">
-        <button type="button"
-          class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-py-2 tw-px-6 tw-rounded-lg tw-transition-colors tw-duration-200"
-          data-bs-dismiss="modal">
-          I Understand
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Terms of Service Modal - Enhanced Styling -->
-<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content tw-border-0 tw-rounded-xl tw-overflow-hidden tw-shadow-2xl">
-      <!-- Modal Header with Custom Styling -->
       <div class="tw-bg-gray-900 tw-p-6">
         <div class="tw-flex tw-items-center tw-justify-between">
           <div class="tw-flex tw-items-center">
@@ -432,7 +472,7 @@ membership{% endblock %}
               class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
               <i class="fas fa-file-contract tw-text-white"></i>
             </div>
-            <h5 class="tw-text-xl tw-font-bold tw-text-white tw-m-0" id="termsModalLabel">Terms of Service</h5>
+            <h5 class="tw-text-xl tw-font-bold tw-text-white tw-mb-0" id="termsModalLabel">Terms of Service</h5>
           </div>
           <button type="button"
             class="tw-bg-transparent tw-border-0 tw-text-white hover:tw-text-gray-300 tw-transition-colors tw-duration-200"
@@ -826,93 +866,4 @@ membership{% endblock %}
     }
   });
 </script>
-
-{% block custom_styles %}
-<style>
-  /* Reduce spacing between sections while maintaining readability */
-  .modal .tw-space-y-8 {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-  }
-
-  /* Make paragraph spacing within sections tighter */
-  .modal .tw-space-y-8 section p {
-    margin-bottom: 0.75rem;
-  }
-
-  /* Highlight invalid fields with red border and shake animation */
-  .invalid-field {
-    animation: shake 0.5s;
-    border-color: #ef4444 !important;
-    box-shadow: 0 0 0 1px #ef4444 !important;
-  }
-
-  @keyframes shake {
-
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-      transform: translateX(-5px);
-    }
-
-    20%,
-    40%,
-    60%,
-    80% {
-      transform: translateX(5px);
-    }
-  }
-
-  /* Make error messages stand out */
-  .tw-text-red-600 {
-    font-weight: 500;
-  }
-
-  /* Add icon to error messages */
-  .tw-text-red-600:not(.tw-hidden)::before {
-    content: "⚠️ ";
-  }
-
-  /* Ensure error messages are visible */
-  .tw-text-red-600:not(.tw-hidden) {
-    display: block !important;
-    margin-top: 0.25rem;
-  }
-
-  /* Add success styling for valid fields */
-  input:not(.invalid-field):focus:valid {
-    border-color: #10b981 !important;
-    box-shadow: 0 0 0 1px #10b981 !important;
-  }
-
-  .hero-container {
-    position: relative;
-  }
-
-  .hero-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
-</style>
-{% endblock %}
 {% endblock %}
