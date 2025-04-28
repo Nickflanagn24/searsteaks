@@ -17,8 +17,14 @@ class Migration(migrations.Migration):
             field=models.DateTimeField(
                 auto_now_add=True,
                 default=datetime.datetime(
-                    2025, 3, 31, 20, 55, 13, 692590, tzinfo=datetime.timezone.utc
-                ),
+                    2025,
+                    3,
+                    31,
+                    20,
+                    55,
+                    13,
+                    692590,
+                    tzinfo=datetime.timezone.utc),
             ),
             preserve_default=False,
         ),

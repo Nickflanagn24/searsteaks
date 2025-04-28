@@ -7,7 +7,8 @@ def admin_required(view_func):
     def wrapper(request, *args, **kwargs):
         if request.user.is_authenticated and request.user.role == "admin":
             return view_func(request, *args, **kwargs)
-        return HttpResponseForbidden("You do not have permission to view this page.")
+        return HttpResponseForbidden(
+            "You do not have permission to view this page.")
     return wrapper
 
 
@@ -16,5 +17,6 @@ def customer_required(view_func):
     def wrapper(request, *args, **kwargs):
         if request.user.is_authenticated and request.user.role == "customer":
             return view_func(request, *args, **kwargs)
-        return HttpResponseForbidden("You do not have permission to access this page.")
+        return HttpResponseForbidden(
+            "You do not have permission to access this page.")
     return wrapper

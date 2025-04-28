@@ -42,7 +42,8 @@ class BookingForm(forms.ModelForm):
         date = cleaned_data.get("date")
         time = cleaned_data.get("time")
 
-        # Check if the selected table is already booked for the same date & time
+        # Check if the selected table is already booked for the same date &
+        # time
         if Booking.objects.filter(table=table, date=date, time=time).exists():
             raise forms.ValidationError(
                 "This table is already booked for the selected date and time.")

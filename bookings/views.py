@@ -108,12 +108,14 @@ def make_booking(request):
 
         # If we're modifying an existing booking
         if modify_booking_id:
-            # Check if the table, date, or time has changed and if the new selection is available
+            # Check if the table, date, or time has changed and if the new
+            # selection is available
             if (str(booking_to_modify.table.id) != table_id or
                 str(booking_to_modify.date) != selected_date or
                     booking_to_modify.time != selected_time):
 
-                # Check if the new table is already booked (excluding our current booking)
+                # Check if the new table is already booked (excluding our
+                # current booking)
                 if Booking.objects.filter(
                     table=table,
                     date=selected_date,
@@ -138,13 +140,16 @@ def make_booking(request):
                 messages.success(request, "Your reservation has been updated!")
             except IntegrityError:
                 messages.error(
-                    request, "This table was just booked by someone else. " \
+                    request, "This table was just booked by someone else. "
                     "Please try another table.")
                 return redirect('floor_plan')
 
         # Creating a new booking
         else:
-            if Booking.objects.filter(table=table, date=selected_date, time=selected_time).exists():
+            if Booking.objects.filter(
+                    table=table,
+                    date=selected_date,
+                    time=selected_time).exists():
                 messages.error(
                     request,
                     f"Sorry, table {table.table_number} is already booked for this date and time. "
@@ -166,7 +171,8 @@ def make_booking(request):
                     request, "Your reservation has been confirmed!")
             except IntegrityError:
                 messages.error(
-                    request, "This table was just booked by someone else. Please try another table.")
+                    request,
+                    "This table was just booked by someone else. Please try another table.")
                 return redirect('floor_plan')
 
         return redirect('my_bookings')
@@ -307,7 +313,8 @@ def contact(request):
 
         # Show a success message to the user
         messages.success(
-            request, 'Your message has been sent successfully. We will get back to you soon.')
+            request,
+            'Your message has been sent successfully. We will get back to you soon.')
 
         # Redirect to avoid form resubmission
         return redirect('contact')
@@ -332,7 +339,8 @@ def table_availability(request):
     modify_booking_id = request.GET.get('modify_booking_id')
 
     if not date or not time:
-        return JsonResponse({'error': 'Missing date or time parameter'}, status=400)
+        return JsonResponse(
+            {'error': 'Missing date or time parameter'}, status=400)
 
     tables = Table.objects.all()
 

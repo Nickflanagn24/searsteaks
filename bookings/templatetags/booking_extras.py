@@ -5,6 +5,7 @@ import time as time_module
 
 register = template.Library()
 
+
 @register.filter
 def time_to_seconds(value):
     """Convert a time string like '18:30' to seconds since midnight."""
@@ -14,6 +15,7 @@ def time_to_seconds(value):
     except (ValueError, AttributeError):
         return 0
 
+
 @register.filter
 def subtract(value, arg):
     """Subtract the arg from the value."""
@@ -21,6 +23,7 @@ def subtract(value, arg):
         return int(value) - int(arg)
     except (ValueError, TypeError):
         return 0
+
 
 @register.filter
 def divide_by(value, arg):

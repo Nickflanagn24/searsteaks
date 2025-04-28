@@ -59,4 +59,16 @@ Checking by URL there were no css errors using   [W3C CCS Validator](https://jig
 
 ![CSS validation logo](Docs/images/validator/css_validator.png)
 
+## JS
 
+JavaScript Code Quality Testing
+As part of the testing process, JSHint was used to check the quality of JavaScript code throughout the website. The tool identified several issues that needed fixing, including ES6 syntax warnings, undefined Bootstrap variables, and potential problems with functions inside loops.
+
+These were resolved by adding proper configuration comments at the top of each script file:
+
+/* jshint esversion: 6, browser: true, devel: true, -W083 */
+/* globals bootstrap */
+
+This configuration tells JSHint to accept modern JavaScript features (ES6), recognize browser functions, allow console logging, suppress warnings about functions in loops, and acknowledge Bootstrap as an external library.
+
+While these issues didn't cause visible problems for users, fixing them improved code quality and reduced the risk of errors in different browsers. This validation step was an important part of ensuring the website's reliability and maintainability.

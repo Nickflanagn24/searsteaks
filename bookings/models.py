@@ -54,7 +54,10 @@ class Booking(models.Model):
             raise ValidationError({'time': 'Invalid time slot selected.'})
 
         # Check for existing bookings
-        if Booking.objects.filter(table=self.table, date=self.date, time=self.time).exists():
+        if Booking.objects.filter(
+                table=self.table,
+                date=self.date,
+                time=self.time).exists():
             raise ValidationError(
                 'This table is already booked for the selected time.')
 
