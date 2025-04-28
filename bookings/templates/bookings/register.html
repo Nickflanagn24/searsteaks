@@ -695,6 +695,37 @@ membership{% endblock %}
       emailField.classList.add('tw-w-full', 'tw-pl-10', 'tw-pr-3', 'tw-py-2', 'tw-border', 'tw-border-gray-300', 'tw-rounded-lg', 'focus:tw-ring-red-700', 'focus:tw-border-red-700', 'tw-transition', 'tw-duration-200');
     }
 
+    // Add this new code to connect the checkbox to show the modal
+    // Show terms and conditions modal when checkbox is clicked
+    const termsCheckbox = document.getElementById('terms');
+    if (termsCheckbox) {
+      termsCheckbox.addEventListener('click', function(e) {
+        // Only prevent default if the checkbox is being checked (not unchecked)
+        if (!this.checked) {
+          e.preventDefault();
+          
+          // Show the privacy modal
+          const privacyModal = new bootstrap.Modal(document.getElementById('privacyModal'));
+          privacyModal.show();
+        }
+        // If they're unchecking the box, let that happen normally
+      });
+    }
+
+    // Handle the "I Agree" button in the modal
+    const agreeButton = document.querySelector('#privacyModal button[data-bs-dismiss="modal"]');
+    if (agreeButton) {
+      agreeButton.addEventListener('click', function() {
+        // Check the checkbox when user clicks "I Agree"
+        if (termsCheckbox) {
+          termsCheckbox.checked = true;
+          // Store in session that user has agreed to terms
+          sessionStorage.setItem('termsAgreed', 'true');
+        }
+      });
+    }
+
+    // Rest of your existing JavaScript...
     // Password fields
     var passwordField = document.getElementById('{{ form.password1.id_for_label }}');
     if (passwordField) {
@@ -737,26 +768,6 @@ membership{% endblock %}
           field.classList.add('invalid-field');
         }
       }
-    }
-
-    const termsCheckbox = document.getElementById('terms');
-    const termsAccepted = document.getElementById('terms_accepted');
-
-    if (termsCheckbox && termsAccepted) {
-      termsCheckbox.addEventListener('change', function () {
-        // Update the hidden field when checkbox is clicked
-        termsAccepted.value = this.checked ? 'true' : 'false';
-
-        if (this.checked) {
-          // Store in session that user has agreed to terms
-          sessionStorage.setItem('termsAgreed', 'true');
-          // Remove any error message
-          const termsError = document.getElementById('terms-error');
-          if (termsError) {
-            termsError.classList.add('tw-hidden');
-          }
-        }
-      });
     }
 
     // Show terms reminder if user tries to submit without reading terms
