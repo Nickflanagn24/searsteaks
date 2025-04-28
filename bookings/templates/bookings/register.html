@@ -16,52 +16,69 @@ membership{% endblock %}
 <style>
   /* Enhanced icon contrast for benefits section with brand colors */
   .benefit-icon-container {
-    background-color: #fef2f2 !important; /* lighter red background */
-    box-shadow: 0 4px 10px rgba(185, 28, 28, 0.2) !important; /* deeper shadow */
-    border: 2px solid #fecaca !important; /* border for definition */
+    background-color: #fef2f2 !important;
+    /* lighter red background */
+    box-shadow: 0 4px 10px rgba(185, 28, 28, 0.2) !important;
+    /* deeper shadow */
+    border: 2px solid #fecaca !important;
+    /* border for definition */
     transition: all 0.3s ease !important;
   }
-  
+
   .benefit-icon-container .fas {
-    color: #991b1b !important; /* darker red (red-900) for better contrast */
-    font-size: 1.85rem !important; /* Larger icons */
+    color: #991b1b !important;
+    /* darker red (red-900) for better contrast */
+    font-size: 1.85rem !important;
+    /* Larger icons */
   }
-  
+
   .benefit-icon-container:hover {
-    background-color: #fee2e2 !important; /* slightly darker on hover */
-    transform: scale(1.08) !important; /* more pronounced scale effect */
-    box-shadow: 0 6px 12px rgba(185, 28, 28, 0.25) !important; /* enhanced shadow on hover */
-    border-color: #f87171 !important; /* brighter border on hover */
+    background-color: #fee2e2 !important;
+    /* slightly darker on hover */
+    transform: scale(1.08) !important;
+    /* more pronounced scale effect */
+    box-shadow: 0 6px 12px rgba(185, 28, 28, 0.25) !important;
+    /* enhanced shadow on hover */
+    border-color: #f87171 !important;
+    /* brighter border on hover */
   }
-  
+
   .benefit-card:hover {
-    background-color: #fffbeb !important; /* amber-50 background on hover */
-    box-shadow: 0 8px 15px rgba(146, 64, 14, 0.1) !important; /* amber shadow */
-    transform: translateY(-3px) !important; /* slight lift effect */
+    background-color: #fffbeb !important;
+    /* amber-50 background on hover */
+    box-shadow: 0 8px 15px rgba(146, 64, 14, 0.1) !important;
+    /* amber shadow */
+    transform: translateY(-3px) !important;
+    /* slight lift effect */
     transition: all 0.3s ease !important;
   }
-  
+
   /* Add gold accent for section heading */
   .benefits-heading .fas {
-    color: #f59e0b !important; /* amber-500 */
+    color: #f59e0b !important;
+    /* amber-500 */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
   }
-  
+
   /* Make benefit titles more prominent */
   .benefit-title {
-    font-size: 1.1rem !important; 
+    font-size: 1.1rem !important;
     font-weight: 600 !important;
-    color: #ef1818 !important; /* red-900 for stronger contrast */
+    color: #ef1818 !important;
+    /* red-900 for stronger contrast */
     margin-bottom: 0.5rem !important;
     padding-bottom: 0.35rem !important;
-    border-bottom: 2px solid #fecaca !important; /* subtle underline */
+    border-bottom: 2px solid #fecaca !important;
+    /* subtle underline */
     display: inline-block !important;
     transition: all 0.2s ease !important;
   }
-  
+
   .benefit-card:hover .benefit-title {
-    color: #caa732 !important; /* gold color on hover */
-    border-bottom-color: #fcd34d !important; /* brighter gold underline on hover */
+    color: #caa732 !important;
+    /* gold color on hover */
+    border-bottom-color: #fcd34d !important;
+    /* brighter gold underline on hover */
     transform: translateY(-2px) !important;
   }
 </style>
@@ -279,24 +296,30 @@ membership{% endblock %}
         </h3>
 
         <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6">
-          <div class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
-            <div class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
+          <div
+            class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
+            <div
+              class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
               <i class="fas fa-calendar-alt tw-text-2xl tw-text-red-700"></i>
             </div>
             <h4 class="benefit-title">Easy Reservations</h4>
             <p class="tw-text-sm tw-text-gray-500">Book your table anytime with just a few clicks</p>
           </div>
 
-          <div class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
-            <div class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
+          <div
+            class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
+            <div
+              class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
               <i class="fas fa-clock tw-text-2xl tw-text-red-700"></i>
             </div>
             <h4 class="benefit-title">Booking History</h4>
             <p class="tw-text-sm tw-text-gray-500">Access your past and upcoming reservations</p>
           </div>
 
-          <div class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
-            <div class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
+          <div
+            class="benefit-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-4 tw-rounded-lg tw-transition-all tw-duration-300 hover:tw-bg-red-50 hover:tw-shadow-md">
+            <div
+              class="benefit-icon-container tw-w-16 tw-h-16 tw-rounded-full tw-bg-red-100 tw-flex tw-items-center tw-justify-center tw-mb-4 tw-shadow-sm">
               <i class="fas fa-gift tw-text-2xl tw-text-red-700"></i>
             </div>
             <h4 class="benefit-title">Special Offers</h4>
@@ -655,6 +678,9 @@ membership{% endblock %}
 
 {% block extra_js %}
 <script>
+  /* jshint esversion: 6, browser: true, devel: true, -W083 */
+  /* globals bootstrap */
+
   // Add Tailwind classes to the Django form fields
   document.addEventListener('DOMContentLoaded', function () {
     // Username field
