@@ -1,13 +1,16 @@
 {% extends "bookings/base.html" %}
 {% load static %}
 
-{% block meta_description %}Sear Steaks - Leeds' premier steakhouse offering exceptional dry-aged steaks, fine wines, and a memorable dining experience in an elegant atmosphere.{% endblock %}
+{% block meta_description %}Sear Steaks - Leeds' premier steakhouse offering exceptional dry-aged steaks, fine wines,
+and a memorable dining experience in an elegant atmosphere.{% endblock %}
 
-{% block meta_keywords %}Sear Steaks, Leeds steakhouse, premium steaks, fine dining, book a table, dry-aged beef, restaurant Leeds{% endblock %}
+{% block meta_keywords %}Sear Steaks, Leeds steakhouse, premium steaks, fine dining, book a table, dry-aged beef,
+restaurant Leeds{% endblock %}
 
 {% block og_title %}Sear Steaks | Premier Steakhouse in Leeds{% endblock %}
 
-{% block og_description %}Experience Leeds' premier steakhouse with exceptional dry-aged steaks, fine wines, and a memorable dining experience in an elegant atmosphere.{% endblock %}
+{% block og_description %}Experience Leeds' premier steakhouse with exceptional dry-aged steaks, fine wines, and a
+memorable dining experience in an elegant atmosphere.{% endblock %}
 
 {% block og_image %}{% static 'images/restaurant-interior.jpg' %}{% endblock %}
 
@@ -16,10 +19,27 @@
 {% block title %}Sear Steaks | Premier Steakhouse in Leeds{% endblock %}
 
 {% block content %}
-<!-- Hero Section with Scrolling Effect -->
-<div class="tw-relative tw-h-screen tw-bg-cover tw-bg-center tw-bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=80&w=1740')">
+<!-- Add a smaller hero image version for mobile devices -->
+<style>
+  .hero-background {
+    background-image: url('{% static "images/hero/home_hero.webp" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Use fixed attachment only on larger screens */
+  @media (min-width: 768px) {
+    .hero-background {
+      background-attachment: fixed;
+    }
+  }
+</style>
+
+<!-- Hero Section with Updated Image -->
+<div class="tw-relative tw-h-screen tw-bg-cover tw-bg-center hero-background">
   <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/70"></div>
-  
+
   <!-- Hero Content -->
   <div class="tw-relative tw-z-10 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center tw-text-white tw-px-4">
     <h1 class="tw-text-4xl md:tw-text-6xl tw-font-bold tw-mb-4 tw-drop-shadow-lg">Sear Steaks</h1>
@@ -40,20 +60,24 @@
   </div>
 </div>
 
-<!-- Welcome Section -->
+<!-- Welcome Section with Correctly Named Image -->
 <section class="tw-py-16 tw-bg-white">
   <div class="tw-container tw-mx-auto tw-px-4">
     <div class="tw-flex tw-flex-col md:tw-flex-row tw-items-center">
       <div class="md:tw-w-1/2 tw-mb-8 md:tw-mb-0 md:tw-pr-8">
-        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1674" alt="Sear Steaks interior" class="tw-rounded-lg tw-shadow-xl tw-w-full tw-h-auto">
+        <!-- Use correct image filename: restaurant_interior.webp -->
+        <img src="{% static 'images/restaurant_interior.webp' %}" alt="Sear Steaks interior"
+          class="tw-rounded-lg tw-shadow-xl tw-w-full tw-h-auto" width="600" height="400" loading="lazy">
       </div>
       <div class="md:tw-w-1/2 md:tw-pl-8 tw-text-center md:tw-text-left">
         <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-6">Welcome to Sear Steaks</h2>
         <p class="tw-text-gray-700 tw-text-lg tw-mb-6">
-          At Sear Steaks, we believe in the perfect union of exceptional meat, expert preparation, and warm hospitality. Our restaurant offers an intimate dining experience where every steak is cooked to perfection.
+          At Sear Steaks, we believe in the perfect union of exceptional meat, expert preparation, and warm hospitality.
+          Our restaurant offers an intimate dining experience where every steak is cooked to perfection.
         </p>
         <div class="tw-flex tw-justify-center md:tw-justify-start">
-          <a href="{% url 'contact' %}" class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
+          <a href="{% url 'contact' %}"
+            class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
             Learn More About Us
           </a>
         </div>
@@ -71,11 +95,12 @@
         Discover our most beloved cuts, each prepared with our signature searing technique.
       </p>
     </div>
-    
+
     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8">
       <!-- Steak Item 1 -->
       <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-        <img src="{% static 'images/menu/prime_ribeye.webp' %}" alt="Ribeye Steak" class="tw-w-full tw-h-64 tw-object-cover">
+        <img src="{% static 'images/menu/prime_ribeye.webp' %}" alt="Ribeye Steak"
+          class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
         <div class="tw-p-6 card-content">
           <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">Prime Ribeye</h3>
           <p class="tw-text-gray-600 tw-mb-4">
@@ -86,10 +111,11 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Steak Item 2 -->
       <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-        <img src="{% static 'images/menu/filet_mignon.webp' %}" alt="Filet Mignon" class="tw-w-full tw-h-64 tw-object-cover">
+        <img src="{% static 'images/menu/filet_mignon.webp' %}" alt="Filet Mignon"
+          class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
         <div class="tw-p-6 card-content">
           <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">Filet Mignon</h3>
           <p class="tw-text-gray-600 tw-mb-4">
@@ -100,10 +126,11 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Steak Item 3 -->
       <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-        <img src="{% static 'images/menu/new_york_strip.webp' %}" alt="New York Strip" class="tw-w-full tw-h-64 tw-object-cover">
+        <img src="{% static 'images/menu/new_york_strip.webp' %}" alt="New York Strip"
+          class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
         <div class="tw-p-6 card-content">
           <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">New York Strip</h3>
           <p class="tw-text-gray-600 tw-mb-4">
@@ -115,9 +142,10 @@
         </div>
       </div>
     </div>
-    
+
     <div class="tw-text-center tw-mt-10">
-      <a href="{% url 'menu' %}" class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
+      <a href="{% url 'menu' %}"
+        class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
         View Full Menu
       </a>
     </div>
@@ -132,7 +160,8 @@
       <p class="tw-text-lg tw-text-gray-300 tw-mb-8">
         Secure your preferred dining time and table location for a memorable steakhouse experience.
       </p>
-      <a href="{% url 'floor_plan' %}" class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
+      <a href="{% url 'floor_plan' %}"
+        class="hover-gold-border tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent">
         Make Reservation
       </a>
     </div>
@@ -163,7 +192,7 @@
             </li>
           </ul>
         </div>
-        
+
         <div>
           <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-3">Location</h3>
           <address class="tw-not-italic tw-text-gray-700 tw-mb-4">
@@ -175,17 +204,14 @@
           </p>
         </div>
       </div>
-      
+
       <!-- Map -->
       <div class="lg:tw-w-1/2 tw-h-80 tw-bg-gray-200 tw-rounded-lg tw-overflow-hidden">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150789.8268568214!2d-1.7005386559748092!3d53.80566362879145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795dc77564945b%3A0xb905005f4d10083b!2sBison%20Steakhouse%20LEEDS!5e0!3m2!1sen!2suk!4v1745093522000!5m2!1sen!2suk" 
-          style="border:0; width:100%; height:100%;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          class="tw-w-full tw-h-full"
-          title="Map showing Sear Steaks Leeds location">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150789.8268568214!2d-1.7005386559748092!3d53.80566362879145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795dc77564945b%3A0xb905005f4d10083b!2sBison%20Steakhouse%20LEEDS!5e0!3m2!1sen!2suk!4v1745093522000!5m2!1sen!2suk"
+          style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" class="tw-w-full tw-h-full"
+          title="Map showing Sear Steaks Leeds location" loading="lazy">
         </iframe>
       </div>
     </div>
