@@ -474,28 +474,33 @@ restaurant Leeds{% endblock %}
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling with performance optimization
-    document.querySelectorAll('nav a').forEach(anchor => {
+    // Smooth scrolling for both main nav and in-page menu nav
+    document.querySelectorAll('nav a, .site-header a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          // Remove content-visibility: auto to ensure proper scrolling
-          targetElement.style.contentVisibility = 'visible';
+        // Only intercept links that point to IDs on the current page
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(href);
           
-          // Smooth scroll
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          
-          // Add highlight effect
-          targetElement.classList.add('tw-bg-amber-50');
-          setTimeout(() => {
-            targetElement.classList.remove('tw-bg-amber-50');
-          }, 1000);
+          if (targetElement) {
+            // Remove content-visibility: auto to ensure proper scrolling
+            if (targetElement.style) {
+              targetElement.style.contentVisibility = 'visible';
+            }
+            
+            // Smooth scroll
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+            
+            // Add highlight effect
+            targetElement.classList.add('tw-bg-amber-50');
+            setTimeout(() => {
+              targetElement.classList.remove('tw-bg-amber-50');
+            }, 1000);
+          }
         }
       });
     });

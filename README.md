@@ -292,6 +292,8 @@ This planning phase ensures that the restaurant booking web application aligns w
 
 # 🧪 Testing Phase
 
+For detailed information about testing methodologies, validation results, and bug reports, please see the [comprehensive testing documentation](TESTING.md).
+
 ## Code Validation
 - HTML5: W3C Validator
 - CSS3: W3C Validator
@@ -330,3 +332,4 @@ venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
 pip install -r requirements.txt
+```
