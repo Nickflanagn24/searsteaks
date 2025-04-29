@@ -19,16 +19,17 @@ memorable dining experience in an elegant atmosphere.{% endblock %}
 {% block title %}Sear Steaks | Premier Steakhouse in Leeds{% endblock %}
 
 {% block content %}
-<!-- Add a smaller hero image version for mobile devices -->
+<!-- Optimized Hero Image Loading for Mobile -->
 <style>
+  /* Base style for all devices */
   .hero-background {
     background-image: url('{% static "images/hero/home_hero.webp" %}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
-
-  /* Use fixed attachment only on larger screens */
+  
+  /* Only apply fixed attachment on desktop */
   @media (min-width: 768px) {
     .hero-background {
       background-attachment: fixed;
@@ -99,8 +100,12 @@ memorable dining experience in an elegant atmosphere.{% endblock %}
     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8">
       <!-- Steak Item 1 -->
       <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-        <img src="{% static 'images/menu/prime_ribeye.webp' %}" alt="Ribeye Steak"
-          class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
+        <img src="{% static 'images/menu/prime_ribeye.webp' %}" 
+             alt="Ribeye Steak"
+             class="tw-w-full tw-h-64 tw-object-cover" 
+             width="400" 
+             height="256" 
+             loading="lazy">
         <div class="tw-p-6 card-content">
           <h3 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">Prime Ribeye</h3>
           <p class="tw-text-gray-600 tw-mb-4">
