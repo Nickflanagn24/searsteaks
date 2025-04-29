@@ -1,19 +1,46 @@
 {% extends "bookings/base.html" %}
 {% load static %}
 
-{% block meta_description %}Explore our premium selection of steaks and dishes at Sear Steaks Leeds. From perfectly aged ribeye to signature sides and decadent desserts - view our full menu.{% endblock %}
+{% block meta_description %}Explore our premium selection of steaks and dishes at Sear Steaks Leeds. From perfectly aged
+ribeye to signature sides and decadent desserts - view our full menu.{% endblock %}
 
-{% block meta_keywords %}Sear Steaks menu, Leeds restaurant menu, premium steaks, ribeye, sirloin, fillet steak, steak restaurant Leeds{% endblock %}
+{% block meta_keywords %}Sear Steaks menu, Leeds restaurant menu, premium steaks, ribeye, sirloin, fillet steak, steak
+restaurant Leeds{% endblock %}
 
-{% block canonical_url %}https://searsteaks.herokuapp.com{% url 'menu' %}{% endblock %}
+{% block canonical_url %}https://searsteaks.herokuapp.com{% endblock %}
 
 {% block title %}Menu | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
-<!-- Hero Banner with scrolling effect -->
-<div class="tw-relative tw-h-72 tw-bg-cover tw-bg-center tw-bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=2070')">
+<!-- Hero Banner with mobile optimization -->
+<style>
+  /* Base styles for all devices */
+  .hero-background {
+    background-image: url('{% static "images/hero/menu_hero1.webp" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Only use fixed attachment on desktop devices */
+  @media (min-width: 768px) {
+    .hero-background {
+      background-attachment: fixed;
+    }
+  }
+
+  /* Fix for iOS/mobile devices where fixed backgrounds can cause performance issues */
+  @media (max-width: 767px) {
+    .hero-background {
+      background-attachment: scroll;
+    }
+  }
+</style>
+
+<div class="tw-relative tw-h-72 hero-background">
   <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/90"></div>
-  <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+  <div
+    class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
     <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-text-white tw-mb-2 tw-drop-shadow-lg">Our Menu</h1>
     <div class="tw-flex tw-items-center tw-w-64 tw-my-4">
       <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
@@ -30,43 +57,57 @@
     <!-- Enhanced Menu Navigation Card with Ivory Hover Background -->
     <div class="tw-bg-white tw-rounded-xl tw-shadow-xl tw-overflow-hidden tw-border-b-4 tw-border-red-700">
       <!-- Card Header -->
-      <div class="tw-bg-gradient-to-r tw-from-gray-900 tw-to-red-900 tw-py-3 tw-px-6 tw-text-white tw-border-b tw-border-amber-400">
+      <div
+        class="tw-bg-gradient-to-r tw-from-gray-900 tw-to-red-900 tw-py-3 tw-px-6 tw-text-white tw-border-b tw-border-amber-400">
         <div class="tw-flex tw-justify-center tw-items-center">
           <h3 class="tw-text-sm tw-font-bold tw-tracking-wider tw-uppercase">Explore Our Menu</h3>
         </div>
       </div>
-      
+
       <!-- Alternative approach with inline style override for hover -->
       <div class="tw-relative tw-z-20 tw-py-4 tw-px-4 tw-bg-gray-900">
         <nav class="tw-flex tw-justify-center">
           <!-- Responsive menu with wrapping on small screens -->
           <div class="tw-flex tw-flex-wrap tw-justify-center tw-gap-x-8 tw-gap-y-4">
-            <a href="#starters" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
-              <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+            <a href="#starters"
+              class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+              <span
+                class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
                 <i class="fas fa-utensils"></i>
               </span>
-              <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Starters</span>
+              <span
+                class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Starters</span>
             </a>
-            
-            <a href="#mains" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
-              <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+
+            <a href="#mains"
+              class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+              <span
+                class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
                 <i class="fas fa-fire"></i>
               </span>
-              <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Main Courses</span>
+              <span
+                class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Main
+                Courses</span>
             </a>
-            
-            <a href="#desserts" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
-              <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+
+            <a href="#desserts"
+              class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+              <span
+                class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
                 <i class="fas fa-cookie"></i>
               </span>
-              <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Desserts</span>
+              <span
+                class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Desserts</span>
             </a>
-            
-            <a href="#cocktails" class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
-              <span class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
+
+            <a href="#cocktails"
+              class="tw-group tw-relative tw-flex tw-flex-col tw-items-center tw-px-4 tw-py-2 tw-transition-all tw-duration-300 hover:tw-bg-red-700 tw-border tw-border-transparent hover:tw-border-amber-400 tw-rounded-lg tw-min-w-[80px] tw-no-underline">
+              <span
+                class="tw-inline-block tw-text-amber-400 tw-mb-1 tw-text-lg tw-transition-colors tw-duration-300 group-hover:!text-white">
                 <i class="fas fa-glass-martini-alt"></i>
               </span>
-              <span class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Cocktails</span>
+              <span
+                class="tw-text-amber-50 tw-font-medium tw-text-sm tw-transition-colors tw-duration-300 group-hover:!text-white">Cocktails</span>
             </a>
           </div>
         </nav>
@@ -76,18 +117,19 @@
     <!-- Menu Container -->
     <div class="tw-bg-gray-50 tw-py-12 md:tw-py-20">
       <div class="tw-container tw-mx-auto tw-px-4">
-        
+
         <!-- Updated Starters Section with 2x2 Grid -->
         <section id="starters" class="tw-mb-20">
           <div class="tw-flex tw-items-center tw-mb-10">
             <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Starters</h2>
             <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
           </div>
-          
+
           <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
             <!-- Beef Carpaccio -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/beef_carpaccio.webp' %}" alt="Beef Carpaccio" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/beef_carpaccio.webp' %}" alt="Beef Carpaccio"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Beef Carpaccio</h3>
@@ -98,10 +140,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Jumbo Shrimp Cocktail -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/jumbo_shrimp_cocktail.webp' %}" alt="Jumbo Shrimp Cocktail" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/jumbo_shrimp_cocktail.webp' %}" alt="Jumbo Shrimp Cocktail"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Jumbo Shrimp Cocktail</h3>
@@ -112,10 +155,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Crab Cakes -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/crab_cakes.webp' %}" alt="Crab Cakes" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/crab_cakes.webp' %}" alt="Crab Cakes"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Crab Cakes</h3>
@@ -126,10 +170,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- French Onion Soup -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/french_onion_soup.webp' %}" alt="French Onion Soup" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/french_onion_soup.webp' %}" alt="French Onion Soup"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">French Onion Soup</h3>
@@ -142,19 +187,20 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Main Courses Section -->
         <section id="mains" class="tw-mb-20">
           <div class="tw-flex tw-items-center tw-mb-10">
             <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Main Courses</h2>
             <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
           </div>
-          
+
           <!-- Premium Steaks Showcase -->
           <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8 tw-mb-12">
             <!-- Ribeye -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/prime_ribeye.webp' %}" alt="Ribeye Steak" class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/prime_ribeye.webp' %}" alt="Ribeye Steak"
+                class="tw-w-full tw-h-64 tw-object-cover" width="400" height="256" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Prime Ribeye</h3>
@@ -168,10 +214,11 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Filet Mignon -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/filet_mignon.webp' %}" alt="Filet Mignon" class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/filet_mignon.webp' %}" alt="Filet Mignon"
+                class="tw-w-full tw-h-64 tw-object-cover" width="400" height="256" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Filet Mignon</h3>
@@ -185,10 +232,11 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- New York Strip -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/new_york_strip.webp' %}" alt="New York Strip" class="tw-w-full tw-h-64 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/new_york_strip.webp' %}" alt="New York Strip"
+                class="tw-w-full tw-h-64 tw-object-cover" width="400" height="256" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">New York Strip</h3>
@@ -203,12 +251,13 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Other Main Courses -->
           <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
             <!-- Added images to these previously text-only items -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/rack_of_lamb.webp' %}" alt="Rack of Lamb" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/rack_of_lamb.webp' %}" alt="Rack of Lamb"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Rack of Lamb</h3>
@@ -219,9 +268,10 @@
                 </p>
               </div>
             </div>
-            
+
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/grilled_salmon.webp' %}" alt="Grilled Salmon" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/grilled_salmon.webp' %}" alt="Grilled Salmon"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Grilled Salmon</h3>
@@ -232,9 +282,10 @@
                 </p>
               </div>
             </div>
-            
+
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/roast_chicken.webp' %}" alt="Roasted Chicken" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/roast_chicken.webp' %}" alt="Roasted Chicken"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Roasted Chicken</h3>
@@ -245,9 +296,10 @@
                 </p>
               </div>
             </div>
-            
+
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/veg_wellington.webp' %}" alt="Vegetable Wellington" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/veg_wellington.webp' %}" alt="Vegetable Wellington"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Vegetable Wellington</h3>
@@ -260,18 +312,19 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Desserts Section -->
         <section id="desserts" class="tw-mb-20">
           <div class="tw-flex tw-items-center tw-mb-10">
             <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Desserts</h2>
             <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
           </div>
-          
+
           <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-8">
             <!-- Chocolate Lava Cake -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/chocolate_lava_cake.webp' %}" alt="Chocolate Lava Cake" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/chocolate_lava_cake.webp' %}" alt="Chocolate Lava Cake"
+                class="tw-w-full tw-h-48 tw-object-cover" width="300" height="192" loading="lazy">
               <div class="tw-p-5 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Chocolate Lava Cake</h3>
@@ -282,10 +335,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- New York Cheesecake -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/cheesecake.webp' %}" alt="New York Cheesecake" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/cheesecake.webp' %}" alt="New York Cheesecake"
+                class="tw-w-full tw-h-48 tw-object-cover" width="300" height="192" loading="lazy">
               <div class="tw-p-5 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">New York Cheesecake</h3>
@@ -296,10 +350,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Crème Brûlée -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/crem_brulee.webp' %}" alt="crème Brûlée" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/crem_brulee.webp' %}" alt="crème Brûlée"
+                class="tw-w-full tw-h-48 tw-object-cover" width="300" height="192" loading="lazy">
               <div class="tw-p-5 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Crème Brûlée</h3>
@@ -310,10 +365,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Apple Tart -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/apple_tart.webp' %}" alt="Apple Tart" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/apple_tart.webp' %}" alt="Apple Tart"
+                class="tw-w-full tw-h-48 tw-object-cover" width="300" height="192" loading="lazy">
               <div class="tw-p-5 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Apple Tart</h3>
@@ -326,18 +382,19 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Cocktails Section with 2x2 Grid -->
         <section id="cocktails">
           <div class="tw-flex tw-items-center tw-mb-10">
             <h2 class="tw-text-3xl tw-font-bold tw-text-gray-900">Cocktails</h2>
             <div class="tw-ml-6 tw-flex-grow tw-h-0.5 tw-bg-red-700 tw-bg-opacity-30"></div>
           </div>
-          
+
           <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
             <!-- Old Fashioned -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/old_fashioned.webp' %}" alt="Old Fashioned" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/old_fashioned.webp' %}" alt="Old Fashioned"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Signature Old Fashioned</h3>
@@ -348,10 +405,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Manhattan -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/manhatten.webp' %}" alt="Manhattan" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/manhatten.webp' %}" alt="Manhattan"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Manhattan</h3>
@@ -362,10 +420,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Whiskey Sour -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/whiskey_sour.webp' %}" alt="Whiskey Sour" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/whiskey_sour.webp' %}" alt="Whiskey Sour"
+                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Whiskey Sour</h3>
@@ -376,10 +435,11 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Negroni -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
-              <img src="{% static 'images/menu/negroni.webp' %}" alt="Negroni" class="tw-w-full tw-h-48 tw-object-cover" loading="lazy">
+              <img src="{% static 'images/menu/negroni.webp' %}" alt="Negroni" class="tw-w-full tw-h-48 tw-object-cover"
+                width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Negroni</h3>
@@ -392,7 +452,7 @@
             </div>
           </div>
         </section>
-        
+
       </div>
     </div>
   </div>
@@ -405,9 +465,40 @@
     <p class="tw-text-gray-300 tw-mb-8 tw-max-w-2xl tw-mx-auto">
       Join us for an unforgettable dining experience at Sear Steaks. Make a reservation to secure your table.
     </p>
-    <a href="{% url 'floor_plan' %}" class="gold-hover-btn tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-border-2 tw-border-transparent hover:tw-border-amber-400 tw-no-underline">
+    <a href="{% url 'floor_plan' %}"
+      class="gold-hover-btn tw-inline-block tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-bold tw-py-3 tw-px-8 tw-rounded-lg tw-transition tw-duration-300 tw-border-2 tw-border-transparent hover:tw-border-amber-400 tw-no-underline">
       Reserve Your Table
     </a>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling with performance optimization
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          // Remove content-visibility: auto to ensure proper scrolling
+          targetElement.style.contentVisibility = 'visible';
+          
+          // Smooth scroll
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Add highlight effect
+          targetElement.classList.add('tw-bg-amber-50');
+          setTimeout(() => {
+            targetElement.classList.remove('tw-bg-amber-50');
+          }, 1000);
+        }
+      });
+    });
+  });
+</script>
 {% endblock %}
