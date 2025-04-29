@@ -1,30 +1,69 @@
 {% extends "bookings/base.html" %}
 {% load static %}
 
-{% block meta_description %}Book your table at Sear Steaks Leeds using our interactive floor plan. Select your preferred table location, date, and time for your perfect dining experience.{% endblock %}
+{% block meta_description %}Book your table at Sear Steaks Leeds using our interactive floor plan. Select your preferred
+table location, date, and time for your perfect dining experience.{% endblock %}
 
-{% block meta_keywords %}book table Leeds, Sear Steaks reservation, restaurant booking, table reservation, steakhouse Leeds booking{% endblock %}
+{% block meta_keywords %}book table Leeds, Sear Steaks reservation, restaurant booking, table reservation, steakhouse
+Leeds booking{% endblock %}
 
 {% block canonical_url %}https://searsteaks.herokuapp.com{% url 'floor_plan' %}{% endblock %}
 
 {% block title %}Book a Table | Sear Steaks Leeds{% endblock %}
 
 {% block content %}
-<div class="tw-bg-amber-50 tw-min-h-screen tw-pb-16">
-    <!-- Hero Banner with scrolling effect -->
-    <div class="tw-relative tw-h-72 tw-bg-cover tw-bg-center tw-bg-fixed" style="background-image: url('https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg')">
-        <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/90"></div>
-        <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
-            <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-text-white tw-mb-2 tw-drop-shadow-lg">Restaurant Floor Plan</h1>
-            <div class="tw-flex tw-items-center tw-w-64 tw-my-4">
-                <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
-                <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
-                <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
-            </div>
-            <p class="tw-text-lg tw-text-white/90 tw-drop-shadow">Select a table to make your reservation</p>
-        </div>
-    </div>
+<!-- Hero Section with Full Width -->
+<style>
+    /* Base styles for all devices */
+    .hero-background {
+        background-image: url('{% static "images/hero/floor_plan_hero.webp" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        /* Make sure it's full width */
+        margin: 0;
+        /* Remove any margin */
+        padding: 0;
+        /* Remove any padding */
+        /* Add image dimension hints for the browser */
+        aspect-ratio: 16/9;
+        /* Create a background loading effect */
+        background-color: #2a2a2a;
+        /* Placeholder color while image loads */
+    }
 
+    /* Only use fixed attachment on desktop devices */
+    @media (min-width: 768px) {
+        .hero-background {
+            background-attachment: fixed;
+        }
+    }
+
+    /* Fix for iOS/mobile devices where fixed backgrounds cause performance issues */
+    @media (max-width: 767px) {
+        .hero-background {
+            background-attachment: scroll;
+        }
+    }
+</style>
+
+<!-- Hero Section with optimized image and responsive height - MOVE OUTSIDE CONTAINER -->
+<div class="tw-relative tw-h-72 md:tw-h-96 lg:tw-h-[400px] hero-background tw-w-full">
+    <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/70"></div>
+    <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+        <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-text-white tw-mb-2 tw-drop-shadow-lg">Reserve Your Table</h1>
+        <div class="tw-flex tw-items-center tw-w-64 tw-my-4">
+            <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+            <i class="fas fa-utensils tw-mx-4 tw-text-amber-400 tw-text-xl"></i>
+            <div class="tw-h-0.5 tw-flex-1 tw-bg-amber-400"></div>
+        </div>
+        <p class="tw-text-lg tw-text-white tw-drop-shadow">Select your preferred date, time, and table</p>
+    </div>
+</div>
+
+<!-- Now start the amber background AFTER the hero -->
+<div class="tw-bg-amber-50 tw-min-h-screen tw-pb-16">
     <!-- Main Content -->
     <div class="tw-container tw-mx-auto tw-px-6 tw-pt-10">
         <!-- Modification notification banner -->
@@ -34,7 +73,8 @@
                 <i class="fas fa-info-circle tw-text-amber-700 tw-mr-3"></i>
                 <div>
                     <p class="tw-mb-1"><strong>You're modifying your existing reservation.</strong></p>
-                    <p>Your current table (Table {{ booking_to_modify.table.table_number }}) will be highlighted in amber. You can keep this table or select a different available table.</p>
+                    <p>Your current table (Table {{ booking_to_modify.table.table_number }}) will be highlighted in
+                        amber. You can keep this table or select a different available table.</p>
                 </div>
             </div>
         </div>
@@ -46,174 +86,184 @@
                 <!-- Date & Time Selection -->
                 <div class="tw-p-6 tw-bg-gray-50 tw-border-b">
                     <h2 class="tw-text-xl tw-font-bold tw-text-gray-800 tw-mb-4">Select Date & Time</h2>
-                    
+
                     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4">
                         <div>
-                            <label for="date" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Date</label>
-                            <input type="date" id="date" name="date" min="{{ today }}" value="{{ selected_date }}" 
-                                   class="tw-w-full tw-p-2 tw-border tw-border-gray-300 tw-rounded">
+                            <label for="date"
+                                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Date</label>
+                            <input type="date" id="date" name="date" min="{{ today }}" value="{{ selected_date }}"
+                                class="tw-w-full tw-p-2 tw-border tw-border-gray-300 tw-rounded">
                         </div>
                         <div>
-                            <label for="time" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Time</label>
+                            <label for="time"
+                                class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">Time</label>
                             <select id="time" name="time" class="tw-w-full tw-p-2 tw-border tw-border-gray-300 tw-rounded">
                                 <option value="18:30" {% if selected_time == '18:30' %}selected{% endif %}>6:30 PM</option>
                                 <option value="21:30" {% if selected_time == '21:30' %}selected{% endif %}>9:30 PM</option>
                             </select>
                         </div>
                     </div>
-                    
-                    <button id="checkBtn" type="button" class="gold-hover-btn tw-mt-4 tw-px-4 tw-py-2 tw-bg-red-800 tw-text-white tw-rounded-md hover:tw-bg-red-900 tw-border-2 tw-border-transparent hover:tw-border-amber-400 tw-transition-all tw-duration-300">
+
+                    <button id="checkBtn" type="button"
+                        class="gold-hover-btn tw-mt-4 tw-px-4 tw-py-2 tw-bg-red-800 tw-text-white tw-rounded-md hover:tw-bg-red-900 tw-border-2 tw-border-transparent hover:tw-border-amber-400 tw-transition-all tw-duration-300">
                         <i class="fas fa-search tw-mr-2"></i>
                         Check Availability
                     </button>
-                    
+
                     {% if not user.is_authenticated %}
                     <div class="tw-mt-4 tw-p-3 tw-bg-blue-50 tw-text-blue-700 tw-rounded-lg tw-text-sm">
                         <i class="fas fa-info-circle tw-mr-1"></i>
-                        <span>Please <a href="{% url 'login' %}" class="tw-font-medium tw-underline">login</a> to make a reservation.</span>
+                        <span>Please <a href="{% url 'login' %}" class="tw-font-medium tw-underline">login</a> to make a
+                            reservation.</span>
                     </div>
                     {% endif %}
                 </div>
 
                 <!-- Tables Display -->
-                <div class="tw-p-6">
+                <div class="tw-p-6" style="content-visibility: auto; contain-intrinsic-size: 1px 500px;">
                     <h2 class="tw-text-xl tw-font-bold tw-text-gray-800 tw-mb-1">Available Tables</h2>
                     <p class="tw-text-sm tw-text-gray-500 tw-mb-6">Click on an available table to make a reservation</p>
-                    
+
                     <!-- Legend -->
                     <div class="tw-flex tw-flex-wrap tw-gap-4 tw-mb-6">
                         <div class="tw-flex tw-items-center">
-                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-green-500 tw-mr-2"></div>
+                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-green-500 tw-mr-2"
+                                style="width:16px;height:16px"></div>
                             <span class="tw-text-sm tw-text-gray-600">Available</span>
                         </div>
                         <div class="tw-flex tw-items-center">
-                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-red-500 tw-mr-2"></div>
+                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-red-500 tw-mr-2"
+                                style="width:16px;height:16px"></div>
                             <span class="tw-text-sm tw-text-gray-600">Booked</span>
                         </div>
                         {% if modify_booking_id %}
                         <div class="tw-flex tw-items-center">
-                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-amber-500 tw-mr-2"></div>
+                            <div class="tw-w-4 tw-h-4 tw-rounded-full tw-bg-amber-500 tw-mr-2"
+                                style="width:16px;height:16px"></div>
                             <span class="tw-text-sm tw-text-gray-600">Your Current Table</span>
                         </div>
                         {% endif %}
                     </div>
-                    
+
                     <!-- Tables Grid -->
-                    <div id="tablesContainer" class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-4">
+                    <div id="tablesContainer"
+                        class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-4">
                         <!-- Tables will be loaded dynamically -->
                         <div class="tw-col-span-full tw-text-center tw-py-8">
                             <p class="tw-text-gray-600">Loading available tables...</p>
                         </div>
                     </div>
+
                 </div>
-            </div>
-            
-            <!-- Action Button - Using the solid red style -->
-            <div class="tw-mt-8 tw-flex tw-justify-center">
-                <a href="{% url 'home' %}" class="gold-hover-btn tw-px-6 tw-py-3 tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md hover:tw-bg-red-900 tw-transition-all tw-duration-300 tw-flex tw-items-center tw-justify-center tw-no-underline tw-border-2 tw-border-transparent hover:tw-border-amber-400">
-                    <i class="fas fa-home tw-mr-2"></i>
-                    Return Home
-                </a>
+
+                <!-- Action Button - Using the solid red style -->
+                <div class="tw-mt-8 tw-flex tw-justify-center">
+                    <a href="{% url 'home' %}"
+                        class="gold-hover-btn tw-px-6 tw-py-3 tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md hover:tw-bg-red-900 tw-transition-all tw-duration-300 tw-flex tw-items-center tw-justify-center tw-no-underline tw-border-2 tw-border-transparent hover:tw-border-amber-400">
+                        <i class="fas fa-home tw-mr-2"></i>
+                        Return Home
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
-{% block extra_js %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const checkBtn = document.getElementById('checkBtn');
-        const dateInput = document.getElementById('date');
-        const timeInput = document.getElementById('time');
-        const tablesContainer = document.getElementById('tablesContainer');
-        
-        // Get URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const modifyBookingId = urlParams.get('modify_booking_id');
-        const selectedDate = urlParams.get('date');
-        const selectedTime = urlParams.get('time');
+    {% block extra_js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkBtn = document.getElementById('checkBtn');
+            const dateInput = document.getElementById('date');
+            const timeInput = document.getElementById('time');
+            const tablesContainer = document.getElementById('tablesContainer');
 
-        // Pre-fill date and time if provided in the URL
-        if (selectedDate) {
-            dateInput.value = selectedDate;
-        }
-        if (selectedTime) {
-            timeInput.value = selectedTime;
-        }
-        
-        // Check availability button click
-        checkBtn.addEventListener('click', function() {
-            const date = dateInput.value;
-            const time = timeInput.value;
-            
-            if (!date || !time) {
-                alert('Please select both date and time');
-                return;
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const modifyBookingId = urlParams.get('modify_booking_id');
+            const selectedDate = urlParams.get('date');
+            const selectedTime = urlParams.get('time');
+
+            // Pre-fill date and time if provided in the URL
+            if (selectedDate) {
+                dateInput.value = selectedDate;
             }
-            
-            // Show loading state
-            tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">Loading available tables...</p></div>';
-            
-            // Fetch real availability data
-            let apiUrl = `/api/table-availability/?date=${date}&time=${time}`;
-            if (modifyBookingId) {
-                apiUrl += `&modify_booking_id=${modifyBookingId}`;
+            if (selectedTime) {
+                timeInput.value = selectedTime;
             }
-            
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    displayTables(data.tables);
-                })
-                .catch(error => {
-                    console.error('Error fetching table availability:', error);
-                    tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-red-600">Error loading tables. Please try again.</p></div>';
-                });
-        });
-        
-        function displayTables(tables) {
-            if (!tables || tables.length === 0) {
-                tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">No tables found.</p></div>';
-                return;
-            }
-            
-            let html = '';
-            tables.forEach(table => {
-                html += createTableCard(
-                    table.id, 
-                    table.table_number, 
-                    table.capacity, 
-                    !table.is_booked,
-                    table.is_previously_selected || false
-                );
+
+            // Check availability button click
+            checkBtn.addEventListener('click', function () {
+                checkAvailability();
             });
-            
-            tablesContainer.innerHTML = html;
-        }
-        
-        function createTableCard(id, number, capacity, available, isPreviouslySelected) {
-            // For available tables
-            if (available) {
-                let classNames = 'gold-hover-btn tw-bg-white tw-border-2 tw-border-green-500 hover:tw-border-amber-400 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md tw-no-underline tw-transition-all tw-duration-300';
-                let circleColor = 'green';
-                
-                // Add styling for previously selected table
-                if (isPreviouslySelected) {
-                    classNames = classNames.replace('tw-border-green-500', 'tw-border-amber-500');
-                    circleColor = 'amber';
+
+            async function checkAvailability() {
+                const date = dateInput.value;
+                const time = timeInput.value;
+
+                if (!date || !time) {
+                    alert('Please select both date and time');
+                    return;
                 }
-                
-                // Build the URL with modify_booking_id if applicable
-                let bookingUrl = `/make-booking/?table_id=${id}&date=${dateInput.value}&time=${timeInput.value}`;
-                
-                // Add modify_booking_id if it exists
-                if (modifyBookingId) {
-                    bookingUrl += `&modify_booking_id=${modifyBookingId}`;
+
+                // Show loading state
+                tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">Loading available tables...</p></div>';
+
+                try {
+                    // Build URL with all parameters at once
+                    const params = new URLSearchParams({ date, time });
+                    if (modifyBookingId) params.append('modify_booking_id', modifyBookingId);
+
+                    const response = await fetch(`/api/table-availability/?${params}`);
+                    const data = await response.json();
+                    displayTables(data.tables);
+                } catch (error) {
+                    console.error('Error:', error);
+                    tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-red-600">Error loading tables. Please try again.</p></div>';
                 }
-                
-                return `<a href="${bookingUrl}" class="${classNames}">
-                    <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-${circleColor}-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">
+            }
+
+            function displayTables(tables) {
+                if (!tables || tables.length === 0) {
+                    tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">No tables found.</p></div>';
+                    return;
+                }
+
+                let html = '';
+                tables.forEach(table => {
+                    html += createTableCard(
+                        table.id,
+                        table.table_number,
+                        table.capacity,
+                        !table.is_booked,
+                        table.is_previously_selected || false
+                    );
+                });
+
+                tablesContainer.innerHTML = html;
+            }
+
+            function createTableCard(id, number, capacity, available, isPreviouslySelected) {
+                // For available tables
+                if (available) {
+                    let classNames = 'gold-hover-btn tw-bg-white tw-border-2 tw-border-green-500 hover:tw-border-amber-400 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md tw-no-underline tw-transition-all tw-duration-300';
+                    let circleColor = 'green';
+
+                    // Add styling for previously selected table
+                    if (isPreviouslySelected) {
+                        classNames = classNames.replace('tw-border-green-500', 'tw-border-amber-500');
+                        circleColor = 'amber';
+                    }
+
+                    // Build the URL with modify_booking_id if applicable
+                    let bookingUrl = `/make-booking/?table_id=${id}&date=${dateInput.value}&time=${timeInput.value}`;
+
+                    // Add modify_booking_id if it exists
+                    if (modifyBookingId) {
+                        bookingUrl += `&modify_booking_id=${modifyBookingId}`;
+                    }
+
+                    return `<a href="${bookingUrl}" class="${classNames}">
+                    <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-${circleColor}-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center" style="width:48px;height:48px">
                         <span class="tw-font-bold">${number}</span>
                     </div>
                     <div class="tw-font-medium tw-text-gray-900">Table ${number}</div>
@@ -226,9 +276,9 @@
                     </div>
                     ${isPreviouslySelected ? '<div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-amber-100 tw-text-amber-800 tw-rounded-full tw-inline-block">Your Current Table</div>' : ''}
                 </a>`;
-            } else {
-                // Booked tables remain the same
-                return `<div class="tw-bg-white tw-border-2 tw-border-red-500 tw-rounded-lg tw-p-4 tw-text-center tw-opacity-75">
+                } else {
+                    // Booked tables remain the same
+                    return `<div class="tw-bg-white tw-border-2 tw-border-red-500 tw-rounded-lg tw-p-4 tw-text-center tw-opacity-75">
                     <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-red-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">
                         <span class="tw-font-bold">${number}</span>
                     </div>
@@ -241,35 +291,36 @@
                         Booked
                     </div>
                 </div>`;
+                }
             }
-        }
-        
-        // Trigger the availability check on page load
-        checkBtn.click();
-    });
-</script>
-{% endblock %}
 
-{% block extra_css %}
-<style>
-    .tw-previously-selected {
-        border: 3px solid #f59e0b !important;
-        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
-        position: relative;
-    }
-    .tw-previously-selected::after {
-        content: 'Your Previous Selection';
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #f59e0b;
-        color: white;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 10px;
-        white-space: nowrap;
-        z-index: 10;
-    }
-</style>
-{% endblock %}
+            // Trigger the availability check on page load
+            checkBtn.click();
+        });
+    </script>
+    {% endblock %}
+
+    {% block extra_css %}
+    <style>
+        .tw-previously-selected {
+            border: 3px solid #f59e0b !important;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+            position: relative;
+        }
+
+        .tw-previously-selected::after {
+            content: 'Your Previous Selection';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f59e0b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+    {% endblock %}
