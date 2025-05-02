@@ -339,7 +339,8 @@ membership{% endblock %}
       <div class="tw-bg-gray-900 tw-p-6">
         <div class="tw-flex tw-items-center tw-justify-between">
           <div class="tw-flex tw-items-center">
-            <div class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
+            <div
+              class="tw-w-10 tw-h-10 tw-rounded-full tw-bg-red-700 tw-flex tw-items-center tw-justify-center tw-mr-4">
               <i class="fas fa-shield-alt tw-text-white"></i>
             </div>
             <h5 class="tw-text-xl tw-font-bold tw-text-white tw-mb-0" id="privacyModalLabel">Terms & Privacy Policy</h5>
@@ -351,7 +352,7 @@ membership{% endblock %}
           </button>
         </div>
       </div>
-      
+
       <!-- Combined Content (Single Scrollable Area) -->
       <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
         <div class="tw-p-6 md:tw-p-8">
@@ -361,7 +362,7 @@ membership{% endblock %}
             <p class="tw-text-gray-500">Last Updated: April 10, 2025</p>
             <div class="tw-w-24 tw-h-1 tw-bg-red-700 tw-mt-4"></div>
           </div>
-          
+
           <!-- Keep your existing privacy policy sections -->
           <section class="tw-pb-3 tw-border-b tw-border-gray-100">
             <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">1. Introduction</h5>
@@ -498,7 +499,7 @@ membership{% endblock %}
             <p class="tw-text-gray-500">Last Updated: April 10, 2025</p>
             <div class="tw-w-24 tw-h-1 tw-bg-red-700 tw-mt-4"></div>
           </div>
-          
+
           <!-- Keep your existing terms of service sections -->
           <section class="tw-pb-3 tw-border-b tw-border-gray-100">
             <h5 class="tw-text-xl tw-font-bold tw-text-gray-900 tw-mb-2">1. Acceptance of Terms</h5>
@@ -682,10 +683,10 @@ membership{% endblock %}
     // Show terms and conditions modal when checkbox is clicked
     const termsCheckbox = document.getElementById('terms');
     if (termsCheckbox) {
-      termsCheckbox.addEventListener('click', function(e) {
+      termsCheckbox.addEventListener('click', function (e) {
         // Always prevent default when checkbox is clicked
         e.preventDefault();
-        
+
         // Show the privacy modal
         try {
           const privacyModal = new bootstrap.Modal(document.getElementById('privacyModal'));
@@ -699,16 +700,16 @@ membership{% endblock %}
     // Handle the "I Agree" button in the modal
     const agreeButton = document.querySelector('#privacyModal button[data-bs-dismiss="modal"]');
     if (agreeButton) {
-      agreeButton.addEventListener('click', function() {
+      agreeButton.addEventListener('click', function () {
         // Check the checkbox when user clicks "I Agree" - DO THIS FIRST before modal closes
         const termsCheckbox = document.getElementById('terms');
         if (termsCheckbox) {
           // Force the checkbox to be checked
           termsCheckbox.checked = true;
-          
+
           // Store in session that user has agreed to terms
           sessionStorage.setItem('termsAgreed', 'true');
-          
+
           // Remove any error messages related to the checkbox
           const termsError = document.getElementById('terms-error');
           if (termsError) {
@@ -719,7 +720,7 @@ membership{% endblock %}
     }
 
     // ADDITIONALLY, listen for the modal's hidden.bs.modal event
-    document.getElementById('privacyModal').addEventListener('hidden.bs.modal', function() {
+    document.getElementById('privacyModal').addEventListener('hidden.bs.modal', function () {
       // This runs AFTER the modal is fully hidden
       const termsCheckbox = document.getElementById('terms');
       if (termsCheckbox && sessionStorage.getItem('termsAgreed')) {
@@ -920,7 +921,7 @@ membership{% endblock %}
   // Fix modal scrolling issues - Simplified for single content view
   const privacyModal = document.getElementById('privacyModal');
   if (privacyModal) {
-    privacyModal.addEventListener('shown.bs.modal', function() {
+    privacyModal.addEventListener('shown.bs.modal', function () {
       // Reset scroll position when modal is shown
       const modalBody = privacyModal.querySelector('.modal-body');
       if (modalBody) {
