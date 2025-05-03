@@ -212,14 +212,53 @@ memorable dining experience in an elegant atmosphere.{% endblock %}
 
       <!-- Map -->
       <div class="lg:tw-w-1/2 tw-h-80 tw-bg-gray-200 tw-rounded-lg tw-overflow-hidden">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150789.8268568214!2d-1.7005386559748092!3d53.80566362879145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795dc77564945b%3A0xb905005f4d10083b!2sBison%20Steakhouse%20LEEDS!5e0!3m2!1sen!2suk!4v1745093522000!5m2!1sen!2suk"
-          style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" class="tw-w-full tw-h-full"
-          title="Map showing Sear Steaks Leeds location" loading="lazy">
+        <!-- Map placeholder with click-to-load -->
+        <div id="map-placeholder" class="tw-relative tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center tw-bg-gray-200">
+          <div class="tw-text-center tw-p-4">
+            <div class="tw-mb-3 tw-text-gray-700">
+              <i class="fas fa-map-marker-alt tw-text-3xl tw-text-red-700"></i>
+            </div>
+            <p class="tw-mb-3 tw-text-gray-700">Click to load interactive map</p>
+            <button id="load-map-btn" class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-py-2 tw-px-4 tw-rounded tw-transition">
+              Show Map
+            </button>
+          </div>
+        </div>
+        
+        <!-- The actual map iframe (hidden initially) -->
+        <iframe 
+          id="google-map" 
+          class="tw-w-full tw-h-full tw-hidden"
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map showing Sear Steaks Leeds location"
+          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150789.8268568214!2d-1.7005386559748092!3d53.80566362879145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795dc77564945b%3A0xb905005f4d10083b!2sBison%20Steakhouse%20LEEDS!5e0!3m2!1sen!2suk!4v1745093522000!5m2!1sen!2suk">
         </iframe>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Add this JavaScript at the end of your content block -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mapBtn = document.getElementById('load-map-btn');
+    const mapPlaceholder = document.getElementById('map-placeholder');
+    const googleMap = document.getElementById('google-map');
+    
+    mapBtn.addEventListener('click', function() {
+      // Get the map URL from the data-src attribute
+      const mapSrc = googleMap.getAttribute('data-src');
+      
+      // Set the src attribute to load the map
+      googleMap.setAttribute('src', mapSrc);
+      
+      // Show the map and hide the placeholder
+      googleMap.classList.remove('tw-hidden');
+      mapPlaceholder.classList.add('tw-hidden');
+    });
+  });
+</script>
 {% endblock %}

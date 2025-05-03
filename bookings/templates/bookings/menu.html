@@ -118,6 +118,64 @@ restaurant Leeds{% endblock %}
     <div class="tw-bg-gray-50 tw-py-12 md:tw-py-20">
       <div class="tw-container tw-mx-auto tw-px-4">
 
+        <!-- Dietary Information Notice -->
+        <div class="tw-bg-amber-50 tw-rounded-lg tw-p-6 tw-mb-12 tw-max-w-5xl tw-mx-auto tw-text-center">
+          <p class="tw-text-sm tw-text-gray-700">
+            <i class="fas fa-exclamation-circle tw-text-red-700 tw-mr-2"></i>
+            <strong>Food Allergy Notice:</strong> Please inform your server of any food allergies or dietary
+            requirements. Full allergen information is available upon request. Our dishes may contain traces of nuts,
+            gluten, dairy, eggs, shellfish, and other allergens.
+          </p>
+        </div>
+
+        <!-- Add this before the "Updated Starters Section" -->
+        <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-mb-10">
+          <h3 class="tw-text-lg tw-font-bold tw-text-gray-900 tw-mb-4 tw-text-center">Dietary Information</h3>
+          <div class="tw-flex tw-flex-wrap tw-gap-5 tw-justify-center">
+            <div class="tw-flex tw-items-center">
+              <span
+                class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-mr-2 tw-flex tw-items-center tw-justify-center">
+                <i class="fas fa-bread-slice tw-text-red-700 tw-text-xs"></i>
+              </span>
+              <span class="tw-text-sm tw-text-gray-700">Gluten</span>
+            </div>
+            <div class="tw-flex tw-items-center">
+              <span
+                class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-mr-2 tw-flex tw-items-center tw-justify-center">
+                <i class="fas fa-cheese tw-text-red-700 tw-text-xs"></i>
+              </span>
+              <span class="tw-text-sm tw-text-gray-700">Dairy</span>
+            </div>
+            <div class="tw-flex tw-items-center">
+              <span
+                class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-mr-2 tw-flex tw-items-center tw-justify-center">
+                <i class="fas fa-fish tw-text-red-700 tw-text-xs"></i>
+              </span>
+              <span class="tw-text-sm tw-text-gray-700">Fish</span>
+            </div>
+            <div class="tw-flex tw-items-center">
+              <span class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-mr-2 tw-flex tw-items-center tw-justify-center">
+                <span class="tw-text-red-700 tw-text-[10px] tw-font-bold">SH</span>
+              </span>
+              <span class="tw-text-sm tw-text-gray-700">Shellfish</span>
+            </div>
+            <div class="tw-flex tw-items-center">
+              <span
+                class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-mr-2 tw-flex tw-items-center tw-justify-center">
+                <i class="fas fa-egg tw-text-red-700 tw-text-xs"></i>
+              </span>
+              <span class="tw-text-sm tw-text-gray-700">Eggs</span>
+            </div>
+            <div class="tw-flex tw-items-center">
+              <span
+                class="tw-inline-block tw-w-6 tw-h-6 tw-bg-green-100 tw-rounded-full tw-mr-2 tw-flex tw-items-center tw-justify-center">
+                <i class="fas fa-seedling tw-text-green-700 tw-text-xs"></i>
+              </span>
+              <span class="tw-text-sm tw-text-gray-700">Vegetarian</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Updated Starters Section with 2x2 Grid -->
         <section id="starters" class="tw-mb-20">
           <div class="tw-flex tw-items-center tw-mb-10">
@@ -129,60 +187,96 @@ restaurant Leeds{% endblock %}
             <!-- Beef Carpaccio -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
               <img src="{% static 'images/menu/beef_carpaccio.webp' %}" alt="Beef Carpaccio"
-                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
+                class="tw-w-full tw-h-48 tw-object-cover" width="600" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Beef Carpaccio</h3>
                   <span class="tw-text-red-700 tw-font-bold price">£16</span>
                 </div>
-                <p class="tw-text-gray-600">
+                <p class="tw-text-gray-600 tw-mb-3">
                   Thinly sliced prime beef, arugula, capers, shaved parmesan and truffle oil
                 </p>
+                <!-- Allergen Icons -->
+                <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mt-2">
+                  <span
+                    class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center"
+                    title="Contains dairy">
+                    <i class="fas fa-cheese tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- Jumbo Shrimp Cocktail -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
               <img src="{% static 'images/menu/jumbo_shrimp_cocktail.webp' %}" alt="Jumbo Shrimp Cocktail"
-                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
+                class="tw-w-full tw-h-48 tw-object-cover" width="600" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Jumbo Shrimp Cocktail</h3>
                   <span class="tw-text-red-700 tw-font-bold price">£18</span>
                 </div>
-                <p class="tw-text-gray-600">
+                <p class="tw-text-gray-600 tw-mb-3">
                   Five jumbo shrimp served with our signature cocktail sauce and lemon
                 </p>
+                <!-- Allergen Icons -->
+                <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mt-2">
+                  <span class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center" title="Contains shellfish">
+                    <span class="tw-text-red-700 tw-text-[10px] tw-font-bold">SH</span>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- Crab Cakes -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
               <img src="{% static 'images/menu/crab_cakes.webp' %}" alt="Crab Cakes"
-                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
+                class="tw-w-full tw-h-48 tw-object-cover" width="600" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Crab Cakes</h3>
                   <span class="tw-text-red-700 tw-font-bold price">£19</span>
                 </div>
-                <p class="tw-text-gray-600">
+                <p class="tw-text-gray-600 tw-mb-3">
                   Lump crab meat, minimal filler, pan-seared and served with remoulade sauce
                 </p>
+                <!-- Allergen Icons -->
+                <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mt-2">
+                  <span class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center" title="Contains shellfish">
+                    <span class="tw-text-red-700 tw-text-[10px] tw-font-bold">SH</span>
+                  </span>
+                  <span class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center" title="Contains eggs">
+                    <i class="fas fa-egg tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
             <!-- French Onion Soup -->
             <div class="tw-bg-white tw-rounded-lg tw-overflow-hidden tw-shadow-lg menu-card">
               <img src="{% static 'images/menu/french_onion_soup.webp' %}" alt="French Onion Soup"
-                class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
+                class="tw-w-full tw-h-48 tw-object-cover" width="600" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
                   <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">French Onion Soup</h3>
                   <span class="tw-text-red-700 tw-font-bold price">£12</span>
                 </div>
-                <p class="tw-text-gray-600">
+                <p class="tw-text-gray-600 tw-mb-3">
                   Rich beef broth, caramelized onions, crouton, and melted Gruyère cheese
                 </p>
+                <!-- Allergen Icons -->
+                <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mt-2">
+                  <span
+                    class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center"
+                    title="Contains dairy">
+                    <i class="fas fa-cheese tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                  <span
+                    class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center"
+                    title="Contains gluten">
+                    <i class="fas fa-bread-slice tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -302,7 +396,12 @@ restaurant Leeds{% endblock %}
                 class="tw-w-full tw-h-48 tw-object-cover" width="400" height="192" loading="lazy">
               <div class="tw-p-6 card-content">
                 <div class="tw-flex tw-justify-between tw-items-center tw-mb-2">
-                  <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Vegetable Wellington</h3>
+                  <div class="tw-flex tw-items-center tw-gap-2">
+                    <h3 class="tw-text-xl tw-font-bold tw-text-gray-900">Vegetable Wellington</h3>
+                    <span class="tw-inline-block tw-w-5 tw-h-5 tw-bg-green-100 tw-rounded-full tw-flex tw-items-center tw-justify-center" title="Vegetarian">
+                      <i class="fas fa-seedling tw-text-green-700 tw-text-xs"></i>
+                    </span>
+                  </div>
                   <span class="tw-text-red-700 tw-font-bold price">£26</span>
                 </div>
                 <p class="tw-text-gray-600">
@@ -330,9 +429,27 @@ restaurant Leeds{% endblock %}
                   <h3 class="tw-text-lg tw-font-bold tw-text-gray-900">Chocolate Lava Cake</h3>
                   <span class="tw-text-red-700 tw-font-bold price">£12</span>
                 </div>
-                <p class="tw-text-gray-600 tw-text-sm">
+                <p class="tw-text-gray-600 tw-text-sm tw-mb-3">
                   Warm chocolate cake with a molten center, served with vanilla ice cream
                 </p>
+                <!-- Allergen Icons -->
+                <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mt-2">
+                  <span
+                    class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center"
+                    title="Contains gluten">
+                    <i class="fas fa-bread-slice tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                  <span
+                    class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center"
+                    title="Contains dairy">
+                    <i class="fas fa-cheese tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                  <span
+                    class="tw-inline-block tw-w-6 tw-h-6 tw-bg-red-100 tw-rounded-full tw-flex tw-items-center tw-justify-center"
+                    title="Contains eggs">
+                    <i class="fas fa-egg tw-text-red-700 tw-text-xs"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -473,28 +590,28 @@ restaurant Leeds{% endblock %}
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     // Smooth scrolling for both main nav and in-page menu nav
     document.querySelectorAll('nav a, .site-header a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         // Only intercept links that point to IDs on the current page
         const href = this.getAttribute('href');
         if (href.startsWith('#')) {
           e.preventDefault();
           const targetElement = document.querySelector(href);
-          
+
           if (targetElement) {
             // Remove content-visibility: auto to ensure proper scrolling
             if (targetElement.style) {
               targetElement.style.contentVisibility = 'visible';
             }
-            
+
             // Smooth scroll
             targetElement.scrollIntoView({
               behavior: 'smooth',
               block: 'start'
             });
-            
+
             // Add highlight effect
             targetElement.classList.add('tw-bg-amber-50');
             setTimeout(() => {
