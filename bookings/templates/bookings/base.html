@@ -69,6 +69,36 @@
         box-shadow: 0 8px 15px rgba(185, 28, 28, 0.1) !important;
       }
     </style>
+    <!-- Add this to your base.html head section -->
+    <style>
+      /* Force images to reload by appending a timestamp */
+      .hero-image-contact { background-image: url('/static/images/hero/contact_hero.webp?v={% now "U" %}'); }
+      .hero-image-login { background-image: url('/static/images/hero/contact_hero.webp?v={% now "U" %}'); }
+      .hero-image-register { background-image: url('/static/images/hero/register_hero.webp?v={% now "U" %}'); }
+      .hero-image-floor-plan { background-image: url('/static/images/hero/floor_plan_hero.webp?v={% now "U" %}'); }
+      .hero-image-home { background-image: url('/static/images/hero/home_hero.webp?v={% now "U" %}'); }
+      
+      /* Common hero image styles */
+      .hero-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      /* Only use fixed attachment on desktop devices */
+      @media (min-width: 768px) {
+        .hero-image {
+          background-attachment: fixed;
+        }
+      }
+      
+      /* Fix for iOS/mobile devices */
+      @media (max-width: 767px) {
+        .hero-image {
+          background-attachment: scroll;
+        }
+      }
+    </style>
     {% endblock %}
 
 </head>
