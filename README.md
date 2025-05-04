@@ -141,31 +141,31 @@ To map out the user journey, I created a flowchart that visualizes how users int
 <div class="user-story-table">
 
 ### Must Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | Log in to an Admin Dashboard to manage restaurant reservations | Must Have | #2 |
-| ✅ | View all upcoming bookings in an organized manner | Must Have | #2 |
-| ✅ | Update table availability and prevent double bookings | Must Have | #9 |
-| ✅ | Modify or cancel bookings on behalf of customers | Must Have | #2 |
-| ✅ | Set and modify restaurant operating hours for accurate booking availability | Must Have | #20 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| Log in to an Admin Dashboard to manage restaurant reservations | Must Have | #2 |
+| View all upcoming bookings in an organized manner | Must Have | #2 |
+| Update table availability and prevent double bookings | Must Have | #9 |
+| Modify or cancel bookings on behalf of customers | Must Have | #2 |
+| Set and modify restaurant operating hours for accurate booking availability | Must Have | #20 |
 
 ### Should Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | Ensure only valid users can make reservations through authentication | Should Have | #19 |
-| ✅ | Manage user accounts to assist customers and handle special cases | Should Have | #19 |
-| ✅ | Track and manage customer no-shows to implement appropriate policies | Should Have | #31 |
-| ✅ | Configure the restaurant floor plan by adding, removing, or repositioning tables | Should Have | #29 |
-| ✅ | Set and enforce cancellation policies for customers | Should Have | #25 |
-| ✅ | Manage multiple bookings simultaneously for efficient handling of changes | Should Have | #39 |
-| ✅ | Configure private dining areas separately from regular tables | Should Have | #42 |
-| ✅ | Assign staff members to specific tables or sections for efficient service | Should Have | #38 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| Ensure only valid users can make reservations through authentication | Should Have | #19 |
+| Manage user accounts to assist customers and handle special cases | Should Have | #19 |
+| Track and manage customer no-shows to implement appropriate policies | Should Have | #31 |
+| Configure the restaurant floor plan by adding, removing, or repositioning tables | Should Have | #29 |
+| Set and enforce cancellation policies for customers | Should Have | #25 |
+| Manage multiple bookings simultaneously for efficient handling of changes | Should Have | #39 |
+| Configure private dining areas separately from regular tables | Should Have | #42 |
+| Assign staff members to specific tables or sections for efficient service | Should Have | #38 |
 
 ### Could Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | View booking analytics and trends for business decisions | Could Have | #15 |
-| ✅ | Customize email templates for various notifications | Could Have | #40 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| View booking analytics and trends for business decisions | Could Have | #15 |
+| Customize email templates for various notifications | Could Have | #40 |
 </div>
 
 ## Unregistered User Stories
@@ -173,10 +173,10 @@ To map out the user journey, I created a flowchart that visualizes how users int
 <div class="user-story-table">
 
 ### Must Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | View restaurant details without needing an account | Must Have | N/A |
-| ✅ | Register for an account to access booking features | Must Have | #3 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| View restaurant details without needing an account | Must Have | N/A |
+| Register for an account to access booking features | Must Have | #3 |
 </div>
 
 ## Registered Customer Stories
@@ -184,34 +184,34 @@ To map out the user journey, I created a flowchart that visualizes how users int
 <div class="user-story-table">
 
 ### Must Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | Log in securely and manage my profile | Must Have | #3 |
-| ✅ | Browse available tables in a floor plan and pick my preferred seat | Must Have | #1 |
-| ✅ | Select a date & time and make a table reservation | Must Have | #1, #11 |
-| ✅ | Specify the number of people in my party for appropriate table suggestions | Must Have | #12 |
-| ✅ | Modify or cancel my booking before the scheduled time | Must Have | #18 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| Log in securely and manage my profile | Must Have | #3 |
+| Browse available tables in a floor plan and pick my preferred seat | Must Have | #1 |
+| Select a date & time and make a table reservation | Must Have | #1, #11 |
+| Specify the number of people in my party for appropriate table suggestions | Must Have | #12 |
+| Modify or cancel my booking before the scheduled time | Must Have | #18 |
 
 ### Should Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | Receive an email confirmation of my reservation | Should Have | #4 |
-| ✅ | View my booking history to track past and upcoming reservations | Should Have | #6 |
-| ✅ | Add special requests to my booking for dietary requirements or celebrations | Should Have | #10 |
-| ✅ | Manage my profile information to keep contact details up to date | Should Have | #14 |
-| ✅ | Receive automated reminders before my reservation | Should Have | #26 |
-| ✅ | Book space for special events like parties or business meetings | Should Have | #33 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| Receive an email confirmation of my reservation | Should Have | #4 |
+| View my booking history to track past and upcoming reservations | Should Have | #6 |
+| Add special requests to my booking for dietary requirements or celebrations | Should Have | #10 |
+| Manage my profile information to keep contact details up to date | Should Have | #14 |
+| Receive automated reminders before my reservation | Should Have | #26 |
+| Book space for special events like parties or business meetings | Should Have | #33 |
 
 ### Could Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | View the restaurant menu within the booking system | Could Have | #7 |
-| ✅ | Share my reservation details on social media | Could Have | #16 |
-| ✅ | Join a waiting list when my preferred time is fully booked | Could Have | #21 |
-| ✅ | Specify dietary restrictions during booking | Could Have | #23 |
-| ✅ | Use the booking system in my preferred language | Could Have | #24 |
-| ✅ | View a virtual tour of the restaurant and specific tables | Could Have | #37 |
-| ✅ | Book multiple tables together for large group reservations | Could Have | #43 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| View the restaurant menu within the booking system | Could Have | #7 |
+| Share my reservation details on social media | Could Have | #16 |
+| Join a waiting list when my preferred time is fully booked | Could Have | #21 |
+| Specify dietary restrictions during booking | Could Have | #23 |
+| Use the booking system in my preferred language | Could Have | #24 |
+| View a virtual tour of the restaurant and specific tables | Could Have | #37 |
+| Book multiple tables together for large group reservations | Could Have | #43 |
 </div>
 
 ## System Requirements
@@ -219,18 +219,21 @@ To map out the user journey, I created a flowchart that visualizes how users int
 <div class="user-story-table">
 
 ### Must Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | Prevent double bookings by checking table availability in real-time | Must Have | #5 |
-| ✅ | Display an intuitive UI for customers to navigate smoothly | Must Have | #1 |
-| ✅ | Be fully accessible to users with disabilities | Must Have | #35 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| Prevent double bookings by checking table availability in real-time | Must Have | #5 |
+| Display an intuitive UI for customers to navigate smoothly | Must Have | #1 |
+| Be fully accessible to users with disabilities | Must Have | #35 |
 
 ### Should Have
-| Status | Feature | Priority | Ticket # |
-|:------:|---------|:--------:|:--------:|
-| ✅ | Send email notifications for booking confirmations | Should Have | #4 |
-| ✅ | Recommend appropriate tables based on party size and preferences | Should Have | #27 |
+| Feature | Priority | Ticket # |
+|---------|:--------:|:--------:|
+| Send email notifications for booking confirmations | Should Have | #4 |
+| Recommend appropriate tables based on party size and preferences | Should Have | #27 |
 </div>
+
+## Agile Project Planning with GitHub Projects
+For the Sear Steaks restaurant reservation system, I will implement an agile development approach using GitHub Projects. [View my GitHub Project here](https://github.com/users/Nickflanagn24/projects/3/views/1) as my central planning and tracking tool. I'll structure the project board with columns representing different development stages: "To Do," "In Progress," "Done," and "Won't Have." Each feature will be captured as an individual ticket containing comprehensive details including type (User Story or Bug), priority level using the MoSCoW method (Must Have, Should Have, Could Have), the associated epic for grouping related functionality, and specific acceptance criteria for clear definition of completion. This organized approach will allow me to prioritize effectively, focusing first on implementing critical components like the table booking interface and user authentication system before moving to secondary features. As development progresses, I'll move tickets across the board to maintain a real-time visual representation of project status, helping me identify bottlenecks and adjust priorities as needed. The ticketing system will also facilitate documentation of bug fixes through dedicated tickets describing the issue, resolution approach, and verification process. By maintaining this structured view of all planned features and their current status, I'll ensure development remains focused on delivering core functionality while keeping track of potential enhancements for future iterations. This agile approach will allow me to adapt quickly to challenges encountered during development while maintaining a clear path toward project completion with all essential features implemented.
 
 ### Skeleton: Wireframes & UX Design
 
@@ -444,7 +447,7 @@ The admin panel can be accessed at [here](https://searsteaks-22b7c7084bd1.heroku
 <details>
   <summary>Comprehensive Communication System</summary>
 
-A sophisticated email system will maintain consistent engagement with customers throughout their Sear Steaks journey, delivering timely information and marketing communications.
+A sophisticated email system will maintain consistent engagement with customers throughout their Sear Steaks journey, delivering timely information and marketing communications.  This can all be implamented when the client has their email they would like to use.
 
 ### Account Management Communications
 - **✅ Registration Confirmation:** Immediate verification emails with activation links
@@ -544,123 +547,415 @@ For detailed information about testing methodologies, validation results, and bu
 - Best Practices
 - SEO scores
 
-## Known Bugs
-- [List any known issues here]
+## Bug Tracking and Resolution Structure
+
+<div class="bug-tracking-section">
+
+### Systematic Bug Management Approach
+
+For the Sear Steaks project, I implemented a comprehensive bug tracking system using GitHub Projects, creating a structured workflow that ensured consistent issue documentation, prioritization, and resolution throughout the development lifecycle.
+
+### Tracking Methodology
+
+Each bug was documented using a standardized template containing:
+
+| Component | Description |
+|-----------|-------------|
+| 🐞 **Issue Title** | Clear, concise description of the bug |
+| 📝 **Description** | Detailed explanation of the issue and system impact |
+| 🔄 **Steps to Reproduce** | Numbered sequence to reliably trigger the bug |
+| ✅ **Expected Behavior** | Correct system response when functioning properly |
+| 🔍 **Actual Behavior** | Current incorrect system response |
+| 📱 **Environment** | Browser, device, and conditions where bug occurs |
+| 🔧 **Resolution** | Technical approach and code changes made to fix the issue |
+| 📊 **Impact Assessment** | How the fix improves user experience or system functionality |
+
+### Prioritization Framework
+
+Issues were categorized by severity and business impact:
+
+- **Critical:** Blocking core functionality, requiring immediate attention
+- **High:** Significantly impacting user experience but with workarounds available
+- **Medium:** Affecting non-essential features or cosmetic issues on key pages
+- **Low:** Minor visual inconsistencies or edge cases with minimal user impact
+
+### Resolution Workflow
+
+The bug resolution process followed a defined pathway:
+
+1. **Identification & Documentation** — Bug reported with complete template details
+2. **Triage & Assessment** — Priority assigned based on severity and business impact
+3. **Development & Testing** — Fix implemented with isolated testing to verify resolution
+4. **Code Review** — Pull request submitted for peer review to validate the approach
+5. **Integration & Verification** — Changes merged after confirmation in staging environment
+6. **Post-Resolution Analysis** — Documentation of root causes to prevent similar issues
+
+</div>
+
+The full bug tracking board is available in the [GitHub Projects repository](https://github.com/users/Nickflanagn24/projects/3/views/1), providing transparency into both resolved issues and any remaining items targeted for future releases.
+
+## Bug Tracking and Resolution Structure
+For the Sear Steaks project, I implemented a detailed and structured approach to bug tracking using the GitHub Projects in the repo which you can view [here](https://github.com/users/Nickflanagn24/projects/3/views/1). Each bug ticket follows a comprehensive template designed to capture all essential information needed for efficient resolution:
+
+Description: A clear explanation of the issue and its impact on system functionality
+Steps to Reproduce: Numbered steps that reliably trigger the bug
+Expected Behavior: What should happen when the system works correctly
+Resolution: Detailed technical steps taken to fix the issue
+Impact: An assessment of how the fix improves user experience or system reliability
+This structured format ensures that all bugs are documented with sufficient detail for developers to understand the issue, reproduce it consistently, implement appropriate fixes, and verify the resolution. By maintaining this level of detail in the GitHub Projects board, I created a valuable knowledge repository of technical challenges and their solutions that can be referenced throughout the development lifecycle and for future maintenance.
+
+The project board maintains separate columns for "Solved Bugs" and "Unsolved Bugs," providing immediate visibility into which issues have been addressed and which still require attention. This systematic approach to bug tracking has been instrumental in maintaining code quality and ensuring a smooth user experience. For a complete view of all identified bugs and their current status, please visit the GitHub Projects link above.
+
+---
+ 
+ # 🛠️ Technologies Used
+
+## Frontend
+
+- **HTML5**: For semantic markup and page structure
+- **CSS3**: For custom styling and layout enhancements
+- **JavaScript**: For interactive elements and dynamic content
+- **Tailwind CSS**: Utility-first CSS framework for responsive design
+- **Font Awesome**: Icon library for visual elements and improved UX
+- **Alpine.js**: Lightweight JavaScript framework for reactive components
+
+## Backend
+
+- **Python 3.8**: Core programming language
+- **Django 4.2**: High-level Python web framework for rapid development
+- **Django Allauth**: For user authentication, registration, and account management
+- **Django Crispy Forms**: For enhanced form rendering and styling
+- **Django Messages**: For user notifications and feedback
+
+## Database
+
+- **PostgreSQL**: Production database for robust data storage
+- **SQLite3**: Development database for local testing
+- **ElephantSQL**: Database as a Service for the deployed application
+
+## Cloud Services & Deployment
+
+- **Heroku**: Platform as a Service for application hosting
+- **Cloudinary**: Media file storage and management
+- **WhiteNoise**: Static file serving for production
+- **Gunicorn**: WSGI HTTP Server for running the application
+
+## Development Tools
+
+- **Git**: Version control system
+- **GitHub**: Repository hosting and project management
+- **VS Code**: Code editor with extensions for Python and Django
+- **Chrome DevTools**: For debugging and testing responsiveness
+- **Balsamiq**: For wireframing and UI planning
+- **Lighthouse**: For performance, accessibility, and SEO auditing
+- **W3C Validators**: For HTML and CSS validation
+
+## Additional Libraries
+
+- **Luxon.js**: For date and time manipulation
+- **EmailJS**: For sending emails through JavaScript
+- **SweetAlert2**: For enhanced user notifications
+- **Animate.css**: For subtle animations and transitions
+
+## Testing Tools
+
+- **Jest**: JavaScript testing framework
+- **Django TestCase**: For backend unit and integration testing
+- **Coverage.py**: For measuring test coverage
+
+Each technology was selected to fulfill specific project requirements and to ensure a seamless, responsive, and accessible user experience across all devices and browsers.
+
+## Tailwind CSS Implementation
+
+### About Tailwind CSS Choice
+
+For the Sear Steaks project, I made the strategic decision to implement Tailwind CSS via the CDN approach. This choice offered significant advantages over Bootstrap for this particular project:
+
+### Why Tailwind Over Bootstrap
+
+- **Utility-First Philosophy**: Tailwind's utility-first approach gave me complete design freedom to create a unique, restaurant-specific interface without fighting against pre-designed components. This was crucial for establishing Sear Steaks' distinctive visual identity.
+
+- **Smaller Learning Curve**: Despite being unfamiliar with both frameworks at project start, Tailwind's intuitive class naming system allowed me to build custom components faster than learning Bootstrap's component-based system would have permitted.
+
+- **Highly Customizable**: Tailwind made it simple to implement our specific color scheme, typography, and spacing system without extensive CSS overrides, resulting in cleaner code and more consistent design.
+
+- **Better Mobile Responsiveness**: Tailwind's responsive modifiers made creating a truly mobile-first design straightforward, essential for customers booking tables on mobile devices.
+
+- **Modern Design Aesthetic**: Tailwind facilitated the clean, minimalist design language that better matched our restaurant's upscale positioning compared to Bootstrap's more conventional look.
+
+### CDN Warning Explanation
+
+During development, you may notice the following console warning:
+
+> cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+
+#### Why This Warning Appears
+
+This warning occurs because we're using Tailwind's CDN version, which is designed for prototyping and development rather than production environments. The CDN version:
+
+- Includes the entire Tailwind framework, rather than only the classes you use
+- Processes CSS in the browser rather than during build time
+- May have performance implications for production websites
+
+#### Implementation Attempts and Decision
+
+I attempted to implement Tailwind using the recommended PostCSS plugin and Tailwind CLI approaches as suggested in the warning. However, both methods led to significant issues:
+
+- **Integration Issues**: The PostCSS and CLI implementations broke core application functionality due to conflicts with Django's static file handling and the deployment configuration.
+
+- **Application Stability**: After multiple attempts at configuration adjustments, the application continued to experience rendering problems and style inconsistencies with these approaches.
+
+- **Time Constraint Considerations**: With project deadlines approaching and the application functioning well with the CDN version, I made the deliberate decision to continue with the working CDN implementation rather than risk project completion.
+
+#### Why This Approach Is Appropriate for Our Project
+
+For the Sear Steaks application, the CDN implementation was maintained throughout development for several critical reasons:
+
+- **Functioning Application Priority**: The CDN approach provided a stable, working application, whereas the "recommended" approaches introduced critical issues.
+
+- **Prototype Suitability**: For a prototype application like this one, the performance considerations are less critical than having a fully functional demonstration of capabilities.
+
+- **Project Timeline Constraints**: Resolving the complex integration issues would have significantly delayed project completion, risking the timely delivery of core functionality.
+
+- **Pragmatic Approach**: The decision represents a practical compromise that prioritizes a functioning application over theoretical best practices that weren't compatible with our specific technical environment.
+
+#### Performance Considerations
+
+Despite using the CDN approach, several measures have been taken to mitigate potential performance impacts:
+
+- **Selective Class Usage**: Care was taken to use Tailwind classes efficiently and avoid unnecessary duplication
+- **Browser Caching**: The CDN version benefits from browser caching after initial load
+- **Minimal Custom CSS**: Additional custom CSS was kept to a minimum to avoid redundancy
+- **Performance Monitoring**: Regular testing has confirmed that page load times remain within acceptable parameters
+
+While the warning is acknowledged, the current implementation represents the most stable and effective solution for our specific project constraints. In future development cycles with more time available, I would revisit the integration approach with more extensive testing and configuration options.
 
 ---
 
 # 🚀 Deployment
 
+The Sear Steaks application follows industry best practices for deployment, using a robust process that ensures reliability, security, and scalability. Our deployment approach separates development and production environments, enabling continuous development while maintaining a stable production system for users. Use the drop downs to find which is best for you.
+
 <details>
-  <summary>Local Deployment Instructions</summary>
+  <summary><strong>Local Development Setup</strong></summary>
 
-1. Clone the repository:
-   ```bash
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+- Git version control
+- Virtual environment tool (venv)
+- PostgreSQL (recommended) or SQLite
+
+### Step-by-Step Instructions
+
+1. **Clone the repository:**
+
    git clone https://github.com/Nickflanagn24/searsteaks.git
-   ```
+   cd searsteaks
 
-2. Create and activate a virtual environment:
-   ```bash
+2. **Create and activate a virtual environment:**
+
+   # Create virtual environment
    python -m venv venv
-
-   # Windows
+   
+   # Activate on Windows
    venv\Scripts\activate
-
-   # Mac/Linux
+   
+   # Activate on macOS/Linux
    source venv/bin/activate
-   ```
 
-3. Install dependencies:
-   ```bash
+3. **Install dependencies:**
+
    pip install -r requirements.txt
-   ```
 
-4. Set up environment variables in a .env file:
-   ```bash
+4. **Set up environment variables:**
+   Create a `.env` file in the project root with:
+
    SECRET_KEY=your_secret_key
    DEBUG=True
    DATABASE_URL=your_database_url
    CLOUDINARY_URL=your_cloudinary_url
-   ```
+   EMAIL_HOST_USER=your_email_address
+   EMAIL_HOST_PASSWORD=your_email_password
 
-5. Run migrations:
-   ```bash
+5. **Configure the database:**
+
    python manage.py migrate
-   ```
 
-6. Create a superuser:
-   ```bash
+6. **Create a superuser for admin access:**
+
    python manage.py createsuperuser
-   ```
 
-7. Run the development server:
-   ```bash
+7. **Load initial data (optional):**
+
+   python manage.py loaddata fixtures/initial_data.json
+
+8. **Run the development server:**
+
    python manage.py runserver
-   ```
 
+9. **Access the application:**
+   - Main site: http://127.0.0.1:8000/
+   - Admin panel: http://127.0.0.1:8000/admin/
 </details>
 
-## Heroku Deployment
-Prerequisites
-Heroku account
-Heroku CLI installed
-PostgreSQL add-on (will be added during deployment)
-Cloudinary account for media storage
-### Steps
-1) Log in to Heroku CLI:
+<details>
+  <summary><strong>Heroku Deployment</strong></summary>
 
-heroku login
+### Prerequisites
+- Heroku account
+- Heroku CLI installed
+- PostgreSQL database (provided by Heroku)
+- Cloudinary account for media storage
 
-2) Create a new Heroku app:
+### Step-by-Step Deployment Process
 
-heroku create sear-steaks
+1. **Log in to Heroku CLI:**
 
-Or use the Heroku dashboard to create a new app.
+   heroku login
 
-3) Add PostgreSQL database:
+2. **Create a new Heroku app:**
 
-heroku addons:create heroku-postgresql:hobby-dev
+   heroku create searsteaks
 
-4) Set environment variables in Heroku:
+   Or use the Heroku dashboard to create a new app.
 
-heroku config:set SECRET_KEY=your_secret_key
-heroku config:set DEBUG=False
-heroku config:set DISABLE_COLLECTSTATIC=1
-heroku config:set CLOUDINARY_URL=your_cloudinary_url
-heroku config:set ALLOWED_HOSTS=your-app-name.herokuapp.com
+3. **Add PostgreSQL database:**
 
-5) Create a Procfile in the project root (if not already present):
+   heroku addons:create heroku-postgresql:hobby-dev
 
-web: gunicorn restaurant_booking.wsgi
+4. **Configure environment variables:**
 
-6) Ensure requirements.txt includes gunicorn and other production dependencies:
+   heroku config:set SECRET_KEY=your_secret_key
+   heroku config:set DEBUG=False
+   heroku config:set ALLOWED_HOSTS=your-app-name.herokuapp.com
+   heroku config:set CLOUDINARY_URL=your_cloudinary_url
+   heroku config:set EMAIL_HOST_USER=your_email_address
+   heroku config:set EMAIL_HOST_PASSWORD=your_email_password
 
-pip freeze > requirements.txt
+5. **Create a Procfile:**
+   Create a file named `Procfile` (no extension) in the project root with:
 
-7) Deploy to Heroku manually (first time):
+   web: gunicorn restaurant_booking.wsgi
 
-git push heroku main
+6. **Update requirements:**
+   Ensure gunicorn is in requirements.txt:
 
-8) Run migrations on Heroku:
+   pip freeze > requirements.txt
 
-heroku run python manage.py migrate
+7. **Deploy to Heroku:**
 
-9) Create a superuser on Heroku:
+   git push heroku main
 
-heroku run python manage.py createsuperuser
+8. **Run database migrations:**
 
-## GitHub Integration and Continuous Deployment
-### Connect GitHub Repository to Heroku
+   heroku run python manage.py migrate
 
-1) Go to the Heroku Dashboard and select your app.
-2) Navigate to the "Deploy" tab.
-3) In the "Deployment method" section, select "GitHub".
-4) Connect to your GitHub account if not already connected.
-5) Search for and select the repository "Nickflanagn24/searsteaks".
-6) Choose the branch you want to deploy ("main").
+9. **Create an admin superuser:**
 
-## Set Up Automatic Deployments
+   heroku run python manage.py createsuperuser
 
-1) In the "Automatic deploys" section, check "Enable Automatic Deploys".
-2) Click "Enable Automatic Deploys".
+10. **Collect static files:**
 
+    heroku run python manage.py collectstatic --noinput
+
+11. **Open the application:**
+
+    heroku open
+</details>
+
+<details>
+  <summary><strong>GitHub Integration & CI/CD Pipeline</strong></summary>
+
+### Continuous Integration/Continuous Deployment
+
+1. **Connect GitHub Repository:**
+   - Navigate to your app in the Heroku Dashboard
+   - Go to the "Deploy" tab
+   - Select "GitHub" as the deployment method
+   - Connect to your GitHub repository: `Nickflanagn24/searsteaks`
+
+2. **Enable Automatic Deployments:**
+   - In the "Automatic deploys" section
+   - Select the branch to deploy (usually `main`)
+   - Check "Wait for CI to pass before deploy" if using CI services
+   - Click "Enable Automatic Deploys"
+
+3. **Configure Deployment Triggers:**
+   - Set up to deploy when changes are pushed to the main branch
+   - This creates a seamless development workflow where approved code changes are automatically deployed
+
+4. **Monitor Deployments:**
+   - View deployment logs in the "Activity" tab
+   - Each deployment creates a version that can be rolled back if issues occur
+</details>
+
+<details>
+  <summary><strong>Domain & SSL Configuration</strong></summary>
+
+### Custom Domain Setup
+
+1. **Purchase a domain** from a domain registrar
+2. **Add domain to Heroku:**
+   - In Heroku dashboard, go to Settings
+   - Click "Add domain"
+   - Enter your domain name
+
+3. **Configure DNS with your domain provider:**
+   - Add a CNAME record pointing to `yourapp.herokuapp.com`
+   - Or use the DNS target provided by Heroku
+
+4. **SSL Certificate:**
+   - Heroku provides free SSL certificates via Automatic Certificate Management (ACM)
+   - Enable in the Settings tab under "SSL Certificates"
+</details>
+
+## Deployment Challenges and Solutions
+
+During the deployment process, several challenges were encountered and resolved:
+
+1. **Static Files Management:** Initially, static files weren't loading properly in Heroku. This was resolved by implementing WhiteNoise for static file serving, which efficiently handles static assets without requiring additional services.
+
+2. **Database Migration:** When migrating from SQLite to PostgreSQL, some data type incompatibilities were discovered. These were addressed by modifying specific model fields to ensure compatibility across database engines.
+
+3. **Environment Variable Security:** To enhance security, all sensitive credentials were moved from settings files to environment variables, with default values provided only for development environments.
+
+4. **Performance Optimization:** Initial load times were improved by implementing proper caching strategies and optimising database queries, resulting in significantly faster page loads on production.
+
+The current deployment at [Sear Steaks](https://searsteaks-22b7c7084bd1.herokuapp.com/) showcases a fully functional restaurant booking system with all core features implemented and optimized for production use.
+
+# 🙏 Credits and Acknowledgments
+
+I would like to express my sincere gratitude to everyone who contributed to making the Sear Steaks project possible:
+
+## Educational Resources
+
+- **Code Institute**: For providing the comprehensive Full Stack Development curriculum and project guidance that formed the foundation of this application.
+- **Django Documentation**: For their excellent documentation and tutorials that were invaluable throughout the development process.
+- **Tailwind CSS**: For their utility-first CSS framework that enabled the creation of a responsive and elegant user interface.
+
+## Media and Content
+
+- **Unsplash**: For providing high-quality, royalty-free images used throughout the website.
+
+- **Font Awesome**: For the extensive library of icons that enhanced the user interface and improved visual communication.
+
+## Technical Tutorials and Guidance
+
+- [Real Python](https://realpython.com/) for their in-depth Django tutorials
+- [CSS-Tricks](https://css-tricks.com/) for advanced layout techniques and responsive design approaches
+- [Tailwind CSS Tutorial](https://www.youtube.com/watch?v=DenUCuq4G04&t=974s) for fundamental Tailwind CSS concepts and implementation techniques
+
+## Tools and Services
+
+- **GitHub**: For version control and project management capabilities
+- **Heroku**: For reliable platform-as-a-service hosting
+- **Cloudinary**: For efficient image management and optimization
+- **PostgreSQL**: For robust and reliable database services
+
+
+## Mentorship and Support
+
+- **My Code Institute Mentor**: For their invaluable feedback, guidance, and encouragement throughout the development process.
+- **Code Institute Slack Community**: For peer support, troubleshooting assistance, and sharing of ideas.
+- **Friends and Family**: For their patience during testing and their constructive feedback on the user experience.
