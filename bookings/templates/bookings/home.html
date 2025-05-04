@@ -38,24 +38,6 @@ memorable dining experience in an elegant atmosphere.{% endblock %}
 {% endblock %}
 
 {% block content %}
-<!-- Optimized Hero Image Loading for Mobile -->
-<style>
-  /* Base style for all devices */
-  .hero-background {
-    background-image: url('{% static "images/hero/home_hero.webp" %}');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  /* Only apply fixed attachment on desktop */
-  @media (min-width: 768px) {
-    .hero-background {
-      background-attachment: fixed;
-    }
-  }
-</style>
-
 <!-- Hero Section with Updated Image -->
 <div class="tw-relative tw-h-screen tw-bg-cover tw-bg-center hero-background">
   <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/70"></div>
