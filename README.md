@@ -11,7 +11,7 @@
 
 ---
 
-![sear steaks on multiple devies](Docs/images/readme/all-devices-black.webp)
+![sear steaks on multiple devies](./docs/images/readme/all_devices_black.webp)
 
 ---
 
@@ -123,7 +123,7 @@ Features that are not a priority for the initial release but could be implemente
 
 To map out the user journey, I created a flowchart that visualizes how users interact with the system.
 
-![User Journey Diagram](bookings/static/images/readme-images/full_restaurant_user_journey.png)
+![User Journey Diagram](./docs/images/readme/full_restaurant_user_journey.png)
 
 #### User Flow Overview
 
@@ -136,35 +136,105 @@ To map out the user journey, I created a flowchart that visualizes how users int
 
 ### User Stories
 
-#### As an Admin, I Can...
-- ✅ Log in to an Admin Dashboard to manage restaurant reservations.
-- ✅ View all upcoming bookings in an organized manner.
-- ✅ Update table availability and prevent double bookings.
-- ✅ Modify or cancel bookings on behalf of customers.
-- ✅ Ensure only valid users can make reservations through authentication.
+## Admin User Stories
 
-#### As an Unregistered User, I Can...
-- ✅ View restaurant details without needing an account.
-- ✅ Register for an account to access booking features.
+<div class="user-story-table">
 
-#### As a Registered Customer, I Can...
-- ✅ Log in securely and manage my profile.
-- ✅ Browse available tables in a floor plan and pick my preferred seat.
-- ✅ Select a date & time and make a table reservation.
-- ✅ Modify or cancel my booking before the scheduled time.
-- ✅ Receive an email confirmation of my reservation.
+### Must Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | Log in to an Admin Dashboard to manage restaurant reservations | Must Have | #2 |
+| ✅ | View all upcoming bookings in an organized manner | Must Have | #2 |
+| ✅ | Update table availability and prevent double bookings | Must Have | #9 |
+| ✅ | Modify or cancel bookings on behalf of customers | Must Have | #2 |
+| ✅ | Set and modify restaurant operating hours for accurate booking availability | Must Have | #20 |
 
-#### As a System, It Will...
-- ✅ Prevent double bookings by checking table availability in real-time.
-- ✅ Send email notifications for booking confirmations.
-- ✅ Display an intuitive UI for customers to navigate smoothly.
+### Should Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | Ensure only valid users can make reservations through authentication | Should Have | #19 |
+| ✅ | Manage user accounts to assist customers and handle special cases | Should Have | #19 |
+| ✅ | Track and manage customer no-shows to implement appropriate policies | Should Have | #31 |
+| ✅ | Configure the restaurant floor plan by adding, removing, or repositioning tables | Should Have | #29 |
+| ✅ | Set and enforce cancellation policies for customers | Should Have | #25 |
+| ✅ | Manage multiple bookings simultaneously for efficient handling of changes | Should Have | #39 |
+| ✅ | Configure private dining areas separately from regular tables | Should Have | #42 |
+| ✅ | Assign staff members to specific tables or sections for efficient service | Should Have | #38 |
+
+### Could Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | View booking analytics and trends for business decisions | Could Have | #15 |
+| ✅ | Customize email templates for various notifications | Could Have | #40 |
+</div>
+
+## Unregistered User Stories
+
+<div class="user-story-table">
+
+### Must Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | View restaurant details without needing an account | Must Have | N/A |
+| ✅ | Register for an account to access booking features | Must Have | #3 |
+</div>
+
+## Registered Customer Stories
+
+<div class="user-story-table">
+
+### Must Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | Log in securely and manage my profile | Must Have | #3 |
+| ✅ | Browse available tables in a floor plan and pick my preferred seat | Must Have | #1 |
+| ✅ | Select a date & time and make a table reservation | Must Have | #1, #11 |
+| ✅ | Specify the number of people in my party for appropriate table suggestions | Must Have | #12 |
+| ✅ | Modify or cancel my booking before the scheduled time | Must Have | #18 |
+
+### Should Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | Receive an email confirmation of my reservation | Should Have | #4 |
+| ✅ | View my booking history to track past and upcoming reservations | Should Have | #6 |
+| ✅ | Add special requests to my booking for dietary requirements or celebrations | Should Have | #10 |
+| ✅ | Manage my profile information to keep contact details up to date | Should Have | #14 |
+| ✅ | Receive automated reminders before my reservation | Should Have | #26 |
+| ✅ | Book space for special events like parties or business meetings | Should Have | #33 |
+
+### Could Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | View the restaurant menu within the booking system | Could Have | #7 |
+| ✅ | Share my reservation details on social media | Could Have | #16 |
+| ✅ | Join a waiting list when my preferred time is fully booked | Could Have | #21 |
+| ✅ | Specify dietary restrictions during booking | Could Have | #23 |
+| ✅ | Use the booking system in my preferred language | Could Have | #24 |
+| ✅ | View a virtual tour of the restaurant and specific tables | Could Have | #37 |
+| ✅ | Book multiple tables together for large group reservations | Could Have | #43 |
+</div>
+
+## System Requirements
+
+<div class="user-story-table">
+
+### Must Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | Prevent double bookings by checking table availability in real-time | Must Have | #5 |
+| ✅ | Display an intuitive UI for customers to navigate smoothly | Must Have | #1 |
+| ✅ | Be fully accessible to users with disabilities | Must Have | #35 |
+
+### Should Have
+| Status | Feature | Priority | Ticket # |
+|:------:|---------|:--------:|:--------:|
+| ✅ | Send email notifications for booking confirmations | Should Have | #4 |
+| ✅ | Recommend appropriate tables based on party size and preferences | Should Have | #27 |
+</div>
 
 ### Skeleton: Wireframes & UX Design
 
 To create an intuitive User Experience (UX), wireframes were designed to ensure:
-- A clean interface for customers to book tables easily.
-- An efficient dashboard for admins to manage reservations.
-- Accessibility considerations for all screen sizes.
 
 - [Home Page Wireframe](Docs/images/wireframes/wireframe_home.png)
 - [Floor Plan Wireframe](Docs/images/wireframes/wireframe_floor_plan.png)
