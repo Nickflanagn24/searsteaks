@@ -11,8 +11,8 @@ Leeds booking{% endblock %}
 
 {% block title %}Book a Table | Sear Steaks Leeds{% endblock %}
 
-{% block content %}
-<!-- Hero Section with Full Width -->
+{% block extra_css %}
+<!-- Moved style tag from content to head section -->
 <style>
     /* Base styles for all devices */
     .hero-background {
@@ -46,8 +46,31 @@ Leeds booking{% endblock %}
             background-attachment: scroll;
         }
     }
-</style>
 
+    .tw-previously-selected {
+        border: 3px solid #f59e0b !important;
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+        position: relative;
+    }
+
+    .tw-previously-selected::after {
+        content: 'Your Previous Selection';
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #f59e0b;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 10px;
+        white-space: nowrap;
+        z-index: 10;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
 <!-- Hero Section with optimized image and responsive height - MOVE OUTSIDE CONTAINER -->
 <div class="tw-relative tw-h-72 md:tw-h-96 lg:tw-h-[400px] hero-background tw-w-full">
     <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/70"></div>
@@ -119,8 +142,8 @@ Leeds booking{% endblock %}
                     {% endif %}
                 </div>
 
-                <!-- Tables Display -->
-                <div class="tw-p-6" style="content-visibility: auto; contain-intrinsic-size: 1px 500px;">
+                <!-- Tables Display - Fixed invalid CSS property -->
+                <div class="tw-p-6" style="content-visibility: auto;">
                     <h2 class="tw-text-xl tw-font-bold tw-text-gray-800 tw-mb-1">Available Tables</h2>
                     <p class="tw-text-sm tw-text-gray-500 tw-mb-6">Click on an available table to make a reservation</p>
 
@@ -167,160 +190,136 @@ Leeds booking{% endblock %}
             </div>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
 
-    {% block extra_js %}
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const checkBtn = document.getElementById('checkBtn');
-            const dateInput = document.getElementById('date');
-            const timeInput = document.getElementById('time');
-            const tablesContainer = document.getElementById('tablesContainer');
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkBtn = document.getElementById('checkBtn');
+        const dateInput = document.getElementById('date');
+        const timeInput = document.getElementById('time');
+        const tablesContainer = document.getElementById('tablesContainer');
 
-            // Get URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const modifyBookingId = urlParams.get('modify_booking_id');
-            const selectedDate = urlParams.get('date');
-            const selectedTime = urlParams.get('time');
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const modifyBookingId = urlParams.get('modify_booking_id');
+        const selectedDate = urlParams.get('date');
+        const selectedTime = urlParams.get('time');
 
-            // Pre-fill date and time if provided in the URL
-            if (selectedDate) {
-                dateInput.value = selectedDate;
+        // Pre-fill date and time if provided in the URL
+        if (selectedDate) {
+            dateInput.value = selectedDate;
+        }
+        if (selectedTime) {
+            timeInput.value = selectedTime;
+        }
+
+        // Check availability button click
+        checkBtn.addEventListener('click', function () {
+            checkAvailability();
+        });
+
+        async function checkAvailability() {
+            const date = dateInput.value;
+            const time = timeInput.value;
+
+            if (!date || !time) {
+                alert('Please select both date and time');
+                return;
             }
-            if (selectedTime) {
-                timeInput.value = selectedTime;
+
+            // Show loading state
+            tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">Loading available tables...</p></div>';
+
+            try {
+                // Build URL with all parameters at once
+                const params = new URLSearchParams({ date, time });
+                if (modifyBookingId) params.append('modify_booking_id', modifyBookingId);
+
+                const response = await fetch(`/api/table-availability/?${params}`);
+                const data = await response.json();
+                displayTables(data.tables);
+            } catch (error) {
+                console.error('Error:', error);
+                tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-red-600">Error loading tables. Please try again.</p></div>';
+            }
+        }
+
+        function displayTables(tables) {
+            if (!tables || tables.length === 0) {
+                tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">No tables found.</p></div>';
+                return;
             }
 
-            // Check availability button click
-            checkBtn.addEventListener('click', function () {
-                checkAvailability();
+            let html = '';
+            tables.forEach(table => {
+                html += createTableCard(
+                    table.id,
+                    table.table_number,
+                    table.capacity,
+                    !table.is_booked,
+                    table.is_previously_selected || false
+                );
             });
 
-            async function checkAvailability() {
-                const date = dateInput.value;
-                const time = timeInput.value;
-
-                if (!date || !time) {
-                    alert('Please select both date and time');
-                    return;
-                }
-
-                // Show loading state
-                tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">Loading available tables...</p></div>';
-
-                try {
-                    // Build URL with all parameters at once
-                    const params = new URLSearchParams({ date, time });
-                    if (modifyBookingId) params.append('modify_booking_id', modifyBookingId);
-
-                    const response = await fetch(`/api/table-availability/?${params}`);
-                    const data = await response.json();
-                    displayTables(data.tables);
-                } catch (error) {
-                    console.error('Error:', error);
-                    tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-red-600">Error loading tables. Please try again.</p></div>';
-                }
-            }
-
-            function displayTables(tables) {
-                if (!tables || tables.length === 0) {
-                    tablesContainer.innerHTML = '<div class="tw-col-span-full tw-text-center tw-py-8"><p class="tw-text-gray-600">No tables found.</p></div>';
-                    return;
-                }
-
-                let html = '';
-                tables.forEach(table => {
-                    html += createTableCard(
-                        table.id,
-                        table.table_number,
-                        table.capacity,
-                        !table.is_booked,
-                        table.is_previously_selected || false
-                    );
-                });
-
-                tablesContainer.innerHTML = html;
-            }
-
-            function createTableCard(id, number, capacity, available, isPreviouslySelected) {
-                // For available tables
-                if (available) {
-                    let classNames = 'gold-hover-btn tw-bg-white tw-border-2 tw-border-green-500 hover:tw-border-amber-400 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md tw-no-underline tw-transition-all tw-duration-300';
-                    let circleColor = 'green';
-
-                    // Add styling for previously selected table
-                    if (isPreviouslySelected) {
-                        classNames = classNames.replace('tw-border-green-500', 'tw-border-amber-500');
-                        circleColor = 'amber';
-                    }
-
-                    // Build the URL with modify_booking_id if applicable
-                    let bookingUrl = `/make-booking/?table_id=${id}&date=${dateInput.value}&time=${timeInput.value}`;
-
-                    // Add modify_booking_id if it exists
-                    if (modifyBookingId) {
-                        bookingUrl += `&modify_booking_id=${modifyBookingId}`;
-                    }
-
-                    return `<a href="${bookingUrl}" class="${classNames}">
-                    <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-${circleColor}-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center" style="width:48px;height:48px">
-                        <span class="tw-font-bold">${number}</span>
-                    </div>
-                    <div class="tw-font-medium tw-text-gray-900">Table ${number}</div>
-                    <div class="tw-text-sm tw-text-gray-500 tw-mt-1">
-                        <i class="fas fa-users tw-mr-1"></i>
-                        Seats ${capacity}
-                    </div>
-                    <div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-green-100 tw-text-green-800 tw-rounded-full tw-inline-block">
-                        Available
-                    </div>
-                    ${isPreviouslySelected ? '<div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-amber-100 tw-text-amber-800 tw-rounded-full tw-inline-block">Your Current Table</div>' : ''}
-                </a>`;
-                } else {
-                    // Booked tables remain the same
-                    return `<div class="tw-bg-white tw-border-2 tw-border-red-500 tw-rounded-lg tw-p-4 tw-text-center tw-opacity-75">
-                    <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-red-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">
-                        <span class="tw-font-bold">${number}</span>
-                    </div>
-                    <div class="tw-font-medium">Table ${number}</div>
-                    <div class="tw-text-sm tw-text-gray-500 tw-mt-1">
-                        <i class="fas fa-users tw-mr-1"></i>
-                        Seats ${capacity}
-                    </div>
-                    <div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-red-100 tw-text-red-800 tw-rounded-full tw-inline-block">
-                        Booked
-                    </div>
-                </div>`;
-                }
-            }
-
-            // Trigger the availability check on page load
-            checkBtn.click();
-        });
-    </script>
-    {% endblock %}
-
-    {% block extra_css %}
-    <style>
-        .tw-previously-selected {
-            border: 3px solid #f59e0b !important;
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
-            position: relative;
+            tablesContainer.innerHTML = html;
         }
 
-        .tw-previously-selected::after {
-            content: 'Your Previous Selection';
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #f59e0b;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 10px;
-            white-space: nowrap;
-            z-index: 10;
+        function createTableCard(id, number, capacity, available, isPreviouslySelected) {
+            // For available tables
+            if (available) {
+                let classNames = 'gold-hover-btn tw-bg-white tw-border-2 tw-border-green-500 hover:tw-border-amber-400 tw-rounded-lg tw-p-4 tw-text-center tw-shadow hover:tw-shadow-md tw-no-underline tw-transition-all tw-duration-300';
+                let circleColor = 'green';
+
+                // Add styling for previously selected table
+                if (isPreviouslySelected) {
+                    classNames = classNames.replace('tw-border-green-500', 'tw-border-amber-500');
+                    circleColor = 'amber';
+                }
+
+                // Build the URL with modify_booking_id if applicable
+                let bookingUrl = `/make-booking/?table_id=${id}&date=${dateInput.value}&time=${timeInput.value}`;
+
+                // Add modify_booking_id if it exists
+                if (modifyBookingId) {
+                    bookingUrl += `&modify_booking_id=${modifyBookingId}`;
+                }
+
+                return `<a href="${bookingUrl}" class="${classNames}">
+                <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-${circleColor}-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center" style="width:48px;height:48px">
+                    <span class="tw-font-bold">${number}</span>
+                </div>
+                <div class="tw-font-medium tw-text-gray-900">Table ${number}</div>
+                <div class="tw-text-sm tw-text-gray-500 tw-mt-1">
+                    <i class="fas fa-users tw-mr-1"></i>
+                    Seats ${capacity}
+                </div>
+                <div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-green-100 tw-text-green-800 tw-rounded-full tw-inline-block">
+                    Available
+                </div>
+                ${isPreviouslySelected ? '<div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-amber-100 tw-text-amber-800 tw-rounded-full tw-inline-block">Your Current Table</div>' : ''}
+            </a>`;
+            } else {
+                // Booked tables remain the same
+                return `<div class="tw-bg-white tw-border-2 tw-border-red-500 tw-rounded-lg tw-p-4 tw-text-center tw-opacity-75">
+                <div class="tw-w-12 tw-h-12 tw-mx-auto tw-mb-2 tw-bg-red-500 tw-text-white tw-rounded-full tw-flex tw-items-center tw-justify-center">
+                    <span class="tw-font-bold">${number}</span>
+                </div>
+                <div class="tw-font-medium">Table ${number}</div>
+                <div class="tw-text-sm tw-text-gray-500 tw-mt-1">
+                    <i class="fas fa-users tw-mr-1"></i>
+                    Seats ${capacity}
+                </div>
+                <div class="tw-mt-2 tw-text-xs tw-px-2 tw-py-1 tw-bg-red-100 tw-text-red-800 tw-rounded-full tw-inline-block">
+                    Booked
+                </div>
+            </div>`;
+            }
         }
-    </style>
-    {% endblock %}
+
+        // Trigger the availability check on page load
+        checkBtn.click();
+    });
+</script>
+{% endblock %}
