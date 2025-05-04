@@ -956,6 +956,6 @@ I would like to express my sincere gratitude to everyone who contributed to maki
 
 ## Mentorship and Support
 
-- **My Code Institute Mentor**: For their invaluable feedback, guidance, and encouragement throughout the development process.
+- **My Code Institute Mentor David Bowers**: I'd like to make a special mention to [David Bowers](https://github.com/dnlbowers) for his invaluable feedback, guidance, and encouragement throughout the development process. 
 - **Code Institute Slack Community**: For peer support, troubleshooting assistance, and sharing of ideas.
 - **Friends and Family**: For their patience during testing and their constructive feedback on the user experience.
