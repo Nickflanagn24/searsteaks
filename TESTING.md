@@ -1,4 +1,4 @@
-# HTML Validation Testing
+can # HTML Validation Testing
 
 ## Introduction
 
@@ -224,3 +224,102 @@ All pages were tested for responsiveness and functionality across devices. The f
 The manual testing process confirmed that the core functionality of the Sear Steaks booking system works as expected across different user roles. The application successfully handles the restaurant table booking process from end to end, with appropriate user interface elements, validation, and security measures in place.
 
 Minor issues were identified and fixed during the testing process, resulting in a robust and user-friendly booking experience. The system successfully prevents double bookings, provides clear visual feedback on table availability, and allows users to manage their reservations efficiently.
+
+## Lighthouse Testing
+
+### Introduction
+
+Lighthouse audits were performed on all pages of the Sear Steaks website to evaluate performance, accessibility, best practices, and SEO. Tests were conducted in both mobile and desktop configurations to ensure optimal user experience across devices.
+
+### Methodology
+
+For each test, the following aspects were evaluated:
+
+- **Performance**: Loading speed, responsiveness, and execution efficiency
+- **Accessibility**: Compliance with WCAG guidelines and usability for all users
+- **Best Practices**: Adherence to modern web development standards
+- **SEO**: Search engine optimization and discoverability
+
+### Home Page Results
+The Home page demonstrates exceptional accessibility and SEO implementation with perfect 100 scores on desktop. Performance scores remain strong across devices, with only minimal optimization opportunities on mobile. The page successfully balances visual appeal with fast loading times, ensuring users get an excellent first impression of Sear Steaks and can quickly access the most important information.
+
+#### Desktop
+![Home page desktop Lighthouse results](./docs/images/lighthouse_test/lighthouse_home_desktop.jpg)
+
+#### Mobile
+![Home page mobile Lighthouse results](./docs/images/lighthouse_test/lighthouse_home_mobile.jpg)
+
+### Menu Page Results
+The Menu page achieves high marks for user experience with perfect accessibility scores, ensuring all diners can easily browse available dishes. The comprehensive food selection with high-quality images maintains good performance despite the image-heavy content. SEO optimization helps drive traffic from customers searching for specific menu items or cuisine types.
+
+#### Desktop
+![Menu page desktop Lighthouse results](./docs/images/lighthouse_test/lighthouse_menu_desktop.jpg)
+
+#### Mobile
+![Menu page mobile Lighthouse results](./docs/images/lighthouse_test/lighthouse_menu_mobile.jpg)
+
+### Booking Page Results
+The Booking page successfully balances complex interactive elements with strong accessibility, ensuring the table reservation system can be used by all customers. The interactive floor plan maintains good performance metrics despite its complexity. The high SEO and Best Practices scores reflect the page's well-structured implementation and discoverability through search engines.
+
+#### Desktop
+![Booking page desktop Lighthouse results](./docs/images/lighthouse_test/lighthouse_floorplan_desktop.jpg)
+
+#### Mobile
+![Booking page mobile Lighthouse results](./docs/images/lighthouse_test/lighthouse_floorplan_mobile.jpg)
+
+### Contact Page Results
+The Contact page delivers essential information efficiently with perfect accessibility scores and strong performance on desktop. The optimised map integration and contact form maintain fast load times while providing all necessary functionality. The page ensures customers can easily find location information and reach out to the restaurant for inquiries.
+
+#### Desktop
+![Contact page desktop Lighthouse results](./docs/images/lighthouse_test/lighthouse_contact_desktop.jpg)
+
+#### Mobile
+![Contact page mobile Lighthouse results](./docs/images/lighthouse_test/lighthouse_contact_mobile.jpg)
+
+### Login Page Results
+The Login page demonstrates excellent implementation with near-perfect scores across all metrics. The streamlined authentication process prioritizes both security and accessibility, allowing customers to access their accounts quickly. The high performance scores reflect the page's efficient design and minimal resource usage.
+
+#### Desktop
+![Login page desktop Lighthouse results](./docs/images/lighthouse_test/lighthouse_login_desktop.jpg)
+
+#### Mobile
+![Login page mobile Lighthouse results](./docs/images/lighthouse_test/lighthouse_login_mobile.jpg)
+
+### Registration
+The Registration page demonstrates excellent implementation with high scores across all metrics. The streamlined account creation process prioritizes both security and accessibility, allowing new customers to join quickly and begin making reservations. The form validation provides clear feedback while maintaining strong performance, ensuring a smooth onboarding experience for all users regardless of device.
+
+#### Desktop
+![Registration page desktop Lighthouse results](./docs/images/lighthouse_test/lighthouse_register_desktop.jpg)
+
+#### Mobile
+![Registration page mobile Lighthouse results](./docs/images/lighthouse_test/lighthouse_register_mobile.jpg)
+
+### Optimization Measures
+
+Several optimizations were implemented to address issues identified by Lighthouse:
+
+1. **Image Optimization**:
+   - Converted images to WebP format for improved compression
+   - Implemented proper sizing and responsive images
+   - Added width and height attributes to prevent layout shifts
+
+2. **Accessibility Improvements**:
+   - Enhanced color contrast for text elements
+   - Added proper ARIA labels to interactive elements
+   - Ensured all form fields have associated labels
+
+3. **Performance Enhancements**:
+   - Implemented lazy loading for images below the fold
+   - Minimized render-blocking resources
+   - Deferred non-critical JavaScript
+
+4. **Best Practices**:
+   - Ensured proper aspect ratios for images
+   - Improved error handling
+   - Enhanced security with proper headers
+
+### Summary
+
+The Lighthouse testing results confirm that Sear Steaks website maintains high standards across all key metrics, with particularly strong performance in accessibility and SEO. Mobile performance represents an area for continued optimisation, though current scores remain within acceptable parameters.
+
+The focus on accessibility throughout the development process has resulted in a website that can be effectively used by all visitors, including those with disabilities, while maintaining visual appeal and functionality.
