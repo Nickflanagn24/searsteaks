@@ -117,15 +117,6 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-    
-    # Standard X-Frame-Options for security
-    X_FRAME_OPTIONS = 'DENY'
-else:
-    # Allow embedding in iframes for development and testing tools
-    X_FRAME_OPTIONS = 'SAMEORIGIN'
-    
-    # For the Am I Responsive tool, it's better to use Content-Security-Policy
-    # This can be implemented in middleware or in your view responses
 
 # Logging configuration
 LOGGING = {

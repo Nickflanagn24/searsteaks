@@ -11,6 +11,8 @@
 
 ---
 
+![sear steaks on multiple devies](Docs/images/readme/all-devices-black.webp)
+
 ---
 
 ## 📋 Table of Contents
@@ -164,11 +166,12 @@ To create an intuitive User Experience (UX), wireframes were designed to ensure:
 - An efficient dashboard for admins to manage reservations.
 - Accessibility considerations for all screen sizes.
 
-📥 [Wireframes Links] (Include final link once uploaded)
-home page wireframe 
-booking wireframe 
-menu wireframe
-contact wire
+- [Home Page Wireframe](Docs/images/wireframes/wireframe_home.png)
+- [Floor Plan Wireframe](Docs/images/wireframes/wireframe_floor_plan.png)
+- [My Booking Wireframe](Docs/images/wireframes/wireframe_my_booking.png)
+- [Menu Wireframe](Docs/images/wireframes/wireframe_menu.png)
+- [Contact Wireframe](Docs/images/wireframes/wireframe_contact.png)
+- [Registration Wireframe](Docs/images/wireframes/wireframe_registration.png)
 
 ### Database Schema
 
