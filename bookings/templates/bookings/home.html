@@ -18,6 +18,25 @@ memorable dining experience in an elegant atmosphere.{% endblock %}
 
 {% block title %}Sear Steaks | Premier Steakhouse in Leeds{% endblock %}
 
+{% block extra_css %}
+<style>
+  /* Base style for all devices */
+  .hero-background {
+    background-image: url('{% static "images/hero/home_hero.webp" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Only apply fixed attachment on desktop */
+  @media (min-width: 768px) {
+    .hero-background {
+      background-attachment: fixed;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Optimized Hero Image Loading for Mobile -->
 <style>
