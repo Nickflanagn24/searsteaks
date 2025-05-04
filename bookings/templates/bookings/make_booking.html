@@ -5,7 +5,8 @@
 <!-- Hero Banner with scrolling effect -->
 <div class="tw-relative tw-h-72 hero-image hero-image-home">
   <div class="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-gray-900/80 tw-to-red-900/90"></div>
-  <div class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
+  <div
+    class="tw-relative tw-container tw-mx-auto tw-px-6 tw-h-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-text-center">
     <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-text-white tw-mb-2 tw-drop-shadow-lg">
       {% if is_modification %}Update Your Reservation{% else %}Complete Your Reservation{% endif %}
     </h1>
@@ -27,9 +28,12 @@
       <div class="tw-bg-gray-50 tw-p-8">
         <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-6">
           <!-- Table Card -->
-          <div class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
-            <div class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div
+            class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
+            <div
+              class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
             </div>
@@ -37,123 +41,147 @@
             <p class="tw-text-red-700 tw-text-2xl tw-font-bold tw-mb-1">{{ table.table_number }}</p>
             <p class="tw-text-gray-500 tw-text-sm">Capacity: {{ table.capacity }} people</p>
           </div>
-          
+
           <!-- Date Card -->
-          <div class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
-            <div class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <div
+            class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
+            <div
+              class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
             <h3 class="tw-text-gray-700 tw-font-semibold tw-text-lg tw-mb-2">Date</h3>
             <p class="tw-text-red-700 tw-text-xl tw-font-bold tw-mb-1">{{ selected_date|date:"l, F j, Y" }}</p>
           </div>
-          
+
           <!-- Time Card -->
-          <div class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
-            <div class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div
+            class="tw-bg-white tw-rounded-lg tw-p-6 tw-text-center tw-shadow-md tw-transition-transform tw-duration-300 hover:tw-shadow-lg hover:tw-transform hover:-tw-translate-y-1">
+            <div
+              class="tw-mx-auto tw-w-14 tw-h-14 tw-rounded-full tw-bg-red-50 tw-flex tw-items-center tw-justify-center tw-mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-red-700" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <h3 class="tw-text-gray-700 tw-font-semibold tw-text-lg tw-mb-2">Time</h3>
             <p class="tw-text-red-700 tw-text-2xl tw-font-bold tw-mb-1">
               {% if selected_time == '18:30' %}
-                6:30 PM
+              6:30 PM
               {% elif selected_time == '21:30' %}
-                9:30 PM
+              9:30 PM
               {% else %}
-                {{ selected_time }}
+              {{ selected_time }}
               {% endif %}
             </p>
             <p class="tw-text-gray-500 tw-text-sm">Dinner Service</p>
           </div>
         </div>
       </div>
-      
+
       <!-- Booking Form -->
       <div class="tw-p-8">
         <form method="post" action="" id="bookingForm" class="tw-space-y-6">
           {% csrf_token %}
-          
+
           <!-- Hidden field to track modification -->
           {% if is_modification %}
           <input type="hidden" name="modify_booking_id" value="{{ booking.id }}">
           {% endif %}
-          
+
           <!-- Guest Selector -->
           <div class="tw-max-w-md tw-mx-auto">
             <label for="guests" class="tw-block tw-text-gray-700 tw-font-medium tw-mb-3 tw-text-center">
               <span class="tw-inline-flex tw-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2 tw-text-red-700" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
                 Number of Guests
               </span>
             </label>
-            
+
             <div class="tw-flex tw-items-center tw-justify-center tw-space-x-4">
-              <button type="button" id="decreaseGuests" class="tw-w-12 tw-h-12 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-transition tw-duration-300 hover:tw-bg-gray-200 focus:tw-outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <button type="button" id="decreaseGuests"
+                class="tw-w-12 tw-h-12 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-transition tw-duration-300 hover:tw-bg-gray-200 focus:tw-outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-gray-600" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                 </svg>
               </button>
-              
+
               <div class="tw-relative tw-w-20">
-                <input type="number" name="guests" id="guests" 
-                       class="tw-w-full tw-text-center tw-text-2xl tw-font-bold tw-border-0 tw-bg-transparent tw-text-gray-800 focus:tw-outline-none" 
-                       min="1" max="{{ table.capacity }}" value="{% if initial_guests %}{{ initial_guests }}{% else %}2{% endif %}" readonly>
+                <input type="number" name="guests" id="guests"
+                  class="tw-w-full tw-text-center tw-text-2xl tw-font-bold tw-border-0 tw-bg-transparent tw-text-gray-800 focus:tw-outline-none"
+                  min="1" max="{{ table.capacity }}"
+                  value="{% if initial_guests %}{{ initial_guests }}{% else %}2{% endif %}" readonly>
                 <div class="tw-absolute tw-bottom-0 tw-w-full tw-h-0.5 tw-bg-red-700"></div>
               </div>
-              
-              <button type="button" id="increaseGuests" class="tw-w-12 tw-h-12 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-transition tw-duration-300 hover:tw-bg-gray-200 focus:tw-outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+
+              <button type="button" id="increaseGuests"
+                class="tw-w-12 tw-h-12 tw-rounded-full tw-bg-gray-100 tw-flex tw-items-center tw-justify-center tw-transition tw-duration-300 hover:tw-bg-gray-200 focus:tw-outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 tw-text-gray-600" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
               </button>
             </div>
-            
+
             <p class="tw-text-gray-500 tw-text-sm tw-text-center tw-mt-3">
               Please select the number of guests (maximum {{ table.capacity }})
             </p>
           </div>
-          
+
           <!-- Special Requests Field -->
           <div class="tw-max-w-md tw-mx-auto tw-mt-6">
             <label for="special_requests" class="tw-block tw-text-gray-700 tw-font-medium tw-mb-3 tw-text-center">
               <span class="tw-inline-flex tw-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2 tw-text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2 tw-text-red-700" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                 </svg>
                 Special Requests (Optional)
               </span>
             </label>
-            <textarea name="special_requests" id="special_requests" rows="3" 
-                    class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">{% if special_requests %}{{ special_requests }}{% endif %}</textarea>
+            <textarea name="special_requests" id="special_requests" rows="3"
+              class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 focus:tw-ring-red-700 focus:tw-border-red-700 tw-transition tw-duration-300">{% if special_requests %}{{ special_requests }}{% endif %}</textarea>
           </div>
-          
+
           <!-- Reservation Policy Agreement -->
           <div class="tw-flex tw-items-start tw-max-w-md tw-mx-auto">
             <div class="tw-flex tw-items-center tw-h-5">
               <input id="agreeTerms" name="agreeTerms" type="checkbox" required
-                     class="tw-w-4 tw-h-4 tw-border tw-border-gray-300 tw-rounded tw-text-red-700 focus:tw-ring-red-700">
+                class="tw-w-4 tw-h-4 tw-border tw-border-gray-300 tw-rounded tw-text-red-700 focus:tw-ring-red-700">
             </div>
             <label for="agreeTerms" class="tw-ml-3 tw-text-sm tw-text-gray-600">
-              I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal" class="tw-text-red-700 hover:tw-text-red-800 tw-underline">reservation policy</a>
+              I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal"
+                class="tw-text-red-700 hover:tw-text-red-800 tw-underline">reservation policy</a>
             </label>
           </div>
-          
+
           <!-- Form Buttons -->
-          <div class="tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-items-center tw-gap-4 tw-max-w-2xl tw-mx-auto tw-pt-4">
-            <a href="{% url 'floor_plan' %}" class="gold-hover-btn tw-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg tw-text-gray-700 tw-bg-white hover:tw-bg-gray-50 tw-transition tw-duration-300 tw-no-underline tw-border-2 hover:tw-border-amber-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div
+            class="tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-items-center tw-gap-4 tw-max-w-2xl tw-mx-auto tw-pt-4">
+            <a href="{% url 'floor_plan' %}"
+              class="gold-hover-btn tw-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-border tw-border-gray-300 tw-rounded-lg tw-text-gray-700 tw-bg-white hover:tw-bg-gray-50 tw-transition tw-duration-300 tw-no-underline tw-border-2 hover:tw-border-amber-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Back to Floor Plan
             </a>
-            
-            <button type="submit" id="confirmBtn" class="gold-hover-btn tw-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-bg-red-700 tw-rounded-lg tw-text-white hover:tw-bg-red-800 tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent hover:tw-border-amber-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+            <button type="submit" id="confirmBtn"
+              class="gold-hover-btn tw-flex tw-items-center tw-justify-center tw-px-6 tw-py-3 tw-bg-red-700 tw-rounded-lg tw-text-white hover:tw-bg-red-800 tw-transition tw-duration-300 tw-no-underline tw-border-2 tw-border-transparent hover:tw-border-amber-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5 tw-mr-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               {% if is_modification %}Update Reservation{% else %}Confirm Reservation{% endif %}
@@ -170,23 +198,23 @@
 <script>
   /* jshint esversion: 6, browser: true, devel: true */
   /* globals bootstrap */
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const decreaseBtn = document.getElementById('decreaseGuests');
     const increaseBtn = document.getElementById('increaseGuests');
     const guestsInput = document.getElementById('guests');
     const maxCapacity = parseInt("{{ table.capacity }}", 10);
-    
+
     // Decrease button
-    decreaseBtn.addEventListener('click', function() {
+    decreaseBtn.addEventListener('click', function () {
       let currentValue = parseInt(guestsInput.value);
       if (currentValue > 1) {
         guestsInput.value = currentValue - 1;
       }
       updateGuestCounter();
     });
-    
+
     // Increase button
-    increaseBtn.addEventListener('click', function() {
+    increaseBtn.addEventListener('click', function () {
       let currentValue = parseInt(guestsInput.value);
       if (currentValue < maxCapacity) {
         guestsInput.value = currentValue + 1;
@@ -196,42 +224,42 @@
       }
       updateGuestCounter();
     });
-    
+
     // Update the visual state of buttons based on the current value
     function updateGuestCounter() {
       const currentValue = parseInt(guestsInput.value);
-      
+
       decreaseBtn.disabled = currentValue <= 1;
       increaseBtn.disabled = currentValue >= maxCapacity;
-      
+
       // Optional: Add visual feedback for disabled state
       if (currentValue <= 1) {
         decreaseBtn.classList.add('tw-opacity-50');
       } else {
         decreaseBtn.classList.remove('tw-opacity-50');
       }
-      
+
       if (currentValue >= maxCapacity) {
         increaseBtn.classList.add('tw-opacity-50');
       } else {
         increaseBtn.classList.remove('tw-opacity-50');
       }
     }
-    
+
     // Initialize button states
     updateGuestCounter();
-    
+
     // Form validation
     const bookingForm = document.getElementById('bookingForm');
     const agreeTerms = document.getElementById('agreeTerms');
-    
-    bookingForm.addEventListener('submit', function(event) {
+
+    bookingForm.addEventListener('submit', function (event) {
       if (!agreeTerms.checked) {
         event.preventDefault();
         showToast('Please agree to the reservation policy.');
       }
     });
-    
+
     // Simple toast notification function
     function showToast(message) {
       // Check if a toast container exists, if not create one
@@ -241,7 +269,7 @@
         toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
         document.body.appendChild(toastContainer);
       }
-      
+
       // Create toast element
       const toastId = 'toast-' + Date.now();
       const toastHTML = `
@@ -255,17 +283,17 @@
           </div>
         </div>
       `;
-      
+
       // Add toast to container
       toastContainer.innerHTML += toastHTML;
-      
+
       // Initialize and show toast
       const toastElement = document.getElementById(toastId);
       const toast = new bootstrap.Toast(toastElement);
       toast.show();
-      
+
       // Remove toast after it's hidden
-      toastElement.addEventListener('hidden.bs.toast', function() {
+      toastElement.addEventListener('hidden.bs.toast', function () {
         toastElement.remove();
       });
     }

@@ -268,26 +268,23 @@ steakhouse inquiries{% endblock %}
           <!-- Map Container with lazy loading -->
           <div class="tw-w-full tw-h-96">
             <!-- Map placeholder with click-to-load -->
-            <div id="map-placeholder" class="tw-relative tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center tw-bg-gray-200">
+            <div id="map-placeholder"
+              class="tw-relative tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center tw-bg-gray-200">
               <div class="tw-text-center tw-p-4">
                 <div class="tw-mb-3 tw-text-gray-700">
                   <i class="fas fa-map-marker-alt tw-text-3xl tw-text-red-700"></i>
                 </div>
                 <p class="tw-mb-3 tw-font-medium tw-text-gray-800">View our location on Google Maps</p>
-                <button id="load-map-btn" class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-py-2 tw-px-4 tw-rounded tw-transition tw-border-2 tw-border-transparent hover:tw-border-amber-400">
+                <button id="load-map-btn"
+                  class="tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-py-2 tw-px-4 tw-rounded tw-transition tw-border-2 tw-border-transparent hover:tw-border-amber-400">
                   Load Map
                 </button>
               </div>
             </div>
-            
+
             <!-- The actual map iframe (hidden initially) -->
-            <iframe
-              id="google-map"
-              style="border:0; width:100%; height:100%;"
-              class="tw-w-full tw-h-full tw-hidden"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Map showing Sear Steaks Leeds location"
+            <iframe id="google-map" style="border:0; width:100%; height:100%;" class="tw-w-full tw-h-full tw-hidden"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Sear Steaks Leeds location"
               data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2357.2123838977866!2d-1.5432870839309323!3d53.79529998008625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48795b62a61892f9%3A0x11f2be199eeac3d9!2sBoar%20Ln%2C%20Leeds%20LS1%205DA!5e0!3m2!1sen!2suk!4v1624443267777!5m2!1sen!2suk">
             </iframe>
           </div>
@@ -314,18 +311,18 @@ steakhouse inquiries{% endblock %}
 
 <script>
   /* jshint esversion: 6 */
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const mapBtn = document.getElementById('load-map-btn');
     const mapPlaceholder = document.getElementById('map-placeholder');
     const googleMap = document.getElementById('google-map');
-    
-    mapBtn.addEventListener('click', function() {
+
+    mapBtn.addEventListener('click', function () {
       // Get the map URL from the data-src attribute
       const mapSrc = googleMap.getAttribute('data-src');
-      
+
       // Set the src attribute to load the map
       googleMap.setAttribute('src', mapSrc);
-      
+
       // Show the map and hide the placeholder
       googleMap.classList.remove('tw-hidden');
       mapPlaceholder.classList.add('tw-hidden');

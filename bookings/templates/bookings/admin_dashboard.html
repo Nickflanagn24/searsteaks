@@ -1,12 +1,13 @@
 {% extends "bookings/base.html" %}
 {% block content %}
-    <h2>Admin Dashboard</h2>
-    <p>Welcome, {{ user.username }}. You have admin privileges.</p>
-    <a href="{% url 'logout' %}">Logout</a>
-    <div class="tw-mt-6">
-      <a href="{% url 'staff_register' %}" class="tw-flex tw-items-center tw-px-6 tw-py-3 tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md tw-shadow-md hover:tw-shadow-lg tw-transition-all tw-duration-300 tw-group active:tw-bg-red-900 active:tw-shadow-inner active:tw-scale-95 hover:tw-translate-y-[-2px]">
-        <i class="fas fa-user-plus tw-mr-3 tw-text-amber-300 tw-group-hover:tw-text-amber-200"></i>
-        <span>Add New Staff Member</span>
-      </a>
-    </div>
+<h2>Admin Dashboard</h2>
+<p>Welcome, {{ user.username }}. You have admin privileges.</p>
+<a href="{% url 'logout' %}">Logout</a>
+<div class="tw-mt-6">
+  <a href="{% url 'staff_register' %}"
+    class="tw-flex tw-items-center tw-px-6 tw-py-3 tw-bg-red-700 hover:tw-bg-red-800 tw-text-white tw-font-medium tw-rounded-md tw-shadow-md hover:tw-shadow-lg tw-transition-all tw-duration-300 tw-group active:tw-bg-red-900 active:tw-shadow-inner active:tw-scale-95 hover:tw-translate-y-[-2px]">
+    <i class="fas fa-user-plus tw-mr-3 tw-text-amber-300 tw-group-hover:tw-text-amber-200"></i>
+    <span>Add New Staff Member</span>
+  </a>
+</div>
 {% endblock %}
