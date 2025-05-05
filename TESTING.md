@@ -10,7 +10,7 @@ These structural issues were systematically addressed to ensure proper complianc
 
 ### Home Page: Section Tag and iFrame Errors
 
-![Home validation errors](Docs/images/validator/home_template_errors.jpg)
+![Home validation errors](docs/images/validator/home_template_errors.jpg)
 
 **Issues identified:**
 
@@ -24,7 +24,7 @@ These structural issues were systematically addressed to ensure proper complianc
 
 ### Menu Page: Main Tag and Div Element Errors
 
-![Menu errors](Docs/images/validator/menu_page_errors.jpg)
+![Menu errors](docs/images/validator/menu_page_errors.jpg)
 
 **Issues identified:**
 
@@ -36,7 +36,7 @@ These structural issues were systematically addressed to ensure proper complianc
 
 ### Register Page: Style Element Placement Error
 
-![Register validation errors](Docs/images/validator/menu_page_errors.jpg)
+![Register validation errors](docs/images/validator/register_template_errors.jpg)
 *Note: This image appears to be incorrect - it's showing menu page errors*
 
 **Issues identified:**
@@ -57,7 +57,7 @@ The website now passes HTML validation on all pages, ensuring better accessibili
 ## CSS
 Checking by URL there were no css errors using   [W3C CCS Validator](https://jigsaw.w3.org/css-validator/)
 
-![CSS validation logo](Docs/images/validator/css_validator.png)
+![CSS validation logo](docs/images/validator/css_validator.png)
 
 ## JS
 
@@ -75,7 +75,7 @@ While these issues didn't cause visible problems for users, fixing them improved
 
 ## PEP8
 
-Before using the pep8 validator I ran autopep8 --in-place --aggressive --aggressive <file name> on all py files.
+Before using the pep8 validator I ran autopep8 --in-place --aggressive --aggressive <file name> on all py files. I also ran the files through this [online pep8 checker](https://www.codewof.co.nz/style/python3/) to double check the auto pep8 had worked.
 
 ## Manual Testing Checklist for Sear Steaks Booking System
 Introduction
@@ -88,7 +88,7 @@ All pages were tested for responsiveness and functionality across devices. The f
 | Checked | Feature Test |
 |:-------:|:-------------|
 | ✓ | Log into the admin panel successfully |
-| ✓ | View all bookings in an organized manner |
+| ✓ | View all bookings in an organised manner |
 | ✓ | Filter bookings by date, time, and status |
 | ✓ | Search for specific customers and their bookings |
 | ✓ | Access table management to view availability status |
@@ -217,8 +217,6 @@ All pages were tested for responsiveness and functionality across devices. The f
 | ✓ | Success messages displayed after booking completion |
 | ✓ | Confirmation shown after booking modifications |
 | ✓ | Warning messages shown before booking cancellation |
-| ✓ | Email notifications sent for booking confirmations |
-| ✓ | Email notifications sent for booking changes/cancellations |
 
 ## Conclusion
 The manual testing process confirmed that the core functionality of the Sear Steaks booking system works as expected across different user roles. The application successfully handles the restaurant table booking process from end to end, with appropriate user interface elements, validation, and security measures in place.
