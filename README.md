@@ -430,6 +430,7 @@ When administrators select a booking, the system displays a detailed view with c
 ### Customer Booking History View
 When viewing customer information, the system presents a complete booking history for that guest. According to the templates and view functions, this includes past, current, and future reservations displayed in chronological order.
 
+
 # Table Management
 ## Table Status Overview
 The table management section provides a visual overview of all tables and their current status. Based on the repository code, this is implemented as a grid or list view showing each table with indicators for availability, capacity, reservation status, and any maintenance issues. The implementation uses color coding to clearly communicate table status at a glance – available, reserved, occupied, or out of service. According to the JavaScript files, this view updates periodically to reflect current restaurant conditions.
@@ -625,6 +626,46 @@ This structured format ensures that all bugs are documented with sufficient deta
 
 The project board maintains separate columns for "Solved Bugs" and "Unsolved Bugs," providing immediate visibility into which issues have been addressed and which still require attention. This systematic approach to bug tracking has been instrumental in maintaining code quality and ensuring a smooth user experience. For a complete view of all identified bugs and their current status, please visit the GitHub Projects link above.
 
+## Known Issues and Workarounds
+
+### Chrome Console Warning: "Deprecated API for given entry type"
+
+You may notice a console warning in Chrome DevTools that appears as:
+
+VM964 vendor.js:142 Deprecated API for given entry type.
+
+
+#### Explanation
+
+This warning occurs in Google Chrome when a third-party JavaScript library (in this case, a minified vendor.js file) uses deprecated features of the Performance API. This is a harmless warning that does not affect the functionality of the website.
+
+#### Important Notes
+
+- **Not a Functional Issue**: This warning does not impact site performance or user experience
+- **Browser-Specific**: This warning appears only in Chrome's Developer Tools and is not visible to end users
+- **Third-Party Code**: The warning originates from an external library, not from our own application code
+
+#### Attempted Solutions
+
+Several approaches were tried to suppress this warning:
+- Overriding the Performance API methods
+- Console error suppression techniques
+- Adding polyfills for deprecated API features
+
+Unfortunately, due to the nature of how Chrome processes these warnings and how the third-party library is structured, none of these solutions completely eliminated the warning without potentially introducing other issues.
+
+#### For Developers
+
+When working on this project, you can:
+
+1. **Ignore the warning**: It's safe to do so as it doesn't affect functionality
+2. **Filter the console**: Use Chrome DevTools filter feature to hide messages containing "Deprecated API"
+3. **Use a different browser**: For development work where clean console output is needed
+
+#### Future Consideration
+
+As browsers continue to evolve, this warning may eventually disappear when the third-party libraries are updated or when Chrome changes how it handles these deprecated API calls.
+
 ---
  
  # 🛠️ Technologies Used
@@ -753,7 +794,7 @@ While the warning is acknowledged, the current implementation represents the mos
 
 # 🚀 Deployment
 
-The Sear Steaks application follows industry best practices for deployment, using a robust process that ensures reliability, security, and scalability. Our deployment approach separates development and production environments, enabling continuous development while maintaining a stable production system for users. Use the drop downs to find which is best for you.
+The Sear Steaks application follows industry best practices for deployment, using a robust process that ensures reliability, security, and scalability. My deployment approach separates development and production environments, enabling continuous development while maintaining a stable production system for users. Use the drop downs to find which is best for you.
 
 <details>
   <summary><strong>Local Development Setup</strong></summary>
