@@ -260,13 +260,29 @@ To ensure data is well-structured and easily retrievable, the following database
 
 #### Color Scheme
 
-This is the colour scheme I will use. I used coolors.co to create the colour scheme
-![Sear Steaks Color Palette](bookings/static/images/readme-images/colour_scheme.png)
+## Brand Color Scheme
 
-A modern, restaurant-friendly color palette was chosen using Coolors.co, ensuring:
-- ✅ High contrast for readability.
-- ✅ Warm & inviting tones to reflect a comfortable dining experience.
-- ✅ Consistent branding across all pages.
+The Sear Steaks color palette was carefully crafted to evoke the essence of premium steak dining while ensuring strong visual contrast and accessibility. Each color in our palette serves a specific purpose in the brand identity:
+
+![Sear Steaks Color Palette](docs/images/readme/sear_steaks_colour.png)
+
+### Color Psychology & Brand Identity
+
+- **Rich Red (#B91C1C)**: This vibrant red instantly evokes the visual satisfaction of a perfectly seared steak. As our primary brand color, it communicates passion, boldness, and the intense flavor profile that defines our culinary approach. The warmth of this shade suggests premium quality and expertise in meat preparation.
+
+- **Deep Burgundy (#991B1B)**: A rich, darker red that provides depth to our color system. This shade represents the deep, complex flavors of our aged steaks and red wine pairings. It's used for hover states and secondary elements to create visual hierarchy while maintaining brand cohesion.
+
+- **Golden Amber (#F59E0B)**: This golden amber tone captures the caramelization process that occurs during the perfect sear. It suggests richness, warmth, and the Maillard reaction that creates those complex flavors steak enthusiasts crave. As an accent color, it adds a touch of luxury and warmth to our predominantly bold palette.
+
+- **Charcoal Gray (#111827)**: Reminiscent of charcoal grilling and the distinctive grill marks on a perfectly cooked steak, this near-black shade brings sophistication and elegance to our visual identity. It serves as an excellent background that allows other elements to stand out while reinforcing the premium steakhouse atmosphere.
+
+- **Amber Light (#FFFBEB)**: This subtle cream tone provides a warm alternative to stark white, creating a parchment-like quality reminiscent of traditional steakhouse menus. It ensures excellent readability while adding warmth and sophistication to background elements and offering a gentle contrast to our bolder colors.
+
+### Implementation & Accessibility
+
+The contrast ratio between our text and background combinations exceeds WCAG AA standards, ensuring excellent readability for all users. The distinctive combination of rich reds and amber accents against neutral backgrounds creates a memorable brand identity that immediately communicates the premium steakhouse experience.
+
+This carefully balanced color system extends across all brand touchpoints—from our digital presence to physical menus and environmental design—creating a cohesive, recognizable identity that reinforces the Sear Steaks promise of exceptional quality and flavor.
 
 #### Typography
 

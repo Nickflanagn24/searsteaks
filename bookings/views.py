@@ -33,19 +33,13 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
 
-        # Debug POST data
-        print("POST data received:", request.POST)
-
         if form.is_valid():
-            print("Form is valid")
             user = form.save()
             login(request, user)
-            print("User created and logged in:", user.username)
             messages.success(
                 request, "Account created successfully! You are now logged in.")
             return redirect('home')
         else:
-            print("Form errors:", form.errors)
             messages.error(
                 request, "Registration failed. Please check the form.")
     else:
@@ -108,14 +102,12 @@ def make_booking(request):
 
         # If we're modifying an existing booking
         if modify_booking_id:
-            # Check if the table, date, or time has changed and if the new
-            # selection is available
+            # Check if table, date, or time changed and if new selection is available
             if (str(booking_to_modify.table.id) != table_id or
                 str(booking_to_modify.date) != selected_date or
                     booking_to_modify.time != selected_time):
 
-                # Check if the new table is already booked (excluding our
-                # current booking)
+                # Check if new table is already booked (excluding current booking)
                 if Booking.objects.filter(
                     table=table,
                     date=selected_date,
@@ -123,8 +115,9 @@ def make_booking(request):
                 ).exclude(id=modify_booking_id).exists():
                     messages.error(
                         request,
-                        f"Sorry, table {table.table_number} is already booked for this date and time. "
-                        "Please select another table or time slot."
+                        f"Sorry, table {table.table_number} is already booked "
+                        f"for this date and time. Please select another table "
+                        f"or time slot."
                     )
                     return redirect('floor_plan')
 
@@ -152,8 +145,9 @@ def make_booking(request):
                     time=selected_time).exists():
                 messages.error(
                     request,
-                    f"Sorry, table {table.table_number} is already booked for this date and time. "
-                    "Please select another table or time slot."
+                    f"Sorry, table {table.table_number} is already booked "
+                    f"for this date and time. Please select another table "
+                    f"or time slot."
                 )
                 return redirect('floor_plan')
 
@@ -172,7 +166,8 @@ def make_booking(request):
             except IntegrityError:
                 messages.error(
                     request,
-                    "This table was just booked by someone else. Please try another table.")
+                    "This table was just booked by someone else. "
+                    "Please try another table.")
                 return redirect('floor_plan')
 
         return redirect('my_bookings')
@@ -243,22 +238,14 @@ def my_bookings(request):
         user=request.user).order_by("date", "time")
     today = date.today()
 
-    print(f"Found {len(all_bookings)} total bookings")
-
     upcoming_bookings = []
     past_bookings = []
 
     for booking in all_bookings:
-        print(f"Booking: {booking.id}, Date: {booking.date}, Today: {today}")
-
         if booking.date >= today:
             upcoming_bookings.append(booking)
-            print(f"Added to upcoming: {booking.id}")
         else:
             past_bookings.append(booking)
-            print(f"Added to past: {booking.id}")
-
-    print(f"Upcoming: {len(upcoming_bookings)}, Past: {len(past_bookings)}")
 
     return render(request, "bookings/my_bookings.html", {
         "upcoming_bookings": upcoming_bookings,
@@ -291,6 +278,7 @@ def menu(request):
 
 
 def contact(request):
+    """Handle contact form submissions."""
     if request.method == 'POST':
         # Get form data
         first_name = request.POST.get('first_name')
@@ -373,7 +361,8 @@ def table_availability(request):
             'table_number': table.table_number,
             'capacity': table.capacity,
             'is_booked': table.id in booked_table_ids,
-            'is_previously_selected': table.id == previously_selected_table_id if previously_selected_table_id else False
+            'is_previously_selected': table.id == previously_selected_table_id 
+            if previously_selected_table_id else False
         })
 
     return JsonResponse({'tables': table_data})
@@ -405,22 +394,23 @@ def check_table_availability(request):
 
     return JsonResponse({'available': is_available})
 
-# Add this new view for staff registration
-
 
 @method_decorator(login_required, name='dispatch')
 @method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
 class StaffRegistrationView(generic.CreateView):
+    """View for admin users to register new staff members."""
     form_class = CustomUserCreationForm
     template_name = 'bookings/staff_register.html'
     success_url = reverse_lazy('admin_dashboard')
 
     def get_context_data(self, **kwargs):
+        """Add additional context for the staff registration template."""
         context = super().get_context_data(**kwargs)
         context['is_staff_registration'] = True
         return context
 
     def form_valid(self, form):
+        """Ensure new staff members are given admin role."""
         # Force role to be admin regardless of selection
         form.instance.role = 'admin'
         messages.success(

@@ -1,7 +1,7 @@
 """Forms for user registration and booking management."""
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Booking, Table
+from .models import CustomUser, Booking
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -42,8 +42,7 @@ class BookingForm(forms.ModelForm):
         date = cleaned_data.get("date")
         time = cleaned_data.get("time")
 
-        # Check if the selected table is already booked for the same date &
-        # time
+        # Check if the selected table is already booked for this date/time
         if Booking.objects.filter(table=table, date=date, time=time).exists():
             raise forms.ValidationError(
                 "This table is already booked for the selected date and time.")

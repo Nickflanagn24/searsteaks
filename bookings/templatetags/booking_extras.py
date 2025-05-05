@@ -1,7 +1,6 @@
 # bookings/templatetags/booking_extras.py
-from django import template
-from datetime import datetime, time
 import time as time_module
+from django import template
 
 register = template.Library()
 

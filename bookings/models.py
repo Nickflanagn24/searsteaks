@@ -66,6 +66,7 @@ class Booking(models.Model):
 
 
 class ContactMessage(models.Model):
+    """Model for storing contact form submissions."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -76,6 +77,7 @@ class ContactMessage(models.Model):
     is_read = models.BooleanField(default=False)
 
     class Meta:
+        """Meta options for the ContactMessage model."""
         ordering = ['-created_at']
 
     def __str__(self):
