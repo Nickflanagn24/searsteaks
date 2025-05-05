@@ -340,29 +340,30 @@ This lightweight section displays essential location information (address, hours
 5. Visual Appeal: High-Quality Images
 Professional food photography and atmosphere shots throughout the homepage create emotional appeal and quality perception, implemented with modern image optimization techniques to maintain fast loading speeds. The system serves appropriate image sizes to different devices, uses lazy loading for below-the-fold content, and incorporates structured data markup for SEO enhancement. Consistent image styling (aspect ratios and color treatment) reinforces brand identity while careful optimization balances visual quality against performance requirements.
 
-## Floor Plan & Table Selection
+
+# Floor Plan & Table Selection
 - Interactive layout of restaurant seating.
 - Color-coded tables (availability shown visually).
 - Table details like capacity and location.
 - Easy click-to-select process.
 - Availability filters by date/time.
 
-# Booking Form
-## Interactive Layout of Restaurant Seating
+## Booking Form
+### Interactive Layout of Restaurant Seating
 In the implementation, each table is an interactive component that maintains selection state through JavaScript event handlers. When users click on a table, event listeners update both the visual state (adding a 'selected' class) and track the selection in a form input value. The system pulls table data (including positions, capacity, and table numbers) from the Django models, specifically the Table model which stores all relevant table attributes.
 
 Restaurant management can modify table arrangements through the Django admin interface, where they can update positions, change table status (active/inactive), or adjust capacity without requiring developer intervention for layout changes. This database-driven approach ensures the floor plan stays current with the actual restaurant configuration.
 
-## Color-Coded Table Availability
+### Color-Coded Table Availability
 The system implements real-time visual feedback through color coding that instantly communicates table status. Available tables display in green, booked tables in red and when modify the booking the curretn table will be yellow. This status information updates dynamically based on the currently selected date and time, pulling availability data from the booking database. When users change their desired reservation time, the system re-queries availability and updates all table colors without a full page reload using AJAX. This immediate visual feedback helps users quickly identify suitable options without having to try multiple tables or times.
 
-## Table Details Display
+### Table Details Display
 When users hover over or click on a table, the system displays a tooltip or info panel showing critical details: table number, seating capacity, location characteristics (window, booth, bar-adjacent, etc.), and any special features. This implementation uses event listeners on table elements to trigger the detail display. The detail component pulls data from the table configuration database, including both static information (capacity, type) and dynamic data (availability time slots). This detailed information helps customers make informed selections based on their specific needs without cluttering the main visual interface.
 
-## Click-to-Select Process
+### Click-to-Select Process
 The table selection process uses an intuitive click-based interaction model where users first select their desired date/time, then click on an available table to select it. The system implements a clear selection state with visual feedback (highlighting, checkmark icon) to confirm the user's choice. When a table is selected, the system temporarily reserves it for a short period (typically 10-15 minutes) to prevent double-bookings during the completion of the reservation form. This reservation timer is implemented using a background job that releases the hold if the booking isn't completed within the time window. This approach balances user convenience with system efficiency.
 
-## Availability Filters by Date/Time
+### Availability Filters by Date/Time
 The availability filtering system is implemented with calendar and time selector components that trigger availability updates throughout the floor plan. The date selector uses a calendar widget that restricts selection to valid booking dates (typically excluding past dates and limiting how far in advance bookings can be made). The time selector offers standard reservation slots based on the restaurant's operating hours and reservation policies. When users change either date or time selections, the system makes an API call to the backend that:
 
 1) Queries the booking database for existing reservations during the selected timeframe
@@ -401,6 +402,7 @@ The repository implements a featured_item boolean field on the MenuItem model to
 ## Visual Food Images
 The menu system includes support for dish photography through an ImageField on the MenuItem model. Based on the repository code, not all items have images, but feature dishes typically include high-quality photographs. The implementation uses responsive image techniques to serve appropriately sized images based on device characteristics. Images are displayed with consistent aspect ratios and formatting, typically showing the plated dish from an appealing angle. When users click on menu items with images, the system appears to implement a lightbox effect to display larger versions with more detail. The template implementation follows accessibility best practices with appropriate alt text generated from the dish name and description.
 
+
 # Contact Page
 ## Address Information with Google Map Embed
 Based on the repository code, the contact page implements location information with a functional Google Maps integration. The system stores the restaurant's address components (street, city, state, post code) in the SiteSettings model, which provides a single source of truth for this information across the website. The map is embedded using an iframe that loads Google Maps with the restaurant's coordinates and a marker at the exact location. According to the template file, the map implementation includes responsive sizing to properly display across different devices, and uses the loading="lazy" attribute to improve page performance. The mapping functionality appears to be initialized with a specific zoom level focused on the restaurant's neighborhood to provide context about surrounding areas. The map isn't pointing to where the restuarant is as it doesnt exisit.
@@ -414,27 +416,28 @@ The page provides multiple contact methods, prominently displaying the restauran
 ## Social Media Links
 The contact page includes links to the restaurant's social media profiles, implemented as icons with appropriate labels for accessibility. According to the repository code, these social media URLs are stored in the SiteSettings model, allowing them to be updated site-wide from a single location when needed. The implementation uses recognizable platform icons (Facebook, Instagram, Twitter, etc.) with proper external link attributes including rel="noopener" for security. The social media section appears to be positioned prominently, typically in the page footer or alongside other contact information, to encourage social engagement and provide alternative communication channels for customers.
 
+
 # Admin Features
 
 ## Admin Dashboard
 
-## Quick Access to Booking and Table Management
+### Quick Access to Booking and Table Management
 The dashboard provides a navigation panel with direct links to frequently used management functions. According to the templates and URL configuration, these quick-access controls include buttons for creating new bookings, managing tables, viewing customer records, and generating reports. Each control is implemented as a card with an icon and descriptive text, organized in a grid layout that prioritizes common tasks. The implementation follows a task-based organization rather than a module-based approach, focusing on streamlining administrator workflows.
 
-## Booking Details View
+### Booking Details View
 When administrators select a booking, the system displays a detailed view with complete reservation information. Based on the templates and view functions, this includes customer contact details, special requests, booking history, and table assignment. The implementation organizes this information into logical sections with appropriate headings and visual separation. 
 
-## Customer Booking History View
+### Customer Booking History View
 When viewing customer information, the system presents a complete booking history for that guest. According to the templates and view functions, this includes past, current, and future reservations displayed in chronological order.
 
 # Table Management
 ## Table Status Overview
 The table management section provides a visual overview of all tables and their current status. Based on the repository code, this is implemented as a grid or list view showing each table with indicators for availability, capacity, reservation status, and any maintenance issues. The implementation uses color coding to clearly communicate table status at a glance – available, reserved, occupied, or out of service. According to the JavaScript files, this view updates periodically to reflect current restaurant conditions.
 
-## Availability Control
+### Availability Control
 The system allows administrators to manually control table availability through a simple interface. Based on the models.py file, tables can be marked as unavailable for specific date ranges or recurring time slots (for example, to accommodate staff meals or maintenance). The implementation includes a calendar-style interface for selecting dates and times.
 
-## Capacity Management
+### Capacity Management
 Administrators can adjust table capacity settings through the management interface. Each table record includes fields for minimum and maximum capacity, default configuration (e.g., standard setup vs. extended). The implementation includes validation to ensure capacity settings align with physical constraints and restaurant policies. These settings directly affect the availability logic in the booking system, determining which tables appear as options for different party sizes.
 
 The admin panel can be accessed at [here](https://searsteaks-22b7c7084bd1.herokuapp.com/admin)
